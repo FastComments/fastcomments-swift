@@ -1,0 +1,52 @@
+# CommentLogData
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**clearContent** | **Bool** |  | [optional] 
+**isDeletedUser** | **Bool** |  | [optional] 
+**phrase** | **String** |  | [optional] 
+**badWord** | **String** |  | [optional] 
+**word** | **String** |  | [optional] 
+**locale** | **String** |  | [optional] 
+**tenantBadgeId** | **String** |  | [optional] 
+**badgeId** | **String** |  | [optional] 
+**wasLoggedIn** | **Bool** |  | [optional] 
+**foundUser** | **Bool** |  | [optional] 
+**verified** | **Bool** |  | [optional] 
+**engine** | **String** |  | [optional] 
+**engineResponse** | **String** |  | [optional] 
+**engineTokens** | **Double** |  | [optional] 
+**trustFactor** | **Double** |  | [optional] 
+**rule** | [**SpamRule**](SpamRule.md) |  | [optional] 
+**userId** | **String** |  | [optional] 
+**subscribers** | **Double** |  | [optional] 
+**notificationCount** | **Double** |  | [optional] 
+**votesBefore** | **Double** |  | [optional] 
+**votesUpBefore** | **Double** |  | [optional] 
+**votesDownBefore** | **Double** |  | [optional] 
+**votesAfter** | **Double** |  | [optional] 
+**votesUpAfter** | **Double** |  | [optional] 
+**votesDownAfter** | **Double** |  | [optional] 
+**repeatAction** | [**RepeatCommentHandlingAction**](RepeatCommentHandlingAction.md) |  | [optional] 
+**reason** | [**RepeatCommentCheckIgnoredReason**](RepeatCommentCheckIgnoredReason.md) |  | [optional] 
+**otherData** | **JSONValue** |  | [optional] 
+**spamBefore** | **Bool** |  | [optional] 
+**spamAfter** | **Bool** |  | [optional] 
+**permanentFlag** | **String** |  | [optional] 
+**approvedBefore** | **Bool** |  | [optional] 
+**approvedAfter** | **Bool** |  | [optional] 
+**reviewedBefore** | **Bool** |  | [optional] 
+**reviewedAfter** | **Bool** |  | [optional] 
+**textBefore** | **String** |  | [optional] 
+**textAfter** | **String** |  | [optional] 
+**expireBefore** | **Date** |  | [optional] 
+**expireAfter** | **Date** |  | [optional] 
+**flagCountBefore** | **Double** |  | [optional] 
+**trustFactorBefore** | **Double** |  | [optional] 
+**trustFactorAfter** | **Double** |  | [optional] 
+**referencedCommentId** | **String** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -1,0 +1,13 @@
+{
+  "projectName": "FastCommentsSwift",
+  "podAuthors": "FastComments",
+  "podDescription": "FastComments API Client - A SDK for interacting with the FastComments API",
+  "podHomepage": "https://fastcomments.com",
+  "podLicense": "MIT",
+  "podSource": "{\"git\":\"https://github.com/fastcomments/fastcomments-swift.git\",\"tag\":\"0.0.1\"}",
+  "podVersion": "0.0.1",
+  "swiftPackagePath": "FastCommentsSwift",
+  "hideGenerationTimestamp": true,
+  "useSingleRequestParameter": true,
+  "disallowAdditionalPropertiesIfNotPresent": false
+}

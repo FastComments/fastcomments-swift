@@ -1,0 +1,14 @@
+name: FastCommentsSwift
+targets:
+  FastCommentsSwift:
+    type: framework
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources: [FastCommentsSwift]
+    info:
+      path: ./Info.plist
+      version: 0.0.1
+    settings:
+      APPLICATION_EXTENSION_API_ONLY: true
+    scheme: {}
+    dependencies:

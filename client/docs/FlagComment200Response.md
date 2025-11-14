@@ -1,0 +1,19 @@
+# FlagComment200Response
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**statusCode** | **Int** |  | [optional] 
+**status** | [**APIStatus**](APIStatus.md) |  | 
+**code** | **String** |  | 
+**reason** | **String** |  | 
+**wasUnapproved** | **Bool** |  | [optional] 
+**secondaryCode** | **String** |  | [optional] 
+**bannedUntil** | **Int64** |  | [optional] 
+**maxCharacterLength** | **Int** |  | [optional] 
+**translatedError** | **String** |  | [optional] 
+**customConfig** | [**CustomConfigParameters**](CustomConfigParameters.md) |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
