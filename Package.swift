@@ -20,12 +20,16 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.8.0"),
+        .package(url: "https://github.com/apple/swift-crypto.git", from: "3.0.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         .target(
             name: "FastCommentsSwift",
-            dependencies: ["Alamofire"],
+            dependencies: [
+                "Alamofire",
+                .product(name: "Crypto", package: "swift-crypto", condition: .when(platforms: [.linux])),
+            ],
             path: ".",
             exclude: [
                 "Tests",

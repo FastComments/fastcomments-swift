@@ -37,6 +37,7 @@ public struct PublicComment: Sendable, Codable, JSONEncodable, Hashable {
     public var feedbackIds: [String]?
     public var requiresVerification: Bool?
     public var editKey: String?
+    public var approved: Bool?
     public var isUnread: Bool?
     public var myVoteId: String?
     public var isVotedDown: Bool?
@@ -51,7 +52,7 @@ public struct PublicComment: Sendable, Codable, JSONEncodable, Hashable {
     public var isFlagged: Bool?
     public var isBlocked: Bool?
 
-    public init(id: String, userId: String? = nil, commenterName: String, commenterLink: String? = nil, commentHTML: String, parentId: String? = nil, date: Date?, votes: Int? = nil, votesUp: Int? = nil, votesDown: Int? = nil, verified: Bool, avatarSrc: String? = nil, hasImages: Bool? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, displayLabel: String? = nil, rating: Double? = nil, badges: [CommentUserBadgeInfo]? = nil, viewCount: Int64? = nil, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isSpam: Bool? = nil, anonUserId: String? = nil, feedbackIds: [String]? = nil, requiresVerification: Bool? = nil, editKey: String? = nil, isUnread: Bool? = nil, myVoteId: String? = nil, isVotedDown: Bool? = nil, isVotedUp: Bool? = nil, hasChildren: Bool? = nil, nestedChildrenCount: Int? = nil, childCount: Int? = nil, children: [PublicComment]? = nil, isFlagged: Bool? = nil, isBlocked: Bool? = nil) {
+    public init(id: String, userId: String? = nil, commenterName: String, commenterLink: String? = nil, commentHTML: String, parentId: String? = nil, date: Date?, votes: Int? = nil, votesUp: Int? = nil, votesDown: Int? = nil, verified: Bool, avatarSrc: String? = nil, hasImages: Bool? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, displayLabel: String? = nil, rating: Double? = nil, badges: [CommentUserBadgeInfo]? = nil, viewCount: Int64? = nil, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isSpam: Bool? = nil, anonUserId: String? = nil, feedbackIds: [String]? = nil, requiresVerification: Bool? = nil, editKey: String? = nil, approved: Bool? = nil, isUnread: Bool? = nil, myVoteId: String? = nil, isVotedDown: Bool? = nil, isVotedUp: Bool? = nil, hasChildren: Bool? = nil, nestedChildrenCount: Int? = nil, childCount: Int? = nil, children: [PublicComment]? = nil, isFlagged: Bool? = nil, isBlocked: Bool? = nil) {
         self.id = id
         self.userId = userId
         self.commenterName = commenterName
@@ -80,6 +81,7 @@ public struct PublicComment: Sendable, Codable, JSONEncodable, Hashable {
         self.feedbackIds = feedbackIds
         self.requiresVerification = requiresVerification
         self.editKey = editKey
+        self.approved = approved
         self.isUnread = isUnread
         self.myVoteId = myVoteId
         self.isVotedDown = isVotedDown
@@ -121,6 +123,7 @@ public struct PublicComment: Sendable, Codable, JSONEncodable, Hashable {
         case feedbackIds
         case requiresVerification
         case editKey
+        case approved
         case isUnread
         case myVoteId
         case isVotedDown
@@ -165,6 +168,7 @@ public struct PublicComment: Sendable, Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(feedbackIds, forKey: .feedbackIds)
         try container.encodeIfPresent(requiresVerification, forKey: .requiresVerification)
         try container.encodeIfPresent(editKey, forKey: .editKey)
+        try container.encodeIfPresent(approved, forKey: .approved)
         try container.encodeIfPresent(isUnread, forKey: .isUnread)
         try container.encodeIfPresent(myVoteId, forKey: .myVoteId)
         try container.encodeIfPresent(isVotedDown, forKey: .isVotedDown)

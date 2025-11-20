@@ -11,15 +11,18 @@ public struct APICreateUserBadgeResponse: Sendable, Codable, JSONEncodable, Hash
 
     public var status: APIStatus
     public var userBadge: UserBadge
+    public var notes: [String]?
 
-    public init(status: APIStatus, userBadge: UserBadge) {
+    public init(status: APIStatus, userBadge: UserBadge, notes: [String]? = nil) {
         self.status = status
         self.userBadge = userBadge
+        self.notes = notes
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case status
         case userBadge
+        case notes
     }
 
     // Encodable protocol methods
@@ -28,6 +31,7 @@ public struct APICreateUserBadgeResponse: Sendable, Codable, JSONEncodable, Hash
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(status, forKey: .status)
         try container.encode(userBadge, forKey: .userBadge)
+        try container.encodeIfPresent(notes, forKey: .notes)
     }
 }
 

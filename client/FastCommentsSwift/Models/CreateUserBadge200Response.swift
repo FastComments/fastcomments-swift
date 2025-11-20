@@ -11,6 +11,7 @@ public struct CreateUserBadge200Response: Sendable, Codable, JSONEncodable, Hash
 
     public var status: APIStatus
     public var userBadge: UserBadge
+    public var notes: [String]?
     public var reason: String
     public var code: String
     public var secondaryCode: String?
@@ -19,9 +20,10 @@ public struct CreateUserBadge200Response: Sendable, Codable, JSONEncodable, Hash
     public var translatedError: String?
     public var customConfig: CustomConfigParameters?
 
-    public init(status: APIStatus, userBadge: UserBadge, reason: String, code: String, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(status: APIStatus, userBadge: UserBadge, notes: [String]? = nil, reason: String, code: String, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.status = status
         self.userBadge = userBadge
+        self.notes = notes
         self.reason = reason
         self.code = code
         self.secondaryCode = secondaryCode
@@ -34,6 +36,7 @@ public struct CreateUserBadge200Response: Sendable, Codable, JSONEncodable, Hash
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case status
         case userBadge
+        case notes
         case reason
         case code
         case secondaryCode
@@ -49,6 +52,7 @@ public struct CreateUserBadge200Response: Sendable, Codable, JSONEncodable, Hash
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(status, forKey: .status)
         try container.encode(userBadge, forKey: .userBadge)
+        try container.encodeIfPresent(notes, forKey: .notes)
         try container.encode(reason, forKey: .reason)
         try container.encode(code, forKey: .code)
         try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)

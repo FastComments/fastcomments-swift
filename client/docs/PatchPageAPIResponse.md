@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reason** | **String** |  | [optional] 
 **code** | **String** |  | [optional] 
+**commentsUpdated** | **Int64** |  | [optional] 
 **page** | [**APIPage**](APIPage.md) |  | [optional] 
 **status** | **String** |  | 
 

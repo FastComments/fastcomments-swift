@@ -11,12 +11,14 @@ public struct PatchPageAPIResponse: Sendable, Codable, JSONEncodable, Hashable {
 
     public var reason: String?
     public var code: String?
+    public var commentsUpdated: Int64?
     public var page: APIPage?
     public var status: String
 
-    public init(reason: String? = nil, code: String? = nil, page: APIPage? = nil, status: String) {
+    public init(reason: String? = nil, code: String? = nil, commentsUpdated: Int64? = nil, page: APIPage? = nil, status: String) {
         self.reason = reason
         self.code = code
+        self.commentsUpdated = commentsUpdated
         self.page = page
         self.status = status
     }
@@ -24,6 +26,7 @@ public struct PatchPageAPIResponse: Sendable, Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case reason
         case code
+        case commentsUpdated
         case page
         case status
     }
@@ -34,6 +37,7 @@ public struct PatchPageAPIResponse: Sendable, Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(reason, forKey: .reason)
         try container.encodeIfPresent(code, forKey: .code)
+        try container.encodeIfPresent(commentsUpdated, forKey: .commentsUpdated)
         try container.encodeIfPresent(page, forKey: .page)
         try container.encode(status, forKey: .status)
     }

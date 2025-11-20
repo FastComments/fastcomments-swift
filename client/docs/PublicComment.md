@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **feedbackIds** | **[String]** |  | [optional] 
 **requiresVerification** | **Bool** |  | [optional] 
 **editKey** | **String** |  | [optional] 
+**approved** | **Bool** |  | [optional] 
 **isUnread** | **Bool** |  | [optional] 
 **myVoteId** | **String** |  | [optional] 
 **isVotedDown** | **Bool** |  | [optional] 

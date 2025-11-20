@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
 **userBadge** | [**UserBadge**](UserBadge.md) |  | 
+**notes** | **[String]** |  | [optional] 
 **reason** | **String** |  | 
 **code** | **String** |  | 
 **secondaryCode** | **String** |  | [optional] 
