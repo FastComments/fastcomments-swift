@@ -37,8 +37,9 @@ public struct PublicCommentBase: Sendable, Codable, JSONEncodable, Hashable {
     public var feedbackIds: [String]?
     public var requiresVerification: Bool?
     public var editKey: String?
+    public var approved: Bool?
 
-    public init(id: String, userId: String? = nil, commenterName: String, commenterLink: String? = nil, commentHTML: String, parentId: String? = nil, date: Date?, votes: Int? = nil, votesUp: Int? = nil, votesDown: Int? = nil, verified: Bool, avatarSrc: String? = nil, hasImages: Bool? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, displayLabel: String? = nil, rating: Double? = nil, badges: [CommentUserBadgeInfo]? = nil, viewCount: Int64? = nil, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isSpam: Bool? = nil, anonUserId: String? = nil, feedbackIds: [String]? = nil, requiresVerification: Bool? = nil, editKey: String? = nil) {
+    public init(id: String, userId: String? = nil, commenterName: String, commenterLink: String? = nil, commentHTML: String, parentId: String? = nil, date: Date?, votes: Int? = nil, votesUp: Int? = nil, votesDown: Int? = nil, verified: Bool, avatarSrc: String? = nil, hasImages: Bool? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, displayLabel: String? = nil, rating: Double? = nil, badges: [CommentUserBadgeInfo]? = nil, viewCount: Int64? = nil, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isSpam: Bool? = nil, anonUserId: String? = nil, feedbackIds: [String]? = nil, requiresVerification: Bool? = nil, editKey: String? = nil, approved: Bool? = nil) {
         self.id = id
         self.userId = userId
         self.commenterName = commenterName
@@ -67,6 +68,7 @@ public struct PublicCommentBase: Sendable, Codable, JSONEncodable, Hashable {
         self.feedbackIds = feedbackIds
         self.requiresVerification = requiresVerification
         self.editKey = editKey
+        self.approved = approved
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -98,6 +100,7 @@ public struct PublicCommentBase: Sendable, Codable, JSONEncodable, Hashable {
         case feedbackIds
         case requiresVerification
         case editKey
+        case approved
     }
 
     // Encodable protocol methods
@@ -132,6 +135,7 @@ public struct PublicCommentBase: Sendable, Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(feedbackIds, forKey: .feedbackIds)
         try container.encodeIfPresent(requiresVerification, forKey: .requiresVerification)
         try container.encodeIfPresent(editKey, forKey: .editKey)
+        try container.encodeIfPresent(approved, forKey: .approved)
     }
 }
 

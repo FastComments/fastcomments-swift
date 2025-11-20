@@ -55,6 +55,7 @@ Name | Type | Description | Notes
 **noStyles** | **Bool** |  | [optional] 
 **pageSize** | **Int** |  | [optional] 
 **readonly** | **Bool** |  | [optional] 
+**noNewRootComments** | **Bool** |  | [optional] 
 **requireSSO** | **Bool** |  | [optional] 
 **enableResizeHandle** | **Bool** |  | [optional] 
 **restrictedLinkDomains** | **[String]** |  | [optional] 

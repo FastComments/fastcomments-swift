@@ -61,6 +61,7 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
     public var noStyles: Bool?
     public var pageSize: Int?
     public var readonly: Bool?
+    public var noNewRootComments: Bool?
     public var requireSSO: Bool?
     public var enableResizeHandle: Bool?
     public var restrictedLinkDomains: [String]?
@@ -83,7 +84,7 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
     public var widgetSubQuestionVisibility: QuestionSubQuestionVisibility?
     public var wrap: Bool?
 
-    public init(absoluteAndRelativeDates: Bool? = nil, absoluteDates: Bool? = nil, allowAnon: Bool? = nil, allowAnonFlag: Bool? = nil, allowAnonVotes: Bool? = nil, allowedLanguages: [String]? = nil, collapseReplies: Bool? = nil, commentCountFormat: String? = nil, commentHTMLRenderingMode: CommentHTMLRenderingMode? = nil, commentThreadDeleteMode: CommentThreadDeletionMode? = nil, commenterNameFormat: CommenterNameFormats? = nil, countAboveToggle: Int? = nil, customCSS: String? = nil, defaultAvatarSrc: String? = nil, defaultSortDirection: SortDirections? = nil, defaultUsername: String? = nil, disableAutoAdminMigration: Bool? = nil, disableAutoHashTagCreation: Bool? = nil, disableBlocking: Bool? = nil, disableCommenterCommentDelete: Bool? = nil, disableCommenterCommentEdit: Bool? = nil, disableEmailInputs: Bool? = nil, disableLiveCommenting: Bool? = nil, disableNotificationBell: Bool? = nil, disableProfiles: Bool? = nil, disableSuccessMessage: Bool? = nil, disableToolbar: Bool? = nil, disableUnverifiedLabel: Bool? = nil, disableVoting: Bool? = nil, enableCommenterLinks: Bool? = nil, enableSearch: Bool? = nil, enableSpoilers: Bool? = nil, enableThirdPartyCookieBypass: Bool? = nil, enableViewCounts: Bool? = nil, enableVoteList: Bool? = nil, enableWYSIWYG: Bool? = nil, gifRating: GifRating? = nil, hasDarkBackground: Bool? = nil, headerHTML: String? = nil, hideAvatars: Bool? = nil, hideCommentsUnderCountTextFormat: String? = nil, imageContentProfanityLevel: ImageContentProfanityLevel? = nil, inputAfterComments: Bool? = nil, limitCommentsByGroups: Bool? = nil, locale: String? = nil, maxCommentCharacterLength: Int? = nil, maxCommentCreatedCountPUPM: Int? = nil, noCustomConfig: Bool? = nil, noImageUploads: Bool? = nil, noStyles: Bool? = nil, pageSize: Int? = nil, readonly: Bool? = nil, requireSSO: Bool? = nil, enableResizeHandle: Bool? = nil, restrictedLinkDomains: [String]? = nil, showBadgesInTopBar: Bool? = nil, showCommentSaveSuccess: Bool? = nil, showLiveRightAway: Bool? = nil, showQuestion: Bool? = nil, spamRules: [SpamRule]? = nil, ssoSecLvl: SSOSecurityLevel? = nil, translations: [String: String]? = nil, useShowCommentsToggle: Bool? = nil, useSingleLineCommentInput: Bool? = nil, voteStyle: VoteStyle? = nil, widgetQuestionId: String? = nil, widgetQuestionResultsStyle: CommentQuestionResultsRenderingType? = nil, widgetQuestionStyle: QuestionRenderingType? = nil, widgetQuestionWhenToSave: QuestionWhenSave? = nil, widgetQuestionsRequired: CommentQuestionsRequired? = nil, widgetSubQuestionVisibility: QuestionSubQuestionVisibility? = nil, wrap: Bool? = nil) {
+    public init(absoluteAndRelativeDates: Bool? = nil, absoluteDates: Bool? = nil, allowAnon: Bool? = nil, allowAnonFlag: Bool? = nil, allowAnonVotes: Bool? = nil, allowedLanguages: [String]? = nil, collapseReplies: Bool? = nil, commentCountFormat: String? = nil, commentHTMLRenderingMode: CommentHTMLRenderingMode? = nil, commentThreadDeleteMode: CommentThreadDeletionMode? = nil, commenterNameFormat: CommenterNameFormats? = nil, countAboveToggle: Int? = nil, customCSS: String? = nil, defaultAvatarSrc: String? = nil, defaultSortDirection: SortDirections? = nil, defaultUsername: String? = nil, disableAutoAdminMigration: Bool? = nil, disableAutoHashTagCreation: Bool? = nil, disableBlocking: Bool? = nil, disableCommenterCommentDelete: Bool? = nil, disableCommenterCommentEdit: Bool? = nil, disableEmailInputs: Bool? = nil, disableLiveCommenting: Bool? = nil, disableNotificationBell: Bool? = nil, disableProfiles: Bool? = nil, disableSuccessMessage: Bool? = nil, disableToolbar: Bool? = nil, disableUnverifiedLabel: Bool? = nil, disableVoting: Bool? = nil, enableCommenterLinks: Bool? = nil, enableSearch: Bool? = nil, enableSpoilers: Bool? = nil, enableThirdPartyCookieBypass: Bool? = nil, enableViewCounts: Bool? = nil, enableVoteList: Bool? = nil, enableWYSIWYG: Bool? = nil, gifRating: GifRating? = nil, hasDarkBackground: Bool? = nil, headerHTML: String? = nil, hideAvatars: Bool? = nil, hideCommentsUnderCountTextFormat: String? = nil, imageContentProfanityLevel: ImageContentProfanityLevel? = nil, inputAfterComments: Bool? = nil, limitCommentsByGroups: Bool? = nil, locale: String? = nil, maxCommentCharacterLength: Int? = nil, maxCommentCreatedCountPUPM: Int? = nil, noCustomConfig: Bool? = nil, noImageUploads: Bool? = nil, noStyles: Bool? = nil, pageSize: Int? = nil, readonly: Bool? = nil, noNewRootComments: Bool? = nil, requireSSO: Bool? = nil, enableResizeHandle: Bool? = nil, restrictedLinkDomains: [String]? = nil, showBadgesInTopBar: Bool? = nil, showCommentSaveSuccess: Bool? = nil, showLiveRightAway: Bool? = nil, showQuestion: Bool? = nil, spamRules: [SpamRule]? = nil, ssoSecLvl: SSOSecurityLevel? = nil, translations: [String: String]? = nil, useShowCommentsToggle: Bool? = nil, useSingleLineCommentInput: Bool? = nil, voteStyle: VoteStyle? = nil, widgetQuestionId: String? = nil, widgetQuestionResultsStyle: CommentQuestionResultsRenderingType? = nil, widgetQuestionStyle: QuestionRenderingType? = nil, widgetQuestionWhenToSave: QuestionWhenSave? = nil, widgetQuestionsRequired: CommentQuestionsRequired? = nil, widgetSubQuestionVisibility: QuestionSubQuestionVisibility? = nil, wrap: Bool? = nil) {
         self.absoluteAndRelativeDates = absoluteAndRelativeDates
         self.absoluteDates = absoluteDates
         self.allowAnon = allowAnon
@@ -136,6 +137,7 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
         self.noStyles = noStyles
         self.pageSize = pageSize
         self.readonly = readonly
+        self.noNewRootComments = noNewRootComments
         self.requireSSO = requireSSO
         self.enableResizeHandle = enableResizeHandle
         self.restrictedLinkDomains = restrictedLinkDomains
@@ -211,6 +213,7 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
         case noStyles
         case pageSize
         case readonly
+        case noNewRootComments
         case requireSSO
         case enableResizeHandle
         case restrictedLinkDomains
@@ -289,6 +292,7 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
         try container.encodeIfPresent(noStyles, forKey: .noStyles)
         try container.encodeIfPresent(pageSize, forKey: .pageSize)
         try container.encodeIfPresent(readonly, forKey: .readonly)
+        try container.encodeIfPresent(noNewRootComments, forKey: .noNewRootComments)
         try container.encodeIfPresent(requireSSO, forKey: .requireSSO)
         try container.encodeIfPresent(enableResizeHandle, forKey: .enableResizeHandle)
         try container.encodeIfPresent(restrictedLinkDomains, forKey: .restrictedLinkDomains)

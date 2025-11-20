@@ -387,6 +387,9 @@
 					"readonly": {
 						"type": "boolean"
 					},
+					"noNewRootComments": {
+						"type": "boolean"
+					},
 					"requireSSO": {
 						"type": "boolean"
 					},
@@ -2198,6 +2201,9 @@
 					},
 					"editKey": {
 						"type": "string"
+					},
+					"approved": {
+						"type": "boolean"
 					}
 				},
 				"required": [
@@ -3360,6 +3366,10 @@
 					"code": {
 						"type": "string"
 					},
+					"commentsUpdated": {
+						"type": "integer",
+						"format": "int64"
+					},
 					"page": {
 						"$ref": "#/components/schemas/APIPage"
 					},
@@ -3539,6 +3549,12 @@
 					},
 					"userBadge": {
 						"$ref": "#/components/schemas/UserBadge"
+					},
+					"notes": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
 					}
 				},
 				"required": [
