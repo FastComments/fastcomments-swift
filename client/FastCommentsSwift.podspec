@@ -4,8 +4,8 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.13'
   s.tvos.deployment_target = '12.0'
   s.watchos.deployment_target = '4.0'
-  s.version = '0.1.0'
-  s.source = {"git":"https://github.com/fastcomments/fastcomments-swift.git","tag":"0.1.0"}
+  s.version = '1.0.0'
+  s.source = {"git":"https://github.com/fastcomments/fastcomments-swift.git","tag":"1.0.0"}
   s.authors = 'FastComments'
   s.license = MIT
   s.homepage = 'https://fastcomments.com'
