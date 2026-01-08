@@ -46,6 +46,9 @@ Name | Type | Description | Notes
 **trustFactorBefore** | **Double** |  | [optional] 
 **trustFactorAfter** | **Double** |  | [optional] 
 **referencedCommentId** | **String** |  | [optional] 
+**invalidLocale** | **String** |  | [optional] 
+**detectedLocale** | **String** |  | [optional] 
+**detectedLanguage** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1399,7 +1399,7 @@ No authorization required
 
 # **searchUsers**
 ```swift
-    open class func searchUsers(tenantId: String, urlId: String, usernameStartsWith: String, mentionGroupIds: [String]? = nil, sso: String? = nil, completion: @escaping (_ data: SearchUsers200Response?, _ error: Error?) -> Void)
+    open class func searchUsers(tenantId: String, urlId: String, usernameStartsWith: String? = nil, mentionGroupIds: [String]? = nil, sso: String? = nil, completion: @escaping (_ data: SearchUsers200Response?, _ error: Error?) -> Void)
 ```
 
 
@@ -1411,7 +1411,7 @@ import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
-let usernameStartsWith = "usernameStartsWith_example" // String | 
+let usernameStartsWith = "usernameStartsWith_example" // String |  (optional)
 let mentionGroupIds = ["inner_example"] // [String] |  (optional)
 let sso = "sso_example" // String |  (optional)
 
@@ -1433,7 +1433,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **String** |  | 
  **urlId** | **String** |  | 
- **usernameStartsWith** | **String** |  | 
+ **usernameStartsWith** | **String** |  | [optional] 
  **mentionGroupIds** | [**[String]**](String.md) |  | [optional] 
  **sso** | **String** |  | [optional] 
 

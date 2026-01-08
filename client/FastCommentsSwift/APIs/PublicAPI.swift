@@ -1309,14 +1309,14 @@ open class PublicAPI {
 
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
-     - parameter usernameStartsWith: (query)  
+     - parameter usernameStartsWith: (query)  (optional)
      - parameter mentionGroupIds: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SearchUsers200Response
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func searchUsers(tenantId: String, urlId: String, usernameStartsWith: String, mentionGroupIds: [String]? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SearchUsers200Response {
+    open class func searchUsers(tenantId: String, urlId: String, usernameStartsWith: String? = nil, mentionGroupIds: [String]? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SearchUsers200Response {
         return try await searchUsersWithRequestBuilder(tenantId: tenantId, urlId: urlId, usernameStartsWith: usernameStartsWith, mentionGroupIds: mentionGroupIds, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -1324,13 +1324,13 @@ open class PublicAPI {
      - GET /user-search/{tenantId}
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
-     - parameter usernameStartsWith: (query)  
+     - parameter usernameStartsWith: (query)  (optional)
      - parameter mentionGroupIds: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<SearchUsers200Response> 
      */
-    open class func searchUsersWithRequestBuilder(tenantId: String, urlId: String, usernameStartsWith: String, mentionGroupIds: [String]? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SearchUsers200Response> {
+    open class func searchUsersWithRequestBuilder(tenantId: String, urlId: String, usernameStartsWith: String? = nil, mentionGroupIds: [String]? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SearchUsers200Response> {
         var localVariablePath = "/user-search/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1341,7 +1341,7 @@ open class PublicAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "urlId": (wrappedValue: urlId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "usernameStartsWith": (wrappedValue: usernameStartsWith.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "usernameStartsWith": (wrappedValue: usernameStartsWith?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "mentionGroupIds": (wrappedValue: mentionGroupIds?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
