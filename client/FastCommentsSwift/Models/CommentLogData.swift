@@ -55,8 +55,11 @@ public struct CommentLogData: Sendable, Codable, JSONEncodable, Hashable {
     public var trustFactorBefore: Double?
     public var trustFactorAfter: Double?
     public var referencedCommentId: String?
+    public var invalidLocale: String?
+    public var detectedLocale: String?
+    public var detectedLanguage: String?
 
-    public init(clearContent: Bool? = nil, isDeletedUser: Bool? = nil, phrase: String? = nil, badWord: String? = nil, word: String? = nil, locale: String? = nil, tenantBadgeId: String? = nil, badgeId: String? = nil, wasLoggedIn: Bool? = nil, foundUser: Bool? = nil, verified: Bool? = nil, engine: String? = nil, engineResponse: String? = nil, engineTokens: Double? = nil, trustFactor: Double? = nil, rule: SpamRule? = nil, userId: String? = nil, subscribers: Double? = nil, notificationCount: Double? = nil, votesBefore: Double? = nil, votesUpBefore: Double? = nil, votesDownBefore: Double? = nil, votesAfter: Double? = nil, votesUpAfter: Double? = nil, votesDownAfter: Double? = nil, repeatAction: RepeatCommentHandlingAction? = nil, reason: RepeatCommentCheckIgnoredReason? = nil, otherData: JSONValue? = nil, spamBefore: Bool? = nil, spamAfter: Bool? = nil, permanentFlag: PermanentFlag? = nil, approvedBefore: Bool? = nil, approvedAfter: Bool? = nil, reviewedBefore: Bool? = nil, reviewedAfter: Bool? = nil, textBefore: String? = nil, textAfter: String? = nil, expireBefore: Date? = nil, expireAfter: Date? = nil, flagCountBefore: Double? = nil, trustFactorBefore: Double? = nil, trustFactorAfter: Double? = nil, referencedCommentId: String? = nil) {
+    public init(clearContent: Bool? = nil, isDeletedUser: Bool? = nil, phrase: String? = nil, badWord: String? = nil, word: String? = nil, locale: String? = nil, tenantBadgeId: String? = nil, badgeId: String? = nil, wasLoggedIn: Bool? = nil, foundUser: Bool? = nil, verified: Bool? = nil, engine: String? = nil, engineResponse: String? = nil, engineTokens: Double? = nil, trustFactor: Double? = nil, rule: SpamRule? = nil, userId: String? = nil, subscribers: Double? = nil, notificationCount: Double? = nil, votesBefore: Double? = nil, votesUpBefore: Double? = nil, votesDownBefore: Double? = nil, votesAfter: Double? = nil, votesUpAfter: Double? = nil, votesDownAfter: Double? = nil, repeatAction: RepeatCommentHandlingAction? = nil, reason: RepeatCommentCheckIgnoredReason? = nil, otherData: JSONValue? = nil, spamBefore: Bool? = nil, spamAfter: Bool? = nil, permanentFlag: PermanentFlag? = nil, approvedBefore: Bool? = nil, approvedAfter: Bool? = nil, reviewedBefore: Bool? = nil, reviewedAfter: Bool? = nil, textBefore: String? = nil, textAfter: String? = nil, expireBefore: Date? = nil, expireAfter: Date? = nil, flagCountBefore: Double? = nil, trustFactorBefore: Double? = nil, trustFactorAfter: Double? = nil, referencedCommentId: String? = nil, invalidLocale: String? = nil, detectedLocale: String? = nil, detectedLanguage: String? = nil) {
         self.clearContent = clearContent
         self.isDeletedUser = isDeletedUser
         self.phrase = phrase
@@ -100,6 +103,9 @@ public struct CommentLogData: Sendable, Codable, JSONEncodable, Hashable {
         self.trustFactorBefore = trustFactorBefore
         self.trustFactorAfter = trustFactorAfter
         self.referencedCommentId = referencedCommentId
+        self.invalidLocale = invalidLocale
+        self.detectedLocale = detectedLocale
+        self.detectedLanguage = detectedLanguage
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -146,6 +152,9 @@ public struct CommentLogData: Sendable, Codable, JSONEncodable, Hashable {
         case trustFactorBefore
         case trustFactorAfter
         case referencedCommentId
+        case invalidLocale
+        case detectedLocale
+        case detectedLanguage
     }
 
     // Encodable protocol methods
@@ -195,6 +204,9 @@ public struct CommentLogData: Sendable, Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(trustFactorBefore, forKey: .trustFactorBefore)
         try container.encodeIfPresent(trustFactorAfter, forKey: .trustFactorAfter)
         try container.encodeIfPresent(referencedCommentId, forKey: .referencedCommentId)
+        try container.encodeIfPresent(invalidLocale, forKey: .invalidLocale)
+        try container.encodeIfPresent(detectedLocale, forKey: .detectedLocale)
+        try container.encodeIfPresent(detectedLanguage, forKey: .detectedLanguage)
     }
 }
 
