@@ -120,8 +120,6 @@ FastCommentsSwift/Models/CreateTenantUserBody.swift
 FastCommentsSwift/Models/CreateTenantUserResponse.swift
 FastCommentsSwift/Models/CreateUserBadge200Response.swift
 FastCommentsSwift/Models/CreateUserBadgeParams.swift
-FastCommentsSwift/Models/CreateVote200Response.swift
-FastCommentsSwift/Models/CreateVoteResponse.swift
 FastCommentsSwift/Models/CustomConfigParameters.swift
 FastCommentsSwift/Models/CustomEmailTemplate.swift
 FastCommentsSwift/Models/DeleteComment200Response.swift
@@ -136,8 +134,6 @@ FastCommentsSwift/Models/DeleteHashTagRequest.swift
 FastCommentsSwift/Models/DeletePageAPIResponse.swift
 FastCommentsSwift/Models/DeleteSSOUserAPIResponse.swift
 FastCommentsSwift/Models/DeleteSubscriptionAPIResponse.swift
-FastCommentsSwift/Models/DeleteVote200Response.swift
-FastCommentsSwift/Models/DeleteVoteResponse.swift
 FastCommentsSwift/Models/DeletedCommentResultComment.swift
 FastCommentsSwift/Models/DigestEmailFrequency.swift
 FastCommentsSwift/Models/EmailTemplateDefinition.swift
@@ -463,8 +459,6 @@ docs/CreateTenantUserBody.md
 docs/CreateTenantUserResponse.md
 docs/CreateUserBadge200Response.md
 docs/CreateUserBadgeParams.md
-docs/CreateVote200Response.md
-docs/CreateVoteResponse.md
 docs/CustomConfigParameters.md
 docs/CustomEmailTemplate.md
 docs/DefaultAPI.md
@@ -480,8 +474,6 @@ docs/DeleteHashTagRequest.md
 docs/DeletePageAPIResponse.md
 docs/DeleteSSOUserAPIResponse.md
 docs/DeleteSubscriptionAPIResponse.md
-docs/DeleteVote200Response.md
-docs/DeleteVoteResponse.md
 docs/DeletedCommentResultComment.md
 docs/DigestEmailFrequency.md
 docs/EmailTemplateDefinition.md
