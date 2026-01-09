@@ -1143,7 +1143,7 @@ Name | Type | Description  | Notes
 
 # **createVote**
 ```swift
-    open class func createVote(tenantId: String, commentId: String, direction: Direction_createVote, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: CreateVote200Response?, _ error: Error?) -> Void)
+    open class func createVote(tenantId: String, commentId: String, direction: Direction_createVote, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: VoteComment200Response?, _ error: Error?) -> Void)
 ```
 
 
@@ -1183,7 +1183,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateVote200Response**](CreateVote200Response.md)
+[**VoteComment200Response**](VoteComment200Response.md)
 
 ### Authorization
 
@@ -2053,7 +2053,7 @@ Name | Type | Description  | Notes
 
 # **deleteVote**
 ```swift
-    open class func deleteVote(tenantId: String, id: String, editKey: String? = nil, completion: @escaping (_ data: DeleteVote200Response?, _ error: Error?) -> Void)
+    open class func deleteVote(tenantId: String, id: String, editKey: String? = nil, completion: @escaping (_ data: DeleteCommentVote200Response?, _ error: Error?) -> Void)
 ```
 
 
@@ -2089,7 +2089,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteVote200Response**](DeleteVote200Response.md)
+[**DeleteCommentVote200Response**](DeleteCommentVote200Response.md)
 
 ### Authorization
 
