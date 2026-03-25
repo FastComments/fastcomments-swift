@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **groupIds** | **[String]** |  | [optional] 
 **hasBlockedUsers** | **Bool** |  | [optional] 
 **isAnonSession** | **Bool** |  | [optional] 
+**needsTOS** | **Bool** |  | [optional] 
 **sessionId** | **String** |  | [optional] 
 **username** | **String** |  | [optional] 
 **websiteUrl** | **String** |  | [optional] 

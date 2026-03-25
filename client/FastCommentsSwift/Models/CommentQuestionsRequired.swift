@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum CommentQuestionsRequired: Double, Sendable, Codable, JSONEncodable, CaseIterable {
+public enum CommentQuestionsRequired: Int, Sendable, Codable, CaseIterable {
     case _0 = 0
     case _1 = 1
 }

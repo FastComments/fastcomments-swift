@@ -9,15 +9,18 @@ import Foundation
 
 public struct FCommentMeta: Sendable, Codable, JSONEncodable, Hashable {
 
+    public var wpId: String?
     public var wpUserId: String?
     public var wpPostId: String?
 
-    public init(wpUserId: String? = nil, wpPostId: String? = nil) {
+    public init(wpId: String? = nil, wpUserId: String? = nil, wpPostId: String? = nil) {
+        self.wpId = wpId
         self.wpUserId = wpUserId
         self.wpPostId = wpPostId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case wpId
         case wpUserId
         case wpPostId
     }
@@ -41,6 +44,7 @@ public struct FCommentMeta: Sendable, Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(wpId, forKey: .wpId)
         try container.encodeIfPresent(wpUserId, forKey: .wpUserId)
         try container.encodeIfPresent(wpPostId, forKey: .wpPostId)
         var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
@@ -52,9 +56,11 @@ public struct FCommentMeta: Sendable, Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
+        wpId = try container.decodeIfPresent(String.self, forKey: .wpId)
         wpUserId = try container.decodeIfPresent(String.self, forKey: .wpUserId)
         wpPostId = try container.decodeIfPresent(String.self, forKey: .wpPostId)
         var nonAdditionalPropertyKeys = Set<String>()
+        nonAdditionalPropertyKeys.insert("wpId")
         nonAdditionalPropertyKeys.insert("wpUserId")
         nonAdditionalPropertyKeys.insert("wpPostId")
         let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)

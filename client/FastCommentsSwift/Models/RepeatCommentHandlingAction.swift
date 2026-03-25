@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum RepeatCommentHandlingAction: Double, Sendable, Codable, JSONEncodable, CaseIterable {
+public enum RepeatCommentHandlingAction: Int, Sendable, Codable, CaseIterable {
     case _0 = 0
     case _1 = 1
     case _2 = 2

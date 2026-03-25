@@ -34,8 +34,9 @@ public struct CommentData: Sendable, Codable, JSONEncodable, Hashable {
     public var feedbackIds: [String]?
     /** Construct a type with a set of properties K of type T */
     public var questionValues: [String: RecordStringStringOrNumberValue]?
+    public var tos: Bool?
 
-    public init(date: Int64? = nil, localDateString: String? = nil, localDateHours: Int? = nil, commenterName: String, commenterEmail: String? = nil, commenterLink: String? = nil, comment: String, productId: Int? = nil, userId: String? = nil, avatarSrc: String? = nil, parentId: String? = nil, mentions: [CommentUserMentionInfo]? = nil, hashTags: [CommentUserHashTagInfo]? = nil, pageTitle: String? = nil, isFromMyAccountPage: Bool? = nil, url: String, urlId: String, meta: JSONValue? = nil, moderationGroupIds: [String]? = nil, rating: Double? = nil, fromOfflineRestore: Bool? = nil, autoplayDelayMS: Int64? = nil, feedbackIds: [String]? = nil, questionValues: [String: RecordStringStringOrNumberValue]? = nil) {
+    public init(date: Int64? = nil, localDateString: String? = nil, localDateHours: Int? = nil, commenterName: String, commenterEmail: String? = nil, commenterLink: String? = nil, comment: String, productId: Int? = nil, userId: String? = nil, avatarSrc: String? = nil, parentId: String? = nil, mentions: [CommentUserMentionInfo]? = nil, hashTags: [CommentUserHashTagInfo]? = nil, pageTitle: String? = nil, isFromMyAccountPage: Bool? = nil, url: String, urlId: String, meta: JSONValue? = nil, moderationGroupIds: [String]? = nil, rating: Double? = nil, fromOfflineRestore: Bool? = nil, autoplayDelayMS: Int64? = nil, feedbackIds: [String]? = nil, questionValues: [String: RecordStringStringOrNumberValue]? = nil, tos: Bool? = nil) {
         self.date = date
         self.localDateString = localDateString
         self.localDateHours = localDateHours
@@ -60,6 +61,7 @@ public struct CommentData: Sendable, Codable, JSONEncodable, Hashable {
         self.autoplayDelayMS = autoplayDelayMS
         self.feedbackIds = feedbackIds
         self.questionValues = questionValues
+        self.tos = tos
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -87,6 +89,7 @@ public struct CommentData: Sendable, Codable, JSONEncodable, Hashable {
         case autoplayDelayMS
         case feedbackIds
         case questionValues
+        case tos
     }
 
     // Encodable protocol methods
@@ -117,6 +120,7 @@ public struct CommentData: Sendable, Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(autoplayDelayMS, forKey: .autoplayDelayMS)
         try container.encodeIfPresent(feedbackIds, forKey: .feedbackIds)
         try container.encodeIfPresent(questionValues, forKey: .questionValues)
+        try container.encodeIfPresent(tos, forKey: .tos)
     }
 }
 

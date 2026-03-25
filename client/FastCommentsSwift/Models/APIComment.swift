@@ -44,7 +44,7 @@ public struct APIComment: Sendable, Codable, JSONEncodable, Hashable {
     public var localDateString: String?
     public var locale: String?
     public var mentions: [CommentUserMentionInfo]?
-    public var meta: FCommentMeta?
+    public var meta: APICommentBaseMeta?
     public var moderationGroupIds: [String]?
     public var notificationSentForParent: Bool?
     public var notificationSentForParentTenant: Bool?
@@ -63,7 +63,7 @@ public struct APIComment: Sendable, Codable, JSONEncodable, Hashable {
     public var votesDown: Int?
     public var votesUp: Int?
 
-    public init(id: String, aiDeterminedSpam: Bool? = nil, anonUserId: String? = nil, approved: Bool, avatarSrc: String? = nil, badges: [CommentUserBadgeInfo]? = nil, comment: String, commentHTML: String, commenterEmail: String? = nil, commenterLink: String? = nil, commenterName: String, date: Double?, displayLabel: String? = nil, domain: String? = nil, externalId: String? = nil, externalParentId: String? = nil, expireAt: Date? = nil, feedbackIds: [String]? = nil, flagCount: Int? = nil, fromProductId: Int? = nil, hasCode: Bool? = nil, hasImages: Bool? = nil, hasLinks: Bool? = nil, hashTags: [CommentUserHashTagInfo]? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, isSpam: Bool? = nil, localDateHours: Int? = nil, localDateString: String? = nil, locale: String?, mentions: [CommentUserMentionInfo]? = nil, meta: FCommentMeta? = nil, moderationGroupIds: [String]? = nil, notificationSentForParent: Bool? = nil, notificationSentForParentTenant: Bool? = nil, pageTitle: String? = nil, parentId: String? = nil, rating: Double? = nil, reviewed: Bool? = nil, tenantId: String, url: String, urlId: String, urlIdRaw: String? = nil, userId: String? = nil, verified: Bool, verifiedDate: Date? = nil, votes: Int? = nil, votesDown: Int? = nil, votesUp: Int? = nil) {
+    public init(id: String, aiDeterminedSpam: Bool? = nil, anonUserId: String? = nil, approved: Bool, avatarSrc: String? = nil, badges: [CommentUserBadgeInfo]? = nil, comment: String, commentHTML: String, commenterEmail: String? = nil, commenterLink: String? = nil, commenterName: String, date: Double?, displayLabel: String? = nil, domain: String? = nil, externalId: String? = nil, externalParentId: String? = nil, expireAt: Date? = nil, feedbackIds: [String]? = nil, flagCount: Int? = nil, fromProductId: Int? = nil, hasCode: Bool? = nil, hasImages: Bool? = nil, hasLinks: Bool? = nil, hashTags: [CommentUserHashTagInfo]? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, isSpam: Bool? = nil, localDateHours: Int? = nil, localDateString: String? = nil, locale: String?, mentions: [CommentUserMentionInfo]? = nil, meta: APICommentBaseMeta? = nil, moderationGroupIds: [String]? = nil, notificationSentForParent: Bool? = nil, notificationSentForParentTenant: Bool? = nil, pageTitle: String? = nil, parentId: String? = nil, rating: Double? = nil, reviewed: Bool? = nil, tenantId: String, url: String, urlId: String, urlIdRaw: String? = nil, userId: String? = nil, verified: Bool, verifiedDate: Date? = nil, votes: Int? = nil, votesDown: Int? = nil, votesUp: Int? = nil) {
         self.id = id
         self.aiDeterminedSpam = aiDeterminedSpam
         self.anonUserId = anonUserId

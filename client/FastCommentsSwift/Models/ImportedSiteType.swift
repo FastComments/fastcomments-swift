@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ImportedSiteType: Double, Sendable, Codable, JSONEncodable, CaseIterable {
+public enum ImportedSiteType: Int, Sendable, Codable, CaseIterable {
     case _0 = 0
     case _1 = 1
 }

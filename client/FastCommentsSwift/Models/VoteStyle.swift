@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum VoteStyle: Double, Sendable, Codable, JSONEncodable, CaseIterable {
+public enum VoteStyle: Int, Sendable, Codable, CaseIterable {
     case _0 = 0
     case _1 = 1
 }

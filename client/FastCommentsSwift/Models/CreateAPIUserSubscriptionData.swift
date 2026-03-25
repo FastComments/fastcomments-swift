@@ -9,13 +9,15 @@ import Foundation
 
 public struct CreateAPIUserSubscriptionData: Sendable, Codable, JSONEncodable, Hashable {
 
+    public var notificationFrequency: Double?
     public var pageTitle: String?
     public var url: String?
     public var urlId: String
     public var anonUserId: String?
     public var userId: String?
 
-    public init(pageTitle: String? = nil, url: String? = nil, urlId: String, anonUserId: String? = nil, userId: String? = nil) {
+    public init(notificationFrequency: Double? = nil, pageTitle: String? = nil, url: String? = nil, urlId: String, anonUserId: String? = nil, userId: String? = nil) {
+        self.notificationFrequency = notificationFrequency
         self.pageTitle = pageTitle
         self.url = url
         self.urlId = urlId
@@ -24,6 +26,7 @@ public struct CreateAPIUserSubscriptionData: Sendable, Codable, JSONEncodable, H
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case notificationFrequency
         case pageTitle
         case url
         case urlId
@@ -35,6 +38,7 @@ public struct CreateAPIUserSubscriptionData: Sendable, Codable, JSONEncodable, H
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(notificationFrequency, forKey: .notificationFrequency)
         try container.encodeIfPresent(pageTitle, forKey: .pageTitle)
         try container.encodeIfPresent(url, forKey: .url)
         try container.encode(urlId, forKey: .urlId)

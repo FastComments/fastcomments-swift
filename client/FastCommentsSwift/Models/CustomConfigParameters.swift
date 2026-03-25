@@ -33,6 +33,8 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
     public var disableEmailInputs: Bool?
     public var disableLiveCommenting: Bool?
     public var disableNotificationBell: Bool?
+    public var disableProfileComments: Bool?
+    public var disableProfileDirectMessages: Bool?
     public var disableProfiles: Bool?
     public var disableSuccessMessage: Bool?
     public var disableToolbar: Bool?
@@ -57,6 +59,7 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
     public var maxCommentCharacterLength: Int?
     public var maxCommentCreatedCountPUPM: Int?
     public var noCustomConfig: Bool?
+    public var mentionAutoCompleteMode: MentionAutoCompleteMode?
     public var noImageUploads: Bool?
     public var noStyles: Bool?
     public var pageSize: Int?
@@ -78,13 +81,20 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
     public var voteStyle: VoteStyle?
     public var widgetQuestionId: String?
     public var widgetQuestionResultsStyle: CommentQuestionResultsRenderingType?
+    public var widgetQuestionShowBreakdown: Bool?
     public var widgetQuestionStyle: QuestionRenderingType?
     public var widgetQuestionWhenToSave: QuestionWhenSave?
     public var widgetQuestionsRequired: CommentQuestionsRequired?
     public var widgetSubQuestionVisibility: QuestionSubQuestionVisibility?
     public var wrap: Bool?
+    public var ticketBaseUrl: String?
+    public var ticketKBSearchEndpoint: String?
+    public var ticketFileUploadsEnabled: Bool?
+    public var ticketMaxFileSize: Int?
+    public var ticketAutoAssignUserIds: [String]?
+    public var tos: TOSConfig?
 
-    public init(absoluteAndRelativeDates: Bool? = nil, absoluteDates: Bool? = nil, allowAnon: Bool? = nil, allowAnonFlag: Bool? = nil, allowAnonVotes: Bool? = nil, allowedLanguages: [String]? = nil, collapseReplies: Bool? = nil, commentCountFormat: String? = nil, commentHTMLRenderingMode: CommentHTMLRenderingMode? = nil, commentThreadDeleteMode: CommentThreadDeletionMode? = nil, commenterNameFormat: CommenterNameFormats? = nil, countAboveToggle: Int? = nil, customCSS: String? = nil, defaultAvatarSrc: String? = nil, defaultSortDirection: SortDirections? = nil, defaultUsername: String? = nil, disableAutoAdminMigration: Bool? = nil, disableAutoHashTagCreation: Bool? = nil, disableBlocking: Bool? = nil, disableCommenterCommentDelete: Bool? = nil, disableCommenterCommentEdit: Bool? = nil, disableEmailInputs: Bool? = nil, disableLiveCommenting: Bool? = nil, disableNotificationBell: Bool? = nil, disableProfiles: Bool? = nil, disableSuccessMessage: Bool? = nil, disableToolbar: Bool? = nil, disableUnverifiedLabel: Bool? = nil, disableVoting: Bool? = nil, enableCommenterLinks: Bool? = nil, enableSearch: Bool? = nil, enableSpoilers: Bool? = nil, enableThirdPartyCookieBypass: Bool? = nil, enableViewCounts: Bool? = nil, enableVoteList: Bool? = nil, enableWYSIWYG: Bool? = nil, gifRating: GifRating? = nil, hasDarkBackground: Bool? = nil, headerHTML: String? = nil, hideAvatars: Bool? = nil, hideCommentsUnderCountTextFormat: String? = nil, imageContentProfanityLevel: ImageContentProfanityLevel? = nil, inputAfterComments: Bool? = nil, limitCommentsByGroups: Bool? = nil, locale: String? = nil, maxCommentCharacterLength: Int? = nil, maxCommentCreatedCountPUPM: Int? = nil, noCustomConfig: Bool? = nil, noImageUploads: Bool? = nil, noStyles: Bool? = nil, pageSize: Int? = nil, readonly: Bool? = nil, noNewRootComments: Bool? = nil, requireSSO: Bool? = nil, enableResizeHandle: Bool? = nil, restrictedLinkDomains: [String]? = nil, showBadgesInTopBar: Bool? = nil, showCommentSaveSuccess: Bool? = nil, showLiveRightAway: Bool? = nil, showQuestion: Bool? = nil, spamRules: [SpamRule]? = nil, ssoSecLvl: SSOSecurityLevel? = nil, translations: [String: String]? = nil, useShowCommentsToggle: Bool? = nil, useSingleLineCommentInput: Bool? = nil, voteStyle: VoteStyle? = nil, widgetQuestionId: String? = nil, widgetQuestionResultsStyle: CommentQuestionResultsRenderingType? = nil, widgetQuestionStyle: QuestionRenderingType? = nil, widgetQuestionWhenToSave: QuestionWhenSave? = nil, widgetQuestionsRequired: CommentQuestionsRequired? = nil, widgetSubQuestionVisibility: QuestionSubQuestionVisibility? = nil, wrap: Bool? = nil) {
+    public init(absoluteAndRelativeDates: Bool? = nil, absoluteDates: Bool? = nil, allowAnon: Bool? = nil, allowAnonFlag: Bool? = nil, allowAnonVotes: Bool? = nil, allowedLanguages: [String]? = nil, collapseReplies: Bool? = nil, commentCountFormat: String? = nil, commentHTMLRenderingMode: CommentHTMLRenderingMode? = nil, commentThreadDeleteMode: CommentThreadDeletionMode? = nil, commenterNameFormat: CommenterNameFormats? = nil, countAboveToggle: Int? = nil, customCSS: String? = nil, defaultAvatarSrc: String? = nil, defaultSortDirection: SortDirections? = nil, defaultUsername: String? = nil, disableAutoAdminMigration: Bool? = nil, disableAutoHashTagCreation: Bool? = nil, disableBlocking: Bool? = nil, disableCommenterCommentDelete: Bool? = nil, disableCommenterCommentEdit: Bool? = nil, disableEmailInputs: Bool? = nil, disableLiveCommenting: Bool? = nil, disableNotificationBell: Bool? = nil, disableProfileComments: Bool? = nil, disableProfileDirectMessages: Bool? = nil, disableProfiles: Bool? = nil, disableSuccessMessage: Bool? = nil, disableToolbar: Bool? = nil, disableUnverifiedLabel: Bool? = nil, disableVoting: Bool? = nil, enableCommenterLinks: Bool? = nil, enableSearch: Bool? = nil, enableSpoilers: Bool? = nil, enableThirdPartyCookieBypass: Bool? = nil, enableViewCounts: Bool? = nil, enableVoteList: Bool? = nil, enableWYSIWYG: Bool? = nil, gifRating: GifRating? = nil, hasDarkBackground: Bool? = nil, headerHTML: String? = nil, hideAvatars: Bool? = nil, hideCommentsUnderCountTextFormat: String? = nil, imageContentProfanityLevel: ImageContentProfanityLevel? = nil, inputAfterComments: Bool? = nil, limitCommentsByGroups: Bool? = nil, locale: String? = nil, maxCommentCharacterLength: Int? = nil, maxCommentCreatedCountPUPM: Int? = nil, noCustomConfig: Bool? = nil, mentionAutoCompleteMode: MentionAutoCompleteMode? = nil, noImageUploads: Bool? = nil, noStyles: Bool? = nil, pageSize: Int? = nil, readonly: Bool? = nil, noNewRootComments: Bool? = nil, requireSSO: Bool? = nil, enableResizeHandle: Bool? = nil, restrictedLinkDomains: [String]? = nil, showBadgesInTopBar: Bool? = nil, showCommentSaveSuccess: Bool? = nil, showLiveRightAway: Bool? = nil, showQuestion: Bool? = nil, spamRules: [SpamRule]? = nil, ssoSecLvl: SSOSecurityLevel? = nil, translations: [String: String]? = nil, useShowCommentsToggle: Bool? = nil, useSingleLineCommentInput: Bool? = nil, voteStyle: VoteStyle? = nil, widgetQuestionId: String? = nil, widgetQuestionResultsStyle: CommentQuestionResultsRenderingType? = nil, widgetQuestionShowBreakdown: Bool? = nil, widgetQuestionStyle: QuestionRenderingType? = nil, widgetQuestionWhenToSave: QuestionWhenSave? = nil, widgetQuestionsRequired: CommentQuestionsRequired? = nil, widgetSubQuestionVisibility: QuestionSubQuestionVisibility? = nil, wrap: Bool? = nil, ticketBaseUrl: String? = nil, ticketKBSearchEndpoint: String? = nil, ticketFileUploadsEnabled: Bool? = nil, ticketMaxFileSize: Int? = nil, ticketAutoAssignUserIds: [String]? = nil, tos: TOSConfig? = nil) {
         self.absoluteAndRelativeDates = absoluteAndRelativeDates
         self.absoluteDates = absoluteDates
         self.allowAnon = allowAnon
@@ -109,6 +119,8 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
         self.disableEmailInputs = disableEmailInputs
         self.disableLiveCommenting = disableLiveCommenting
         self.disableNotificationBell = disableNotificationBell
+        self.disableProfileComments = disableProfileComments
+        self.disableProfileDirectMessages = disableProfileDirectMessages
         self.disableProfiles = disableProfiles
         self.disableSuccessMessage = disableSuccessMessage
         self.disableToolbar = disableToolbar
@@ -133,6 +145,7 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
         self.maxCommentCharacterLength = maxCommentCharacterLength
         self.maxCommentCreatedCountPUPM = maxCommentCreatedCountPUPM
         self.noCustomConfig = noCustomConfig
+        self.mentionAutoCompleteMode = mentionAutoCompleteMode
         self.noImageUploads = noImageUploads
         self.noStyles = noStyles
         self.pageSize = pageSize
@@ -153,11 +166,18 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
         self.voteStyle = voteStyle
         self.widgetQuestionId = widgetQuestionId
         self.widgetQuestionResultsStyle = widgetQuestionResultsStyle
+        self.widgetQuestionShowBreakdown = widgetQuestionShowBreakdown
         self.widgetQuestionStyle = widgetQuestionStyle
         self.widgetQuestionWhenToSave = widgetQuestionWhenToSave
         self.widgetQuestionsRequired = widgetQuestionsRequired
         self.widgetSubQuestionVisibility = widgetSubQuestionVisibility
         self.wrap = wrap
+        self.ticketBaseUrl = ticketBaseUrl
+        self.ticketKBSearchEndpoint = ticketKBSearchEndpoint
+        self.ticketFileUploadsEnabled = ticketFileUploadsEnabled
+        self.ticketMaxFileSize = ticketMaxFileSize
+        self.ticketAutoAssignUserIds = ticketAutoAssignUserIds
+        self.tos = tos
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -185,6 +205,8 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
         case disableEmailInputs
         case disableLiveCommenting
         case disableNotificationBell
+        case disableProfileComments
+        case disableProfileDirectMessages
         case disableProfiles
         case disableSuccessMessage
         case disableToolbar
@@ -209,6 +231,7 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
         case maxCommentCharacterLength
         case maxCommentCreatedCountPUPM
         case noCustomConfig
+        case mentionAutoCompleteMode
         case noImageUploads
         case noStyles
         case pageSize
@@ -229,11 +252,18 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
         case voteStyle
         case widgetQuestionId
         case widgetQuestionResultsStyle
+        case widgetQuestionShowBreakdown
         case widgetQuestionStyle
         case widgetQuestionWhenToSave
         case widgetQuestionsRequired
         case widgetSubQuestionVisibility
         case wrap
+        case ticketBaseUrl
+        case ticketKBSearchEndpoint
+        case ticketFileUploadsEnabled
+        case ticketMaxFileSize
+        case ticketAutoAssignUserIds
+        case tos
     }
 
     // Encodable protocol methods
@@ -264,6 +294,8 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
         try container.encodeIfPresent(disableEmailInputs, forKey: .disableEmailInputs)
         try container.encodeIfPresent(disableLiveCommenting, forKey: .disableLiveCommenting)
         try container.encodeIfPresent(disableNotificationBell, forKey: .disableNotificationBell)
+        try container.encodeIfPresent(disableProfileComments, forKey: .disableProfileComments)
+        try container.encodeIfPresent(disableProfileDirectMessages, forKey: .disableProfileDirectMessages)
         try container.encodeIfPresent(disableProfiles, forKey: .disableProfiles)
         try container.encodeIfPresent(disableSuccessMessage, forKey: .disableSuccessMessage)
         try container.encodeIfPresent(disableToolbar, forKey: .disableToolbar)
@@ -288,6 +320,7 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
         try container.encodeIfPresent(maxCommentCharacterLength, forKey: .maxCommentCharacterLength)
         try container.encodeIfPresent(maxCommentCreatedCountPUPM, forKey: .maxCommentCreatedCountPUPM)
         try container.encodeIfPresent(noCustomConfig, forKey: .noCustomConfig)
+        try container.encodeIfPresent(mentionAutoCompleteMode, forKey: .mentionAutoCompleteMode)
         try container.encodeIfPresent(noImageUploads, forKey: .noImageUploads)
         try container.encodeIfPresent(noStyles, forKey: .noStyles)
         try container.encodeIfPresent(pageSize, forKey: .pageSize)
@@ -308,11 +341,18 @@ public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable
         try container.encodeIfPresent(voteStyle, forKey: .voteStyle)
         try container.encodeIfPresent(widgetQuestionId, forKey: .widgetQuestionId)
         try container.encodeIfPresent(widgetQuestionResultsStyle, forKey: .widgetQuestionResultsStyle)
+        try container.encodeIfPresent(widgetQuestionShowBreakdown, forKey: .widgetQuestionShowBreakdown)
         try container.encodeIfPresent(widgetQuestionStyle, forKey: .widgetQuestionStyle)
         try container.encodeIfPresent(widgetQuestionWhenToSave, forKey: .widgetQuestionWhenToSave)
         try container.encodeIfPresent(widgetQuestionsRequired, forKey: .widgetQuestionsRequired)
         try container.encodeIfPresent(widgetSubQuestionVisibility, forKey: .widgetSubQuestionVisibility)
         try container.encodeIfPresent(wrap, forKey: .wrap)
+        try container.encodeIfPresent(ticketBaseUrl, forKey: .ticketBaseUrl)
+        try container.encodeIfPresent(ticketKBSearchEndpoint, forKey: .ticketKBSearchEndpoint)
+        try container.encodeIfPresent(ticketFileUploadsEnabled, forKey: .ticketFileUploadsEnabled)
+        try container.encodeIfPresent(ticketMaxFileSize, forKey: .ticketMaxFileSize)
+        try container.encodeIfPresent(ticketAutoAssignUserIds, forKey: .ticketAutoAssignUserIds)
+        try container.encodeIfPresent(tos, forKey: .tos)
     }
 }
 

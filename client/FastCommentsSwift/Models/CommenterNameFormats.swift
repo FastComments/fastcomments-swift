@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum CommenterNameFormats: Double, Sendable, Codable, JSONEncodable, CaseIterable {
+public enum CommenterNameFormats: Int, Sendable, Codable, CaseIterable {
     case _0 = 0
     case _1 = 1
     case _2 = 2

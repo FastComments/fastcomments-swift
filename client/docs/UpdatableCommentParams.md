@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 **isLocked** | **Bool** |  | [optional] 
 **flagCount** | **Int** |  | [optional] 
 **displayLabel** | **String** |  | [optional] 
-**meta** | [**FCommentMeta**](FCommentMeta.md) |  | [optional] 
+**meta** | [**APICommentBaseMeta**](APICommentBaseMeta.md) |  | [optional] 
 **moderationGroupIds** | **[String]** |  | [optional] 
 **feedbackIds** | **[String]** |  | [optional] 
 

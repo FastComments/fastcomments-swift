@@ -45,11 +45,11 @@ public struct UpdatableCommentParams: Sendable, Codable, JSONEncodable, Hashable
     public var isLocked: Bool?
     public var flagCount: Int?
     public var displayLabel: String?
-    public var meta: FCommentMeta?
+    public var meta: APICommentBaseMeta?
     public var moderationGroupIds: [String]?
     public var feedbackIds: [String]?
 
-    public init(urlId: String? = nil, urlIdRaw: String? = nil, url: String? = nil, pageTitle: String? = nil, userId: String? = nil, commenterEmail: String? = nil, commenterName: String? = nil, commenterLink: String? = nil, comment: String? = nil, commentHTML: String? = nil, parentId: String? = nil, date: Double? = nil, localDateString: String? = nil, localDateHours: Int? = nil, votes: Int? = nil, votesUp: Int? = nil, votesDown: Int? = nil, expireAt: Date? = nil, verified: Bool? = nil, verifiedDate: Date? = nil, notificationSentForParent: Bool? = nil, notificationSentForParentTenant: Bool? = nil, reviewed: Bool? = nil, externalId: String? = nil, externalParentId: String? = nil, avatarSrc: String? = nil, isSpam: Bool? = nil, approved: Bool? = nil, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, flagCount: Int? = nil, displayLabel: String? = nil, meta: FCommentMeta? = nil, moderationGroupIds: [String]? = nil, feedbackIds: [String]? = nil) {
+    public init(urlId: String? = nil, urlIdRaw: String? = nil, url: String? = nil, pageTitle: String? = nil, userId: String? = nil, commenterEmail: String? = nil, commenterName: String? = nil, commenterLink: String? = nil, comment: String? = nil, commentHTML: String? = nil, parentId: String? = nil, date: Double? = nil, localDateString: String? = nil, localDateHours: Int? = nil, votes: Int? = nil, votesUp: Int? = nil, votesDown: Int? = nil, expireAt: Date? = nil, verified: Bool? = nil, verifiedDate: Date? = nil, notificationSentForParent: Bool? = nil, notificationSentForParentTenant: Bool? = nil, reviewed: Bool? = nil, externalId: String? = nil, externalParentId: String? = nil, avatarSrc: String? = nil, isSpam: Bool? = nil, approved: Bool? = nil, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, flagCount: Int? = nil, displayLabel: String? = nil, meta: APICommentBaseMeta? = nil, moderationGroupIds: [String]? = nil, feedbackIds: [String]? = nil) {
         self.urlId = urlId
         self.urlIdRaw = urlIdRaw
         self.url = url

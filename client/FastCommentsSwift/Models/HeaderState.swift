@@ -14,13 +14,15 @@ public struct HeaderState: Sendable, Codable, JSONEncodable, Hashable {
     public var userId: String
     public var userIdWS: String
     public var notificationCounts: [NotificationAndCount]
+    public var accountNotifications: [HeaderAccountNotification]
 
-    public init(status: APIStatus, notificationType: JSONValue, userId: String, userIdWS: String, notificationCounts: [NotificationAndCount]) {
+    public init(status: APIStatus, notificationType: JSONValue, userId: String, userIdWS: String, notificationCounts: [NotificationAndCount], accountNotifications: [HeaderAccountNotification]) {
         self.status = status
         self.notificationType = notificationType
         self.userId = userId
         self.userIdWS = userIdWS
         self.notificationCounts = notificationCounts
+        self.accountNotifications = accountNotifications
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -29,6 +31,7 @@ public struct HeaderState: Sendable, Codable, JSONEncodable, Hashable {
         case userId
         case userIdWS
         case notificationCounts
+        case accountNotifications
     }
 
     // Encodable protocol methods
@@ -40,6 +43,7 @@ public struct HeaderState: Sendable, Codable, JSONEncodable, Hashable {
         try container.encode(userId, forKey: .userId)
         try container.encode(userIdWS, forKey: .userIdWS)
         try container.encode(notificationCounts, forKey: .notificationCounts)
+        try container.encode(accountNotifications, forKey: .accountNotifications)
     }
 }
 

@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **websiteUrl** | **String** |  | [optional] 
 **email** | **String** |  | 
 **pendingEmail** | **String** |  | [optional] 
+**backupEmail** | **String** |  | [optional] 
+**pendingBackupEmail** | **String** |  | [optional] 
 **signUpDate** | **Int64** |  | 
 **createdFromUrlId** | **String** |  | [optional] 
 **createdFromTenantId** | **String** |  | 
@@ -32,11 +34,16 @@ Name | Type | Description | Notes
 **isManageDataAdmin** | **Bool** |  | [optional] 
 **isCommentModeratorAdmin** | **Bool** |  | [optional] 
 **isAPIAdmin** | **Bool** |  | [optional] 
+**isSiteAdmin** | **Bool** |  | [optional] 
 **moderatorIds** | **[String]** |  | [optional] 
 **isImpersonator** | **Bool** |  | [optional] 
 **isCouponManager** | **Bool** |  | [optional] 
 **locale** | **String** |  | [optional] 
 **digestEmailFrequency** | [**DigestEmailFrequency**](DigestEmailFrequency.md) |  | [optional] 
+**notificationFrequency** | **Double** |  | [optional] 
+**adminNotificationFrequency** | **Double** |  | [optional] 
+**lastTenantNotificationSentDate** | **Date** |  | [optional] 
+**lastReplyNotificationSentDate** | **Date** |  | [optional] 
 **ignoredAddToMySiteMessages** | **Bool** |  | [optional] 
 **lastLoginDate** | **Date** |  | [optional] 
 **displayLabel** | **String** |  | [optional] 
@@ -54,6 +61,7 @@ Name | Type | Description | Notes
 **countryFlag** | **String** |  | [optional] 
 **socialLinks** | **[String]** |  | [optional] 
 **hasTwoFactor** | **Bool** |  | [optional] 
+**isEmailSuppressed** | **Bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

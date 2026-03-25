@@ -20,6 +20,7 @@ FastCommentsSwift/Infrastructure/Validation.swift
 FastCommentsSwift/Models/APIAuditLog.swift
 FastCommentsSwift/Models/APIComment.swift
 FastCommentsSwift/Models/APICommentBase.swift
+FastCommentsSwift/Models/APICommentBaseMeta.swift
 FastCommentsSwift/Models/APICreateUserBadgeResponse.swift
 FastCommentsSwift/Models/APIDomainConfiguration.swift
 FastCommentsSwift/Models/APIEmptyResponse.swift
@@ -36,6 +37,9 @@ FastCommentsSwift/Models/APISSOUser.swift
 FastCommentsSwift/Models/APIStatus.swift
 FastCommentsSwift/Models/APITenant.swift
 FastCommentsSwift/Models/APITenantDailyUsage.swift
+FastCommentsSwift/Models/APITicket.swift
+FastCommentsSwift/Models/APITicketDetail.swift
+FastCommentsSwift/Models/APITicketFile.swift
 FastCommentsSwift/Models/APIUserSubscription.swift
 FastCommentsSwift/Models/AddDomainConfig200Response.swift
 FastCommentsSwift/Models/AddDomainConfig200ResponseAnyOf.swift
@@ -67,6 +71,9 @@ FastCommentsSwift/Models/BulkCreateHashTagsBody.swift
 FastCommentsSwift/Models/BulkCreateHashTagsBodyTagsInner.swift
 FastCommentsSwift/Models/BulkCreateHashTagsResponse.swift
 FastCommentsSwift/Models/ChangeCommentPinStatusResponse.swift
+FastCommentsSwift/Models/ChangeTicketState200Response.swift
+FastCommentsSwift/Models/ChangeTicketStateBody.swift
+FastCommentsSwift/Models/ChangeTicketStateResponse.swift
 FastCommentsSwift/Models/CheckBlockedCommentsResponse.swift
 FastCommentsSwift/Models/CheckedCommentsForBlocked200Response.swift
 FastCommentsSwift/Models/CombineCommentsWithQuestionResults200Response.swift
@@ -118,6 +125,9 @@ FastCommentsSwift/Models/CreateTenantResponse.swift
 FastCommentsSwift/Models/CreateTenantUser200Response.swift
 FastCommentsSwift/Models/CreateTenantUserBody.swift
 FastCommentsSwift/Models/CreateTenantUserResponse.swift
+FastCommentsSwift/Models/CreateTicket200Response.swift
+FastCommentsSwift/Models/CreateTicketBody.swift
+FastCommentsSwift/Models/CreateTicketResponse.swift
 FastCommentsSwift/Models/CreateUserBadge200Response.swift
 FastCommentsSwift/Models/CreateUserBadgeParams.swift
 FastCommentsSwift/Models/CustomConfigParameters.swift
@@ -226,6 +236,10 @@ FastCommentsSwift/Models/GetTenantUsers200Response.swift
 FastCommentsSwift/Models/GetTenantUsersResponse.swift
 FastCommentsSwift/Models/GetTenants200Response.swift
 FastCommentsSwift/Models/GetTenantsResponse.swift
+FastCommentsSwift/Models/GetTicket200Response.swift
+FastCommentsSwift/Models/GetTicketResponse.swift
+FastCommentsSwift/Models/GetTickets200Response.swift
+FastCommentsSwift/Models/GetTicketsResponse.swift
 FastCommentsSwift/Models/GetUser200Response.swift
 FastCommentsSwift/Models/GetUserBadge200Response.swift
 FastCommentsSwift/Models/GetUserBadgeProgressById200Response.swift
@@ -243,6 +257,7 @@ FastCommentsSwift/Models/GetVotesForUser200Response.swift
 FastCommentsSwift/Models/GetVotesForUserResponse.swift
 FastCommentsSwift/Models/GetVotesResponse.swift
 FastCommentsSwift/Models/GifRating.swift
+FastCommentsSwift/Models/HeaderAccountNotification.swift
 FastCommentsSwift/Models/HeaderState.swift
 FastCommentsSwift/Models/IgnoredResponse.swift
 FastCommentsSwift/Models/ImageContentProfanityLevel.swift
@@ -252,6 +267,7 @@ FastCommentsSwift/Models/LiveEventExtraInfo.swift
 FastCommentsSwift/Models/LiveEventType.swift
 FastCommentsSwift/Models/LockComment200Response.swift
 FastCommentsSwift/Models/MediaAsset.swift
+FastCommentsSwift/Models/MentionAutoCompleteMode.swift
 FastCommentsSwift/Models/MetaItem.swift
 FastCommentsSwift/Models/Moderator.swift
 FastCommentsSwift/Models/NotificationAndCount.swift
@@ -308,11 +324,13 @@ FastCommentsSwift/Models/SaveCommentResponseOptimized.swift
 FastCommentsSwift/Models/SaveCommentsResponseWithPresence.swift
 FastCommentsSwift/Models/SearchUsers200Response.swift
 FastCommentsSwift/Models/SearchUsersResponse.swift
+FastCommentsSwift/Models/SearchUsersSectionedResponse.swift
 FastCommentsSwift/Models/SetCommentText200Response.swift
 FastCommentsSwift/Models/SetCommentTextResult.swift
 FastCommentsSwift/Models/SizePreset.swift
 FastCommentsSwift/Models/SortDirections.swift
 FastCommentsSwift/Models/SpamRule.swift
+FastCommentsSwift/Models/TOSConfig.swift
 FastCommentsSwift/Models/TenantHashTag.swift
 FastCommentsSwift/Models/TenantPackage.swift
 FastCommentsSwift/Models/UnBlockCommentPublic200Response.swift
@@ -321,6 +339,7 @@ FastCommentsSwift/Models/UnblockSuccess.swift
 FastCommentsSwift/Models/UpdatableCommentParams.swift
 FastCommentsSwift/Models/UpdateAPIPageData.swift
 FastCommentsSwift/Models/UpdateAPISSOUserData.swift
+FastCommentsSwift/Models/UpdateAPIUserSubscriptionData.swift
 FastCommentsSwift/Models/UpdateDomainConfigParams.swift
 FastCommentsSwift/Models/UpdateEmailTemplateBody.swift
 FastCommentsSwift/Models/UpdateFeedPostParams.swift
@@ -330,6 +349,7 @@ FastCommentsSwift/Models/UpdateModeratorBody.swift
 FastCommentsSwift/Models/UpdateNotificationBody.swift
 FastCommentsSwift/Models/UpdateQuestionConfigBody.swift
 FastCommentsSwift/Models/UpdateQuestionResultBody.swift
+FastCommentsSwift/Models/UpdateSubscriptionAPIResponse.swift
 FastCommentsSwift/Models/UpdateTenantBody.swift
 FastCommentsSwift/Models/UpdateTenantPackageBody.swift
 FastCommentsSwift/Models/UpdateTenantUserBody.swift
@@ -346,6 +366,8 @@ FastCommentsSwift/Models/UserNotificationWriteResponse.swift
 FastCommentsSwift/Models/UserPresenceData.swift
 FastCommentsSwift/Models/UserReactsResponse.swift
 FastCommentsSwift/Models/UserSearchResult.swift
+FastCommentsSwift/Models/UserSearchSection.swift
+FastCommentsSwift/Models/UserSearchSectionResult.swift
 FastCommentsSwift/Models/UserSessionInfo.swift
 FastCommentsSwift/Models/VoteBodyParams.swift
 FastCommentsSwift/Models/VoteComment200Response.swift
@@ -359,6 +381,7 @@ README.md
 docs/APIAuditLog.md
 docs/APIComment.md
 docs/APICommentBase.md
+docs/APICommentBaseMeta.md
 docs/APICreateUserBadgeResponse.md
 docs/APIDomainConfiguration.md
 docs/APIEmptyResponse.md
@@ -375,6 +398,9 @@ docs/APISSOUser.md
 docs/APIStatus.md
 docs/APITenant.md
 docs/APITenantDailyUsage.md
+docs/APITicket.md
+docs/APITicketDetail.md
+docs/APITicketFile.md
 docs/APIUserSubscription.md
 docs/AddDomainConfig200Response.md
 docs/AddDomainConfig200ResponseAnyOf.md
@@ -406,6 +432,9 @@ docs/BulkCreateHashTagsBody.md
 docs/BulkCreateHashTagsBodyTagsInner.md
 docs/BulkCreateHashTagsResponse.md
 docs/ChangeCommentPinStatusResponse.md
+docs/ChangeTicketState200Response.md
+docs/ChangeTicketStateBody.md
+docs/ChangeTicketStateResponse.md
 docs/CheckBlockedCommentsResponse.md
 docs/CheckedCommentsForBlocked200Response.md
 docs/CombineCommentsWithQuestionResults200Response.md
@@ -457,6 +486,9 @@ docs/CreateTenantResponse.md
 docs/CreateTenantUser200Response.md
 docs/CreateTenantUserBody.md
 docs/CreateTenantUserResponse.md
+docs/CreateTicket200Response.md
+docs/CreateTicketBody.md
+docs/CreateTicketResponse.md
 docs/CreateUserBadge200Response.md
 docs/CreateUserBadgeParams.md
 docs/CustomConfigParameters.md
@@ -566,6 +598,10 @@ docs/GetTenantUsers200Response.md
 docs/GetTenantUsersResponse.md
 docs/GetTenants200Response.md
 docs/GetTenantsResponse.md
+docs/GetTicket200Response.md
+docs/GetTicketResponse.md
+docs/GetTickets200Response.md
+docs/GetTicketsResponse.md
 docs/GetUser200Response.md
 docs/GetUserBadge200Response.md
 docs/GetUserBadgeProgressById200Response.md
@@ -583,6 +619,7 @@ docs/GetVotesForUser200Response.md
 docs/GetVotesForUserResponse.md
 docs/GetVotesResponse.md
 docs/GifRating.md
+docs/HeaderAccountNotification.md
 docs/HeaderState.md
 docs/IgnoredResponse.md
 docs/ImageContentProfanityLevel.md
@@ -592,6 +629,7 @@ docs/LiveEventExtraInfo.md
 docs/LiveEventType.md
 docs/LockComment200Response.md
 docs/MediaAsset.md
+docs/MentionAutoCompleteMode.md
 docs/MetaItem.md
 docs/Moderator.md
 docs/NotificationAndCount.md
@@ -649,11 +687,13 @@ docs/SaveCommentResponseOptimized.md
 docs/SaveCommentsResponseWithPresence.md
 docs/SearchUsers200Response.md
 docs/SearchUsersResponse.md
+docs/SearchUsersSectionedResponse.md
 docs/SetCommentText200Response.md
 docs/SetCommentTextResult.md
 docs/SizePreset.md
 docs/SortDirections.md
 docs/SpamRule.md
+docs/TOSConfig.md
 docs/TenantHashTag.md
 docs/TenantPackage.md
 docs/UnBlockCommentPublic200Response.md
@@ -662,6 +702,7 @@ docs/UnblockSuccess.md
 docs/UpdatableCommentParams.md
 docs/UpdateAPIPageData.md
 docs/UpdateAPISSOUserData.md
+docs/UpdateAPIUserSubscriptionData.md
 docs/UpdateDomainConfigParams.md
 docs/UpdateEmailTemplateBody.md
 docs/UpdateFeedPostParams.md
@@ -671,6 +712,7 @@ docs/UpdateModeratorBody.md
 docs/UpdateNotificationBody.md
 docs/UpdateQuestionConfigBody.md
 docs/UpdateQuestionResultBody.md
+docs/UpdateSubscriptionAPIResponse.md
 docs/UpdateTenantBody.md
 docs/UpdateTenantPackageBody.md
 docs/UpdateTenantUserBody.md
@@ -687,6 +729,8 @@ docs/UserNotificationWriteResponse.md
 docs/UserPresenceData.md
 docs/UserReactsResponse.md
 docs/UserSearchResult.md
+docs/UserSearchSection.md
+docs/UserSearchSectionResult.md
 docs/UserSessionInfo.md
 docs/VoteBodyParams.md
 docs/VoteComment200Response.md

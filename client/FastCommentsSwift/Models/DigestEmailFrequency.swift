@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum DigestEmailFrequency: Double, Sendable, Codable, JSONEncodable, CaseIterable {
+public enum DigestEmailFrequency: Int, Sendable, Codable, CaseIterable {
     case number1 = -1
     case _0 = 0
     case _1 = 1

@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**notificationFrequency** | **Double** |  | [optional] 
 **createdAt** | **Date** |  | 
 **pageTitle** | **String** |  | [optional] 
 **url** | **String** |  | [optional] 

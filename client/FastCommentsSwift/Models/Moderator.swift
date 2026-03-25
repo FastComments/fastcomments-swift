@@ -27,8 +27,9 @@ public struct Moderator: Sendable, Codable, JSONEncodable, Hashable {
     public var verificationId: String?
     public var createdAt: Date
     public var moderationGroupIds: [String]?
+    public var isEmailSuppressed: Bool?
 
-    public init(id: String, tenantId: String, name: String?, userId: String?, acceptedInvite: Bool, email: String?, markReviewedCount: Double, deletedCount: Double, markedSpamCount: Double, markedNotSpamCount: Double, approvedCount: Double, unApprovedCount: Double, editedCount: Double, bannedCount: Double, unFlaggedCount: Double, verificationId: String?, createdAt: Date, moderationGroupIds: [String]?) {
+    public init(id: String, tenantId: String, name: String?, userId: String?, acceptedInvite: Bool, email: String?, markReviewedCount: Double, deletedCount: Double, markedSpamCount: Double, markedNotSpamCount: Double, approvedCount: Double, unApprovedCount: Double, editedCount: Double, bannedCount: Double, unFlaggedCount: Double, verificationId: String?, createdAt: Date, moderationGroupIds: [String]?, isEmailSuppressed: Bool? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.name = name
@@ -47,6 +48,7 @@ public struct Moderator: Sendable, Codable, JSONEncodable, Hashable {
         self.verificationId = verificationId
         self.createdAt = createdAt
         self.moderationGroupIds = moderationGroupIds
+        self.isEmailSuppressed = isEmailSuppressed
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -68,6 +70,7 @@ public struct Moderator: Sendable, Codable, JSONEncodable, Hashable {
         case verificationId
         case createdAt
         case moderationGroupIds
+        case isEmailSuppressed
     }
 
     // Encodable protocol methods
@@ -92,6 +95,7 @@ public struct Moderator: Sendable, Codable, JSONEncodable, Hashable {
         try container.encode(verificationId, forKey: .verificationId)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(moderationGroupIds, forKey: .moderationGroupIds)
+        try container.encodeIfPresent(isEmailSuppressed, forKey: .isEmailSuppressed)
     }
 }
 

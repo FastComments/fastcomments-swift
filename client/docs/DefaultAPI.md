@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**aggregateQuestionResults**](DefaultAPI.md#aggregatequestionresults) | **GET** /api/v1/question-results-aggregation | 
 [**blockUserFromComment**](DefaultAPI.md#blockuserfromcomment) | **POST** /api/v1/comments/{id}/block | 
 [**bulkAggregateQuestionResults**](DefaultAPI.md#bulkaggregatequestionresults) | **POST** /api/v1/question-results-aggregation/bulk | 
+[**changeTicketState**](DefaultAPI.md#changeticketstate) | **PATCH** /api/v1/tickets/{id}/state | 
 [**combineCommentsWithQuestionResults**](DefaultAPI.md#combinecommentswithquestionresults) | **GET** /api/v1/question-results-aggregation/combine/comments | 
 [**createEmailTemplate**](DefaultAPI.md#createemailtemplate) | **POST** /api/v1/email-templates | 
 [**createFeedPost**](DefaultAPI.md#createfeedpost) | **POST** /api/v1/feed-posts | 
@@ -23,6 +24,7 @@ Method | HTTP request | Description
 [**createTenant**](DefaultAPI.md#createtenant) | **POST** /api/v1/tenants | 
 [**createTenantPackage**](DefaultAPI.md#createtenantpackage) | **POST** /api/v1/tenant-packages | 
 [**createTenantUser**](DefaultAPI.md#createtenantuser) | **POST** /api/v1/tenant-users | 
+[**createTicket**](DefaultAPI.md#createticket) | **POST** /api/v1/tickets | 
 [**createUserBadge**](DefaultAPI.md#createuserbadge) | **POST** /api/v1/user-badges | 
 [**createVote**](DefaultAPI.md#createvote) | **POST** /api/v1/votes | 
 [**deleteComment**](DefaultAPI.md#deletecomment) | **DELETE** /api/v1/comments/{id} | 
@@ -79,6 +81,8 @@ Method | HTTP request | Description
 [**getTenantUser**](DefaultAPI.md#gettenantuser) | **GET** /api/v1/tenant-users/{id} | 
 [**getTenantUsers**](DefaultAPI.md#gettenantusers) | **GET** /api/v1/tenant-users | 
 [**getTenants**](DefaultAPI.md#gettenants) | **GET** /api/v1/tenants | 
+[**getTicket**](DefaultAPI.md#getticket) | **GET** /api/v1/tickets/{id} | 
+[**getTickets**](DefaultAPI.md#gettickets) | **GET** /api/v1/tickets | 
 [**getUser**](DefaultAPI.md#getuser) | **GET** /api/v1/users/{id} | 
 [**getUserBadge**](DefaultAPI.md#getuserbadge) | **GET** /api/v1/user-badges/{id} | 
 [**getUserBadgeProgressById**](DefaultAPI.md#getuserbadgeprogressbyid) | **GET** /api/v1/user-badge-progress/{id} | 
@@ -109,6 +113,7 @@ Method | HTTP request | Description
 [**updateNotification**](DefaultAPI.md#updatenotification) | **PATCH** /api/v1/notifications/{id} | 
 [**updateQuestionConfig**](DefaultAPI.md#updatequestionconfig) | **PATCH** /api/v1/question-configs/{id} | 
 [**updateQuestionResult**](DefaultAPI.md#updatequestionresult) | **PATCH** /api/v1/question-results/{id} | 
+[**updateSubscription**](DefaultAPI.md#updatesubscription) | **PATCH** /api/v1/subscriptions/{id} | 
 [**updateTenant**](DefaultAPI.md#updatetenant) | **PATCH** /api/v1/tenants/{id} | 
 [**updateTenantPackage**](DefaultAPI.md#updatetenantpackage) | **PATCH** /api/v1/tenant-packages/{id} | 
 [**updateTenantUser**](DefaultAPI.md#updatetenantuser) | **PATCH** /api/v1/tenant-users/{id} | 
@@ -580,6 +585,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **changeTicketState**
+```swift
+    open class func changeTicketState(tenantId: String, userId: String, id: String, changeTicketStateBody: ChangeTicketStateBody, completion: @escaping (_ data: ChangeTicketState200Response?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let userId = "userId_example" // String | 
+let id = "id_example" // String | 
+let changeTicketStateBody = ChangeTicketStateBody(state: 123) // ChangeTicketStateBody | 
+
+DefaultAPI.changeTicketState(tenantId: tenantId, userId: userId, id: id, changeTicketStateBody: changeTicketStateBody) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **userId** | **String** |  | 
+ **id** | **String** |  | 
+ **changeTicketStateBody** | [**ChangeTicketStateBody**](ChangeTicketStateBody.md) |  | 
+
+### Return type
+
+[**ChangeTicketState200Response**](ChangeTicketState200Response.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **combineCommentsWithQuestionResults**
 ```swift
     open class func combineCommentsWithQuestionResults(tenantId: String, questionId: String? = nil, questionIds: [String]? = nil, urlId: String? = nil, startDate: Date? = nil, forceRecalculate: Bool? = nil, minValue: Double? = nil, maxValue: Double? = nil, limit: Double? = nil, completion: @escaping (_ data: CombineCommentsWithQuestionResults200Response?, _ error: Error?) -> Void)
@@ -909,7 +967,7 @@ Name | Type | Description  | Notes
 import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
-let createAPIUserSubscriptionData = CreateAPIUserSubscriptionData(pageTitle: "pageTitle_example", url: "url_example", urlId: "urlId_example", anonUserId: "anonUserId_example", userId: "userId_example") // CreateAPIUserSubscriptionData | 
+let createAPIUserSubscriptionData = CreateAPIUserSubscriptionData(notificationFrequency: 123, pageTitle: "pageTitle_example", url: "url_example", urlId: "urlId_example", anonUserId: "anonUserId_example", userId: "userId_example") // CreateAPIUserSubscriptionData | 
 
 DefaultAPI.createSubscription(tenantId: tenantId, createAPIUserSubscriptionData: createAPIUserSubscriptionData) { (response, error) in
     guard error == nil else {
@@ -1007,7 +1065,7 @@ Name | Type | Description  | Notes
 import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
-let createTenantPackageBody = CreateTenantPackageBody(name: "name_example", monthlyCostUSD: 123, yearlyCostUSD: 123, monthlyStripePlanId: "monthlyStripePlanId_example", yearlyStripePlanId: "yearlyStripePlanId_example", maxMonthlyPageLoads: 123, maxMonthlyAPICredits: 123, maxMonthlySmallWidgetsCredits: 123, maxMonthlyComments: 123, maxConcurrentUsers: 123, maxTenantUsers: 123, maxSSOUsers: 123, maxModerators: 123, maxDomains: 123, maxWhiteLabeledTenants: 123, maxMonthlyEventLogRequests: 123, hasWhiteLabeling: false, hasDebranding: false, hasLLMSpamDetection: false, forWhoText: "forWhoText_example", featureTaglines: ["featureTaglines_example"], hasAuditing: false, hasFlexPricing: false, enableSAML: false, flexPageLoadCostCents: 123, flexPageLoadUnit: 123, flexCommentCostCents: 123, flexCommentUnit: 123, flexSSOUserCostCents: 123, flexSSOUserUnit: 123, flexAPICreditCostCents: 123, flexAPICreditUnit: 123, flexSmallWidgetsCreditCostCents: 123, flexSmallWidgetsCreditUnit: 123, flexModeratorCostCents: 123, flexModeratorUnit: 123, flexAdminCostCents: 123, flexAdminUnit: 123, flexDomainCostCents: 123, flexDomainUnit: 123, flexChatGPTCostCents: 123, flexChatGPTUnit: 123, flexMinimumCostCents: 123, flexManagedTenantCostCents: 123, flexSSOAdminCostCents: 123, flexSSOAdminUnit: 123, flexSSOModeratorCostCents: 123, flexSSOModeratorUnit: 123) // CreateTenantPackageBody | 
+let createTenantPackageBody = CreateTenantPackageBody(name: "name_example", monthlyCostUSD: 123, yearlyCostUSD: 123, monthlyStripePlanId: "monthlyStripePlanId_example", yearlyStripePlanId: "yearlyStripePlanId_example", maxMonthlyPageLoads: 123, maxMonthlyAPICredits: 123, maxMonthlySmallWidgetsCredits: 123, maxMonthlyComments: 123, maxConcurrentUsers: 123, maxTenantUsers: 123, maxSSOUsers: 123, maxModerators: 123, maxDomains: 123, maxWhiteLabeledTenants: 123, maxMonthlyEventLogRequests: 123, maxCustomCollectionSize: 123, hasWhiteLabeling: false, hasDebranding: false, hasLLMSpamDetection: false, forWhoText: "forWhoText_example", featureTaglines: ["featureTaglines_example"], hasAuditing: false, hasFlexPricing: false, enableSAML: false, flexPageLoadCostCents: 123, flexPageLoadUnit: 123, flexCommentCostCents: 123, flexCommentUnit: 123, flexSSOUserCostCents: 123, flexSSOUserUnit: 123, flexAPICreditCostCents: 123, flexAPICreditUnit: 123, flexSmallWidgetsCreditCostCents: 123, flexSmallWidgetsCreditUnit: 123, flexModeratorCostCents: 123, flexModeratorUnit: 123, flexAdminCostCents: 123, flexAdminUnit: 123, flexDomainCostCents: 123, flexDomainUnit: 123, flexChatGPTCostCents: 123, flexChatGPTUnit: 123, flexMinimumCostCents: 123, flexManagedTenantCostCents: 123, flexSSOAdminCostCents: 123, flexSSOAdminUnit: 123, flexSSOModeratorCostCents: 123, flexSSOModeratorUnit: 123) // CreateTenantPackageBody | 
 
 DefaultAPI.createTenantPackage(tenantId: tenantId, createTenantPackageBody: createTenantPackageBody) { (response, error) in
     guard error == nil else {
@@ -1080,6 +1138,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateTenantUser200Response**](CreateTenantUser200Response.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createTicket**
+```swift
+    open class func createTicket(tenantId: String, userId: String, createTicketBody: CreateTicketBody, completion: @escaping (_ data: CreateTicket200Response?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let userId = "userId_example" // String | 
+let createTicketBody = CreateTicketBody(subject: "subject_example") // CreateTicketBody | 
+
+DefaultAPI.createTicket(tenantId: tenantId, userId: userId, createTicketBody: createTicketBody) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **userId** | **String** |  | 
+ **createTicketBody** | [**CreateTicketBody**](CreateTicketBody.md) |  | 
+
+### Return type
+
+[**CreateTicket200Response**](CreateTicket200Response.md)
 
 ### Authorization
 
@@ -3964,6 +4073,112 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getTicket**
+```swift
+    open class func getTicket(tenantId: String, id: String, userId: String? = nil, completion: @escaping (_ data: GetTicket200Response?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let id = "id_example" // String | 
+let userId = "userId_example" // String |  (optional)
+
+DefaultAPI.getTicket(tenantId: tenantId, id: id, userId: userId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **id** | **String** |  | 
+ **userId** | **String** |  | [optional] 
+
+### Return type
+
+[**GetTicket200Response**](GetTicket200Response.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTickets**
+```swift
+    open class func getTickets(tenantId: String, userId: String? = nil, state: Double? = nil, skip: Double? = nil, limit: Double? = nil, completion: @escaping (_ data: GetTickets200Response?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let userId = "userId_example" // String |  (optional)
+let state = 987 // Double |  (optional)
+let skip = 987 // Double |  (optional)
+let limit = 987 // Double |  (optional)
+
+DefaultAPI.getTickets(tenantId: tenantId, userId: userId, state: state, skip: skip, limit: limit) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **userId** | **String** |  | [optional] 
+ **state** | **Double** |  | [optional] 
+ **skip** | **Double** |  | [optional] 
+ **limit** | **Double** |  | [optional] 
+
+### Return type
+
+[**GetTickets200Response**](GetTickets200Response.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getUser**
 ```swift
     open class func getUser(tenantId: String, id: String, completion: @escaping (_ data: GetUser200Response?, _ error: Error?) -> Void)
@@ -4749,7 +4964,7 @@ import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
 let id = "id_example" // String | 
-let replaceTenantPackageBody = ReplaceTenantPackageBody(name: "name_example", monthlyCostUSD: 123, yearlyCostUSD: 123, maxMonthlyPageLoads: 123, maxMonthlyAPICredits: 123, maxMonthlyComments: 123, maxConcurrentUsers: 123, maxTenantUsers: 123, maxSSOUsers: 123, maxModerators: 123, maxDomains: 123, hasDebranding: false, forWhoText: "forWhoText_example", featureTaglines: ["featureTaglines_example"], hasFlexPricing: false, flexPageLoadCostCents: 123, flexPageLoadUnit: 123, flexCommentCostCents: 123, flexCommentUnit: 123, flexSSOUserCostCents: 123, flexSSOUserUnit: 123, flexAPICreditCostCents: 123, flexAPICreditUnit: 123, flexModeratorCostCents: 123, flexModeratorUnit: 123, flexAdminCostCents: 123, flexAdminUnit: 123, flexDomainCostCents: 123, flexDomainUnit: 123, flexMinimumCostCents: 123) // ReplaceTenantPackageBody | 
+let replaceTenantPackageBody = ReplaceTenantPackageBody(name: "name_example", monthlyCostUSD: 123, yearlyCostUSD: 123, maxMonthlyPageLoads: 123, maxMonthlyAPICredits: 123, maxMonthlyComments: 123, maxConcurrentUsers: 123, maxTenantUsers: 123, maxSSOUsers: 123, maxModerators: 123, maxDomains: 123, maxCustomCollectionSize: 123, hasDebranding: false, forWhoText: "forWhoText_example", featureTaglines: ["featureTaglines_example"], hasFlexPricing: false, flexPageLoadCostCents: 123, flexPageLoadUnit: 123, flexCommentCostCents: 123, flexCommentUnit: 123, flexSSOUserCostCents: 123, flexSSOUserUnit: 123, flexAPICreditCostCents: 123, flexAPICreditUnit: 123, flexModeratorCostCents: 123, flexModeratorUnit: 123, flexAdminCostCents: 123, flexAdminUnit: 123, flexDomainCostCents: 123, flexDomainUnit: 123, flexMinimumCostCents: 123) // ReplaceTenantPackageBody | 
 
 DefaultAPI.replaceTenantPackage(tenantId: tenantId, id: id, replaceTenantPackageBody: replaceTenantPackageBody) { (response, error) in
     guard error == nil else {
@@ -4852,7 +5067,7 @@ Name | Type | Description  | Notes
 import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
-let createCommentParams = CreateCommentParams(date: 123, localDateString: "localDateString_example", localDateHours: 123, commenterName: "commenterName_example", commenterEmail: "commenterEmail_example", commenterLink: "commenterLink_example", comment: "comment_example", productId: 123, userId: "userId_example", avatarSrc: "avatarSrc_example", parentId: "parentId_example", mentions: [CommentUserMentionInfo(id: "id_example", tag: "tag_example", rawTag: "rawTag_example", type: "type_example", sent: false)], hashTags: [CommentUserHashTagInfo(id: "id_example", tag: "tag_example", url: "url_example", retain: false)], pageTitle: "pageTitle_example", isFromMyAccountPage: false, url: "url_example", urlId: "urlId_example", meta: 123, moderationGroupIds: ["moderationGroupIds_example"], rating: 123, fromOfflineRestore: false, autoplayDelayMS: 123, feedbackIds: ["feedbackIds_example"], questionValues: "TODO", approved: false, domain: "domain_example", ip: "ip_example", isPinned: false, locale: "locale_example", reviewed: false, verified: false, votes: 123, votesDown: 123, votesUp: 123) // CreateCommentParams | 
+let createCommentParams = CreateCommentParams(date: 123, localDateString: "localDateString_example", localDateHours: 123, commenterName: "commenterName_example", commenterEmail: "commenterEmail_example", commenterLink: "commenterLink_example", comment: "comment_example", productId: 123, userId: "userId_example", avatarSrc: "avatarSrc_example", parentId: "parentId_example", mentions: [CommentUserMentionInfo(id: "id_example", tag: "tag_example", rawTag: "rawTag_example", type: "type_example", sent: false)], hashTags: [CommentUserHashTagInfo(id: "id_example", tag: "tag_example", url: "url_example", retain: false)], pageTitle: "pageTitle_example", isFromMyAccountPage: false, url: "url_example", urlId: "urlId_example", meta: 123, moderationGroupIds: ["moderationGroupIds_example"], rating: 123, fromOfflineRestore: false, autoplayDelayMS: 123, feedbackIds: ["feedbackIds_example"], questionValues: "TODO", tos: false, approved: false, domain: "domain_example", ip: "ip_example", isPinned: false, locale: "locale_example", reviewed: false, verified: false, votes: 123, votesDown: 123, votesUp: 123) // CreateCommentParams | 
 let isLive = true // Bool |  (optional)
 let doSpamCheck = true // Bool |  (optional)
 let sendEmails = true // Bool |  (optional)
@@ -4909,7 +5124,7 @@ Name | Type | Description  | Notes
 import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
-let createCommentParams = [CreateCommentParams(date: 123, localDateString: "localDateString_example", localDateHours: 123, commenterName: "commenterName_example", commenterEmail: "commenterEmail_example", commenterLink: "commenterLink_example", comment: "comment_example", productId: 123, userId: "userId_example", avatarSrc: "avatarSrc_example", parentId: "parentId_example", mentions: [CommentUserMentionInfo(id: "id_example", tag: "tag_example", rawTag: "rawTag_example", type: "type_example", sent: false)], hashTags: [CommentUserHashTagInfo(id: "id_example", tag: "tag_example", url: "url_example", retain: false)], pageTitle: "pageTitle_example", isFromMyAccountPage: false, url: "url_example", urlId: "urlId_example", meta: 123, moderationGroupIds: ["moderationGroupIds_example"], rating: 123, fromOfflineRestore: false, autoplayDelayMS: 123, feedbackIds: ["feedbackIds_example"], questionValues: "TODO", approved: false, domain: "domain_example", ip: "ip_example", isPinned: false, locale: "locale_example", reviewed: false, verified: false, votes: 123, votesDown: 123, votesUp: 123)] // [CreateCommentParams] | 
+let createCommentParams = [CreateCommentParams(date: 123, localDateString: "localDateString_example", localDateHours: 123, commenterName: "commenterName_example", commenterEmail: "commenterEmail_example", commenterLink: "commenterLink_example", comment: "comment_example", productId: 123, userId: "userId_example", avatarSrc: "avatarSrc_example", parentId: "parentId_example", mentions: [CommentUserMentionInfo(id: "id_example", tag: "tag_example", rawTag: "rawTag_example", type: "type_example", sent: false)], hashTags: [CommentUserHashTagInfo(id: "id_example", tag: "tag_example", url: "url_example", retain: false)], pageTitle: "pageTitle_example", isFromMyAccountPage: false, url: "url_example", urlId: "urlId_example", meta: 123, moderationGroupIds: ["moderationGroupIds_example"], rating: 123, fromOfflineRestore: false, autoplayDelayMS: 123, feedbackIds: ["feedbackIds_example"], questionValues: "TODO", tos: false, approved: false, domain: "domain_example", ip: "ip_example", isPinned: false, locale: "locale_example", reviewed: false, verified: false, votes: 123, votesDown: 123, votesUp: 123)] // [CreateCommentParams] | 
 let isLive = true // Bool |  (optional)
 let doSpamCheck = true // Bool |  (optional)
 let sendEmails = true // Bool |  (optional)
@@ -5177,7 +5392,7 @@ import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
 let id = "id_example" // String | 
-let updatableCommentParams = UpdatableCommentParams(urlId: "urlId_example", urlIdRaw: "urlIdRaw_example", url: "url_example", pageTitle: "pageTitle_example", userId: "userId_example", commenterEmail: "commenterEmail_example", commenterName: "commenterName_example", commenterLink: "commenterLink_example", comment: "comment_example", commentHTML: "commentHTML_example", parentId: "parentId_example", date: 123, localDateString: "localDateString_example", localDateHours: 123, votes: 123, votesUp: 123, votesDown: 123, expireAt: Date(), verified: false, verifiedDate: Date(), notificationSentForParent: false, notificationSentForParentTenant: false, reviewed: false, externalId: "externalId_example", externalParentId: "externalParentId_example", avatarSrc: "avatarSrc_example", isSpam: false, approved: false, isDeleted: false, isDeletedUser: false, isByAdmin: false, isByModerator: false, isPinned: false, isLocked: false, flagCount: 123, displayLabel: "displayLabel_example", meta: FComment_meta(wpUserId: "wpUserId_example", wpPostId: "wpPostId_example"), moderationGroupIds: ["moderationGroupIds_example"], feedbackIds: ["feedbackIds_example"]) // UpdatableCommentParams | 
+let updatableCommentParams = UpdatableCommentParams(urlId: "urlId_example", urlIdRaw: "urlIdRaw_example", url: "url_example", pageTitle: "pageTitle_example", userId: "userId_example", commenterEmail: "commenterEmail_example", commenterName: "commenterName_example", commenterLink: "commenterLink_example", comment: "comment_example", commentHTML: "commentHTML_example", parentId: "parentId_example", date: 123, localDateString: "localDateString_example", localDateHours: 123, votes: 123, votesUp: 123, votesDown: 123, expireAt: Date(), verified: false, verifiedDate: Date(), notificationSentForParent: false, notificationSentForParentTenant: false, reviewed: false, externalId: "externalId_example", externalParentId: "externalParentId_example", avatarSrc: "avatarSrc_example", isSpam: false, approved: false, isDeleted: false, isDeletedUser: false, isByAdmin: false, isByModerator: false, isPinned: false, isLocked: false, flagCount: 123, displayLabel: "displayLabel_example", meta: APICommentBase_meta(wpUserId: "wpUserId_example", wpPostId: "wpPostId_example"), moderationGroupIds: ["moderationGroupIds_example"], feedbackIds: ["feedbackIds_example"]) // UpdatableCommentParams | 
 let contextUserId = "contextUserId_example" // String |  (optional)
 let doSpamCheck = true // Bool |  (optional)
 let isLive = true // Bool |  (optional)
@@ -5528,6 +5743,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **updateSubscription**
+```swift
+    open class func updateSubscription(tenantId: String, id: String, updateAPIUserSubscriptionData: UpdateAPIUserSubscriptionData, userId: String? = nil, completion: @escaping (_ data: UpdateSubscriptionAPIResponse?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let id = "id_example" // String | 
+let updateAPIUserSubscriptionData = UpdateAPIUserSubscriptionData(notificationFrequency: 123) // UpdateAPIUserSubscriptionData | 
+let userId = "userId_example" // String |  (optional)
+
+DefaultAPI.updateSubscription(tenantId: tenantId, id: id, updateAPIUserSubscriptionData: updateAPIUserSubscriptionData, userId: userId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **id** | **String** |  | 
+ **updateAPIUserSubscriptionData** | [**UpdateAPIUserSubscriptionData**](UpdateAPIUserSubscriptionData.md) |  | 
+ **userId** | **String** |  | [optional] 
+
+### Return type
+
+[**UpdateSubscriptionAPIResponse**](UpdateSubscriptionAPIResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateTenant**
 ```swift
     open class func updateTenant(tenantId: String, id: String, updateTenantBody: UpdateTenantBody, completion: @escaping (_ data: FlagCommentPublic200Response?, _ error: Error?) -> Void)
@@ -5593,7 +5861,7 @@ import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
 let id = "id_example" // String | 
-let updateTenantPackageBody = UpdateTenantPackageBody(name: "name_example", monthlyCostUSD: 123, yearlyCostUSD: 123, maxMonthlyPageLoads: 123, maxMonthlyAPICredits: 123, maxMonthlyComments: 123, maxConcurrentUsers: 123, maxTenantUsers: 123, maxSSOUsers: 123, maxModerators: 123, maxDomains: 123, hasDebranding: false, hasWhiteLabeling: false, forWhoText: "forWhoText_example", featureTaglines: ["featureTaglines_example"], hasFlexPricing: false, flexPageLoadCostCents: 123, flexPageLoadUnit: 123, flexCommentCostCents: 123, flexCommentUnit: 123, flexSSOUserCostCents: 123, flexSSOUserUnit: 123, flexAPICreditCostCents: 123, flexAPICreditUnit: 123, flexModeratorCostCents: 123, flexModeratorUnit: 123, flexAdminCostCents: 123, flexAdminUnit: 123, flexDomainCostCents: 123, flexDomainUnit: 123, flexMinimumCostCents: 123) // UpdateTenantPackageBody | 
+let updateTenantPackageBody = UpdateTenantPackageBody(name: "name_example", monthlyCostUSD: 123, yearlyCostUSD: 123, maxMonthlyPageLoads: 123, maxMonthlyAPICredits: 123, maxMonthlyComments: 123, maxConcurrentUsers: 123, maxTenantUsers: 123, maxSSOUsers: 123, maxModerators: 123, maxDomains: 123, maxCustomCollectionSize: 123, hasDebranding: false, hasWhiteLabeling: false, forWhoText: "forWhoText_example", featureTaglines: ["featureTaglines_example"], hasFlexPricing: false, flexPageLoadCostCents: 123, flexPageLoadUnit: 123, flexCommentCostCents: 123, flexCommentUnit: 123, flexSSOUserCostCents: 123, flexSSOUserUnit: 123, flexAPICreditCostCents: 123, flexAPICreditUnit: 123, flexModeratorCostCents: 123, flexModeratorUnit: 123, flexAdminCostCents: 123, flexAdminUnit: 123, flexDomainCostCents: 123, flexDomainUnit: 123, flexMinimumCostCents: 123) // UpdateTenantPackageBody | 
 
 DefaultAPI.updateTenantPackage(tenantId: tenantId, id: id, updateTenantPackageBody: updateTenantPackageBody) { (response, error) in
     guard error == nil else {

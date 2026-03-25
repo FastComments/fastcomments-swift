@@ -20,6 +20,7 @@ public struct ReplaceTenantPackageBody: Sendable, Codable, JSONEncodable, Hashab
     public var maxSSOUsers: Double
     public var maxModerators: Double
     public var maxDomains: Double
+    public var maxCustomCollectionSize: Double?
     public var hasDebranding: Bool
     public var forWhoText: String
     public var featureTaglines: [String]
@@ -40,7 +41,7 @@ public struct ReplaceTenantPackageBody: Sendable, Codable, JSONEncodable, Hashab
     public var flexDomainUnit: Double?
     public var flexMinimumCostCents: Double?
 
-    public init(name: String, monthlyCostUSD: Double, yearlyCostUSD: Double, maxMonthlyPageLoads: Double, maxMonthlyAPICredits: Double, maxMonthlyComments: Double, maxConcurrentUsers: Double, maxTenantUsers: Double, maxSSOUsers: Double, maxModerators: Double, maxDomains: Double, hasDebranding: Bool, forWhoText: String, featureTaglines: [String], hasFlexPricing: Bool, flexPageLoadCostCents: Double? = nil, flexPageLoadUnit: Double? = nil, flexCommentCostCents: Double? = nil, flexCommentUnit: Double? = nil, flexSSOUserCostCents: Double? = nil, flexSSOUserUnit: Double? = nil, flexAPICreditCostCents: Double? = nil, flexAPICreditUnit: Double? = nil, flexModeratorCostCents: Double? = nil, flexModeratorUnit: Double? = nil, flexAdminCostCents: Double? = nil, flexAdminUnit: Double? = nil, flexDomainCostCents: Double? = nil, flexDomainUnit: Double? = nil, flexMinimumCostCents: Double? = nil) {
+    public init(name: String, monthlyCostUSD: Double, yearlyCostUSD: Double, maxMonthlyPageLoads: Double, maxMonthlyAPICredits: Double, maxMonthlyComments: Double, maxConcurrentUsers: Double, maxTenantUsers: Double, maxSSOUsers: Double, maxModerators: Double, maxDomains: Double, maxCustomCollectionSize: Double? = nil, hasDebranding: Bool, forWhoText: String, featureTaglines: [String], hasFlexPricing: Bool, flexPageLoadCostCents: Double? = nil, flexPageLoadUnit: Double? = nil, flexCommentCostCents: Double? = nil, flexCommentUnit: Double? = nil, flexSSOUserCostCents: Double? = nil, flexSSOUserUnit: Double? = nil, flexAPICreditCostCents: Double? = nil, flexAPICreditUnit: Double? = nil, flexModeratorCostCents: Double? = nil, flexModeratorUnit: Double? = nil, flexAdminCostCents: Double? = nil, flexAdminUnit: Double? = nil, flexDomainCostCents: Double? = nil, flexDomainUnit: Double? = nil, flexMinimumCostCents: Double? = nil) {
         self.name = name
         self.monthlyCostUSD = monthlyCostUSD
         self.yearlyCostUSD = yearlyCostUSD
@@ -52,6 +53,7 @@ public struct ReplaceTenantPackageBody: Sendable, Codable, JSONEncodable, Hashab
         self.maxSSOUsers = maxSSOUsers
         self.maxModerators = maxModerators
         self.maxDomains = maxDomains
+        self.maxCustomCollectionSize = maxCustomCollectionSize
         self.hasDebranding = hasDebranding
         self.forWhoText = forWhoText
         self.featureTaglines = featureTaglines
@@ -85,6 +87,7 @@ public struct ReplaceTenantPackageBody: Sendable, Codable, JSONEncodable, Hashab
         case maxSSOUsers
         case maxModerators
         case maxDomains
+        case maxCustomCollectionSize
         case hasDebranding
         case forWhoText
         case featureTaglines
@@ -121,6 +124,7 @@ public struct ReplaceTenantPackageBody: Sendable, Codable, JSONEncodable, Hashab
         try container.encode(maxSSOUsers, forKey: .maxSSOUsers)
         try container.encode(maxModerators, forKey: .maxModerators)
         try container.encode(maxDomains, forKey: .maxDomains)
+        try container.encodeIfPresent(maxCustomCollectionSize, forKey: .maxCustomCollectionSize)
         try container.encode(hasDebranding, forKey: .hasDebranding)
         try container.encode(forWhoText, forKey: .forWhoText)
         try container.encode(featureTaglines, forKey: .featureTaglines)

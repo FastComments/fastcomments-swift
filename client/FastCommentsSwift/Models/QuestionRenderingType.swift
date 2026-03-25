@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum QuestionRenderingType: Double, Sendable, Codable, JSONEncodable, CaseIterable {
+public enum QuestionRenderingType: Int, Sendable, Codable, CaseIterable {
     case _0 = 0
     case _1 = 1
 }

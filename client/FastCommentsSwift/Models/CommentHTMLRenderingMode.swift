@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum CommentHTMLRenderingMode: Double, Sendable, Codable, JSONEncodable, CaseIterable {
+public enum CommentHTMLRenderingMode: Int, Sendable, Codable, CaseIterable {
     case _0 = 0
     case _1 = 1
 }

@@ -80,8 +80,9 @@ public struct FComment: Sendable, Codable, JSONEncodable, Hashable {
     public var viewCount: Int64?
     public var requiresVerification: Bool?
     public var editKey: String?
+    public var tosAcceptedAt: Date?
 
-    public init(id: String, tenantId: String, urlId: String, urlIdRaw: String? = nil, url: String, pageTitle: String? = nil, userId: String? = nil, anonUserId: String? = nil, commenterEmail: String? = nil, commenterName: String, commenterLink: String? = nil, comment: String, commentHTML: String, parentId: String? = nil, date: Date?, localDateString: String? = nil, localDateHours: Int? = nil, votes: Int? = nil, votesUp: Int? = nil, votesDown: Int? = nil, expireAt: Date? = nil, verified: Bool, verifiedDate: Date? = nil, verificationId: String? = nil, notificationSentForParent: Bool? = nil, notificationSentForParentTenant: Bool? = nil, reviewed: Bool? = nil, imported: Bool? = nil, externalId: String? = nil, externalParentId: String? = nil, avatarSrc: String? = nil, isSpam: Bool? = nil, permNotSpam: Bool? = nil, aiDeterminedSpam: Bool? = nil, hasImages: Bool? = nil, pageNumber: Int? = nil, pageNumberOF: Int? = nil, pageNumberNF: Int? = nil, hasLinks: Bool? = nil, hasCode: Bool? = nil, approved: Bool, locale: String?, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isBannedUser: Bool? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, flagCount: Int? = nil, rating: Double? = nil, displayLabel: String? = nil, fromProductId: Int? = nil, meta: FCommentMeta? = nil, ipHash: String? = nil, mentions: [CommentUserMentionInfo]? = nil, hashTags: [CommentUserHashTagInfo]? = nil, badges: [CommentUserBadgeInfo]? = nil, domain: String? = nil, veteranBadgeProcessed: String? = nil, moderationGroupIds: [String]? = nil, didProcessBadges: Bool? = nil, fromOfflineRestore: Bool? = nil, autoplayJobId: String? = nil, autoplayDelayMS: Int64? = nil, feedbackIds: [String]? = nil, logs: [CommentLogEntry]? = nil, groupIds: [String]? = nil, viewCount: Int64? = nil, requiresVerification: Bool? = nil, editKey: String? = nil) {
+    public init(id: String, tenantId: String, urlId: String, urlIdRaw: String? = nil, url: String, pageTitle: String? = nil, userId: String? = nil, anonUserId: String? = nil, commenterEmail: String? = nil, commenterName: String, commenterLink: String? = nil, comment: String, commentHTML: String, parentId: String? = nil, date: Date?, localDateString: String? = nil, localDateHours: Int? = nil, votes: Int? = nil, votesUp: Int? = nil, votesDown: Int? = nil, expireAt: Date? = nil, verified: Bool, verifiedDate: Date? = nil, verificationId: String? = nil, notificationSentForParent: Bool? = nil, notificationSentForParentTenant: Bool? = nil, reviewed: Bool? = nil, imported: Bool? = nil, externalId: String? = nil, externalParentId: String? = nil, avatarSrc: String? = nil, isSpam: Bool? = nil, permNotSpam: Bool? = nil, aiDeterminedSpam: Bool? = nil, hasImages: Bool? = nil, pageNumber: Int? = nil, pageNumberOF: Int? = nil, pageNumberNF: Int? = nil, hasLinks: Bool? = nil, hasCode: Bool? = nil, approved: Bool, locale: String?, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isBannedUser: Bool? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, flagCount: Int? = nil, rating: Double? = nil, displayLabel: String? = nil, fromProductId: Int? = nil, meta: FCommentMeta? = nil, ipHash: String? = nil, mentions: [CommentUserMentionInfo]? = nil, hashTags: [CommentUserHashTagInfo]? = nil, badges: [CommentUserBadgeInfo]? = nil, domain: String? = nil, veteranBadgeProcessed: String? = nil, moderationGroupIds: [String]? = nil, didProcessBadges: Bool? = nil, fromOfflineRestore: Bool? = nil, autoplayJobId: String? = nil, autoplayDelayMS: Int64? = nil, feedbackIds: [String]? = nil, logs: [CommentLogEntry]? = nil, groupIds: [String]? = nil, viewCount: Int64? = nil, requiresVerification: Bool? = nil, editKey: String? = nil, tosAcceptedAt: Date? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.urlId = urlId
@@ -153,6 +154,7 @@ public struct FComment: Sendable, Codable, JSONEncodable, Hashable {
         self.viewCount = viewCount
         self.requiresVerification = requiresVerification
         self.editKey = editKey
+        self.tosAcceptedAt = tosAcceptedAt
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -227,6 +229,7 @@ public struct FComment: Sendable, Codable, JSONEncodable, Hashable {
         case viewCount
         case requiresVerification
         case editKey
+        case tosAcceptedAt
     }
 
     // Encodable protocol methods
@@ -304,6 +307,7 @@ public struct FComment: Sendable, Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(viewCount, forKey: .viewCount)
         try container.encodeIfPresent(requiresVerification, forKey: .requiresVerification)
         try container.encodeIfPresent(editKey, forKey: .editKey)
+        try container.encodeIfPresent(tosAcceptedAt, forKey: .tosAcceptedAt)
     }
 }
 

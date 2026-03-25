@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **maxDomains** | **Double** |  | 
 **maxWhiteLabeledTenants** | **Double** |  | 
 **maxMonthlyEventLogRequests** | **Double** |  | 
+**maxCustomCollectionSize** | **Double** |  | 
 **hasWhiteLabeling** | **Bool** |  | 
 **hasDebranding** | **Bool** |  | 
 **hasLLMSpamDetection** | **Bool** |  | 
@@ -30,6 +31,7 @@ Name | Type | Description | Notes
 **hasAuditing** | **Bool** |  | 
 **hasFlexPricing** | **Bool** |  | 
 **enableSAML** | **Bool** |  | [optional] 
+**enableCanvasLTI** | **Bool** |  | [optional] 
 **flexPageLoadCostCents** | **Double** |  | [optional] 
 **flexPageLoadUnit** | **Double** |  | [optional] 
 **flexCommentCostCents** | **Double** |  | [optional] 

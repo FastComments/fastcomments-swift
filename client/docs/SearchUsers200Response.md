@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
+**sections** | [UserSearchSectionResult] |  | 
 **users** | [UserSearchResult] |  | 
 **reason** | **String** |  | 
 **code** | **String** |  | 

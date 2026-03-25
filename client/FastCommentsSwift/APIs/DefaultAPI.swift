@@ -436,6 +436,57 @@ open class DefaultAPI {
     /**
 
      - parameter tenantId: (query)  
+     - parameter userId: (query)  
+     - parameter id: (path)  
+     - parameter changeTicketStateBody: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: ChangeTicketState200Response
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func changeTicketState(tenantId: String, userId: String, id: String, changeTicketStateBody: ChangeTicketStateBody, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ChangeTicketState200Response {
+        return try await changeTicketStateWithRequestBuilder(tenantId: tenantId, userId: userId, id: id, changeTicketStateBody: changeTicketStateBody, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - PATCH /api/v1/tickets/{id}/state
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter userId: (query)  
+     - parameter id: (path)  
+     - parameter changeTicketStateBody: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<ChangeTicketState200Response> 
+     */
+    open class func changeTicketStateWithRequestBuilder(tenantId: String, userId: String, id: String, changeTicketStateBody: ChangeTicketStateBody, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ChangeTicketState200Response> {
+        var localVariablePath = "/api/v1/tickets/{id}/state"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: changeTicketStateBody, codableHelper: apiConfiguration.codableHelper)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "userId": (wrappedValue: userId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ChangeTicketState200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
      - parameter questionId: (query)  (optional)
      - parameter questionIds: (query)  (optional)
      - parameter urlId: (query)  (optional)
@@ -893,6 +944,52 @@ open class DefaultAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<CreateTenantUser200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter userId: (query)  
+     - parameter createTicketBody: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: CreateTicket200Response
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func createTicket(tenantId: String, userId: String, createTicketBody: CreateTicketBody, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateTicket200Response {
+        return try await createTicketWithRequestBuilder(tenantId: tenantId, userId: userId, createTicketBody: createTicketBody, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - POST /api/v1/tickets
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter userId: (query)  
+     - parameter createTicketBody: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<CreateTicket200Response> 
+     */
+    open class func createTicketWithRequestBuilder(tenantId: String, userId: String, createTicketBody: CreateTicketBody, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateTicket200Response> {
+        let localVariablePath = "/api/v1/tickets"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createTicketBody, codableHelper: apiConfiguration.codableHelper)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "userId": (wrappedValue: userId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CreateTicket200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -3627,6 +3724,108 @@ open class DefaultAPI {
 
      - parameter tenantId: (query)  
      - parameter id: (path)  
+     - parameter userId: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetTicket200Response
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getTicket(tenantId: String, id: String, userId: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetTicket200Response {
+        return try await getTicketWithRequestBuilder(tenantId: tenantId, id: id, userId: userId, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /api/v1/tickets/{id}
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter id: (path)  
+     - parameter userId: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetTicket200Response> 
+     */
+    open class func getTicketWithRequestBuilder(tenantId: String, id: String, userId: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetTicket200Response> {
+        var localVariablePath = "/api/v1/tickets/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "userId": (wrappedValue: userId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetTicket200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter userId: (query)  (optional)
+     - parameter state: (query)  (optional)
+     - parameter skip: (query)  (optional)
+     - parameter limit: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetTickets200Response
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getTickets(tenantId: String, userId: String? = nil, state: Double? = nil, skip: Double? = nil, limit: Double? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetTickets200Response {
+        return try await getTicketsWithRequestBuilder(tenantId: tenantId, userId: userId, state: state, skip: skip, limit: limit, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /api/v1/tickets
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter userId: (query)  (optional)
+     - parameter state: (query)  (optional)
+     - parameter skip: (query)  (optional)
+     - parameter limit: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetTickets200Response> 
+     */
+    open class func getTicketsWithRequestBuilder(tenantId: String, userId: String? = nil, state: Double? = nil, skip: Double? = nil, limit: Double? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetTickets200Response> {
+        let localVariablePath = "/api/v1/tickets"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "userId": (wrappedValue: userId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "state": (wrappedValue: state?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "skip": (wrappedValue: skip?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "limit": (wrappedValue: limit?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetTickets200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter id: (path)  
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetUser200Response
      */
@@ -5107,6 +5306,57 @@ open class DefaultAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<FlagCommentPublic200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter id: (path)  
+     - parameter updateAPIUserSubscriptionData: (body)  
+     - parameter userId: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: UpdateSubscriptionAPIResponse
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func updateSubscription(tenantId: String, id: String, updateAPIUserSubscriptionData: UpdateAPIUserSubscriptionData, userId: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> UpdateSubscriptionAPIResponse {
+        return try await updateSubscriptionWithRequestBuilder(tenantId: tenantId, id: id, updateAPIUserSubscriptionData: updateAPIUserSubscriptionData, userId: userId, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - PATCH /api/v1/subscriptions/{id}
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter id: (path)  
+     - parameter updateAPIUserSubscriptionData: (body)  
+     - parameter userId: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<UpdateSubscriptionAPIResponse> 
+     */
+    open class func updateSubscriptionWithRequestBuilder(tenantId: String, id: String, updateAPIUserSubscriptionData: UpdateAPIUserSubscriptionData, userId: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<UpdateSubscriptionAPIResponse> {
+        var localVariablePath = "/api/v1/subscriptions/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateAPIUserSubscriptionData, codableHelper: apiConfiguration.codableHelper)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "userId": (wrappedValue: userId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UpdateSubscriptionAPIResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }

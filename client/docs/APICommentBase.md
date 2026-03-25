@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 **localDateString** | **String** |  | [optional] 
 **locale** | **String** |  | 
 **mentions** | [CommentUserMentionInfo] |  | [optional] 
-**meta** | [**FCommentMeta**](FCommentMeta.md) |  | [optional] 
+**meta** | [**APICommentBaseMeta**](APICommentBaseMeta.md) |  | [optional] 
 **moderationGroupIds** | **[String]** |  | [optional] 
 **notificationSentForParent** | **Bool** |  | [optional] 
 **notificationSentForParentTenant** | **Bool** |  | [optional] 

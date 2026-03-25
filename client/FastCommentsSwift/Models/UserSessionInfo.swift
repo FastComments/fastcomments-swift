@@ -19,11 +19,12 @@ public struct UserSessionInfo: Sendable, Codable, JSONEncodable, Hashable {
     public var groupIds: [String]?
     public var hasBlockedUsers: Bool?
     public var isAnonSession: Bool?
+    public var needsTOS: Bool?
     public var sessionId: String?
     public var username: String?
     public var websiteUrl: String?
 
-    public init(id: String? = nil, authorized: Bool? = nil, avatarSrc: String? = nil, badges: [CommentUserBadgeInfo]? = nil, displayLabel: String? = nil, displayName: String? = nil, email: String? = nil, groupIds: [String]? = nil, hasBlockedUsers: Bool? = nil, isAnonSession: Bool? = nil, sessionId: String? = nil, username: String? = nil, websiteUrl: String? = nil) {
+    public init(id: String? = nil, authorized: Bool? = nil, avatarSrc: String? = nil, badges: [CommentUserBadgeInfo]? = nil, displayLabel: String? = nil, displayName: String? = nil, email: String? = nil, groupIds: [String]? = nil, hasBlockedUsers: Bool? = nil, isAnonSession: Bool? = nil, needsTOS: Bool? = nil, sessionId: String? = nil, username: String? = nil, websiteUrl: String? = nil) {
         self.id = id
         self.authorized = authorized
         self.avatarSrc = avatarSrc
@@ -34,6 +35,7 @@ public struct UserSessionInfo: Sendable, Codable, JSONEncodable, Hashable {
         self.groupIds = groupIds
         self.hasBlockedUsers = hasBlockedUsers
         self.isAnonSession = isAnonSession
+        self.needsTOS = needsTOS
         self.sessionId = sessionId
         self.username = username
         self.websiteUrl = websiteUrl
@@ -50,6 +52,7 @@ public struct UserSessionInfo: Sendable, Codable, JSONEncodable, Hashable {
         case groupIds
         case hasBlockedUsers
         case isAnonSession
+        case needsTOS
         case sessionId
         case username
         case websiteUrl
@@ -69,6 +72,7 @@ public struct UserSessionInfo: Sendable, Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(groupIds, forKey: .groupIds)
         try container.encodeIfPresent(hasBlockedUsers, forKey: .hasBlockedUsers)
         try container.encodeIfPresent(isAnonSession, forKey: .isAnonSession)
+        try container.encodeIfPresent(needsTOS, forKey: .needsTOS)
         try container.encodeIfPresent(sessionId, forKey: .sessionId)
         try container.encodeIfPresent(username, forKey: .username)
         try container.encodeIfPresent(websiteUrl, forKey: .websiteUrl)

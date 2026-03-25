@@ -18,8 +18,9 @@ public struct UserBadgeProgress: Sendable, Codable, JSONEncodable, Hashable {
     public var manualTrustFactor: Double?
     /** Construct a type with a set of properties K of type T */
     public var progress: [String: Double]
+    public var tosAcceptedAt: Date?
 
-    public init(id: String, tenantId: String, userId: String, firstCommentId: String, firstCommentDate: Date, autoTrustFactor: Double? = nil, manualTrustFactor: Double? = nil, progress: [String: Double]) {
+    public init(id: String, tenantId: String, userId: String, firstCommentId: String, firstCommentDate: Date, autoTrustFactor: Double? = nil, manualTrustFactor: Double? = nil, progress: [String: Double], tosAcceptedAt: Date? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.userId = userId
@@ -28,6 +29,7 @@ public struct UserBadgeProgress: Sendable, Codable, JSONEncodable, Hashable {
         self.autoTrustFactor = autoTrustFactor
         self.manualTrustFactor = manualTrustFactor
         self.progress = progress
+        self.tosAcceptedAt = tosAcceptedAt
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -39,6 +41,7 @@ public struct UserBadgeProgress: Sendable, Codable, JSONEncodable, Hashable {
         case autoTrustFactor
         case manualTrustFactor
         case progress
+        case tosAcceptedAt
     }
 
     // Encodable protocol methods
@@ -53,6 +56,7 @@ public struct UserBadgeProgress: Sendable, Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(autoTrustFactor, forKey: .autoTrustFactor)
         try container.encodeIfPresent(manualTrustFactor, forKey: .manualTrustFactor)
         try container.encode(progress, forKey: .progress)
+        try container.encodeIfPresent(tosAcceptedAt, forKey: .tosAcceptedAt)
     }
 }
 

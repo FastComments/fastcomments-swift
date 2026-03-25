@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **maxSSOUsers** | **Double** |  | 
 **maxModerators** | **Double** |  | 
 **maxDomains** | **Double** |  | 
+**maxCustomCollectionSize** | **Double** |  | [optional] 
 **hasDebranding** | **Bool** |  | 
 **forWhoText** | **String** |  | 
 **featureTaglines** | **[String]** |  | 

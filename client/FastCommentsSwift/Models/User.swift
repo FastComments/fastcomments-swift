@@ -16,6 +16,8 @@ public struct User: Sendable, Codable, JSONEncodable, Hashable {
     public var websiteUrl: String?
     public var email: String?
     public var pendingEmail: String?
+    public var backupEmail: String?
+    public var pendingBackupEmail: String?
     public var signUpDate: Int64
     public var createdFromUrlId: String?
     public var createdFromTenantId: String?
@@ -38,11 +40,16 @@ public struct User: Sendable, Codable, JSONEncodable, Hashable {
     public var isManageDataAdmin: Bool?
     public var isCommentModeratorAdmin: Bool?
     public var isAPIAdmin: Bool?
+    public var isSiteAdmin: Bool?
     public var moderatorIds: [String]?
     public var isImpersonator: Bool?
     public var isCouponManager: Bool?
     public var locale: String?
     public var digestEmailFrequency: DigestEmailFrequency?
+    public var notificationFrequency: Double?
+    public var adminNotificationFrequency: Double?
+    public var lastTenantNotificationSentDate: Date?
+    public var lastReplyNotificationSentDate: Date?
     public var ignoredAddToMySiteMessages: Bool?
     public var lastLoginDate: Date?
     public var displayLabel: String?
@@ -60,8 +67,9 @@ public struct User: Sendable, Codable, JSONEncodable, Hashable {
     public var countryFlag: String?
     public var socialLinks: [String]?
     public var hasTwoFactor: Bool?
+    public var isEmailSuppressed: Bool?
 
-    public init(id: String, tenantId: String? = nil, username: String, displayName: String? = nil, websiteUrl: String? = nil, email: String?, pendingEmail: String? = nil, signUpDate: Int64, createdFromUrlId: String? = nil, createdFromTenantId: String?, createdFromIpHashed: String, verified: Bool, loginId: String, loginIdDate: Int64, loginCount: Int? = nil, optedInNotifications: Bool? = nil, optedInTenantNotifications: Bool? = nil, hideAccountCode: Bool? = nil, avatarSrc: String? = nil, isFastCommentsHelpRequestAdmin: Bool? = nil, isHelpRequestAdmin: Bool? = nil, isAccountOwner: Bool? = nil, isAdminAdmin: Bool? = nil, isBillingAdmin: Bool? = nil, isAnalyticsAdmin: Bool? = nil, isCustomizationAdmin: Bool? = nil, isManageDataAdmin: Bool? = nil, isCommentModeratorAdmin: Bool? = nil, isAPIAdmin: Bool? = nil, moderatorIds: [String]? = nil, isImpersonator: Bool? = nil, isCouponManager: Bool? = nil, locale: String? = nil, digestEmailFrequency: DigestEmailFrequency? = nil, ignoredAddToMySiteMessages: Bool? = nil, lastLoginDate: Date? = nil, displayLabel: String? = nil, isProfileActivityPrivate: Bool? = nil, isProfileCommentsPrivate: Bool? = nil, isProfileDMDisabled: Bool? = nil, profileCommentApprovalMode: Double? = nil, karma: Double? = nil, passwordHash: String? = nil, averageTicketAckTimeMS: Double? = nil, hasBlockedUsers: Bool? = nil, bio: String? = nil, headerBackgroundSrc: String? = nil, countryCode: String? = nil, countryFlag: String? = nil, socialLinks: [String]? = nil, hasTwoFactor: Bool? = nil) {
+    public init(id: String, tenantId: String? = nil, username: String, displayName: String? = nil, websiteUrl: String? = nil, email: String?, pendingEmail: String? = nil, backupEmail: String? = nil, pendingBackupEmail: String? = nil, signUpDate: Int64, createdFromUrlId: String? = nil, createdFromTenantId: String?, createdFromIpHashed: String, verified: Bool, loginId: String, loginIdDate: Int64, loginCount: Int? = nil, optedInNotifications: Bool? = nil, optedInTenantNotifications: Bool? = nil, hideAccountCode: Bool? = nil, avatarSrc: String? = nil, isFastCommentsHelpRequestAdmin: Bool? = nil, isHelpRequestAdmin: Bool? = nil, isAccountOwner: Bool? = nil, isAdminAdmin: Bool? = nil, isBillingAdmin: Bool? = nil, isAnalyticsAdmin: Bool? = nil, isCustomizationAdmin: Bool? = nil, isManageDataAdmin: Bool? = nil, isCommentModeratorAdmin: Bool? = nil, isAPIAdmin: Bool? = nil, isSiteAdmin: Bool? = nil, moderatorIds: [String]? = nil, isImpersonator: Bool? = nil, isCouponManager: Bool? = nil, locale: String? = nil, digestEmailFrequency: DigestEmailFrequency? = nil, notificationFrequency: Double? = nil, adminNotificationFrequency: Double? = nil, lastTenantNotificationSentDate: Date? = nil, lastReplyNotificationSentDate: Date? = nil, ignoredAddToMySiteMessages: Bool? = nil, lastLoginDate: Date? = nil, displayLabel: String? = nil, isProfileActivityPrivate: Bool? = nil, isProfileCommentsPrivate: Bool? = nil, isProfileDMDisabled: Bool? = nil, profileCommentApprovalMode: Double? = nil, karma: Double? = nil, passwordHash: String? = nil, averageTicketAckTimeMS: Double? = nil, hasBlockedUsers: Bool? = nil, bio: String? = nil, headerBackgroundSrc: String? = nil, countryCode: String? = nil, countryFlag: String? = nil, socialLinks: [String]? = nil, hasTwoFactor: Bool? = nil, isEmailSuppressed: Bool? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.username = username
@@ -69,6 +77,8 @@ public struct User: Sendable, Codable, JSONEncodable, Hashable {
         self.websiteUrl = websiteUrl
         self.email = email
         self.pendingEmail = pendingEmail
+        self.backupEmail = backupEmail
+        self.pendingBackupEmail = pendingBackupEmail
         self.signUpDate = signUpDate
         self.createdFromUrlId = createdFromUrlId
         self.createdFromTenantId = createdFromTenantId
@@ -91,11 +101,16 @@ public struct User: Sendable, Codable, JSONEncodable, Hashable {
         self.isManageDataAdmin = isManageDataAdmin
         self.isCommentModeratorAdmin = isCommentModeratorAdmin
         self.isAPIAdmin = isAPIAdmin
+        self.isSiteAdmin = isSiteAdmin
         self.moderatorIds = moderatorIds
         self.isImpersonator = isImpersonator
         self.isCouponManager = isCouponManager
         self.locale = locale
         self.digestEmailFrequency = digestEmailFrequency
+        self.notificationFrequency = notificationFrequency
+        self.adminNotificationFrequency = adminNotificationFrequency
+        self.lastTenantNotificationSentDate = lastTenantNotificationSentDate
+        self.lastReplyNotificationSentDate = lastReplyNotificationSentDate
         self.ignoredAddToMySiteMessages = ignoredAddToMySiteMessages
         self.lastLoginDate = lastLoginDate
         self.displayLabel = displayLabel
@@ -113,6 +128,7 @@ public struct User: Sendable, Codable, JSONEncodable, Hashable {
         self.countryFlag = countryFlag
         self.socialLinks = socialLinks
         self.hasTwoFactor = hasTwoFactor
+        self.isEmailSuppressed = isEmailSuppressed
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -123,6 +139,8 @@ public struct User: Sendable, Codable, JSONEncodable, Hashable {
         case websiteUrl
         case email
         case pendingEmail
+        case backupEmail
+        case pendingBackupEmail
         case signUpDate
         case createdFromUrlId
         case createdFromTenantId
@@ -145,11 +163,16 @@ public struct User: Sendable, Codable, JSONEncodable, Hashable {
         case isManageDataAdmin
         case isCommentModeratorAdmin
         case isAPIAdmin
+        case isSiteAdmin
         case moderatorIds
         case isImpersonator
         case isCouponManager
         case locale
         case digestEmailFrequency
+        case notificationFrequency
+        case adminNotificationFrequency
+        case lastTenantNotificationSentDate
+        case lastReplyNotificationSentDate
         case ignoredAddToMySiteMessages
         case lastLoginDate
         case displayLabel
@@ -167,6 +190,7 @@ public struct User: Sendable, Codable, JSONEncodable, Hashable {
         case countryFlag
         case socialLinks
         case hasTwoFactor
+        case isEmailSuppressed
     }
 
     // Encodable protocol methods
@@ -180,6 +204,8 @@ public struct User: Sendable, Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(websiteUrl, forKey: .websiteUrl)
         try container.encode(email, forKey: .email)
         try container.encodeIfPresent(pendingEmail, forKey: .pendingEmail)
+        try container.encodeIfPresent(backupEmail, forKey: .backupEmail)
+        try container.encodeIfPresent(pendingBackupEmail, forKey: .pendingBackupEmail)
         try container.encode(signUpDate, forKey: .signUpDate)
         try container.encodeIfPresent(createdFromUrlId, forKey: .createdFromUrlId)
         try container.encode(createdFromTenantId, forKey: .createdFromTenantId)
@@ -202,11 +228,16 @@ public struct User: Sendable, Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(isManageDataAdmin, forKey: .isManageDataAdmin)
         try container.encodeIfPresent(isCommentModeratorAdmin, forKey: .isCommentModeratorAdmin)
         try container.encodeIfPresent(isAPIAdmin, forKey: .isAPIAdmin)
+        try container.encodeIfPresent(isSiteAdmin, forKey: .isSiteAdmin)
         try container.encodeIfPresent(moderatorIds, forKey: .moderatorIds)
         try container.encodeIfPresent(isImpersonator, forKey: .isImpersonator)
         try container.encodeIfPresent(isCouponManager, forKey: .isCouponManager)
         try container.encodeIfPresent(locale, forKey: .locale)
         try container.encodeIfPresent(digestEmailFrequency, forKey: .digestEmailFrequency)
+        try container.encodeIfPresent(notificationFrequency, forKey: .notificationFrequency)
+        try container.encodeIfPresent(adminNotificationFrequency, forKey: .adminNotificationFrequency)
+        try container.encodeIfPresent(lastTenantNotificationSentDate, forKey: .lastTenantNotificationSentDate)
+        try container.encodeIfPresent(lastReplyNotificationSentDate, forKey: .lastReplyNotificationSentDate)
         try container.encodeIfPresent(ignoredAddToMySiteMessages, forKey: .ignoredAddToMySiteMessages)
         try container.encodeIfPresent(lastLoginDate, forKey: .lastLoginDate)
         try container.encodeIfPresent(displayLabel, forKey: .displayLabel)
@@ -224,6 +255,7 @@ public struct User: Sendable, Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(countryFlag, forKey: .countryFlag)
         try container.encodeIfPresent(socialLinks, forKey: .socialLinks)
         try container.encodeIfPresent(hasTwoFactor, forKey: .hasTwoFactor)
+        try container.encodeIfPresent(isEmailSuppressed, forKey: .isEmailSuppressed)
     }
 }
 

@@ -27,8 +27,9 @@ public struct UserBadge: Sendable, Codable, JSONEncodable, Hashable {
     public var displayedOnComments: Bool
     public var receivedAt: Date
     public var order: Int?
+    public var urlId: String?
 
-    public init(id: String, userId: String, badgeId: String, fromTenantId: String, createdAt: Date, type: Int, threshold: Int64, description: String, displayLabel: String, displaySrc: String? = nil, backgroundColor: String? = nil, borderColor: String? = nil, textColor: String? = nil, cssClass: String? = nil, veteranUserThresholdMillis: Int64, displayedOnComments: Bool, receivedAt: Date, order: Int? = nil) {
+    public init(id: String, userId: String, badgeId: String, fromTenantId: String, createdAt: Date, type: Int, threshold: Int64, description: String, displayLabel: String, displaySrc: String? = nil, backgroundColor: String? = nil, borderColor: String? = nil, textColor: String? = nil, cssClass: String? = nil, veteranUserThresholdMillis: Int64, displayedOnComments: Bool, receivedAt: Date, order: Int? = nil, urlId: String? = nil) {
         self.id = id
         self.userId = userId
         self.badgeId = badgeId
@@ -47,6 +48,7 @@ public struct UserBadge: Sendable, Codable, JSONEncodable, Hashable {
         self.displayedOnComments = displayedOnComments
         self.receivedAt = receivedAt
         self.order = order
+        self.urlId = urlId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -68,6 +70,7 @@ public struct UserBadge: Sendable, Codable, JSONEncodable, Hashable {
         case displayedOnComments
         case receivedAt
         case order
+        case urlId
     }
 
     // Encodable protocol methods
@@ -92,6 +95,7 @@ public struct UserBadge: Sendable, Codable, JSONEncodable, Hashable {
         try container.encode(displayedOnComments, forKey: .displayedOnComments)
         try container.encode(receivedAt, forKey: .receivedAt)
         try container.encodeIfPresent(order, forKey: .order)
+        try container.encodeIfPresent(urlId, forKey: .urlId)
     }
 }
 

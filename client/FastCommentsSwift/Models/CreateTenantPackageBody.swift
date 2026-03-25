@@ -25,6 +25,7 @@ public struct CreateTenantPackageBody: Sendable, Codable, JSONEncodable, Hashabl
     public var maxDomains: Double
     public var maxWhiteLabeledTenants: Double?
     public var maxMonthlyEventLogRequests: Double?
+    public var maxCustomCollectionSize: Double?
     public var hasWhiteLabeling: Bool?
     public var hasDebranding: Bool
     public var hasLLMSpamDetection: Bool?
@@ -58,7 +59,7 @@ public struct CreateTenantPackageBody: Sendable, Codable, JSONEncodable, Hashabl
     public var flexSSOModeratorCostCents: Double?
     public var flexSSOModeratorUnit: Double?
 
-    public init(name: String, monthlyCostUSD: Double? = nil, yearlyCostUSD: Double? = nil, monthlyStripePlanId: String? = nil, yearlyStripePlanId: String? = nil, maxMonthlyPageLoads: Double, maxMonthlyAPICredits: Double, maxMonthlySmallWidgetsCredits: Double? = nil, maxMonthlyComments: Double, maxConcurrentUsers: Double, maxTenantUsers: Double, maxSSOUsers: Double, maxModerators: Double, maxDomains: Double, maxWhiteLabeledTenants: Double? = nil, maxMonthlyEventLogRequests: Double? = nil, hasWhiteLabeling: Bool? = nil, hasDebranding: Bool, hasLLMSpamDetection: Bool? = nil, forWhoText: String, featureTaglines: [String], hasAuditing: Bool? = nil, hasFlexPricing: Bool, enableSAML: Bool? = nil, flexPageLoadCostCents: Double? = nil, flexPageLoadUnit: Double? = nil, flexCommentCostCents: Double? = nil, flexCommentUnit: Double? = nil, flexSSOUserCostCents: Double? = nil, flexSSOUserUnit: Double? = nil, flexAPICreditCostCents: Double? = nil, flexAPICreditUnit: Double? = nil, flexSmallWidgetsCreditCostCents: Double? = nil, flexSmallWidgetsCreditUnit: Double? = nil, flexModeratorCostCents: Double? = nil, flexModeratorUnit: Double? = nil, flexAdminCostCents: Double? = nil, flexAdminUnit: Double? = nil, flexDomainCostCents: Double? = nil, flexDomainUnit: Double? = nil, flexChatGPTCostCents: Double? = nil, flexChatGPTUnit: Double? = nil, flexMinimumCostCents: Double? = nil, flexManagedTenantCostCents: Double? = nil, flexSSOAdminCostCents: Double? = nil, flexSSOAdminUnit: Double? = nil, flexSSOModeratorCostCents: Double? = nil, flexSSOModeratorUnit: Double? = nil) {
+    public init(name: String, monthlyCostUSD: Double? = nil, yearlyCostUSD: Double? = nil, monthlyStripePlanId: String? = nil, yearlyStripePlanId: String? = nil, maxMonthlyPageLoads: Double, maxMonthlyAPICredits: Double, maxMonthlySmallWidgetsCredits: Double? = nil, maxMonthlyComments: Double, maxConcurrentUsers: Double, maxTenantUsers: Double, maxSSOUsers: Double, maxModerators: Double, maxDomains: Double, maxWhiteLabeledTenants: Double? = nil, maxMonthlyEventLogRequests: Double? = nil, maxCustomCollectionSize: Double? = nil, hasWhiteLabeling: Bool? = nil, hasDebranding: Bool, hasLLMSpamDetection: Bool? = nil, forWhoText: String, featureTaglines: [String], hasAuditing: Bool? = nil, hasFlexPricing: Bool, enableSAML: Bool? = nil, flexPageLoadCostCents: Double? = nil, flexPageLoadUnit: Double? = nil, flexCommentCostCents: Double? = nil, flexCommentUnit: Double? = nil, flexSSOUserCostCents: Double? = nil, flexSSOUserUnit: Double? = nil, flexAPICreditCostCents: Double? = nil, flexAPICreditUnit: Double? = nil, flexSmallWidgetsCreditCostCents: Double? = nil, flexSmallWidgetsCreditUnit: Double? = nil, flexModeratorCostCents: Double? = nil, flexModeratorUnit: Double? = nil, flexAdminCostCents: Double? = nil, flexAdminUnit: Double? = nil, flexDomainCostCents: Double? = nil, flexDomainUnit: Double? = nil, flexChatGPTCostCents: Double? = nil, flexChatGPTUnit: Double? = nil, flexMinimumCostCents: Double? = nil, flexManagedTenantCostCents: Double? = nil, flexSSOAdminCostCents: Double? = nil, flexSSOAdminUnit: Double? = nil, flexSSOModeratorCostCents: Double? = nil, flexSSOModeratorUnit: Double? = nil) {
         self.name = name
         self.monthlyCostUSD = monthlyCostUSD
         self.yearlyCostUSD = yearlyCostUSD
@@ -75,6 +76,7 @@ public struct CreateTenantPackageBody: Sendable, Codable, JSONEncodable, Hashabl
         self.maxDomains = maxDomains
         self.maxWhiteLabeledTenants = maxWhiteLabeledTenants
         self.maxMonthlyEventLogRequests = maxMonthlyEventLogRequests
+        self.maxCustomCollectionSize = maxCustomCollectionSize
         self.hasWhiteLabeling = hasWhiteLabeling
         self.hasDebranding = hasDebranding
         self.hasLLMSpamDetection = hasLLMSpamDetection
@@ -126,6 +128,7 @@ public struct CreateTenantPackageBody: Sendable, Codable, JSONEncodable, Hashabl
         case maxDomains
         case maxWhiteLabeledTenants
         case maxMonthlyEventLogRequests
+        case maxCustomCollectionSize
         case hasWhiteLabeling
         case hasDebranding
         case hasLLMSpamDetection
@@ -180,6 +183,7 @@ public struct CreateTenantPackageBody: Sendable, Codable, JSONEncodable, Hashabl
         try container.encode(maxDomains, forKey: .maxDomains)
         try container.encodeIfPresent(maxWhiteLabeledTenants, forKey: .maxWhiteLabeledTenants)
         try container.encodeIfPresent(maxMonthlyEventLogRequests, forKey: .maxMonthlyEventLogRequests)
+        try container.encodeIfPresent(maxCustomCollectionSize, forKey: .maxCustomCollectionSize)
         try container.encodeIfPresent(hasWhiteLabeling, forKey: .hasWhiteLabeling)
         try container.encode(hasDebranding, forKey: .hasDebranding)
         try container.encodeIfPresent(hasLLMSpamDetection, forKey: .hasLLMSpamDetection)

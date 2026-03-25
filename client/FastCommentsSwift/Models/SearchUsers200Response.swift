@@ -10,6 +10,7 @@ import Foundation
 public struct SearchUsers200Response: Sendable, Codable, JSONEncodable, Hashable {
 
     public var status: APIStatus
+    public var sections: [UserSearchSectionResult]
     public var users: [UserSearchResult]
     public var reason: String
     public var code: String
@@ -19,8 +20,9 @@ public struct SearchUsers200Response: Sendable, Codable, JSONEncodable, Hashable
     public var translatedError: String?
     public var customConfig: CustomConfigParameters?
 
-    public init(status: APIStatus, users: [UserSearchResult], reason: String, code: String, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(status: APIStatus, sections: [UserSearchSectionResult], users: [UserSearchResult], reason: String, code: String, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.status = status
+        self.sections = sections
         self.users = users
         self.reason = reason
         self.code = code
@@ -33,6 +35,7 @@ public struct SearchUsers200Response: Sendable, Codable, JSONEncodable, Hashable
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case status
+        case sections
         case users
         case reason
         case code
@@ -48,6 +51,7 @@ public struct SearchUsers200Response: Sendable, Codable, JSONEncodable, Hashable
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(status, forKey: .status)
+        try container.encode(sections, forKey: .sections)
         try container.encode(users, forKey: .users)
         try container.encode(reason, forKey: .reason)
         try container.encode(code, forKey: .code)

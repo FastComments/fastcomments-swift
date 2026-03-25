@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **maxDomains** | **Double** |  | 
 **maxWhiteLabeledTenants** | **Double** |  | [optional] 
 **maxMonthlyEventLogRequests** | **Double** |  | [optional] 
+**maxCustomCollectionSize** | **Double** |  | [optional] 
 **hasWhiteLabeling** | **Bool** |  | [optional] 
 **hasDebranding** | **Bool** |  | 
 **hasLLMSpamDetection** | **Bool** |  | [optional] 

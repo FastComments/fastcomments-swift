@@ -9,6 +9,7 @@ import Foundation
 
 public struct APIUserSubscription: Sendable, Codable, JSONEncodable, Hashable {
 
+    public var notificationFrequency: Double?
     public var createdAt: Date
     public var pageTitle: String?
     public var url: String?
@@ -17,7 +18,8 @@ public struct APIUserSubscription: Sendable, Codable, JSONEncodable, Hashable {
     public var userId: String?
     public var id: String
 
-    public init(createdAt: Date, pageTitle: String? = nil, url: String? = nil, urlId: String, anonUserId: String? = nil, userId: String? = nil, id: String) {
+    public init(notificationFrequency: Double? = nil, createdAt: Date, pageTitle: String? = nil, url: String? = nil, urlId: String, anonUserId: String? = nil, userId: String? = nil, id: String) {
+        self.notificationFrequency = notificationFrequency
         self.createdAt = createdAt
         self.pageTitle = pageTitle
         self.url = url
@@ -28,6 +30,7 @@ public struct APIUserSubscription: Sendable, Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case notificationFrequency
         case createdAt
         case pageTitle
         case url
@@ -41,6 +44,7 @@ public struct APIUserSubscription: Sendable, Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(notificationFrequency, forKey: .notificationFrequency)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encodeIfPresent(pageTitle, forKey: .pageTitle)
         try container.encodeIfPresent(url, forKey: .url)

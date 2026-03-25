@@ -20,6 +20,7 @@ public struct UpdateTenantPackageBody: Sendable, Codable, JSONEncodable, Hashabl
     public var maxSSOUsers: Double?
     public var maxModerators: Double?
     public var maxDomains: Double?
+    public var maxCustomCollectionSize: Double?
     public var hasDebranding: Bool?
     public var hasWhiteLabeling: Bool?
     public var forWhoText: String?
@@ -41,7 +42,7 @@ public struct UpdateTenantPackageBody: Sendable, Codable, JSONEncodable, Hashabl
     public var flexDomainUnit: Double?
     public var flexMinimumCostCents: Double?
 
-    public init(name: String? = nil, monthlyCostUSD: Double? = nil, yearlyCostUSD: Double? = nil, maxMonthlyPageLoads: Double? = nil, maxMonthlyAPICredits: Double? = nil, maxMonthlyComments: Double? = nil, maxConcurrentUsers: Double? = nil, maxTenantUsers: Double? = nil, maxSSOUsers: Double? = nil, maxModerators: Double? = nil, maxDomains: Double? = nil, hasDebranding: Bool? = nil, hasWhiteLabeling: Bool? = nil, forWhoText: String? = nil, featureTaglines: [String]? = nil, hasFlexPricing: Bool? = nil, flexPageLoadCostCents: Double? = nil, flexPageLoadUnit: Double? = nil, flexCommentCostCents: Double? = nil, flexCommentUnit: Double? = nil, flexSSOUserCostCents: Double? = nil, flexSSOUserUnit: Double? = nil, flexAPICreditCostCents: Double? = nil, flexAPICreditUnit: Double? = nil, flexModeratorCostCents: Double? = nil, flexModeratorUnit: Double? = nil, flexAdminCostCents: Double? = nil, flexAdminUnit: Double? = nil, flexDomainCostCents: Double? = nil, flexDomainUnit: Double? = nil, flexMinimumCostCents: Double? = nil) {
+    public init(name: String? = nil, monthlyCostUSD: Double? = nil, yearlyCostUSD: Double? = nil, maxMonthlyPageLoads: Double? = nil, maxMonthlyAPICredits: Double? = nil, maxMonthlyComments: Double? = nil, maxConcurrentUsers: Double? = nil, maxTenantUsers: Double? = nil, maxSSOUsers: Double? = nil, maxModerators: Double? = nil, maxDomains: Double? = nil, maxCustomCollectionSize: Double? = nil, hasDebranding: Bool? = nil, hasWhiteLabeling: Bool? = nil, forWhoText: String? = nil, featureTaglines: [String]? = nil, hasFlexPricing: Bool? = nil, flexPageLoadCostCents: Double? = nil, flexPageLoadUnit: Double? = nil, flexCommentCostCents: Double? = nil, flexCommentUnit: Double? = nil, flexSSOUserCostCents: Double? = nil, flexSSOUserUnit: Double? = nil, flexAPICreditCostCents: Double? = nil, flexAPICreditUnit: Double? = nil, flexModeratorCostCents: Double? = nil, flexModeratorUnit: Double? = nil, flexAdminCostCents: Double? = nil, flexAdminUnit: Double? = nil, flexDomainCostCents: Double? = nil, flexDomainUnit: Double? = nil, flexMinimumCostCents: Double? = nil) {
         self.name = name
         self.monthlyCostUSD = monthlyCostUSD
         self.yearlyCostUSD = yearlyCostUSD
@@ -53,6 +54,7 @@ public struct UpdateTenantPackageBody: Sendable, Codable, JSONEncodable, Hashabl
         self.maxSSOUsers = maxSSOUsers
         self.maxModerators = maxModerators
         self.maxDomains = maxDomains
+        self.maxCustomCollectionSize = maxCustomCollectionSize
         self.hasDebranding = hasDebranding
         self.hasWhiteLabeling = hasWhiteLabeling
         self.forWhoText = forWhoText
@@ -87,6 +89,7 @@ public struct UpdateTenantPackageBody: Sendable, Codable, JSONEncodable, Hashabl
         case maxSSOUsers
         case maxModerators
         case maxDomains
+        case maxCustomCollectionSize
         case hasDebranding
         case hasWhiteLabeling
         case forWhoText
@@ -124,6 +127,7 @@ public struct UpdateTenantPackageBody: Sendable, Codable, JSONEncodable, Hashabl
         try container.encodeIfPresent(maxSSOUsers, forKey: .maxSSOUsers)
         try container.encodeIfPresent(maxModerators, forKey: .maxModerators)
         try container.encodeIfPresent(maxDomains, forKey: .maxDomains)
+        try container.encodeIfPresent(maxCustomCollectionSize, forKey: .maxCustomCollectionSize)
         try container.encodeIfPresent(hasDebranding, forKey: .hasDebranding)
         try container.encodeIfPresent(hasWhiteLabeling, forKey: .hasWhiteLabeling)
         try container.encodeIfPresent(forWhoText, forKey: .forWhoText)

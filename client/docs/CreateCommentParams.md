@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **autoplayDelayMS** | **Int64** |  | [optional] 
 **feedbackIds** | **[String]** |  | [optional] 
 **questionValues** | [String: RecordStringStringOrNumberValue] | Construct a type with a set of properties K of type T | [optional] 
+**tos** | **Bool** |  | [optional] 
 **approved** | **Bool** |  | [optional] 
 **domain** | **String** |  | [optional] 
 **ip** | **String** |  | [optional] 
