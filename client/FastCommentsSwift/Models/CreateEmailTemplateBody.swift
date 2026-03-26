@@ -14,11 +14,11 @@ public struct CreateEmailTemplateBody: Sendable, Codable, JSONEncodable, Hashabl
     public var ejs: String
     public var domain: String?
     /** Construct a type with a set of properties K of type T */
-    public var translationOverridesByLocale: [String: Dictionary]?
+    public var translationOverridesByLocale: [String: [String: String]]?
     /** Construct a type with a set of properties K of type T */
     public var testData: [String: JSONValue]?
 
-    public init(emailTemplateId: String, displayName: String, ejs: String, domain: String? = nil, translationOverridesByLocale: [String: Dictionary]? = nil, testData: [String: JSONValue]? = nil) {
+    public init(emailTemplateId: String, displayName: String, ejs: String, domain: String? = nil, translationOverridesByLocale: [String: [String: String]]? = nil, testData: [String: JSONValue]? = nil) {
         self.emailTemplateId = emailTemplateId
         self.displayName = displayName
         self.ejs = ejs

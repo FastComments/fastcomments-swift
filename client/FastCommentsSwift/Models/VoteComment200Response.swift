@@ -9,20 +9,20 @@ import Foundation
 
 public struct VoteComment200Response: Sendable, Codable, JSONEncodable, Hashable {
 
-    public var status: APIStatus
+    public var status: APIStatus?
     public var voteId: String?
     public var isVerified: Bool?
     public var user: VoteResponseUser?
     public var editKey: String?
-    public var reason: String
-    public var code: String
+    public var reason: String?
+    public var code: String?
     public var secondaryCode: String?
     public var bannedUntil: Int64?
     public var maxCharacterLength: Int?
     public var translatedError: String?
     public var customConfig: CustomConfigParameters?
 
-    public init(status: APIStatus, voteId: String? = nil, isVerified: Bool? = nil, user: VoteResponseUser? = nil, editKey: String? = nil, reason: String, code: String, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(status: APIStatus? = nil, voteId: String? = nil, isVerified: Bool? = nil, user: VoteResponseUser? = nil, editKey: String? = nil, reason: String? = nil, code: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.status = status
         self.voteId = voteId
         self.isVerified = isVerified
@@ -56,13 +56,13 @@ public struct VoteComment200Response: Sendable, Codable, JSONEncodable, Hashable
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(status, forKey: .status)
+        try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(voteId, forKey: .voteId)
         try container.encodeIfPresent(isVerified, forKey: .isVerified)
         try container.encodeIfPresent(user, forKey: .user)
         try container.encodeIfPresent(editKey, forKey: .editKey)
-        try container.encode(reason, forKey: .reason)
-        try container.encode(code, forKey: .code)
+        try container.encodeIfPresent(reason, forKey: .reason)
+        try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)
         try container.encodeIfPresent(bannedUntil, forKey: .bannedUntil)
         try container.encodeIfPresent(maxCharacterLength, forKey: .maxCharacterLength)

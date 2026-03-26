@@ -10,11 +10,11 @@ import Foundation
 public struct GetCommentsPublic200Response: Sendable, Codable, JSONEncodable, Hashable {
 
     public var statusCode: Int?
-    public var status: APIStatus
-    public var code: String
-    public var reason: String
+    public var status: APIStatus?
+    public var code: String?
+    public var reason: String?
     public var translatedWarning: String?
-    public var comments: [PublicComment]
+    public var comments: [PublicComment]?
     public var user: UserSessionInfo?
     public var urlIdClean: String?
     public var lastGenDate: Int64?
@@ -25,7 +25,7 @@ public struct GetCommentsPublic200Response: Sendable, Codable, JSONEncodable, Ha
     public var hasBillingIssue: Bool?
     /** Construct a type with a set of properties K of type T */
     public var moduleData: [String: JSONValue]?
-    public var pageNumber: Int
+    public var pageNumber: Int?
     public var isWhiteLabeled: Bool?
     public var isProd: Bool?
     public var isCrawler: Bool?
@@ -42,7 +42,7 @@ public struct GetCommentsPublic200Response: Sendable, Codable, JSONEncodable, Ha
     public var maxCharacterLength: Int?
     public var translatedError: String?
 
-    public init(statusCode: Int? = nil, status: APIStatus, code: String, reason: String, translatedWarning: String? = nil, comments: [PublicComment], user: UserSessionInfo?, urlIdClean: String? = nil, lastGenDate: Int64? = nil, includesPastPages: Bool? = nil, isDemo: Bool? = nil, commentCount: Int? = nil, isSiteAdmin: Bool? = nil, hasBillingIssue: Bool? = nil, moduleData: [String: JSONValue]? = nil, pageNumber: Int, isWhiteLabeled: Bool? = nil, isProd: Bool? = nil, isCrawler: Bool? = nil, notificationCount: Int? = nil, hasMore: Bool? = nil, isClosed: Bool? = nil, presencePollState: Int? = nil, customConfig: CustomConfigParameters? = nil, urlIdWS: String? = nil, userIdWS: String? = nil, tenantIdWS: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil) {
+    public init(statusCode: Int? = nil, status: APIStatus? = nil, code: String? = nil, reason: String? = nil, translatedWarning: String? = nil, comments: [PublicComment] = [], user: UserSessionInfo? = nil, urlIdClean: String? = nil, lastGenDate: Int64? = nil, includesPastPages: Bool? = nil, isDemo: Bool? = nil, commentCount: Int? = nil, isSiteAdmin: Bool? = nil, hasBillingIssue: Bool? = nil, moduleData: [String: JSONValue]? = nil, pageNumber: Int? = nil, isWhiteLabeled: Bool? = nil, isProd: Bool? = nil, isCrawler: Bool? = nil, notificationCount: Int? = nil, hasMore: Bool? = nil, isClosed: Bool? = nil, presencePollState: Int? = nil, customConfig: CustomConfigParameters? = nil, urlIdWS: String? = nil, userIdWS: String? = nil, tenantIdWS: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil) {
         self.statusCode = statusCode
         self.status = status
         self.code = code
@@ -115,12 +115,12 @@ public struct GetCommentsPublic200Response: Sendable, Codable, JSONEncodable, Ha
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(statusCode, forKey: .statusCode)
-        try container.encode(status, forKey: .status)
-        try container.encode(code, forKey: .code)
-        try container.encode(reason, forKey: .reason)
+        try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(code, forKey: .code)
+        try container.encodeIfPresent(reason, forKey: .reason)
         try container.encodeIfPresent(translatedWarning, forKey: .translatedWarning)
-        try container.encode(comments, forKey: .comments)
-        try container.encode(user, forKey: .user)
+        try container.encodeIfPresent(comments, forKey: .comments)
+        try container.encodeIfPresent(user, forKey: .user)
         try container.encodeIfPresent(urlIdClean, forKey: .urlIdClean)
         try container.encodeIfPresent(lastGenDate, forKey: .lastGenDate)
         try container.encodeIfPresent(includesPastPages, forKey: .includesPastPages)
@@ -129,7 +129,7 @@ public struct GetCommentsPublic200Response: Sendable, Codable, JSONEncodable, Ha
         try container.encodeIfPresent(isSiteAdmin, forKey: .isSiteAdmin)
         try container.encodeIfPresent(hasBillingIssue, forKey: .hasBillingIssue)
         try container.encodeIfPresent(moduleData, forKey: .moduleData)
-        try container.encode(pageNumber, forKey: .pageNumber)
+        try container.encodeIfPresent(pageNumber, forKey: .pageNumber)
         try container.encodeIfPresent(isWhiteLabeled, forKey: .isWhiteLabeled)
         try container.encodeIfPresent(isProd, forKey: .isProd)
         try container.encodeIfPresent(isCrawler, forKey: .isCrawler)

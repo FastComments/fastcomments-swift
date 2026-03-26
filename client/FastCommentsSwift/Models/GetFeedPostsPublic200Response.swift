@@ -10,21 +10,21 @@ import Foundation
 public struct GetFeedPostsPublic200Response: Sendable, Codable, JSONEncodable, Hashable {
 
     public var myReacts: [String: [String: Bool]]?
-    public var status: APIStatus
-    public var feedPosts: [FeedPost]
+    public var status: APIStatus?
+    public var feedPosts: [FeedPost]?
     public var user: UserSessionInfo?
     public var urlIdWS: String?
     public var userIdWS: String?
     public var tenantIdWS: String?
-    public var reason: String
-    public var code: String
+    public var reason: String?
+    public var code: String?
     public var secondaryCode: String?
     public var bannedUntil: Int64?
     public var maxCharacterLength: Int?
     public var translatedError: String?
     public var customConfig: CustomConfigParameters?
 
-    public init(myReacts: [String: [String: Bool]]? = nil, status: APIStatus, feedPosts: [FeedPost], user: UserSessionInfo? = nil, urlIdWS: String? = nil, userIdWS: String? = nil, tenantIdWS: String? = nil, reason: String, code: String, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(myReacts: [String: [String: Bool]]? = nil, status: APIStatus? = nil, feedPosts: [FeedPost]? = nil, user: UserSessionInfo? = nil, urlIdWS: String? = nil, userIdWS: String? = nil, tenantIdWS: String? = nil, reason: String? = nil, code: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.myReacts = myReacts
         self.status = status
         self.feedPosts = feedPosts
@@ -63,14 +63,14 @@ public struct GetFeedPostsPublic200Response: Sendable, Codable, JSONEncodable, H
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(myReacts, forKey: .myReacts)
-        try container.encode(status, forKey: .status)
-        try container.encode(feedPosts, forKey: .feedPosts)
+        try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(feedPosts, forKey: .feedPosts)
         try container.encodeIfPresent(user, forKey: .user)
         try container.encodeIfPresent(urlIdWS, forKey: .urlIdWS)
         try container.encodeIfPresent(userIdWS, forKey: .userIdWS)
         try container.encodeIfPresent(tenantIdWS, forKey: .tenantIdWS)
-        try container.encode(reason, forKey: .reason)
-        try container.encode(code, forKey: .code)
+        try container.encodeIfPresent(reason, forKey: .reason)
+        try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)
         try container.encodeIfPresent(bannedUntil, forKey: .bannedUntil)
         try container.encodeIfPresent(maxCharacterLength, forKey: .maxCharacterLength)
@@ -78,4 +78,3 @@ public struct GetFeedPostsPublic200Response: Sendable, Codable, JSONEncodable, H
         try container.encodeIfPresent(customConfig, forKey: .customConfig)
     }
 }
-

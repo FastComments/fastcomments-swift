@@ -14,9 +14,9 @@ public struct RenderEmailTemplateBody: Sendable, Codable, JSONEncodable, Hashabl
     /** Construct a type with a set of properties K of type T */
     public var testData: [String: JSONValue]?
     /** Construct a type with a set of properties K of type T */
-    public var translationOverridesByLocale: [String: Dictionary]?
+    public var translationOverridesByLocale: [String: [String: String]]?
 
-    public init(emailTemplateId: String, ejs: String, testData: [String: JSONValue]? = nil, translationOverridesByLocale: [String: Dictionary]? = nil) {
+    public init(emailTemplateId: String, ejs: String, testData: [String: JSONValue]? = nil, translationOverridesByLocale: [String: [String: String]]? = nil) {
         self.emailTemplateId = emailTemplateId
         self.ejs = ejs
         self.testData = testData

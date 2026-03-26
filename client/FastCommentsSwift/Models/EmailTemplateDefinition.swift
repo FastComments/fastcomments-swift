@@ -13,10 +13,10 @@ public struct EmailTemplateDefinition: Sendable, Codable, JSONEncodable, Hashabl
     /** Construct a type with a set of properties K of type T */
     public var defaultTestData: [String: JSONValue]
     /** Construct a type with a set of properties K of type T */
-    public var defaultTranslationsByLocale: [String: Dictionary]
+    public var defaultTranslationsByLocale: [String: [String: String]]
     public var defaultEJS: String
 
-    public init(emailTemplateId: String, defaultTestData: [String: JSONValue], defaultTranslationsByLocale: [String: Dictionary], defaultEJS: String) {
+    public init(emailTemplateId: String, defaultTestData: [String: JSONValue], defaultTranslationsByLocale: [String: [String: String]], defaultEJS: String) {
         self.emailTemplateId = emailTemplateId
         self.defaultTestData = defaultTestData
         self.defaultTranslationsByLocale = defaultTranslationsByLocale
