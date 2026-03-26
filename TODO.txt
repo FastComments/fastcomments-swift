@@ -20,16 +20,7 @@ Once fixed in the generator, these manual patches can be removed.
      - client/FastCommentsSwift/Models/RenderEmailTemplateBody.swift
      - client/FastCommentsSwift/Models/UpdateEmailTemplateBody.swift
 
-3. Required fields that should be optional on success responses
-   - `code` and `reason` are only returned on error responses, not success.
-     The generator marks them as required, causing Codable decoding failures
-     on every successful API call (keyNotFound).
-   - `status` should also be optional for defensive decoding.
-   - Affected response models:
-     - GetCommentsPublic200Response (also: comments, pageNumber should be optional)
-     - GetFeedPostsPublic200Response (also: feedPosts should be optional)
-     - VoteComment200Response
-     - DeleteCommentVote200Response
+3. FIXED in generator — `code`, `reason`, `comments`, `feedPosts`, `pageNumber` are now optional.
 
 4. EventLogEntry: generated version has non-optional fields + Date for createdAt
    - The hand-written EventLogEntry in PubSub/Models/EventLogResponse.swift uses
