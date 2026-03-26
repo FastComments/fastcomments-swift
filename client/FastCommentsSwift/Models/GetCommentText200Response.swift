@@ -7,20 +7,20 @@
 
 import Foundation
 
-public struct GetCommentText200Response: Sendable, Codable, JSONEncodable, Hashable {
+public struct GetCommentText200Response: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
-    public var commentText: String
-    public var sanitizedCommentText: String
-    public var reason: String
-    public var code: String
+    public var commentText: String?
+    public var sanitizedCommentText: String?
+    public var reason: String?
+    public var code: String?
     public var secondaryCode: String?
     public var bannedUntil: Int64?
     public var maxCharacterLength: Int?
     public var translatedError: String?
     public var customConfig: CustomConfigParameters?
 
-    public init(status: APIStatus, commentText: String, sanitizedCommentText: String, reason: String, code: String, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(status: APIStatus, commentText: String? = nil, sanitizedCommentText: String? = nil, reason: String? = nil, code: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.status = status
         self.commentText = commentText
         self.sanitizedCommentText = sanitizedCommentText
@@ -51,10 +51,10 @@ public struct GetCommentText200Response: Sendable, Codable, JSONEncodable, Hasha
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(status, forKey: .status)
-        try container.encode(commentText, forKey: .commentText)
-        try container.encode(sanitizedCommentText, forKey: .sanitizedCommentText)
-        try container.encode(reason, forKey: .reason)
-        try container.encode(code, forKey: .code)
+        try container.encodeIfPresent(commentText, forKey: .commentText)
+        try container.encodeIfPresent(sanitizedCommentText, forKey: .sanitizedCommentText)
+        try container.encodeIfPresent(reason, forKey: .reason)
+        try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)
         try container.encodeIfPresent(bannedUntil, forKey: .bannedUntil)
         try container.encodeIfPresent(maxCharacterLength, forKey: .maxCharacterLength)

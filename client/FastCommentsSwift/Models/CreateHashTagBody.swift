@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateHashTagBody: Sendable, Codable, JSONEncodable, Hashable {
+public struct CreateHashTagBody: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var tenantId: String?
     public var tag: String

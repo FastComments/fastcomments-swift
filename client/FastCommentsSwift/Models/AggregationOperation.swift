@@ -8,7 +8,7 @@
 import Foundation
 
 /** An operation that will be applied on a field */
-public struct AggregationOperation: Sendable, Codable, JSONEncodable, Hashable {
+public struct AggregationOperation: Sendable, Codable, ParameterConvertible, Hashable {
 
     /** The field to operate on */
     public var field: String

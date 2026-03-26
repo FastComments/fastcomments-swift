@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DeleteHashTagRequest: Sendable, Codable, JSONEncodable, Hashable {
+public struct DeleteHashTagRequest: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var tenantId: String?
 

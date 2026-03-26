@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateCommentParams: Sendable, Codable, JSONEncodable, Hashable {
+public struct CreateCommentParams: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var date: Int64?
     public var localDateString: String?

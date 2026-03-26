@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**stats** | [String: FeedPostStats] |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**stats** | [String: FeedPostStats] |  | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

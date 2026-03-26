@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**results** | [AddHashTag200Response] |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**results** | [AddHashTag200Response] |  | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

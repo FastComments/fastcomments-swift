@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct QueryPredicateValue: Sendable, Codable, JSONEncodable, Hashable {
+public struct QueryPredicateValue: Sendable, Codable, ParameterConvertible, Hashable {
 
 
     public enum CodingKeys: CodingKey, CaseIterable {

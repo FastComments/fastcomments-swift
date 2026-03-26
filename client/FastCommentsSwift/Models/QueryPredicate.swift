@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct QueryPredicate: Sendable, Codable, JSONEncodable, Hashable {
+public struct QueryPredicate: Sendable, Codable, ParameterConvertible, Hashable {
 
     public enum Operator: String, Sendable, Codable, CaseIterable {
         case eq = "eq"

@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**data** | [**QuestionResultAggregationOverall**](QuestionResultAggregationOverall.md) |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**data** | [**QuestionResultAggregationOverall**](QuestionResultAggregationOverall.md) |  | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

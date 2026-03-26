@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PatchSSOUserAPIResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct PatchSSOUserAPIResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var reason: String?
     public var code: String?

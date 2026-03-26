@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CommentUserHashTagInfo: Sendable, Codable, JSONEncodable, Hashable {
+public struct CommentUserHashTagInfo: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var tag: String

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PatchDomainConfigParams: Sendable, Codable, JSONEncodable, Hashable {
+public struct PatchDomainConfigParams: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var domain: String?
     public var emailFromName: String?

@@ -7,15 +7,20 @@
 
 import Foundation
 
-public struct VoteResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct VoteResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
-    public var status: VoteResponseStatus
+    public enum Status: String, Sendable, Codable, CaseIterable {
+        case success = "success"
+        case failed = "failed"
+        case pendingVerification = "pending-verification"
+    }
+    public var status: Status
     public var voteId: String?
     public var isVerified: Bool?
     public var user: VoteResponseUser?
     public var editKey: String?
 
-    public init(status: VoteResponseStatus, voteId: String? = nil, isVerified: Bool? = nil, user: VoteResponseUser? = nil, editKey: String? = nil) {
+    public init(status: Status, voteId: String? = nil, isVerified: Bool? = nil, user: VoteResponseUser? = nil, editKey: String? = nil) {
         self.status = status
         self.voteId = voteId
         self.isVerified = isVerified

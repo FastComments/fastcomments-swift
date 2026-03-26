@@ -8,7 +8,7 @@
 import Foundation
 
 /** The API response returns the aggregated data along with simple stats */
-public struct AggregationResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct AggregationResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var data: [AggregationItem]

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ChangeTicketStateBody: Sendable, Codable, JSONEncodable, Hashable {
+public struct ChangeTicketStateBody: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var state: Int
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateQuestionResultBody: Sendable, Codable, JSONEncodable, Hashable {
+public struct CreateQuestionResultBody: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var urlId: String
     public var value: Double

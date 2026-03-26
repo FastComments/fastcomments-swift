@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct HeaderAccountNotification: Sendable, Codable, JSONEncodable, Hashable {
+public struct HeaderAccountNotification: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var title: String

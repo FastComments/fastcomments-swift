@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct BulkAggregateQuestionResultsResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct BulkAggregateQuestionResultsResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     /** Construct a type with a set of properties K of type T */

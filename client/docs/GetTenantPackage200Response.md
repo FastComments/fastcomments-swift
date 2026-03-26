@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**tenantPackage** | [**TenantPackage**](TenantPackage.md) |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**tenantPackage** | [**TenantPackage**](TenantPackage.md) |  | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

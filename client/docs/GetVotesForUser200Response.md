@@ -4,11 +4,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**appliedAuthorizedVotes** | [PublicVote] |  | 
-**appliedAnonymousVotes** | [PublicVote] |  | 
-**pendingVotes** | [PublicVote] |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**appliedAuthorizedVotes** | [PublicVote] |  | [optional] 
+**appliedAnonymousVotes** | [PublicVote] |  | [optional] 
+**pendingVotes** | [PublicVote] |  | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

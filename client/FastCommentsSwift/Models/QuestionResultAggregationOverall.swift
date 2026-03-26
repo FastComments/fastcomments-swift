@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct QuestionResultAggregationOverall: Sendable, Codable, JSONEncodable, Hashable {
+public struct QuestionResultAggregationOverall: Sendable, Codable, ParameterConvertible, Hashable {
 
     /** Construct a type with a set of properties K of type T */
     public var dataByDateBucket: [String: QuestionDatum]?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct RecordStringBeforeStringOrNullAfterStringOrNullValue: Sendable, Codable, JSONEncodable, Hashable {
+public struct RecordStringBeforeStringOrNullAfterStringOrNullValue: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var after: String
     public var before: String

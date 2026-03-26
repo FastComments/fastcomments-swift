@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct EventLogEntry: Sendable, Codable, JSONEncodable, Hashable {
+public struct EventLogEntry: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var createdAt: Date

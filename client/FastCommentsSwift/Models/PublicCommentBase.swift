@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PublicCommentBase: Sendable, Codable, JSONEncodable, Hashable {
+public struct PublicCommentBase: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var userId: String?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TenantPackage: Sendable, Codable, JSONEncodable, Hashable {
+public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var name: String

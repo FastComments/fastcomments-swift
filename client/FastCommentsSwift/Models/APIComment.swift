@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APIComment: Sendable, Codable, JSONEncodable, Hashable {
+public struct APIComment: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var aiDeterminedSpam: Bool?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APIDomainConfiguration: Sendable, Codable, JSONEncodable, Hashable {
+public struct APIDomainConfiguration: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var domain: String

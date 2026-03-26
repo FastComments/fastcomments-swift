@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **statusCode** | **Int** |  | [optional] 
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**code** | **String** |  | 
-**reason** | **String** |  | 
+**code** | **String** |  | [optional] 
+**reason** | **String** |  | [optional] 
 **wasUnapproved** | **Bool** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 

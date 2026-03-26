@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateEmailTemplateBody: Sendable, Codable, JSONEncodable, Hashable {
+public struct CreateEmailTemplateBody: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var emailTemplateId: String
     public var displayName: String

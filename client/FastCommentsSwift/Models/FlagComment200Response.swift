@@ -7,12 +7,12 @@
 
 import Foundation
 
-public struct FlagComment200Response: Sendable, Codable, JSONEncodable, Hashable {
+public struct FlagComment200Response: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var statusCode: Int?
     public var status: APIStatus
-    public var code: String
-    public var reason: String
+    public var code: String?
+    public var reason: String?
     public var wasUnapproved: Bool?
     public var secondaryCode: String?
     public var bannedUntil: Int64?
@@ -20,7 +20,7 @@ public struct FlagComment200Response: Sendable, Codable, JSONEncodable, Hashable
     public var translatedError: String?
     public var customConfig: CustomConfigParameters?
 
-    public init(statusCode: Int? = nil, status: APIStatus, code: String, reason: String, wasUnapproved: Bool? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(statusCode: Int? = nil, status: APIStatus, code: String? = nil, reason: String? = nil, wasUnapproved: Bool? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.statusCode = statusCode
         self.status = status
         self.code = code
@@ -52,8 +52,8 @@ public struct FlagComment200Response: Sendable, Codable, JSONEncodable, Hashable
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(statusCode, forKey: .statusCode)
         try container.encode(status, forKey: .status)
-        try container.encode(code, forKey: .code)
-        try container.encode(reason, forKey: .reason)
+        try container.encodeIfPresent(code, forKey: .code)
+        try container.encodeIfPresent(reason, forKey: .reason)
         try container.encodeIfPresent(wasUnapproved, forKey: .wasUnapproved)
         try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)
         try container.encodeIfPresent(bannedUntil, forKey: .bannedUntil)

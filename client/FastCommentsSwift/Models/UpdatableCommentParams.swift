@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UpdatableCommentParams: Sendable, Codable, JSONEncodable, Hashable {
+public struct UpdatableCommentParams: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var urlId: String?
     public var urlIdRaw: String?

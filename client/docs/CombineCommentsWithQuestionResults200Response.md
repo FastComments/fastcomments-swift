@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**data** | [**FindCommentsByRangeResponse**](FindCommentsByRangeResponse.md) |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**data** | [**FindCommentsByRangeResponse**](FindCommentsByRangeResponse.md) |  | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

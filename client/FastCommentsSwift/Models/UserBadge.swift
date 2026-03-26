@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserBadge: Sendable, Codable, JSONEncodable, Hashable {
+public struct UserBadge: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var userId: String

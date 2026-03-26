@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct VoteResponseUser: Sendable, Codable, JSONEncodable, Hashable {
+public struct VoteResponseUser: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var sessionId: String?
 

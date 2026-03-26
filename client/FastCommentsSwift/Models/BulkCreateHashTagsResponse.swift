@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct BulkCreateHashTagsResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct BulkCreateHashTagsResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var results: [AddHashTag200Response]

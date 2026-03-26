@@ -4,11 +4,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**matchedCount** | **Int64** |  | 
-**modifiedCount** | **Int64** |  | 
-**note** | **String** |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**matchedCount** | **Int64** |  | [optional] 
+**modifiedCount** | **Int64** |  | [optional] 
+**note** | **String** |  | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

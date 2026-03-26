@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserBadgeProgress: Sendable, Codable, JSONEncodable, Hashable {
+public struct UserBadgeProgress: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var tenantId: String

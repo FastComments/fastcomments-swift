@@ -4,11 +4,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**comment** | [**FComment**](FComment.md) |  | 
-**user** | [**UserSessionInfo**](UserSessionInfo.md) |  | 
+**comment** | [**FComment**](FComment.md) |  | [optional] 
+**user** | [**UserSessionInfo**](UserSessionInfo.md) |  | [optional] 
 **moduleData** | **[String: JSONValue]** | Construct a type with a set of properties K of type T | [optional] 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

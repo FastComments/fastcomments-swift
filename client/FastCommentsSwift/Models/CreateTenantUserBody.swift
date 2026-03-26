@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateTenantUserBody: Sendable, Codable, JSONEncodable, Hashable {
+public struct CreateTenantUserBody: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var username: String
     public var email: String

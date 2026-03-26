@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserPresenceData: Sendable, Codable, JSONEncodable, Hashable {
+public struct UserPresenceData: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var urlIdWS: String?
     public var userIdWS: String?

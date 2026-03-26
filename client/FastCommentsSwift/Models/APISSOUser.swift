@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APISSOUser: Sendable, Codable, JSONEncodable, Hashable {
+public struct APISSOUser: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var username: String

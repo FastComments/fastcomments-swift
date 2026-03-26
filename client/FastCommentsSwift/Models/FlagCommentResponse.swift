@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FlagCommentResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct FlagCommentResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var statusCode: Int?
     public var status: APIStatus

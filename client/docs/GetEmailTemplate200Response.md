@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**emailTemplate** | [**CustomEmailTemplate**](CustomEmailTemplate.md) |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**emailTemplate** | [**CustomEmailTemplate**](CustomEmailTemplate.md) |  | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

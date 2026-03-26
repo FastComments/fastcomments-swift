@@ -7,19 +7,19 @@
 
 import Foundation
 
-public struct GetUserBadgeProgressById200Response: Sendable, Codable, JSONEncodable, Hashable {
+public struct GetUserBadgeProgressById200Response: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
-    public var userBadgeProgress: UserBadgeProgress
-    public var reason: String
-    public var code: String
+    public var userBadgeProgress: UserBadgeProgress?
+    public var reason: String?
+    public var code: String?
     public var secondaryCode: String?
     public var bannedUntil: Int64?
     public var maxCharacterLength: Int?
     public var translatedError: String?
     public var customConfig: CustomConfigParameters?
 
-    public init(status: APIStatus, userBadgeProgress: UserBadgeProgress, reason: String, code: String, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(status: APIStatus, userBadgeProgress: UserBadgeProgress? = nil, reason: String? = nil, code: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.status = status
         self.userBadgeProgress = userBadgeProgress
         self.reason = reason
@@ -48,9 +48,9 @@ public struct GetUserBadgeProgressById200Response: Sendable, Codable, JSONEncoda
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(status, forKey: .status)
-        try container.encode(userBadgeProgress, forKey: .userBadgeProgress)
-        try container.encode(reason, forKey: .reason)
-        try container.encode(code, forKey: .code)
+        try container.encodeIfPresent(userBadgeProgress, forKey: .userBadgeProgress)
+        try container.encodeIfPresent(reason, forKey: .reason)
+        try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)
         try container.encodeIfPresent(bannedUntil, forKey: .bannedUntil)
         try container.encodeIfPresent(maxCharacterLength, forKey: .maxCharacterLength)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SetCommentTextResult: Sendable, Codable, JSONEncodable, Hashable {
+public struct SetCommentTextResult: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var approved: Bool
     public var commentHTML: String

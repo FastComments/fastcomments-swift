@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct IgnoredResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct IgnoredResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public enum Note: String, Sendable, Codable, CaseIterable {
         case ignoredSinceImpersonated = "ignored-since-impersonated"

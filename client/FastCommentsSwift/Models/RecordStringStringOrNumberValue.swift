@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct RecordStringStringOrNumberValue: Sendable, Codable, JSONEncodable, Hashable {
+public struct RecordStringStringOrNumberValue: Sendable, Codable, ParameterConvertible, Hashable {
 
 
     public enum CodingKeys: CodingKey, CaseIterable {

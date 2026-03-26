@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct EmailTemplateRenderErrorResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct EmailTemplateRenderErrorResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var tenantId: String

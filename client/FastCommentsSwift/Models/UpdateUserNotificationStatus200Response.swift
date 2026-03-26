@@ -7,25 +7,25 @@
 
 import Foundation
 
-public struct UpdateUserNotificationStatus200Response: Sendable, Codable, JSONEncodable, Hashable {
+public struct UpdateUserNotificationStatus200Response: Sendable, Codable, ParameterConvertible, Hashable {
 
     public enum Note: String, Sendable, Codable, CaseIterable {
         case ignoredSinceImpersonated = "ignored-since-impersonated"
         case demoNoop = "demo-noop"
     }
     public var status: APIStatus
-    public var matchedCount: Int64
-    public var modifiedCount: Int64
-    public var note: Note
-    public var reason: String
-    public var code: String
+    public var matchedCount: Int64?
+    public var modifiedCount: Int64?
+    public var note: Note?
+    public var reason: String?
+    public var code: String?
     public var secondaryCode: String?
     public var bannedUntil: Int64?
     public var maxCharacterLength: Int?
     public var translatedError: String?
     public var customConfig: CustomConfigParameters?
 
-    public init(status: APIStatus, matchedCount: Int64, modifiedCount: Int64, note: Note, reason: String, code: String, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(status: APIStatus, matchedCount: Int64? = nil, modifiedCount: Int64? = nil, note: Note? = nil, reason: String? = nil, code: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.status = status
         self.matchedCount = matchedCount
         self.modifiedCount = modifiedCount
@@ -58,11 +58,11 @@ public struct UpdateUserNotificationStatus200Response: Sendable, Codable, JSONEn
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(status, forKey: .status)
-        try container.encode(matchedCount, forKey: .matchedCount)
-        try container.encode(modifiedCount, forKey: .modifiedCount)
-        try container.encode(note, forKey: .note)
-        try container.encode(reason, forKey: .reason)
-        try container.encode(code, forKey: .code)
+        try container.encodeIfPresent(matchedCount, forKey: .matchedCount)
+        try container.encodeIfPresent(modifiedCount, forKey: .modifiedCount)
+        try container.encodeIfPresent(note, forKey: .note)
+        try container.encodeIfPresent(reason, forKey: .reason)
+        try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)
         try container.encodeIfPresent(bannedUntil, forKey: .bannedUntil)
         try container.encodeIfPresent(maxCharacterLength, forKey: .maxCharacterLength)

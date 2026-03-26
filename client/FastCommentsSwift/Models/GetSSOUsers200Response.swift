@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetSSOUsers200Response: Sendable, Codable, JSONEncodable, Hashable {
+public struct GetSSOUsers200Response: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var users: [APISSOUser]
     public var status: String

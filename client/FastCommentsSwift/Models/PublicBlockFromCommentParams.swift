@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PublicBlockFromCommentParams: Sendable, Codable, JSONEncodable, Hashable {
+public struct PublicBlockFromCommentParams: Sendable, Codable, ParameterConvertible, Hashable {
 
     /** A list of comment ids to check if are blocked after performing the update. */
     public var commentIds: [String]?

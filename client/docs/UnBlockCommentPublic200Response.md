@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**commentStatuses** | **[String: Bool]** | Construct a type with a set of properties K of type T | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**commentStatuses** | **[String: Bool]** | Construct a type with a set of properties K of type T | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

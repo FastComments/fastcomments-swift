@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MediaAsset: Sendable, Codable, JSONEncodable, Hashable {
+public struct MediaAsset: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var w: Int
     public var h: Int

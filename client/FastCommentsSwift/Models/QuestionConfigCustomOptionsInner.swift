@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct QuestionConfigCustomOptionsInner: Sendable, Codable, JSONEncodable, Hashable {
+public struct QuestionConfigCustomOptionsInner: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var imageSrc: String
     public var name: String

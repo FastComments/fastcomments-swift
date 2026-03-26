@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CommentData: Sendable, Codable, JSONEncodable, Hashable {
+public struct CommentData: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var date: Int64?
     public var localDateString: String?

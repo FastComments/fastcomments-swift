@@ -4,10 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**userBadge** | [**UserBadge**](UserBadge.md) |  | 
+**userBadge** | [**UserBadge**](UserBadge.md) |  | [optional] 
 **notes** | **[String]** |  | [optional] 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

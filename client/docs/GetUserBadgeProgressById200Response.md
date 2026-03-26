@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**userBadgeProgress** | [**UserBadgeProgress**](UserBadgeProgress.md) |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**userBadgeProgress** | [**UserBadgeProgress**](UserBadgeProgress.md) |  | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

@@ -42,11 +42,11 @@ open class PublicAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             "Content-Type": "application/json",
         ]
 
@@ -81,16 +81,16 @@ open class PublicAPI {
     open class func checkedCommentsForBlockedWithRequestBuilder(tenantId: String, commentIds: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CheckedCommentsForBlocked200Response> {
         let localVariablePath = "/check-blocked-comments"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "commentIds": (wrappedValue: commentIds.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "commentIds": (wrappedValue: commentIds.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -138,13 +138,13 @@ open class PublicAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "urlId": (wrappedValue: urlId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "broadcastId": (wrappedValue: broadcastId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sessionId": (wrappedValue: sessionId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sessionId": (wrappedValue: sessionId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             "Content-Type": "application/json",
         ]
 
@@ -188,11 +188,11 @@ open class PublicAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "broadcastId": (wrappedValue: broadcastId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             "Content-Type": "application/json",
         ]
 
@@ -237,16 +237,16 @@ open class PublicAPI {
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "broadcastId": (wrappedValue: broadcastId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "editKey": (wrappedValue: editKey?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "editKey": (wrappedValue: editKey?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -298,17 +298,17 @@ open class PublicAPI {
         let voteIdPostEscape = voteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{voteId}", with: voteIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "urlId": (wrappedValue: urlId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "broadcastId": (wrappedValue: broadcastId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "editKey": (wrappedValue: editKey?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "editKey": (wrappedValue: editKey?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -351,15 +351,15 @@ open class PublicAPI {
         let postIdPostEscape = postIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{postId}", with: postIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "broadcastId": (wrappedValue: broadcastId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -399,16 +399,16 @@ open class PublicAPI {
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "isFlagged": (wrappedValue: isFlagged.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "isFlagged": (wrappedValue: isFlagged.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -451,15 +451,15 @@ open class PublicAPI {
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "editKey": (wrappedValue: editKey?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "editKey": (wrappedValue: editKey?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -502,15 +502,15 @@ open class PublicAPI {
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "dir": (wrappedValue: dir.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "dir": (wrappedValue: dir.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -599,40 +599,40 @@ open class PublicAPI {
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "urlId": (wrappedValue: urlId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "page": (wrappedValue: page?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "direction": (wrappedValue: direction?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "skip": (wrappedValue: skip?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "skipChildren": (wrappedValue: skipChildren?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "limit": (wrappedValue: limit?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "limitChildren": (wrappedValue: limitChildren?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "countChildren": (wrappedValue: countChildren?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "fetchPageForCommentId": (wrappedValue: fetchPageForCommentId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "includeConfig": (wrappedValue: includeConfig?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "countAll": (wrappedValue: countAll?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "includei10n": (wrappedValue: includei10n?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "locale": (wrappedValue: locale?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "modules": (wrappedValue: modules?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "isCrawler": (wrappedValue: isCrawler?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "includeNotificationCount": (wrappedValue: includeNotificationCount?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "asTree": (wrappedValue: asTree?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "maxTreeDepth": (wrappedValue: maxTreeDepth?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "useFullTranslationIds": (wrappedValue: useFullTranslationIds?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "parentId": (wrappedValue: parentId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "searchText": (wrappedValue: searchText?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "hashTags": (wrappedValue: hashTags?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "userId": (wrappedValue: userId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "customConfigStr": (wrappedValue: customConfigStr?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "afterCommentId": (wrappedValue: afterCommentId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "beforeCommentId": (wrappedValue: beforeCommentId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "page": (wrappedValue: page?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "direction": (wrappedValue: direction?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "skip": (wrappedValue: skip?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "skipChildren": (wrappedValue: skipChildren?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "limit": (wrappedValue: limit?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "limitChildren": (wrappedValue: limitChildren?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "countChildren": (wrappedValue: countChildren?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "fetchPageForCommentId": (wrappedValue: fetchPageForCommentId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "includeConfig": (wrappedValue: includeConfig?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "countAll": (wrappedValue: countAll?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "includei10n": (wrappedValue: includei10n?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "locale": (wrappedValue: locale?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "modules": (wrappedValue: modules?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "isCrawler": (wrappedValue: isCrawler?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "includeNotificationCount": (wrappedValue: includeNotificationCount?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "asTree": (wrappedValue: asTree?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "maxTreeDepth": (wrappedValue: maxTreeDepth?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "useFullTranslationIds": (wrappedValue: useFullTranslationIds?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "parentId": (wrappedValue: parentId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "searchText": (wrappedValue: searchText?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "hashTags": (wrappedValue: hashTags?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "userId": (wrappedValue: userId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "customConfigStr": (wrappedValue: customConfigStr?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "afterCommentId": (wrappedValue: afterCommentId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "beforeCommentId": (wrappedValue: beforeCommentId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -675,17 +675,17 @@ open class PublicAPI {
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "urlId": (wrappedValue: urlId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "userIdWS": (wrappedValue: userIdWS.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "startTime": (wrappedValue: startTime.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "endTime": (wrappedValue: endTime.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "userIdWS": (wrappedValue: userIdWS.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "startTime": (wrappedValue: startTime.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "endTime": (wrappedValue: endTime.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -732,19 +732,19 @@ open class PublicAPI {
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "afterId": (wrappedValue: afterId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "limit": (wrappedValue: limit?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tags": (wrappedValue: tags?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "isCrawler": (wrappedValue: isCrawler?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "includeUserInfo": (wrappedValue: includeUserInfo?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "afterId": (wrappedValue: afterId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "limit": (wrappedValue: limit?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tags": (wrappedValue: tags?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "isCrawler": (wrappedValue: isCrawler?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "includeUserInfo": (wrappedValue: includeUserInfo?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -782,15 +782,15 @@ open class PublicAPI {
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "postIds": (wrappedValue: postIds.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "postIds": (wrappedValue: postIds.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -833,17 +833,17 @@ open class PublicAPI {
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "urlId": (wrappedValue: urlId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "userIdWS": (wrappedValue: userIdWS.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "startTime": (wrappedValue: startTime.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "endTime": (wrappedValue: endTime.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "userIdWS": (wrappedValue: userIdWS.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "startTime": (wrappedValue: startTime.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "endTime": (wrappedValue: endTime.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -876,15 +876,15 @@ open class PublicAPI {
     open class func getUserNotificationCountWithRequestBuilder(tenantId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetUserNotificationCount200Response> {
         let localVariablePath = "/user-notifications/get-count"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -933,23 +933,23 @@ open class PublicAPI {
     open class func getUserNotificationsWithRequestBuilder(tenantId: String, pageSize: Int? = nil, afterId: String? = nil, includeContext: Bool? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, includeTranslations: Bool? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetUserNotifications200Response> {
         let localVariablePath = "/user-notifications"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "pageSize": (wrappedValue: pageSize?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "afterId": (wrappedValue: afterId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "includeContext": (wrappedValue: includeContext?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "afterCreatedAt": (wrappedValue: afterCreatedAt?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "unreadOnly": (wrappedValue: unreadOnly?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "dmOnly": (wrappedValue: dmOnly?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "noDm": (wrappedValue: noDm?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "includeTranslations": (wrappedValue: includeTranslations?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "pageSize": (wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "afterId": (wrappedValue: afterId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "includeContext": (wrappedValue: includeContext?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "afterCreatedAt": (wrappedValue: afterCreatedAt?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "unreadOnly": (wrappedValue: unreadOnly?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "dmOnly": (wrappedValue: dmOnly?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "noDm": (wrappedValue: noDm?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "includeTranslations": (wrappedValue: includeTranslations?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -984,16 +984,16 @@ open class PublicAPI {
     open class func getUserPresenceStatusesWithRequestBuilder(tenantId: String, urlIdWS: String, userIds: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetUserPresenceStatuses200Response> {
         let localVariablePath = "/user-presence-status"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "urlIdWS": (wrappedValue: urlIdWS.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "userIds": (wrappedValue: userIds.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "urlIdWS": (wrappedValue: urlIdWS.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "userIds": (wrappedValue: userIds.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -1031,15 +1031,15 @@ open class PublicAPI {
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "postIds": (wrappedValue: postIds?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "postIds": (wrappedValue: postIds?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -1082,15 +1082,15 @@ open class PublicAPI {
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "broadcastId": (wrappedValue: broadcastId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -1133,15 +1133,15 @@ open class PublicAPI {
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "broadcastId": (wrappedValue: broadcastId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -1192,12 +1192,12 @@ open class PublicAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "isUndo": (wrappedValue: isUndo?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "broadcastId": (wrappedValue: broadcastId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "isUndo": (wrappedValue: isUndo?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             "Content-Type": "application/json",
         ]
 
@@ -1230,15 +1230,15 @@ open class PublicAPI {
     open class func resetUserNotificationCountWithRequestBuilder(tenantId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ResetUserNotifications200Response> {
         let localVariablePath = "/user-notifications/reset-count"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -1281,20 +1281,20 @@ open class PublicAPI {
     open class func resetUserNotificationsWithRequestBuilder(tenantId: String, afterId: String? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ResetUserNotifications200Response> {
         let localVariablePath = "/user-notifications/reset"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "afterId": (wrappedValue: afterId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "afterCreatedAt": (wrappedValue: afterCreatedAt?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "unreadOnly": (wrappedValue: unreadOnly?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "dmOnly": (wrappedValue: dmOnly?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "noDm": (wrappedValue: noDm?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "afterId": (wrappedValue: afterId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "afterCreatedAt": (wrappedValue: afterCreatedAt?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "unreadOnly": (wrappedValue: unreadOnly?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "dmOnly": (wrappedValue: dmOnly?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "noDm": (wrappedValue: noDm?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -1346,18 +1346,18 @@ open class PublicAPI {
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "urlId": (wrappedValue: urlId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "usernameStartsWith": (wrappedValue: usernameStartsWith?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "mentionGroupIds": (wrappedValue: mentionGroupIds?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "searchSection": (wrappedValue: searchSection?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "usernameStartsWith": (wrappedValue: usernameStartsWith?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "mentionGroupIds": (wrappedValue: mentionGroupIds?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "searchSection": (wrappedValue: searchSection?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -1408,12 +1408,12 @@ open class PublicAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "broadcastId": (wrappedValue: broadcastId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "editKey": (wrappedValue: editKey?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "editKey": (wrappedValue: editKey?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             "Content-Type": "application/json",
         ]
 
@@ -1457,11 +1457,11 @@ open class PublicAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             "Content-Type": "application/json",
         ]
 
@@ -1504,15 +1504,15 @@ open class PublicAPI {
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "broadcastId": (wrappedValue: broadcastId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -1555,15 +1555,15 @@ open class PublicAPI {
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "broadcastId": (wrappedValue: broadcastId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -1612,11 +1612,11 @@ open class PublicAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "broadcastId": (wrappedValue: broadcastId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             "Content-Type": "application/json",
         ]
 
@@ -1670,16 +1670,16 @@ open class PublicAPI {
         let optedInOrOutPostEscape = optedInOrOutPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{optedInOrOut}", with: optedInOrOutPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "commentId": (wrappedValue: commentId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "commentId": (wrappedValue: commentId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -1732,18 +1732,18 @@ open class PublicAPI {
         let subscribedOrUnsubscribedPostEscape = subscribedOrUnsubscribedPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{subscribedOrUnsubscribed}", with: subscribedOrUnsubscribedPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "urlId": (wrappedValue: urlId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "url": (wrappedValue: url.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "pageTitle": (wrappedValue: pageTitle.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "url": (wrappedValue: url.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "pageTitle": (wrappedValue: pageTitle.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -1794,15 +1794,15 @@ open class PublicAPI {
         let newStatusPostEscape = newStatusPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{newStatus}", with: newStatusPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
         ]
 
@@ -1843,8 +1843,8 @@ open class PublicAPI {
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableFormParams: [String: Any?] = [
-            "file": file.encodeToJSON(codableHelper: apiConfiguration.codableHelper),
+        let localVariableFormParams: [String: (any Sendable)?] = [
+            "file": file.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
@@ -1852,11 +1852,11 @@ open class PublicAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "sizePreset": (wrappedValue: sizePreset?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "urlId": (wrappedValue: urlId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sizePreset": (wrappedValue: sizePreset?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "urlId": (wrappedValue: urlId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             "Content-Type": "multipart/form-data",
         ]
 
@@ -1909,13 +1909,13 @@ open class PublicAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "urlId": (wrappedValue: urlId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "broadcastId": (wrappedValue: broadcastId.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sessionId": (wrappedValue: sessionId?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "sso": (wrappedValue: sso?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sessionId": (wrappedValue: sessionId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
-        let localVariableNillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
             "Content-Type": "application/json",
         ]
 

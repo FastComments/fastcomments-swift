@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserNotification: Sendable, Codable, JSONEncodable, Hashable {
+public struct UserNotification: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var tenantId: String

@@ -3,10 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**events** | [EventLogEntry] |  | 
+**events** | [EventLogEntry] |  | [optional] 
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

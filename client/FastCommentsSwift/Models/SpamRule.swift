@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SpamRule: Sendable, Codable, JSONEncodable, Hashable {
+public struct SpamRule: Sendable, Codable, ParameterConvertible, Hashable {
 
     public enum Actions: String, Sendable, Codable, CaseIterable {
         case spam = "spam"

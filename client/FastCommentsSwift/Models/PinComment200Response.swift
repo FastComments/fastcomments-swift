@@ -7,20 +7,20 @@
 
 import Foundation
 
-public struct PinComment200Response: Sendable, Codable, JSONEncodable, Hashable {
+public struct PinComment200Response: Sendable, Codable, ParameterConvertible, Hashable {
 
     /** Construct a type with a set of properties K of type T */
-    public var commentPositions: [String: RecordStringBeforeStringOrNullAfterStringOrNullValue]
+    public var commentPositions: [String: RecordStringBeforeStringOrNullAfterStringOrNullValue]?
     public var status: APIStatus
-    public var reason: String
-    public var code: String
+    public var reason: String?
+    public var code: String?
     public var secondaryCode: String?
     public var bannedUntil: Int64?
     public var maxCharacterLength: Int?
     public var translatedError: String?
     public var customConfig: CustomConfigParameters?
 
-    public init(commentPositions: [String: RecordStringBeforeStringOrNullAfterStringOrNullValue], status: APIStatus, reason: String, code: String, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(commentPositions: [String: RecordStringBeforeStringOrNullAfterStringOrNullValue]? = nil, status: APIStatus, reason: String? = nil, code: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.commentPositions = commentPositions
         self.status = status
         self.reason = reason
@@ -48,10 +48,10 @@ public struct PinComment200Response: Sendable, Codable, JSONEncodable, Hashable 
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(commentPositions, forKey: .commentPositions)
+        try container.encodeIfPresent(commentPositions, forKey: .commentPositions)
         try container.encode(status, forKey: .status)
-        try container.encode(reason, forKey: .reason)
-        try container.encode(code, forKey: .code)
+        try container.encodeIfPresent(reason, forKey: .reason)
+        try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)
         try container.encodeIfPresent(bannedUntil, forKey: .bannedUntil)
         try container.encodeIfPresent(maxCharacterLength, forKey: .maxCharacterLength)

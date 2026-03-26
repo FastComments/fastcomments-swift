@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UpdateQuestionConfigBody: Sendable, Codable, JSONEncodable, Hashable {
+public struct UpdateQuestionConfigBody: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var name: String?
     public var question: String?

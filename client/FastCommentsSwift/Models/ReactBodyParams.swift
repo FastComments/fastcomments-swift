@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ReactBodyParams: Sendable, Codable, JSONEncodable, Hashable {
+public struct ReactBodyParams: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var reactType: String?
 

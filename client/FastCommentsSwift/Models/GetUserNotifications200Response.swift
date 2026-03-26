@@ -7,23 +7,23 @@
 
 import Foundation
 
-public struct GetUserNotifications200Response: Sendable, Codable, JSONEncodable, Hashable {
+public struct GetUserNotifications200Response: Sendable, Codable, ParameterConvertible, Hashable {
 
     /** Construct a type with a set of properties K of type T */
     public var translations: [String: String]?
-    public var isSubscribed: Bool
-    public var hasMore: Bool
-    public var notifications: [RenderableUserNotification]
+    public var isSubscribed: Bool?
+    public var hasMore: Bool?
+    public var notifications: [RenderableUserNotification]?
     public var status: APIStatus
-    public var reason: String
-    public var code: String
+    public var reason: String?
+    public var code: String?
     public var secondaryCode: String?
     public var bannedUntil: Int64?
     public var maxCharacterLength: Int?
     public var translatedError: String?
     public var customConfig: CustomConfigParameters?
 
-    public init(translations: [String: String]? = nil, isSubscribed: Bool, hasMore: Bool, notifications: [RenderableUserNotification], status: APIStatus, reason: String, code: String, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(translations: [String: String]? = nil, isSubscribed: Bool? = nil, hasMore: Bool? = nil, notifications: [RenderableUserNotification]? = nil, status: APIStatus, reason: String? = nil, code: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.translations = translations
         self.isSubscribed = isSubscribed
         self.hasMore = hasMore
@@ -58,12 +58,12 @@ public struct GetUserNotifications200Response: Sendable, Codable, JSONEncodable,
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(translations, forKey: .translations)
-        try container.encode(isSubscribed, forKey: .isSubscribed)
-        try container.encode(hasMore, forKey: .hasMore)
-        try container.encode(notifications, forKey: .notifications)
+        try container.encodeIfPresent(isSubscribed, forKey: .isSubscribed)
+        try container.encodeIfPresent(hasMore, forKey: .hasMore)
+        try container.encodeIfPresent(notifications, forKey: .notifications)
         try container.encode(status, forKey: .status)
-        try container.encode(reason, forKey: .reason)
-        try container.encode(code, forKey: .code)
+        try container.encodeIfPresent(reason, forKey: .reason)
+        try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)
         try container.encodeIfPresent(bannedUntil, forKey: .bannedUntil)
         try container.encodeIfPresent(maxCharacterLength, forKey: .maxCharacterLength)

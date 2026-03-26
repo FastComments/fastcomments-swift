@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **isVerified** | **Bool** |  | [optional] 
 **user** | [**VoteResponseUser**](VoteResponseUser.md) |  | [optional] 
 **editKey** | **String** |  | [optional] 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

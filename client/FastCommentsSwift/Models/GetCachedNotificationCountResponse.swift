@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetCachedNotificationCountResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct GetCachedNotificationCountResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var data: UserNotificationCount

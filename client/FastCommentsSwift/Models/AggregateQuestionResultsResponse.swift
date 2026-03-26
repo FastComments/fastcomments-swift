@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AggregateQuestionResultsResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct AggregateQuestionResultsResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var data: QuestionResultAggregationOverall

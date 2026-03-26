@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct HeaderState: Sendable, Codable, JSONEncodable, Hashable {
+public struct HeaderState: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var notificationType: JSONValue

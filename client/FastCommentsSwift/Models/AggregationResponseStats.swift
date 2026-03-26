@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AggregationResponseStats: Sendable, Codable, JSONEncodable, Hashable {
+public struct AggregationResponseStats: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var timeMS: Int64
     public var scanned: Int64

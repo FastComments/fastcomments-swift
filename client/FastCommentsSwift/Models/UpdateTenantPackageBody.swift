@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UpdateTenantPackageBody: Sendable, Codable, JSONEncodable, Hashable {
+public struct UpdateTenantPackageBody: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var name: String?
     public var monthlyCostUSD: Double?

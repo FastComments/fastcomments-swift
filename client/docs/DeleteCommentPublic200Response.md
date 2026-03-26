@@ -4,10 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | [**DeletedCommentResultComment**](DeletedCommentResultComment.md) |  | [optional] 
-**hardRemoved** | **Bool** |  | 
+**hardRemoved** | **Bool** |  | [optional] 
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

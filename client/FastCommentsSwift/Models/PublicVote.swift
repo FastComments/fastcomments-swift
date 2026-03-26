@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PublicVote: Sendable, Codable, JSONEncodable, Hashable {
+public struct PublicVote: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var urlId: String

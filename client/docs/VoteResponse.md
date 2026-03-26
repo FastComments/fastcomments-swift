@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**VoteResponseStatus**](VoteResponseStatus.md) |  | 
+**status** | **String** |  | 
 **voteId** | **String** |  | [optional] 
 **isVerified** | **Bool** |  | [optional] 
 **user** | [**VoteResponseUser**](VoteResponseUser.md) |  | [optional] 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CommentUserBadgeInfo: Sendable, Codable, JSONEncodable, Hashable {
+public struct CommentUserBadgeInfo: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var type: Int

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FeedPostMediaItem: Sendable, Codable, JSONEncodable, Hashable {
+public struct FeedPostMediaItem: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var title: String?
     public var linkUrl: String?

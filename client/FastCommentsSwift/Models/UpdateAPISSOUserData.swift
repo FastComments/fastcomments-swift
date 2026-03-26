@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UpdateAPISSOUserData: Sendable, Codable, JSONEncodable, Hashable {
+public struct UpdateAPISSOUserData: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var groupIds: [String]?
     public var hasBlockedUsers: Bool?

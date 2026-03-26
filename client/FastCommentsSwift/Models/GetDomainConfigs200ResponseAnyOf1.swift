@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetDomainConfigs200ResponseAnyOf1: Sendable, Codable, JSONEncodable, Hashable {
+public struct GetDomainConfigs200ResponseAnyOf1: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var reason: String
     public var code: String

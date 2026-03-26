@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct RenderableUserNotification: Sendable, Codable, JSONEncodable, Hashable {
+public struct RenderableUserNotification: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var conversationId: String?
     public var contextHTML: String?

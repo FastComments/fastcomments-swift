@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PublicAPIGetCommentTextResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct PublicAPIGetCommentTextResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var commentText: String

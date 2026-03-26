@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DeletedCommentResultComment: Sendable, Codable, JSONEncodable, Hashable {
+public struct DeletedCommentResultComment: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var isDeleted: Bool?
     public var commentHTML: String

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TOSConfig: Sendable, Codable, JSONEncodable, Hashable {
+public struct TOSConfig: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var enabled: Bool?
     /** Construct a type with a set of properties K of type T */

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CommentLogData: Sendable, Codable, JSONEncodable, Hashable {
+public struct CommentLogData: Sendable, Codable, ParameterConvertible, Hashable {
 
     public enum PermanentFlag: String, Sendable, Codable, CaseIterable {
         case permanent = "permanent"

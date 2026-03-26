@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CommentLogEntry: Sendable, Codable, JSONEncodable, Hashable {
+public struct CommentLogEntry: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var d: Date
     public var t: CommentLogType

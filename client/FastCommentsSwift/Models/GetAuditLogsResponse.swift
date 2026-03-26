@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetAuditLogsResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct GetAuditLogsResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var auditLogs: [APIAuditLog]

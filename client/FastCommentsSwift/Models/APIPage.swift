@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APIPage: Sendable, Codable, JSONEncodable, Hashable {
+public struct APIPage: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var isClosed: Bool?
     public var accessibleByGroupIds: [String]?

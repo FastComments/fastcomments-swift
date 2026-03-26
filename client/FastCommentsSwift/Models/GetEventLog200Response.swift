@@ -7,19 +7,19 @@
 
 import Foundation
 
-public struct GetEventLog200Response: Sendable, Codable, JSONEncodable, Hashable {
+public struct GetEventLog200Response: Sendable, Codable, ParameterConvertible, Hashable {
 
-    public var events: [EventLogEntry]
+    public var events: [EventLogEntry]?
     public var status: APIStatus
-    public var reason: String
-    public var code: String
+    public var reason: String?
+    public var code: String?
     public var secondaryCode: String?
     public var bannedUntil: Int64?
     public var maxCharacterLength: Int?
     public var translatedError: String?
     public var customConfig: CustomConfigParameters?
 
-    public init(events: [EventLogEntry], status: APIStatus, reason: String, code: String, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(events: [EventLogEntry]? = nil, status: APIStatus, reason: String? = nil, code: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.events = events
         self.status = status
         self.reason = reason
@@ -47,10 +47,10 @@ public struct GetEventLog200Response: Sendable, Codable, JSONEncodable, Hashable
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(events, forKey: .events)
+        try container.encodeIfPresent(events, forKey: .events)
         try container.encode(status, forKey: .status)
-        try container.encode(reason, forKey: .reason)
-        try container.encode(code, forKey: .code)
+        try container.encodeIfPresent(reason, forKey: .reason)
+        try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)
         try container.encodeIfPresent(bannedUntil, forKey: .bannedUntil)
         try container.encodeIfPresent(maxCharacterLength, forKey: .maxCharacterLength)

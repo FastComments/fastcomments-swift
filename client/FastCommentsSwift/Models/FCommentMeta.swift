@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FCommentMeta: Sendable, Codable, JSONEncodable, Hashable {
+public struct FCommentMeta: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var wpId: String?
     public var wpUserId: String?

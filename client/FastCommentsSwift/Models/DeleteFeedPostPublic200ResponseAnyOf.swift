@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DeleteFeedPostPublic200ResponseAnyOf: Sendable, Codable, JSONEncodable, Hashable {
+public struct DeleteFeedPostPublic200ResponseAnyOf: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
 

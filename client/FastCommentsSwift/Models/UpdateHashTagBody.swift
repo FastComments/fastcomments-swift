@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UpdateHashTagBody: Sendable, Codable, JSONEncodable, Hashable {
+public struct UpdateHashTagBody: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var tenantId: String?
     public var url: String?

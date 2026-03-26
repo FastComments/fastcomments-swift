@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UpdateModeratorBody: Sendable, Codable, JSONEncodable, Hashable {
+public struct UpdateModeratorBody: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var name: String?
     public var email: String?

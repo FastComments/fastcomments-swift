@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetUserNotificationCountResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct GetUserNotificationCountResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var count: Int64

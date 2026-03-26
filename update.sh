@@ -7,17 +7,19 @@ echo "Removing old generated client code..."
 rm -rf ./client
 
 # Try to download the OpenAPI spec from the running FastComments server
-if wget -q http://localhost:3001/js/swagger.json -O ./openapi.json; then
+if wget -q http://localhost:3001/js/swagger.json -O ./openapi.json.tmp; then
+    mv ./openapi.json.tmp ./openapi.json
     echo "✓ Downloaded OpenAPI spec from running server"
-    SPEC_FILE="./openapi.json"
 else
+    rm -f ./openapi.json.tmp
     echo "⚠ Server not running, using existing OpenAPI spec"
-    SPEC_FILE="./openapi.json"
 fi
+SPEC_FILE="./openapi.json"
 
 # Generate the Swift client using openapi-generator
 echo "Generating Swift client..."
-npx @openapitools/openapi-generator-cli generate \
+GENERATOR_JAR="/home/winrid/dev/fastcomments/openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar"
+java -jar "$GENERATOR_JAR" generate \
     -i "$SPEC_FILE" \
     -g swift6 \
     -o ./client \

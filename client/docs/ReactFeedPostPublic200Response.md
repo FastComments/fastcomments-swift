@@ -4,10 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**reactType** | **String** |  | 
-**isUndo** | **Bool** |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**reactType** | **String** |  | [optional] 
+**isUndo** | **Bool** |  | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

@@ -7,14 +7,14 @@
 
 import Foundation
 
-public struct GetDomainConfig200Response: Sendable, Codable, JSONEncodable, Hashable {
+public struct GetDomainConfig200Response: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var configuration: JSONValue?
     public var status: JSONValue?
-    public var reason: String
-    public var code: String
+    public var reason: String?
+    public var code: String?
 
-    public init(configuration: JSONValue?, status: JSONValue?, reason: String, code: String) {
+    public init(configuration: JSONValue? = nil, status: JSONValue?, reason: String? = nil, code: String? = nil) {
         self.configuration = configuration
         self.status = status
         self.reason = reason
@@ -32,10 +32,10 @@ public struct GetDomainConfig200Response: Sendable, Codable, JSONEncodable, Hash
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(configuration, forKey: .configuration)
+        try container.encodeIfPresent(configuration, forKey: .configuration)
         try container.encode(status, forKey: .status)
-        try container.encode(reason, forKey: .reason)
-        try container.encode(code, forKey: .code)
+        try container.encodeIfPresent(reason, forKey: .reason)
+        try container.encodeIfPresent(code, forKey: .code)
     }
 }
 

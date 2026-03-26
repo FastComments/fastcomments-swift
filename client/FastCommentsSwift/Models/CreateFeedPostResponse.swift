@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateFeedPostResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct CreateFeedPostResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var feedPost: FeedPost

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DeletePageAPIResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct DeletePageAPIResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var reason: String?
     public var code: String?

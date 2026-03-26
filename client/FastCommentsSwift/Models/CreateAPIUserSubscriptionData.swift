@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateAPIUserSubscriptionData: Sendable, Codable, JSONEncodable, Hashable {
+public struct CreateAPIUserSubscriptionData: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var notificationFrequency: Double?
     public var pageTitle: String?

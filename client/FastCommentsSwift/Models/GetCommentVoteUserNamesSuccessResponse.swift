@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetCommentVoteUserNamesSuccessResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct GetCommentVoteUserNamesSuccessResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var voteUserNames: [String]

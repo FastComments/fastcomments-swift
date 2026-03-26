@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SearchUsersResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct SearchUsersResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var users: [UserSearchResult]

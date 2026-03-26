@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserReactsResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct UserReactsResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var reacts: [String: [String: Bool]]

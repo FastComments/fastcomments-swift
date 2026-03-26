@@ -4,10 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**commentText** | **String** |  | 
-**sanitizedCommentText** | **String** |  | 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**commentText** | **String** |  | [optional] 
+**sanitizedCommentText** | **String** |  | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

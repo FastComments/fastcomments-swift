@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateTenantBody: Sendable, Codable, JSONEncodable, Hashable {
+public struct CreateTenantBody: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var name: String
     public var domainConfiguration: [APIDomainConfiguration]

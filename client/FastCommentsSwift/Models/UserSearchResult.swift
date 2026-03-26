@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserSearchResult: Sendable, Codable, JSONEncodable, Hashable {
+public struct UserSearchResult: Sendable, Codable, ParameterConvertible, Hashable {
 
     public enum ModelType: String, Sendable, Codable, CaseIterable {
         case user = "user"

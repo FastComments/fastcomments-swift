@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PublicAPIDeleteCommentResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct PublicAPIDeleteCommentResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var comment: DeletedCommentResultComment?
     public var hardRemoved: Bool

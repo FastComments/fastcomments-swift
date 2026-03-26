@@ -5,11 +5,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **statusCode** | **Int** |  | [optional] 
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**code** | **String** |  | 
-**reason** | **String** |  | 
+**code** | **String** |  | [optional] 
+**reason** | **String** |  | [optional] 
 **translatedWarning** | **String** |  | [optional] 
-**comments** | [PublicComment] |  | 
-**user** | [**UserSessionInfo**](UserSessionInfo.md) |  | 
+**comments** | [PublicComment] |  | [optional] 
+**user** | [**UserSessionInfo**](UserSessionInfo.md) |  | [optional] 
 **urlIdClean** | **String** |  | [optional] 
 **lastGenDate** | **Int64** |  | [optional] 
 **includesPastPages** | **Bool** |  | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **isSiteAdmin** | **Bool** |  | [optional] 
 **hasBillingIssue** | **Bool** |  | [optional] 
 **moduleData** | **[String: JSONValue]** | Construct a type with a set of properties K of type T | [optional] 
-**pageNumber** | **Int** |  | 
+**pageNumber** | **Int** |  | [optional] 
 **isWhiteLabeled** | **Bool** |  | [optional] 
 **isProd** | **Bool** |  | [optional] 
 **isCrawler** | **Bool** |  | [optional] 

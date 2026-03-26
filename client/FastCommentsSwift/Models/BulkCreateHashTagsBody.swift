@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct BulkCreateHashTagsBody: Sendable, Codable, JSONEncodable, Hashable {
+public struct BulkCreateHashTagsBody: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var tenantId: String?
     public var tags: [BulkCreateHashTagsBodyTagsInner]

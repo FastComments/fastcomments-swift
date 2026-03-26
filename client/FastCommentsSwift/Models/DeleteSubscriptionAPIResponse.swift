@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DeleteSubscriptionAPIResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct DeleteSubscriptionAPIResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var reason: String?
     public var code: String?

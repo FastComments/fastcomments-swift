@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MetaItem: Sendable, Codable, JSONEncodable, Hashable {
+public struct MetaItem: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var name: String
     public var values: [String]

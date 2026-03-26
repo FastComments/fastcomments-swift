@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UploadImageResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct UploadImageResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var url: String?

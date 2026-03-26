@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APITenant: Sendable, Codable, JSONEncodable, Hashable {
+public struct APITenant: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var name: String

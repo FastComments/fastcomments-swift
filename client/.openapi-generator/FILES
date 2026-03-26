@@ -373,7 +373,6 @@ FastCommentsSwift/Models/VoteBodyParams.swift
 FastCommentsSwift/Models/VoteComment200Response.swift
 FastCommentsSwift/Models/VoteDeleteResponse.swift
 FastCommentsSwift/Models/VoteResponse.swift
-FastCommentsSwift/Models/VoteResponseStatus.swift
 FastCommentsSwift/Models/VoteResponseUser.swift
 FastCommentsSwift/Models/VoteStyle.swift
 Package.swift
@@ -736,7 +735,6 @@ docs/VoteBodyParams.md
 docs/VoteComment200Response.md
 docs/VoteDeleteResponse.md
 docs/VoteResponse.md
-docs/VoteResponseStatus.md
 docs/VoteResponseUser.md
 docs/VoteStyle.md
 git_push.sh

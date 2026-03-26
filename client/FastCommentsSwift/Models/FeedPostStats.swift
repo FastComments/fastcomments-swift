@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FeedPostStats: Sendable, Codable, JSONEncodable, Hashable {
+public struct FeedPostStats: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var reacts: [String: Int]?
     public var commentCount: Int?

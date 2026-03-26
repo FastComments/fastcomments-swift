@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserNotificationCount: Sendable, Codable, JSONEncodable, Hashable {
+public struct UserNotificationCount: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var count: Double

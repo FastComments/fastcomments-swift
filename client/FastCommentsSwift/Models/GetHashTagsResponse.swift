@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetHashTagsResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct GetHashTagsResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var hashTags: [TenantHashTag]

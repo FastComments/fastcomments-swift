@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CustomConfigParameters: Sendable, Codable, JSONEncodable, Hashable {
+public struct CustomConfigParameters: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var absoluteAndRelativeDates: Bool?
     public var absoluteDates: Bool?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CommentUserMentionInfo: Sendable, Codable, JSONEncodable, Hashable {
+public struct CommentUserMentionInfo: Sendable, Codable, ParameterConvertible, Hashable {
 
     public enum ModelType: String, Sendable, Codable, CaseIterable {
         case user = "user"

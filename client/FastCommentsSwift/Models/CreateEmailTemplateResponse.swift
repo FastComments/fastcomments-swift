@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateEmailTemplateResponse: Sendable, Codable, JSONEncodable, Hashable {
+public struct CreateEmailTemplateResponse: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
     public var emailTemplate: CustomEmailTemplate

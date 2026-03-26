@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct LiveEventExtraInfo: Sendable, Codable, JSONEncodable, Hashable {
+public struct LiveEventExtraInfo: Sendable, Codable, ParameterConvertible, Hashable {
 
     /** Construct a type with a set of properties K of type T */
     public var commentPositions: [String: RecordStringBeforeStringOrNullAfterStringOrNullValue]?

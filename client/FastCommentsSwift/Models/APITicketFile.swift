@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APITicketFile: Sendable, Codable, JSONEncodable, Hashable {
+public struct APITicketFile: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var s3Key: String

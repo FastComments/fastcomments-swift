@@ -71,7 +71,7 @@ fileprivate class URLSessionRequestBuilderConfiguration: @unchecked Sendable {
 
 open class URLSessionRequestBuilder<T>: RequestBuilder<T>, @unchecked Sendable {
 
-    required public init(method: String, URLString: String, parameters: [String: Any]?, headers: [String: String] = [:], requiresAuthentication: Bool, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) {
+    required public init(method: String, URLString: String, parameters: [String: any Sendable]?, headers: [String: String] = [:], requiresAuthentication: Bool, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) {
         super.init(method: method, URLString: URLString, parameters: parameters, headers: headers, requiresAuthentication: requiresAuthentication, apiConfiguration: apiConfiguration)
     }
 
@@ -112,7 +112,7 @@ open class URLSessionRequestBuilder<T>: RequestBuilder<T>, @unchecked Sendable {
             originalRequest.setValue(value, forHTTPHeaderField: key)
         }
 
-        let modifiedRequest = try encoding.encode(originalRequest, with: parameters)
+        let modifiedRequest = try encoding.encode(request: originalRequest, with: parameters)
 
         return modifiedRequest
     }
@@ -140,7 +140,7 @@ open class URLSessionRequestBuilder<T>: RequestBuilder<T>, @unchecked Sendable {
                 encoding = FormDataEncoding(contentTypeForFormPart: contentTypeForFormPart(fileURL:))
             } else if contentType.hasPrefix("application/x-www-form-urlencoded") {
                 encoding = FormURLEncoding()
-            } else if contentType.hasPrefix("application/octet-stream"){
+            } else if contentType.hasPrefix("application/octet-stream") || contentType.hasPrefix("image/") {
                 encoding = OctetStreamEncoding()
             } else {
                 fatalError("Unsupported Media Type - \(contentType)")
@@ -431,13 +431,13 @@ public enum HTTPMethod: String {
 }
 
 public protocol ParameterEncoding {
-    func encode(_ urlRequest: URLRequest, with parameters: [String: Any]?) throws -> URLRequest
+    func encode(request: URLRequest, with parameters: [String: any Sendable]?) throws -> URLRequest
 }
 
 private class URLEncoding: ParameterEncoding {
-    func encode(_ urlRequest: URLRequest, with parameters: [String: Any]?) throws -> URLRequest {
+    func encode(request: URLRequest, with parameters: [String: any Sendable]?) throws -> URLRequest {
 
-        var urlRequest = urlRequest
+        var urlRequest = request
 
         guard let parameters = parameters else { return urlRequest }
 
@@ -462,9 +462,9 @@ private class FormDataEncoding: ParameterEncoding {
         self.contentTypeForFormPart = contentTypeForFormPart
     }
 
-    func encode(_ urlRequest: URLRequest, with parameters: [String: Any]?) throws -> URLRequest {
+    func encode(request: URLRequest, with parameters: [String: any Sendable]?) throws -> URLRequest {
 
-        var urlRequest = urlRequest
+        var urlRequest = request
 
         guard let parameters = parameters, !parameters.isEmpty else {
             return urlRequest
@@ -631,9 +631,9 @@ private class FormDataEncoding: ParameterEncoding {
 }
 
 private class FormURLEncoding: ParameterEncoding {
-    func encode(_ urlRequest: URLRequest, with parameters: [String: Any]?) throws -> URLRequest {
+    func encode(request: URLRequest, with parameters: [String: any Sendable]?) throws -> URLRequest {
 
-        var urlRequest = urlRequest
+        var urlRequest = request
 
         var requestBodyComponents = URLComponents()
         let queryItems = APIHelper.mapValuesToQueryItems(parameters ?? [:])
@@ -661,9 +661,9 @@ private class FormURLEncoding: ParameterEncoding {
 }
 
 private class OctetStreamEncoding: ParameterEncoding {
-    func encode(_ urlRequest: URLRequest, with parameters: [String: Any]?) throws -> URLRequest {
+    func encode(request: URLRequest, with parameters: [String: any Sendable]?) throws -> URLRequest {
 
-        var urlRequest = urlRequest
+        var urlRequest = request
 
         guard let body = parameters?["body"] else { return urlRequest }
 

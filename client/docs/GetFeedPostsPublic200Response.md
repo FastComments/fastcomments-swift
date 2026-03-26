@@ -5,13 +5,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **myReacts** | [String: [String: Bool]] |  | [optional] 
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**feedPosts** | [FeedPost] |  | 
+**feedPosts** | [FeedPost] |  | [optional] 
 **user** | [**UserSessionInfo**](UserSessionInfo.md) |  | [optional] 
 **urlIdWS** | **String** |  | [optional] 
 **userIdWS** | **String** |  | [optional] 
 **tenantIdWS** | **String** |  | [optional] 
-**reason** | **String** |  | 
-**code** | **String** |  | 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 **secondaryCode** | **String** |  | [optional] 
 **bannedUntil** | **Int64** |  | [optional] 
 **maxCharacterLength** | **Int** |  | [optional] 

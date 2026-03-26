@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APITenantDailyUsage: Sendable, Codable, JSONEncodable, Hashable {
+public struct APITenantDailyUsage: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
     public var tenantId: String

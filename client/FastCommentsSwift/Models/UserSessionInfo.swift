@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserSessionInfo: Sendable, Codable, JSONEncodable, Hashable {
+public struct UserSessionInfo: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String?
     public var authorized: Bool?
