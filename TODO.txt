@@ -9,7 +9,7 @@ Once fixed in the generator, these manual patches can be removed.
      FastCommentsSwift target so downstream packages (fastcomments-ios) can use them.
    - Change: include "client/FastCommentsSwift" in sources, selectively exclude conflicting
      files that duplicate hand-written PubSub models (LiveEvent.swift, LiveEventType.swift,
-     PubSubComment.swift, PubSubVote.swift, EventLogEntry.swift, JSONValue.swift).
+     PubSubComment.swift, PubSubVote.swift, JSONValue.swift).
 
 2. [String: Dictionary] generated for translationOverridesByLocale fields
    - Bare `Dictionary` is not valid Swift. Must be `[String: [String: String]]`.
@@ -22,10 +22,5 @@ Once fixed in the generator, these manual patches can be removed.
 
 3. FIXED in generator — `code`, `reason`, `comments`, `feedPosts`, `pageNumber` are now optional.
 
-4. EventLogEntry: make all 6 fields optional in the spec
-   - `id`, `createdAt`, `tenantId`, `urlId`, `broadcastId`, `data` are all required
-     but should be optional.
-   - Once fixed, the hand-written EventLogEntry in PubSub/Models/EventLogResponse.swift
-     can be deleted and LiveEventSubscriber can use the generated GetEventLogResponse directly.
-   - Also remove EventLogEntry.swift from the Package.swift exclude list (item 1) since
-     it will no longer conflict.
+4. FIXED — EventLogEntry now uses the generated type. Hand-written EventLogResponse.swift deleted.
+   LiveEventSubscriber uses GetEventLogResponse + CodableHelper decoder directly.
