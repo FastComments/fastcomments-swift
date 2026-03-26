@@ -1,0 +1,40 @@
+OpenAPI Generator Bugs to Fix
+=============================
+
+These are issues in the openapi-generator that require manual fixes after regeneration.
+Once fixed in the generator, these manual patches can be removed.
+
+1. Package.swift: client/ must be included as a source, not fully excluded
+   - The generated client models (APIs, Models) need to be compiled as part of the
+     FastCommentsSwift target so downstream packages (fastcomments-ios) can use them.
+   - Change: include "client/FastCommentsSwift" in sources, selectively exclude conflicting
+     files that duplicate hand-written PubSub models (LiveEvent.swift, LiveEventType.swift,
+     PubSubComment.swift, PubSubVote.swift, EventLogEntry.swift, JSONValue.swift).
+
+2. [String: Dictionary] generated for translationOverridesByLocale fields
+   - Bare `Dictionary` is not valid Swift. Must be `[String: [String: String]]`.
+   - Affected files:
+     - client/FastCommentsSwift/Models/CreateEmailTemplateBody.swift
+     - client/FastCommentsSwift/Models/CustomEmailTemplate.swift
+     - client/FastCommentsSwift/Models/EmailTemplateDefinition.swift
+     - client/FastCommentsSwift/Models/RenderEmailTemplateBody.swift
+     - client/FastCommentsSwift/Models/UpdateEmailTemplateBody.swift
+
+3. Required fields that should be optional on success responses
+   - `code` and `reason` are only returned on error responses, not success.
+     The generator marks them as required, causing Codable decoding failures
+     on every successful API call (keyNotFound).
+   - `status` should also be optional for defensive decoding.
+   - Affected response models:
+     - GetCommentsPublic200Response (also: comments, pageNumber should be optional)
+     - GetFeedPostsPublic200Response (also: feedPosts should be optional)
+     - VoteComment200Response
+     - DeleteCommentVote200Response
+
+4. EventLogEntry: generated version has non-optional fields + Date for createdAt
+   - The hand-written EventLogEntry in PubSub/Models/EventLogResponse.swift uses
+     optional fields and String for createdAt, which is needed for safe decoding
+     from the REST event-log endpoint.
+   - The generated client/FastCommentsSwift/Models/EventLogEntry.swift must be
+     excluded from compilation to avoid conflicts with the hand-written version.
+   - Fix in generator: make EventLogEntry fields optional, or keep createdAt as String.
