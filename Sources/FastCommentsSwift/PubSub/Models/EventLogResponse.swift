@@ -7,14 +7,14 @@ struct EventLogResponse: Codable, Sendable {
 }
 
 /// A single entry in the event log
-struct EventLogEntry: Codable, Sendable {
-    var id: String?
-    var createdAt: String?
-    var tenantId: String?
-    var urlId: String?
-    var broadcastId: String?
+public struct EventLogEntry: Codable, Sendable, Hashable {
+    public var id: String?
+    public var createdAt: String?
+    public var tenantId: String?
+    public var urlId: String?
+    public var broadcastId: String?
     /// JSON string containing a serialized LiveEvent
-    var data: String?
+    public var data: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

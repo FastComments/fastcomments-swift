@@ -43,14 +43,14 @@ public struct SecureSSOUserData: Codable {
         case email
         case username
         case avatar
-        case optedInNotifications = "opted_in_notifications"
-        case displayLabel = "display_label"
-        case displayName = "display_name"
-        case websiteUrl = "website_url"
-        case groupIds = "group_ids"
-        case isAdmin = "is_admin"
-        case isModerator = "is_moderator"
-        case isProfileActivityPrivate = "is_profile_activity_private"
+        case optedInNotifications
+        case displayLabel
+        case displayName
+        case websiteUrl
+        case groupIds
+        case isAdmin
+        case isModerator
+        case isProfileActivityPrivate
     }
 
     /// Creates a new SecureSSOUserData instance

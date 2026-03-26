@@ -12,8 +12,8 @@ public struct SecureSSOPayload: Codable {
     public var timestamp: UInt64
 
     enum CodingKeys: String, CodingKey {
-        case userDataJsonBase64 = "user_data_json_base64"
-        case verificationHash = "verification_hash"
+        case userDataJsonBase64 = "userDataJSONBase64"
+        case verificationHash
         case timestamp
     }
 

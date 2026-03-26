@@ -104,9 +104,47 @@ final class SSOTests: XCTestCase {
 
         let json = try JSONSerialization.jsonObject(with: tokenData, options: []) as? [String: Any]
         XCTAssertNotNil(json, "Token should be valid JSON")
-        XCTAssertNotNil(json?["user_data_json_base64"], "Should contain user_data_json_base64")
-        XCTAssertNotNil(json?["verification_hash"], "Should contain verification_hash")
+        XCTAssertNotNil(json?["userDataJSONBase64"], "Should contain userDataJSONBase64")
+        XCTAssertNotNil(json?["verificationHash"], "Should contain verificationHash")
         XCTAssertNotNil(json?["timestamp"], "Should contain timestamp")
+    }
+
+    func testCreateSecureSSOUserDataFieldNames() throws {
+        var user = SecureSSOUserData(
+            id: userId,
+            email: email,
+            username: username,
+            avatar: avatar
+        )
+        user.displayLabel = "VIP"
+        user.displayName = "Test User"
+        user.websiteUrl = "https://example.com"
+        user.optedInNotifications = true
+        user.isAdmin = false
+        user.isModerator = false
+        user.isProfileActivityPrivate = false
+        user.groupIds = ["group1"]
+
+        let base64 = try user.asJsonBase64()
+        guard let decodedData = Data(base64Encoded: base64) else {
+            XCTFail("Should be valid base64")
+            return
+        }
+        let json = try JSONSerialization.jsonObject(with: decodedData, options: []) as? [String: Any]
+        XCTAssertNotNil(json)
+        // Verify camelCase field names (matching server expectations)
+        XCTAssertNotNil(json?["displayLabel"])
+        XCTAssertNotNil(json?["displayName"])
+        XCTAssertNotNil(json?["websiteUrl"])
+        XCTAssertNotNil(json?["optedInNotifications"])
+        XCTAssertNotNil(json?["isAdmin"])
+        XCTAssertNotNil(json?["isModerator"])
+        XCTAssertNotNil(json?["isProfileActivityPrivate"])
+        XCTAssertNotNil(json?["groupIds"])
+        // Verify snake_case is NOT used
+        XCTAssertNil(json?["display_label"])
+        XCTAssertNil(json?["display_name"])
+        XCTAssertNil(json?["website_url"])
     }
 
     func testCreateSimpleSSO() throws {
@@ -130,9 +168,13 @@ final class SSOTests: XCTestCase {
 
         let json = try JSONSerialization.jsonObject(with: tokenData, options: []) as? [String: Any]
         XCTAssertNotNil(json, "Token should be valid JSON")
-        XCTAssertEqual(json?["username"] as? String, username)
-        XCTAssertEqual(json?["email"] as? String, email)
-        XCTAssertEqual(json?["avatar"] as? String, avatar)
+
+        // Simple SSO must be wrapped in simpleSSOUser
+        let simpleSSOUser = json?["simpleSSOUser"] as? [String: Any]
+        XCTAssertNotNil(simpleSSOUser, "Should be wrapped in simpleSSOUser key")
+        XCTAssertEqual(simpleSSOUser?["username"] as? String, username)
+        XCTAssertEqual(simpleSSOUser?["email"] as? String, email)
+        XCTAssertEqual(simpleSSOUser?["avatar"] as? String, avatar)
     }
 
     func testPrepareToSendCachesToken() throws {

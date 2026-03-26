@@ -32,13 +32,13 @@ public struct SimpleSSOUserData: Codable {
     enum CodingKeys: String, CodingKey {
         case id
         case locale
-        case displayName = "display_name"
-        case displayLabel = "display_label"
-        case isProfileActivityPrivate = "is_profile_activity_private"
+        case displayName
+        case displayLabel
+        case isProfileActivityPrivate
         case username
         case email
         case avatar
-        case websiteUrl = "website_url"
+        case websiteUrl
     }
 
     /// Creates a new SimpleSSOUserData instance

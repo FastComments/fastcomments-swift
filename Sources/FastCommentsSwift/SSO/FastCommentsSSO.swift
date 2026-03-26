@@ -99,6 +99,11 @@ public class FastCommentsSSO {
         return sso
     }
 
+    /// Wrapper for simple SSO user data to match the expected API format
+    private struct SimpleSSOWrapper: Codable {
+        let simpleSSOUser: SimpleSSOUserData
+    }
+
     /// Creates a JSON token string from the current SSO configuration
     ///
     /// - Returns: A JSON string token, or nil if no SSO data is configured
@@ -112,7 +117,8 @@ public class FastCommentsSSO {
 
         if let simpleSSOUserData = simpleSSOUserData {
             let encoder = JSONEncoder()
-            let jsonData = try encoder.encode(simpleSSOUserData)
+            let wrapper = SimpleSSOWrapper(simpleSSOUser: simpleSSOUserData)
+            let jsonData = try encoder.encode(wrapper)
             return String(data: jsonData, encoding: .utf8)
         }
 
