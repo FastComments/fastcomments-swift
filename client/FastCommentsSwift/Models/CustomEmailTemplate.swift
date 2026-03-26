@@ -19,10 +19,10 @@ public struct CustomEmailTemplate: Sendable, Codable, ParameterConvertible, Hash
     public var domain: String?
     public var ejs: String
     /** Construct a type with a set of properties K of type T */
-    public var translationOverridesByLocale: [String: Dictionary]
+    public var translationOverridesByLocale: [String: [String: String]]
     public var testData: JSONValue?
 
-    public init(id: String, tenantId: String, emailTemplateId: String, displayName: String, createdAt: Date, updatedAt: Date?, updatedByUserId: String?, domain: String? = nil, ejs: String, translationOverridesByLocale: [String: Dictionary], testData: JSONValue?) {
+    public init(id: String, tenantId: String, emailTemplateId: String, displayName: String, createdAt: Date, updatedAt: Date?, updatedByUserId: String?, domain: String? = nil, ejs: String, translationOverridesByLocale: [String: [String: String]], testData: JSONValue?) {
         self.id = id
         self.tenantId = tenantId
         self.emailTemplateId = emailTemplateId
