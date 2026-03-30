@@ -339,10 +339,9 @@ public class LiveEventSubscriber: NSObject {
             }
 
             do {
-                let response = try JSONDecoder().decode(EventLogResponse.self, from: data)
-                let events = (response.events ?? []).compactMap { entry -> LiveEvent? in
-                    guard let dataString = entry.data,
-                          let jsonData = dataString.data(using: .utf8) else { return nil }
+                let response = try CodableHelper().jsonDecoder.decode(GetEventLogResponse.self, from: data)
+                let events = response.events.compactMap { entry -> LiveEvent? in
+                    guard let jsonData = entry.data.data(using: .utf8) else { return nil }
                     // Per-entry error handling: skip unparseable entries
                     return try? JSONDecoder().decode(LiveEvent.self, from: jsonData)
                 }

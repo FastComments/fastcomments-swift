@@ -45,7 +45,6 @@ let package = Package(
                 "client/FastCommentsSwift/Models/LiveEventType.swift",
                 "client/FastCommentsSwift/Models/PubSubComment.swift",
                 "client/FastCommentsSwift/Models/PubSubVote.swift",
-                "client/FastCommentsSwift/Models/EventLogEntry.swift",
                 "docs",
                 "update.sh",
                 "openapitools.json",
