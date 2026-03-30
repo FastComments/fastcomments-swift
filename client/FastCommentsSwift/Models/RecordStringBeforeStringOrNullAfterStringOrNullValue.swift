@@ -9,10 +9,10 @@ import Foundation
 
 public struct RecordStringBeforeStringOrNullAfterStringOrNullValue: Sendable, Codable, ParameterConvertible, Hashable {
 
-    public var after: String
-    public var before: String
+    public var after: String?
+    public var before: String?
 
-    public init(after: String, before: String) {
+    public init(after: String? = nil, before: String? = nil) {
         self.after = after
         self.before = before
     }
@@ -26,8 +26,8 @@ public struct RecordStringBeforeStringOrNullAfterStringOrNullValue: Sendable, Co
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(after, forKey: .after)
-        try container.encode(before, forKey: .before)
+        try container.encodeIfPresent(after, forKey: .after)
+        try container.encodeIfPresent(before, forKey: .before)
     }
 }
 
