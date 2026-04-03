@@ -107,15 +107,14 @@ public class LiveEventSubscriber: NSObject {
             ? "wss://ws-eu.fastcomments.com"
             : "wss://ws.fastcomments.com")
 
-        guard var components = URLComponents(string: wsHost + "/sub") else {
-            return nil
-        }
-        components.queryItems = [
-            URLQueryItem(name: "urlId", value: config.urlIdWS),
-            URLQueryItem(name: "userIdWS", value: config.userIdWS),
-            URLQueryItem(name: "tenantIdWS", value: config.tenantId),
-        ]
-        return components.url
+        // urlIdWS arrives pre-percent-encoded from the server (e.g. "tenant%3AurlId").
+        // Build the URL as a raw string to preserve encoding exactly — URLComponents
+        // double-encodes %3A to %253A, which puts us in the wrong presence room.
+        let encodedUserIdWS = config.userIdWS.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? config.userIdWS
+        let encodedTenantId = config.tenantId.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? config.tenantId
+        let urlString = "\(wsHost)/sub?urlId=\(config.urlIdWS)&userIdWS=\(encodedUserIdWS)&tenantIdWS=\(encodedTenantId)"
+        let url = URL(string: urlString)
+        return url
     }
 
     private func intentionalClose() {
