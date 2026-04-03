@@ -50,6 +50,8 @@ Name | Type | Description | Notes
 **flexDomainUnit** | **Double** |  | [optional] 
 **flexChatGPTCostCents** | **Double** |  | [optional] 
 **flexChatGPTUnit** | **Double** |  | [optional] 
+**flexLLMCostCents** | **Double** |  | [optional] 
+**flexLLMUnit** | **Double** |  | [optional] 
 **flexMinimumCostCents** | **Double** |  | [optional] 
 **flexManagedTenantCostCents** | **Double** |  | [optional] 
 **flexSSOAdminCostCents** | **Double** |  | [optional] 

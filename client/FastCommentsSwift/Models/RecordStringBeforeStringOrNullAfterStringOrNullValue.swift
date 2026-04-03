@@ -12,7 +12,7 @@ public struct RecordStringBeforeStringOrNullAfterStringOrNullValue: Sendable, Co
     public var after: String?
     public var before: String?
 
-    public init(after: String? = nil, before: String? = nil) {
+    public init(after: String?, before: String?) {
         self.after = after
         self.before = before
     }
@@ -26,8 +26,8 @@ public struct RecordStringBeforeStringOrNullAfterStringOrNullValue: Sendable, Co
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(after, forKey: .after)
-        try container.encodeIfPresent(before, forKey: .before)
+        try container.encode(after, forKey: .after)
+        try container.encode(before, forKey: .before)
     }
 }
 

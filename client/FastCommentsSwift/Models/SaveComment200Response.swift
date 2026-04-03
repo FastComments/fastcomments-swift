@@ -10,7 +10,7 @@ import Foundation
 public struct SaveComment200Response: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var status: APIStatus
-    public var comment: FComment?
+    public var comment: APIComment?
     public var user: UserSessionInfo?
     /** Construct a type with a set of properties K of type T */
     public var moduleData: [String: JSONValue]?
@@ -22,7 +22,7 @@ public struct SaveComment200Response: Sendable, Codable, ParameterConvertible, H
     public var translatedError: String?
     public var customConfig: CustomConfigParameters?
 
-    public init(status: APIStatus, comment: FComment? = nil, user: UserSessionInfo? = nil, moduleData: [String: JSONValue]? = nil, reason: String? = nil, code: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(status: APIStatus, comment: APIComment? = nil, user: UserSessionInfo? = nil, moduleData: [String: JSONValue]? = nil, reason: String? = nil, code: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.status = status
         self.comment = comment
         self.user = user

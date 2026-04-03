@@ -1609,7 +1609,11 @@
 					"dfr",
 					"new-feed-post",
 					"updated-feed-post",
-					"deleted-feed-post"
+					"deleted-feed-post",
+					"new-ticket",
+					"updated-ticket-state",
+					"updated-ticket-assignment",
+					"deleted-ticket"
 				],
 				"type": "string"
 			},
@@ -1991,10 +1995,12 @@
 				"additionalProperties": {
 					"properties": {
 						"after": {
-							"type": "string"
+							"type": "string",
+							"nullable": true
 						},
 						"before": {
-							"type": "string"
+							"type": "string",
+							"nullable": true
 						}
 					},
 					"required": [
@@ -2072,6 +2078,10 @@
 							"type": "string"
 						},
 						"type": "array"
+					},
+					"sc": {
+						"type": "integer",
+						"format": "int32"
 					},
 					"changes": {
 						"$ref": "#/components/schemas/Int32Map"
@@ -5477,6 +5487,14 @@
 						"type": "number",
 						"format": "double"
 					},
+					"flexLLMCostCents": {
+						"type": "number",
+						"format": "double"
+					},
+					"flexLLMUnit": {
+						"type": "number",
+						"format": "double"
+					},
 					"flexMinimumCostCents": {
 						"type": "number",
 						"format": "double"
@@ -5750,11 +5768,11 @@
 						"type": "number",
 						"format": "double"
 					},
-					"flexChatGPTCostCents": {
+					"flexLLMCostCents": {
 						"type": "number",
 						"format": "double"
 					},
-					"flexChatGPTUnit": {
+					"flexLLMUnit": {
 						"type": "number",
 						"format": "double"
 					},
@@ -8511,7 +8529,7 @@
 			},
 			"APICommentBase": {
 				"properties": {
-					"_id": {
+					"id": {
 						"type": "string"
 					},
 					"aiDeterminedSpam": {
@@ -8740,7 +8758,7 @@
 					}
 				},
 				"required": [
-					"_id",
+					"id",
 					"approved",
 					"comment",
 					"commentHTML",
@@ -9004,13 +9022,13 @@
 				],
 				"type": "object"
 			},
-			"SaveCommentResponse": {
+			"APISaveCommentResponse": {
 				"properties": {
 					"status": {
 						"$ref": "#/components/schemas/APIStatus"
 					},
 					"comment": {
-						"$ref": "#/components/schemas/FComment"
+						"$ref": "#/components/schemas/APIComment"
 					},
 					"user": {
 						"allOf": [
@@ -18239,7 +18257,7 @@
 								"schema": {
 									"anyOf": [
 										{
-											"$ref": "#/components/schemas/SaveCommentResponse"
+											"$ref": "#/components/schemas/APISaveCommentResponse"
 										},
 										{
 											"$ref": "#/components/schemas/APIError"
@@ -18321,7 +18339,7 @@
 									"items": {
 										"anyOf": [
 											{
-												"$ref": "#/components/schemas/SaveCommentResponse"
+												"$ref": "#/components/schemas/APISaveCommentResponse"
 											},
 											{
 												"$ref": "#/components/schemas/APIError"

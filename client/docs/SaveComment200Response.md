@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**comment** | [**FComment**](FComment.md) |  | [optional] 
+**comment** | [**APIComment**](APIComment.md) |  | [optional] 
 **user** | [**UserSessionInfo**](UserSessionInfo.md) |  | [optional] 
 **moduleData** | **[String: JSONValue]** | Construct a type with a set of properties K of type T | [optional] 
 **reason** | **String** |  | [optional] 

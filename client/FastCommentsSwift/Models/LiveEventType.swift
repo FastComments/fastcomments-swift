@@ -25,4 +25,8 @@ public enum LiveEventType: String, Sendable, Codable, CaseIterable {
     case newFeedPost = "new-feed-post"
     case updatedFeedPost = "updated-feed-post"
     case deletedFeedPost = "deleted-feed-post"
+    case newTicket = "new-ticket"
+    case updatedTicketState = "updated-ticket-state"
+    case updatedTicketAssignment = "updated-ticket-assignment"
+    case deletedTicket = "deleted-ticket"
 }

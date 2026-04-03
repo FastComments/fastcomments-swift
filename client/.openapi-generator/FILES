@@ -34,6 +34,7 @@ FastCommentsSwift/Models/APIGetUserBadgeResponse.swift
 FastCommentsSwift/Models/APIGetUserBadgesResponse.swift
 FastCommentsSwift/Models/APIPage.swift
 FastCommentsSwift/Models/APISSOUser.swift
+FastCommentsSwift/Models/APISaveCommentResponse.swift
 FastCommentsSwift/Models/APIStatus.swift
 FastCommentsSwift/Models/APITenant.swift
 FastCommentsSwift/Models/APITenantDailyUsage.swift
@@ -319,7 +320,6 @@ FastCommentsSwift/Models/ResetUserNotificationsResponse.swift
 FastCommentsSwift/Models/SORTDIR.swift
 FastCommentsSwift/Models/SSOSecurityLevel.swift
 FastCommentsSwift/Models/SaveComment200Response.swift
-FastCommentsSwift/Models/SaveCommentResponse.swift
 FastCommentsSwift/Models/SaveCommentResponseOptimized.swift
 FastCommentsSwift/Models/SaveCommentsResponseWithPresence.swift
 FastCommentsSwift/Models/SearchUsers200Response.swift
@@ -394,6 +394,7 @@ docs/APIGetUserBadgeResponse.md
 docs/APIGetUserBadgesResponse.md
 docs/APIPage.md
 docs/APISSOUser.md
+docs/APISaveCommentResponse.md
 docs/APIStatus.md
 docs/APITenant.md
 docs/APITenantDailyUsage.md
@@ -681,7 +682,6 @@ docs/ResetUserNotificationsResponse.md
 docs/SORTDIR.md
 docs/SSOSecurityLevel.md
 docs/SaveComment200Response.md
-docs/SaveCommentResponse.md
 docs/SaveCommentResponseOptimized.md
 docs/SaveCommentsResponseWithPresence.md
 docs/SearchUsers200Response.md

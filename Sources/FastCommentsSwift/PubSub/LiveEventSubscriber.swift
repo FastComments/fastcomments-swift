@@ -10,7 +10,7 @@ public class LiveEventSubscriber: NSObject {
 
     // MARK: - Constants
 
-    private static let pingInterval: TimeInterval = 60
+    private static let pingInterval: TimeInterval = 25
     private static let reconnectIntervalBase: TimeInterval = 4
 
     // MARK: - Callback Types
@@ -132,7 +132,7 @@ public class LiveEventSubscriber: NSObject {
         let timer = DispatchSource.makeTimerSource(queue: stateQueue)
         timer.schedule(deadline: .now() + Self.pingInterval, repeating: Self.pingInterval)
         timer.setEventHandler { [weak self] in
-            self?.webSocketTask?.send(.string("ping")) { _ in }
+            self?.webSocketTask?.sendPing { _ in }
         }
         timer.resume()
         stateQueue.sync {

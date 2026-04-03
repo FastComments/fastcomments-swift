@@ -120,7 +120,7 @@ public struct APICommentBase: Sendable, Codable, ParameterConvertible, Hashable 
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id = "_id"
+        case id
         case aiDeterminedSpam
         case anonUserId
         case approved
@@ -235,3 +235,6 @@ public struct APICommentBase: Sendable, Codable, ParameterConvertible, Hashable 
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension APICommentBase: Identifiable {}

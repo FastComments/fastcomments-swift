@@ -1,10 +1,10 @@
-# SaveCommentResponse
+# APISaveCommentResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**APIStatus**](APIStatus.md) |  | 
-**comment** | [**FComment**](FComment.md) |  | 
+**comment** | [**APIComment**](APIComment.md) |  | 
 **user** | [**UserSessionInfo**](UserSessionInfo.md) |  | 
 **moduleData** | **[String: JSONValue]** | Construct a type with a set of properties K of type T | [optional] 
 

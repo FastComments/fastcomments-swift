@@ -56,6 +56,8 @@ public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
     public var flexDomainUnit: Double?
     public var flexChatGPTCostCents: Double?
     public var flexChatGPTUnit: Double?
+    public var flexLLMCostCents: Double?
+    public var flexLLMUnit: Double?
     public var flexMinimumCostCents: Double?
     public var flexManagedTenantCostCents: Double?
     public var flexSSOAdminCostCents: Double?
@@ -64,7 +66,7 @@ public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
     public var flexSSOModeratorUnit: Double?
     public var isSSOBillingMonthlyActiveUsers: Bool?
 
-    public init(id: String, name: String, tenantId: String, createdAt: Date, monthlyCostUSD: Double?, yearlyCostUSD: Double?, monthlyStripePlanId: String?, yearlyStripePlanId: String?, maxMonthlyPageLoads: Double, maxMonthlyAPICredits: Double, maxMonthlySmallWidgetsCredits: Double, maxMonthlyComments: Double, maxConcurrentUsers: Double, maxTenantUsers: Double, maxSSOUsers: Double, maxModerators: Double, maxDomains: Double, maxWhiteLabeledTenants: Double, maxMonthlyEventLogRequests: Double, maxCustomCollectionSize: Double, hasWhiteLabeling: Bool, hasDebranding: Bool, hasLLMSpamDetection: Bool, forWhoText: String, featureTaglines: [String], hasAuditing: Bool, hasFlexPricing: Bool, enableSAML: Bool? = nil, enableCanvasLTI: Bool? = nil, flexPageLoadCostCents: Double? = nil, flexPageLoadUnit: Double? = nil, flexCommentCostCents: Double? = nil, flexCommentUnit: Double? = nil, flexSSOUserCostCents: Double? = nil, flexSSOUserUnit: Double? = nil, flexAPICreditCostCents: Double? = nil, flexAPICreditUnit: Double? = nil, flexSmallWidgetsCreditCostCents: Double? = nil, flexSmallWidgetsCreditUnit: Double? = nil, flexModeratorCostCents: Double? = nil, flexModeratorUnit: Double? = nil, flexAdminCostCents: Double? = nil, flexAdminUnit: Double? = nil, flexDomainCostCents: Double? = nil, flexDomainUnit: Double? = nil, flexChatGPTCostCents: Double? = nil, flexChatGPTUnit: Double? = nil, flexMinimumCostCents: Double? = nil, flexManagedTenantCostCents: Double? = nil, flexSSOAdminCostCents: Double? = nil, flexSSOAdminUnit: Double? = nil, flexSSOModeratorCostCents: Double? = nil, flexSSOModeratorUnit: Double? = nil, isSSOBillingMonthlyActiveUsers: Bool? = nil) {
+    public init(id: String, name: String, tenantId: String, createdAt: Date, monthlyCostUSD: Double?, yearlyCostUSD: Double?, monthlyStripePlanId: String?, yearlyStripePlanId: String?, maxMonthlyPageLoads: Double, maxMonthlyAPICredits: Double, maxMonthlySmallWidgetsCredits: Double, maxMonthlyComments: Double, maxConcurrentUsers: Double, maxTenantUsers: Double, maxSSOUsers: Double, maxModerators: Double, maxDomains: Double, maxWhiteLabeledTenants: Double, maxMonthlyEventLogRequests: Double, maxCustomCollectionSize: Double, hasWhiteLabeling: Bool, hasDebranding: Bool, hasLLMSpamDetection: Bool, forWhoText: String, featureTaglines: [String], hasAuditing: Bool, hasFlexPricing: Bool, enableSAML: Bool? = nil, enableCanvasLTI: Bool? = nil, flexPageLoadCostCents: Double? = nil, flexPageLoadUnit: Double? = nil, flexCommentCostCents: Double? = nil, flexCommentUnit: Double? = nil, flexSSOUserCostCents: Double? = nil, flexSSOUserUnit: Double? = nil, flexAPICreditCostCents: Double? = nil, flexAPICreditUnit: Double? = nil, flexSmallWidgetsCreditCostCents: Double? = nil, flexSmallWidgetsCreditUnit: Double? = nil, flexModeratorCostCents: Double? = nil, flexModeratorUnit: Double? = nil, flexAdminCostCents: Double? = nil, flexAdminUnit: Double? = nil, flexDomainCostCents: Double? = nil, flexDomainUnit: Double? = nil, flexChatGPTCostCents: Double? = nil, flexChatGPTUnit: Double? = nil, flexLLMCostCents: Double? = nil, flexLLMUnit: Double? = nil, flexMinimumCostCents: Double? = nil, flexManagedTenantCostCents: Double? = nil, flexSSOAdminCostCents: Double? = nil, flexSSOAdminUnit: Double? = nil, flexSSOModeratorCostCents: Double? = nil, flexSSOModeratorUnit: Double? = nil, isSSOBillingMonthlyActiveUsers: Bool? = nil) {
         self.id = id
         self.name = name
         self.tenantId = tenantId
@@ -112,6 +114,8 @@ public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
         self.flexDomainUnit = flexDomainUnit
         self.flexChatGPTCostCents = flexChatGPTCostCents
         self.flexChatGPTUnit = flexChatGPTUnit
+        self.flexLLMCostCents = flexLLMCostCents
+        self.flexLLMUnit = flexLLMUnit
         self.flexMinimumCostCents = flexMinimumCostCents
         self.flexManagedTenantCostCents = flexManagedTenantCostCents
         self.flexSSOAdminCostCents = flexSSOAdminCostCents
@@ -169,6 +173,8 @@ public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
         case flexDomainUnit
         case flexChatGPTCostCents
         case flexChatGPTUnit
+        case flexLLMCostCents
+        case flexLLMUnit
         case flexMinimumCostCents
         case flexManagedTenantCostCents
         case flexSSOAdminCostCents
@@ -229,6 +235,8 @@ public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encodeIfPresent(flexDomainUnit, forKey: .flexDomainUnit)
         try container.encodeIfPresent(flexChatGPTCostCents, forKey: .flexChatGPTCostCents)
         try container.encodeIfPresent(flexChatGPTUnit, forKey: .flexChatGPTUnit)
+        try container.encodeIfPresent(flexLLMCostCents, forKey: .flexLLMCostCents)
+        try container.encodeIfPresent(flexLLMUnit, forKey: .flexLLMUnit)
         try container.encodeIfPresent(flexMinimumCostCents, forKey: .flexMinimumCostCents)
         try container.encodeIfPresent(flexManagedTenantCostCents, forKey: .flexManagedTenantCostCents)
         try container.encodeIfPresent(flexSSOAdminCostCents, forKey: .flexSSOAdminCostCents)

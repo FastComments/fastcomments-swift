@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **isClosed** | **Bool** |  | [optional] 
 **uj** | **[String]** |  | [optional] 
 **ul** | **[String]** |  | [optional] 
+**sc** | **Int** |  | [optional] 
 **changes** | **[String: Int]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

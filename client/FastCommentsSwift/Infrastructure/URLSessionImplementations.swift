@@ -5,10 +5,7 @@
 //
 
 import Foundation
-#if canImport(FoundationNetworking)
-import FoundationNetworking
-#endif
-#if canImport(MobileCoreServices)
+#if !os(macOS)
 import MobileCoreServices
 #endif
 #if canImport(UniformTypeIdentifiers)
@@ -57,13 +54,7 @@ public class URLSessionRequestBuilderFactory: RequestBuilderFactory {
 
 fileprivate class URLSessionRequestBuilderConfiguration: @unchecked Sendable {
     private init() {
-        // Disable cookies to prevent the server from tying userIdWS to a session cookie.
-        // Stale or shared cookies cause the wrong userIdWS to be returned, which breaks
-        // presence tracking (p-u events won't fire for unrecognized userIdWS values).
-        let config = URLSessionConfiguration.ephemeral
-        config.httpCookieAcceptPolicy = .never
-        config.httpShouldSetCookies = false
-        defaultURLSession = URLSession(configuration: config, delegate: sessionDelegate, delegateQueue: nil)
+        defaultURLSession = URLSession(configuration: .default, delegate: sessionDelegate, delegateQueue: nil)
     }
 
     static let shared = URLSessionRequestBuilderConfiguration()
@@ -619,21 +610,21 @@ private class FormDataEncoding: ParameterEncoding {
     func mimeType(for url: URL) -> String {
         let pathExtension = url.pathExtension
 
-        #if canImport(UniformTypeIdentifiers)
         if #available(macOS 11.0, iOS 14.0, tvOS 14.0, watchOS 7.0, *) {
+            #if canImport(UniformTypeIdentifiers)
             if let utType = UTType(filenameExtension: pathExtension) {
                 return utType.preferredMIMEType ?? "application/octet-stream"
             }
+            #else
+            return "application/octet-stream" 
+            #endif
+        } else {
+            if let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension as NSString, nil)?.takeRetainedValue(),
+                    let mimetype = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType)?.takeRetainedValue() {
+                return mimetype as String
+            }
+            return "application/octet-stream"
         }
-        #endif
-
-        #if canImport(MobileCoreServices)
-        if let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension as NSString, nil)?.takeRetainedValue(),
-                let mimetype = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType)?.takeRetainedValue() {
-            return mimetype as String
-        }
-        #endif
-
         return "application/octet-stream"
     }
 

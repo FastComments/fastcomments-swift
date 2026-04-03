@@ -24,9 +24,10 @@ public struct LiveEvent: Sendable, Codable, ParameterConvertible, Hashable {
     public var isClosed: Bool?
     public var uj: [String]?
     public var ul: [String]?
+    public var sc: Int?
     public var changes: [String: Int]?
 
-    public init(type: LiveEventType, timestamp: Int64? = nil, ts: Int64? = nil, broadcastId: String? = nil, userId: String? = nil, badges: [CommentUserBadgeInfo]? = nil, notification: UserNotification? = nil, vote: PubSubVote? = nil, comment: PubSubComment? = nil, feedPost: FeedPost? = nil, extraInfo: LiveEventExtraInfo? = nil, config: JSONValue? = nil, isClosed: Bool? = nil, uj: [String]? = nil, ul: [String]? = nil, changes: [String: Int]? = nil) {
+    public init(type: LiveEventType, timestamp: Int64? = nil, ts: Int64? = nil, broadcastId: String? = nil, userId: String? = nil, badges: [CommentUserBadgeInfo]? = nil, notification: UserNotification? = nil, vote: PubSubVote? = nil, comment: PubSubComment? = nil, feedPost: FeedPost? = nil, extraInfo: LiveEventExtraInfo? = nil, config: JSONValue? = nil, isClosed: Bool? = nil, uj: [String]? = nil, ul: [String]? = nil, sc: Int? = nil, changes: [String: Int]? = nil) {
         self.type = type
         self.timestamp = timestamp
         self.ts = ts
@@ -42,6 +43,7 @@ public struct LiveEvent: Sendable, Codable, ParameterConvertible, Hashable {
         self.isClosed = isClosed
         self.uj = uj
         self.ul = ul
+        self.sc = sc
         self.changes = changes
     }
 
@@ -61,6 +63,7 @@ public struct LiveEvent: Sendable, Codable, ParameterConvertible, Hashable {
         case isClosed
         case uj
         case ul
+        case sc
         case changes
     }
 
@@ -83,6 +86,7 @@ public struct LiveEvent: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encodeIfPresent(isClosed, forKey: .isClosed)
         try container.encodeIfPresent(uj, forKey: .uj)
         try container.encodeIfPresent(ul, forKey: .ul)
+        try container.encodeIfPresent(sc, forKey: .sc)
         try container.encodeIfPresent(changes, forKey: .changes)
     }
 }
