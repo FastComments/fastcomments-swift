@@ -246,7 +246,10 @@ public class LiveEventSubscriber: NSObject {
             guard let self else { return }
             let stillClosed = self.isIntentionallyClosed
             guard !stillClosed else { return }
-            _ = self.subscribeToChanges(config: config, canSeeComments: canSee, handleLiveEvent: handler)
+            DispatchQueue.global(qos: .utility).async { [weak self] in
+                guard let self else { return }
+                _ = self.subscribeToChanges(config: config, canSeeComments: canSee, handleLiveEvent: handler)
+            }
         }
     }
 
