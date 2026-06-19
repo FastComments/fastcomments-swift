@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct VoteResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct VoteResponse: Sendable, Codable, Hashable {
 
     public enum Status: String, Sendable, Codable, CaseIterable {
         case success = "success"

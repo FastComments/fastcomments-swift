@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FeedPostLink: Sendable, Codable, ParameterConvertible, Hashable {
+public struct FeedPostLink: Sendable, Codable, Hashable {
 
     public var text: String?
     public var title: String?

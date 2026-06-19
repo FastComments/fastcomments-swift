@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Moderator: Sendable, Codable, ParameterConvertible, Hashable {
+public struct Moderator: Sendable, Codable, Hashable {
 
     public var id: String
     public var tenantId: String

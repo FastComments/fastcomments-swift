@@ -8,7 +8,7 @@
 import Foundation
 
 /** The aggregation request accepts a resource, optional grouping keys, an array of operations, and an optional sort */
-public struct AggregationRequest: Sendable, Codable, ParameterConvertible, Hashable {
+public struct AggregationRequest: Sendable, Codable, Hashable {
 
     public var query: [QueryPredicate]?
     public var resourceName: String

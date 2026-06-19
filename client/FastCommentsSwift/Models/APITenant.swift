@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APITenant: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APITenant: Sendable, Codable, Hashable {
 
     public var id: String
     public var name: String
@@ -137,5 +137,4 @@ public struct APITenant: Sendable, Codable, ParameterConvertible, Hashable {
 }
 
 
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension APITenant: Identifiable {}

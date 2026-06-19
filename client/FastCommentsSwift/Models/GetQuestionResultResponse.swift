@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetQuestionResultResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetQuestionResultResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var questionResult: QuestionResult

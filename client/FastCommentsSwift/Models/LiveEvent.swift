@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct LiveEvent: Sendable, Codable, ParameterConvertible, Hashable {
+public struct LiveEvent: Sendable, Codable, Hashable {
 
     public var type: LiveEventType
     public var timestamp: Int64?

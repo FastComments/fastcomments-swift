@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APISSOUser: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APISSOUser: Sendable, Codable, Hashable {
 
     public var id: String
     public var username: String
@@ -104,5 +104,4 @@ public struct APISSOUser: Sendable, Codable, ParameterConvertible, Hashable {
 }
 
 
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension APISSOUser: Identifiable {}

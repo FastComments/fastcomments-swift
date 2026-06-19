@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct VoteBodyParams: Sendable, Codable, ParameterConvertible, Hashable {
+public struct VoteBodyParams: Sendable, Codable, Hashable {
 
     public enum VoteDir: String, Sendable, Codable, CaseIterable {
         case up = "up"

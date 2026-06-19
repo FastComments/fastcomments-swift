@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CommentUserMentionInfo: Sendable, Codable, ParameterConvertible, Hashable {
+public struct CommentUserMentionInfo: Sendable, Codable, Hashable {
 
     public enum ModelType: String, Sendable, Codable, CaseIterable {
         case user = "user"
@@ -48,5 +48,4 @@ public struct CommentUserMentionInfo: Sendable, Codable, ParameterConvertible, H
 }
 
 
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension CommentUserMentionInfo: Identifiable {}

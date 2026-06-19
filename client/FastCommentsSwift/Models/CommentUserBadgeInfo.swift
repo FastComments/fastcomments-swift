@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CommentUserBadgeInfo: Sendable, Codable, ParameterConvertible, Hashable {
+public struct CommentUserBadgeInfo: Sendable, Codable, Hashable {
 
     public var id: String
     public var type: Int
@@ -60,5 +60,4 @@ public struct CommentUserBadgeInfo: Sendable, Codable, ParameterConvertible, Has
 }
 
 
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension CommentUserBadgeInfo: Identifiable {}

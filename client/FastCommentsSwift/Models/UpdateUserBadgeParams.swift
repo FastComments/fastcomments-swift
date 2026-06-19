@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UpdateUserBadgeParams: Sendable, Codable, ParameterConvertible, Hashable {
+public struct UpdateUserBadgeParams: Sendable, Codable, Hashable {
 
     public var displayedOnComments: Bool?
 

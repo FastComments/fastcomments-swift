@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetPendingWebhookEventCountResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetPendingWebhookEventCountResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var count: Double

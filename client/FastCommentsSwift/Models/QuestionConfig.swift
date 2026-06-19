@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct QuestionConfig: Sendable, Codable, ParameterConvertible, Hashable {
+public struct QuestionConfig: Sendable, Codable, Hashable {
 
     public var id: String
     public var tenantId: String

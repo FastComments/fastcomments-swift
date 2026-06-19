@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CombineQuestionResultsWithCommentsResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct CombineQuestionResultsWithCommentsResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var data: FindCommentsByRangeResponse

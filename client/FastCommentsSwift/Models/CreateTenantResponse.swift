@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateTenantResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct CreateTenantResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var tenant: APITenant

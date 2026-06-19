@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APIError: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APIError: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var reason: String

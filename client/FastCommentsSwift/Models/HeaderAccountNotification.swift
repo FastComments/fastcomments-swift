@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct HeaderAccountNotification: Sendable, Codable, ParameterConvertible, Hashable {
+public struct HeaderAccountNotification: Sendable, Codable, Hashable {
 
     public var id: String
     public var title: String
@@ -20,8 +20,10 @@ public struct HeaderAccountNotification: Sendable, Codable, ParameterConvertible
     public var linkUrl: String?
     public var linkText: String?
     public var createdAt: Date
+    /** Discriminator for notifications with a special layout/click handler (e.g. \"feedback-offer\"). */
+    public var type: String?
 
-    public init(id: String, title: String, message: String, messagesByLocale: [String: String]?, dates: [String: String]?, severity: String, linkUrl: String?, linkText: String?, createdAt: Date) {
+    public init(id: String, title: String, message: String, messagesByLocale: [String: String]?, dates: [String: String]?, severity: String, linkUrl: String?, linkText: String?, createdAt: Date, type: String? = nil) {
         self.id = id
         self.title = title
         self.message = message
@@ -31,6 +33,7 @@ public struct HeaderAccountNotification: Sendable, Codable, ParameterConvertible
         self.linkUrl = linkUrl
         self.linkText = linkText
         self.createdAt = createdAt
+        self.type = type
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -43,6 +46,7 @@ public struct HeaderAccountNotification: Sendable, Codable, ParameterConvertible
         case linkUrl
         case linkText
         case createdAt
+        case type
     }
 
     // Encodable protocol methods
@@ -58,6 +62,7 @@ public struct HeaderAccountNotification: Sendable, Codable, ParameterConvertible
         try container.encode(linkUrl, forKey: .linkUrl)
         try container.encode(linkText, forKey: .linkText)
         try container.encode(createdAt, forKey: .createdAt)
+        try container.encodeIfPresent(type, forKey: .type)
     }
 }
 

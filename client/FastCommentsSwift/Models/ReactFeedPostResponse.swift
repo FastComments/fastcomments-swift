@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ReactFeedPostResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct ReactFeedPostResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var reactType: String

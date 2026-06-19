@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **name** | **String** |  | 
 **tenantId** | **String** |  | 
 **createdAt** | **Date** |  | 
+**templateId** | **String** |  | [optional] 
 **monthlyCostUSD** | **Double** |  | 
 **yearlyCostUSD** | **Double** |  | 
 **monthlyStripePlanId** | **String** |  | 
@@ -59,6 +60,10 @@ Name | Type | Description | Notes
 **flexSSOModeratorCostCents** | **Double** |  | [optional] 
 **flexSSOModeratorUnit** | **Double** |  | [optional] 
 **isSSOBillingMonthlyActiveUsers** | **Bool** |  | [optional] 
+**hasAIAgents** | **Bool** |  | [optional] 
+**maxAIAgents** | **Double** |  | [optional] 
+**aiAgentDailyBudgetCents** | **Double** |  | [optional] 
+**aiAgentMonthlyBudgetCents** | **Double** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

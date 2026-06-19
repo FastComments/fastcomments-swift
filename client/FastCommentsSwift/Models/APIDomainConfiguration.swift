@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APIDomainConfiguration: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APIDomainConfiguration: Sendable, Codable, Hashable {
 
     public var id: String
     public var domain: String
@@ -85,5 +85,4 @@ public struct APIDomainConfiguration: Sendable, Codable, ParameterConvertible, H
 }
 
 
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension APIDomainConfiguration: Identifiable {}

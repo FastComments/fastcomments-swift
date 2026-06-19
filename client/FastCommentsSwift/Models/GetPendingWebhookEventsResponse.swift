@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetPendingWebhookEventsResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetPendingWebhookEventsResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var pendingWebhookEvents: [PendingCommentToSyncOutbound]

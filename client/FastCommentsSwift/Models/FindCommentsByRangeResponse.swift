@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FindCommentsByRangeResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct FindCommentsByRangeResponse: Sendable, Codable, Hashable {
 
     public var results: [FindCommentsByRangeItem]
     public var createdAt: Date

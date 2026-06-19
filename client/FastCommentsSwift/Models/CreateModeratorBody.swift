@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateModeratorBody: Sendable, Codable, ParameterConvertible, Hashable {
+public struct CreateModeratorBody: Sendable, Codable, Hashable {
 
     public var name: String
     public var email: String

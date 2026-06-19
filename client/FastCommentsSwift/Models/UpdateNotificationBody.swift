@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UpdateNotificationBody: Sendable, Codable, ParameterConvertible, Hashable {
+public struct UpdateNotificationBody: Sendable, Codable, Hashable {
 
     public var viewed: Bool?
     public var optedOut: Bool?

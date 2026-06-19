@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APITicket: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APITicket: Sendable, Codable, Hashable {
 
     public var id: String
     public var urlId: String

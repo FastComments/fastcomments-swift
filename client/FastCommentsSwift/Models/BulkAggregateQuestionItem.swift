@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct BulkAggregateQuestionItem: Sendable, Codable, ParameterConvertible, Hashable {
+public struct BulkAggregateQuestionItem: Sendable, Codable, Hashable {
 
     public var aggId: String
     public var questionId: String?

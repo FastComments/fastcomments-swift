@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PendingCommentToSyncOutbound: Sendable, Codable, ParameterConvertible, Hashable {
+public struct PendingCommentToSyncOutbound: Sendable, Codable, Hashable {
 
     public var id: String
     public var commentId: String

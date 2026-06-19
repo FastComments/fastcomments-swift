@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SaveCommentResponseOptimized: Sendable, Codable, ParameterConvertible, Hashable {
+public struct SaveCommentResponseOptimized: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var comment: PublicComment

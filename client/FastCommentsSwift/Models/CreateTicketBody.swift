@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateTicketBody: Sendable, Codable, ParameterConvertible, Hashable {
+public struct CreateTicketBody: Sendable, Codable, Hashable {
 
     public var subject: String
 

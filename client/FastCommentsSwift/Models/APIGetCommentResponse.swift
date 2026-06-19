@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APIGetCommentResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APIGetCommentResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var comment: APIComment

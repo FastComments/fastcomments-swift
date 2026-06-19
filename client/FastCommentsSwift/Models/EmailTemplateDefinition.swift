@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct EmailTemplateDefinition: Sendable, Codable, ParameterConvertible, Hashable {
+public struct EmailTemplateDefinition: Sendable, Codable, Hashable {
 
     public var emailTemplateId: String
     /** Construct a type with a set of properties K of type T */

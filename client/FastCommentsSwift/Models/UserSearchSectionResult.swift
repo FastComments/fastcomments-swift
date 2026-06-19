@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserSearchSectionResult: Sendable, Codable, ParameterConvertible, Hashable {
+public struct UserSearchSectionResult: Sendable, Codable, Hashable {
 
     public var section: UserSearchSection
     public var users: [UserSearchResult]

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct NotificationAndCount: Sendable, Codable, ParameterConvertible, Hashable {
+public struct NotificationAndCount: Sendable, Codable, Hashable {
 
     public var type: NotificationType
     public var count: Int64

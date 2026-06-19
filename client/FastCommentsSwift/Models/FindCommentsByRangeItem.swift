@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FindCommentsByRangeItem: Sendable, Codable, ParameterConvertible, Hashable {
+public struct FindCommentsByRangeItem: Sendable, Codable, Hashable {
 
     public var comment: FComment?
     public var result: QuestionResult

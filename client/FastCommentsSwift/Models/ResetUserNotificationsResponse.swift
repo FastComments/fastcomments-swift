@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ResetUserNotificationsResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct ResetUserNotificationsResponse: Sendable, Codable, Hashable {
 
     public enum Code: String, Sendable, Codable, CaseIterable {
         case ignoredSinceImpersonated = "ignored-since-impersonated"

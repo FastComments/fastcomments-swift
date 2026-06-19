@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FeedPostMediaItemAsset: Sendable, Codable, ParameterConvertible, Hashable {
+public struct FeedPostMediaItemAsset: Sendable, Codable, Hashable {
 
     public var w: Int
     public var h: Int

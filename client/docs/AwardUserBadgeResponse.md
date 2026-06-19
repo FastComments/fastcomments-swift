@@ -1,0 +1,12 @@
+# AwardUserBadgeResponse
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**notes** | **[String]** |  | [optional] 
+**badges** | [CommentUserBadgeInfo] |  | [optional] 
+**status** | [**APIStatus**](APIStatus.md) |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

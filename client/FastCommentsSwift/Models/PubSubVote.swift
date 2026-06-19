@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PubSubVote: Sendable, Codable, ParameterConvertible, Hashable {
+public struct PubSubVote: Sendable, Codable, Hashable {
 
     public var id: String
     public var tenantId: String
