@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateAPIPageData: Sendable, Codable, ParameterConvertible, Hashable {
+public struct CreateAPIPageData: Sendable, Codable, Hashable {
 
     public var accessibleByGroupIds: [String]?
     public var rootCommentCount: Int64?

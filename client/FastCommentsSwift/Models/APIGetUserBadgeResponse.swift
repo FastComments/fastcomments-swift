@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APIGetUserBadgeResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APIGetUserBadgeResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var userBadge: UserBadge

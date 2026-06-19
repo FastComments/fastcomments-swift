@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetTicketResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetTicketResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var ticket: APITicketDetail

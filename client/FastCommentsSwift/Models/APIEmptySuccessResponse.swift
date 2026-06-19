@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APIEmptySuccessResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APIEmptySuccessResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
 

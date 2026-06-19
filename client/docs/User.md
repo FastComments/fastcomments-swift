@@ -42,6 +42,7 @@ Name | Type | Description | Notes
 **digestEmailFrequency** | [**DigestEmailFrequency**](DigestEmailFrequency.md) |  | [optional] 
 **notificationFrequency** | **Double** |  | [optional] 
 **adminNotificationFrequency** | **Double** |  | [optional] 
+**agentApprovalNotificationFrequency** | [**ImportedAgentApprovalNotificationFrequency**](ImportedAgentApprovalNotificationFrequency.md) |  | [optional] 
 **lastTenantNotificationSentDate** | **Date** |  | [optional] 
 **lastReplyNotificationSentDate** | **Date** |  | [optional] 
 **ignoredAddToMySiteMessages** | **Bool** |  | [optional] 

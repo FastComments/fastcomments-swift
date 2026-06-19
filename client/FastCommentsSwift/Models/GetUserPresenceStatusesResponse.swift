@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetUserPresenceStatusesResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetUserPresenceStatusesResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     /** Construct a type with a set of properties K of type T */

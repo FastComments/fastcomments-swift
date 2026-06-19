@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetEventLogResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetEventLogResponse: Sendable, Codable, Hashable {
 
     public var events: [EventLogEntry]
     public var status: APIStatus

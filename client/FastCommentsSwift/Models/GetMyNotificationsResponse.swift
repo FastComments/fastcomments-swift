@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetMyNotificationsResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetMyNotificationsResponse: Sendable, Codable, Hashable {
 
     /** Construct a type with a set of properties K of type T */
     public var translations: [String: String]?

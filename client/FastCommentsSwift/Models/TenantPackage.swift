@@ -7,12 +7,13 @@
 
 import Foundation
 
-public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
+public struct TenantPackage: Sendable, Codable, Hashable {
 
     public var id: String
     public var name: String
     public var tenantId: String
     public var createdAt: Date
+    public var templateId: String?
     public var monthlyCostUSD: Double?
     public var yearlyCostUSD: Double?
     public var monthlyStripePlanId: String?
@@ -65,12 +66,17 @@ public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
     public var flexSSOModeratorCostCents: Double?
     public var flexSSOModeratorUnit: Double?
     public var isSSOBillingMonthlyActiveUsers: Bool?
+    public var hasAIAgents: Bool?
+    public var maxAIAgents: Double?
+    public var aiAgentDailyBudgetCents: Double?
+    public var aiAgentMonthlyBudgetCents: Double?
 
-    public init(id: String, name: String, tenantId: String, createdAt: Date, monthlyCostUSD: Double?, yearlyCostUSD: Double?, monthlyStripePlanId: String?, yearlyStripePlanId: String?, maxMonthlyPageLoads: Double, maxMonthlyAPICredits: Double, maxMonthlySmallWidgetsCredits: Double, maxMonthlyComments: Double, maxConcurrentUsers: Double, maxTenantUsers: Double, maxSSOUsers: Double, maxModerators: Double, maxDomains: Double, maxWhiteLabeledTenants: Double, maxMonthlyEventLogRequests: Double, maxCustomCollectionSize: Double, hasWhiteLabeling: Bool, hasDebranding: Bool, hasLLMSpamDetection: Bool, forWhoText: String, featureTaglines: [String], hasAuditing: Bool, hasFlexPricing: Bool, enableSAML: Bool? = nil, enableCanvasLTI: Bool? = nil, flexPageLoadCostCents: Double? = nil, flexPageLoadUnit: Double? = nil, flexCommentCostCents: Double? = nil, flexCommentUnit: Double? = nil, flexSSOUserCostCents: Double? = nil, flexSSOUserUnit: Double? = nil, flexAPICreditCostCents: Double? = nil, flexAPICreditUnit: Double? = nil, flexSmallWidgetsCreditCostCents: Double? = nil, flexSmallWidgetsCreditUnit: Double? = nil, flexModeratorCostCents: Double? = nil, flexModeratorUnit: Double? = nil, flexAdminCostCents: Double? = nil, flexAdminUnit: Double? = nil, flexDomainCostCents: Double? = nil, flexDomainUnit: Double? = nil, flexChatGPTCostCents: Double? = nil, flexChatGPTUnit: Double? = nil, flexLLMCostCents: Double? = nil, flexLLMUnit: Double? = nil, flexMinimumCostCents: Double? = nil, flexManagedTenantCostCents: Double? = nil, flexSSOAdminCostCents: Double? = nil, flexSSOAdminUnit: Double? = nil, flexSSOModeratorCostCents: Double? = nil, flexSSOModeratorUnit: Double? = nil, isSSOBillingMonthlyActiveUsers: Bool? = nil) {
+    public init(id: String, name: String, tenantId: String, createdAt: Date, templateId: String? = nil, monthlyCostUSD: Double?, yearlyCostUSD: Double?, monthlyStripePlanId: String?, yearlyStripePlanId: String?, maxMonthlyPageLoads: Double, maxMonthlyAPICredits: Double, maxMonthlySmallWidgetsCredits: Double, maxMonthlyComments: Double, maxConcurrentUsers: Double, maxTenantUsers: Double, maxSSOUsers: Double, maxModerators: Double, maxDomains: Double, maxWhiteLabeledTenants: Double, maxMonthlyEventLogRequests: Double, maxCustomCollectionSize: Double, hasWhiteLabeling: Bool, hasDebranding: Bool, hasLLMSpamDetection: Bool, forWhoText: String, featureTaglines: [String], hasAuditing: Bool, hasFlexPricing: Bool, enableSAML: Bool? = nil, enableCanvasLTI: Bool? = nil, flexPageLoadCostCents: Double? = nil, flexPageLoadUnit: Double? = nil, flexCommentCostCents: Double? = nil, flexCommentUnit: Double? = nil, flexSSOUserCostCents: Double? = nil, flexSSOUserUnit: Double? = nil, flexAPICreditCostCents: Double? = nil, flexAPICreditUnit: Double? = nil, flexSmallWidgetsCreditCostCents: Double? = nil, flexSmallWidgetsCreditUnit: Double? = nil, flexModeratorCostCents: Double? = nil, flexModeratorUnit: Double? = nil, flexAdminCostCents: Double? = nil, flexAdminUnit: Double? = nil, flexDomainCostCents: Double? = nil, flexDomainUnit: Double? = nil, flexChatGPTCostCents: Double? = nil, flexChatGPTUnit: Double? = nil, flexLLMCostCents: Double? = nil, flexLLMUnit: Double? = nil, flexMinimumCostCents: Double? = nil, flexManagedTenantCostCents: Double? = nil, flexSSOAdminCostCents: Double? = nil, flexSSOAdminUnit: Double? = nil, flexSSOModeratorCostCents: Double? = nil, flexSSOModeratorUnit: Double? = nil, isSSOBillingMonthlyActiveUsers: Bool? = nil, hasAIAgents: Bool? = nil, maxAIAgents: Double? = nil, aiAgentDailyBudgetCents: Double? = nil, aiAgentMonthlyBudgetCents: Double? = nil) {
         self.id = id
         self.name = name
         self.tenantId = tenantId
         self.createdAt = createdAt
+        self.templateId = templateId
         self.monthlyCostUSD = monthlyCostUSD
         self.yearlyCostUSD = yearlyCostUSD
         self.monthlyStripePlanId = monthlyStripePlanId
@@ -123,6 +129,10 @@ public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
         self.flexSSOModeratorCostCents = flexSSOModeratorCostCents
         self.flexSSOModeratorUnit = flexSSOModeratorUnit
         self.isSSOBillingMonthlyActiveUsers = isSSOBillingMonthlyActiveUsers
+        self.hasAIAgents = hasAIAgents
+        self.maxAIAgents = maxAIAgents
+        self.aiAgentDailyBudgetCents = aiAgentDailyBudgetCents
+        self.aiAgentMonthlyBudgetCents = aiAgentMonthlyBudgetCents
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -130,6 +140,7 @@ public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
         case name
         case tenantId
         case createdAt
+        case templateId
         case monthlyCostUSD
         case yearlyCostUSD
         case monthlyStripePlanId
@@ -182,6 +193,10 @@ public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
         case flexSSOModeratorCostCents
         case flexSSOModeratorUnit
         case isSSOBillingMonthlyActiveUsers
+        case hasAIAgents
+        case maxAIAgents
+        case aiAgentDailyBudgetCents
+        case aiAgentMonthlyBudgetCents
     }
 
     // Encodable protocol methods
@@ -192,6 +207,7 @@ public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(tenantId, forKey: .tenantId)
         try container.encode(createdAt, forKey: .createdAt)
+        try container.encodeIfPresent(templateId, forKey: .templateId)
         try container.encode(monthlyCostUSD, forKey: .monthlyCostUSD)
         try container.encode(yearlyCostUSD, forKey: .yearlyCostUSD)
         try container.encode(monthlyStripePlanId, forKey: .monthlyStripePlanId)
@@ -244,6 +260,10 @@ public struct TenantPackage: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encodeIfPresent(flexSSOModeratorCostCents, forKey: .flexSSOModeratorCostCents)
         try container.encodeIfPresent(flexSSOModeratorUnit, forKey: .flexSSOModeratorUnit)
         try container.encodeIfPresent(isSSOBillingMonthlyActiveUsers, forKey: .isSSOBillingMonthlyActiveUsers)
+        try container.encodeIfPresent(hasAIAgents, forKey: .hasAIAgents)
+        try container.encodeIfPresent(maxAIAgents, forKey: .maxAIAgents)
+        try container.encodeIfPresent(aiAgentDailyBudgetCents, forKey: .aiAgentDailyBudgetCents)
+        try container.encodeIfPresent(aiAgentMonthlyBudgetCents, forKey: .aiAgentMonthlyBudgetCents)
     }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UpdateAPIUserSubscriptionData: Sendable, Codable, ParameterConvertible, Hashable {
+public struct UpdateAPIUserSubscriptionData: Sendable, Codable, Hashable {
 
     public var notificationFrequency: Double?
 

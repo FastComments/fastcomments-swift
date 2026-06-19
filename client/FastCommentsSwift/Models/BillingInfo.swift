@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct BillingInfo: Sendable, Codable, ParameterConvertible, Hashable {
+public struct BillingInfo: Sendable, Codable, Hashable {
 
     public var name: String
     public var address: String

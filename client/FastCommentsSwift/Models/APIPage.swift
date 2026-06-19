@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APIPage: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APIPage: Sendable, Codable, Hashable {
 
     public var isClosed: Bool?
     public var accessibleByGroupIds: [String]?
@@ -60,5 +60,4 @@ public struct APIPage: Sendable, Codable, ParameterConvertible, Hashable {
 }
 
 
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension APIPage: Identifiable {}

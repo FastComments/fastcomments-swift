@@ -59,8 +59,8 @@ final class SSOIntegrationTests: XCTestCase {
 
         XCTAssertEqual(createResponse.status, .success, "Create comment should succeed")
         XCTAssertNotNil(createResponse.comment, "Response should include the created comment")
-        XCTAssertEqual(createResponse.comment?.commenterName, user.username)
-        XCTAssertTrue(createResponse.comment?.commentHTML.contains(commentText) ?? false, "Comment HTML should contain original text")
+        XCTAssertEqual(createResponse.comment.commenterName, user.username)
+        XCTAssertTrue(createResponse.comment.commentHTML.contains(commentText), "Comment HTML should contain original text")
 
         // Verify the create response returns the authenticated user
         XCTAssertNotNil(createResponse.user, "Create response should include user session info")
@@ -74,12 +74,12 @@ final class SSOIntegrationTests: XCTestCase {
             sso: token
         )
 
-        XCTAssertEqual(getResponse.status, .success, "Get comments should succeed")
+        XCTAssertEqual(getResponse.status, "success", "Get comments should succeed")
         XCTAssertNotNil(getResponse.comments, "Should have comments array")
-        XCTAssertGreaterThanOrEqual(getResponse.comments?.count ?? 0, 1, "Should have at least one comment")
+        XCTAssertGreaterThanOrEqual(getResponse.comments.count, 1, "Should have at least one comment")
 
         // Verify the fetched comment matches what we created
-        let fetchedComment = getResponse.comments?.first
+        let fetchedComment = getResponse.comments.first
         XCTAssertNotNil(fetchedComment)
         XCTAssertEqual(fetchedComment?.commenterName, user.username)
         XCTAssertTrue(fetchedComment?.commentHTML.contains(commentText) ?? false, "Fetched comment should contain original text")
@@ -143,11 +143,11 @@ final class SSOIntegrationTests: XCTestCase {
             sso: token
         )
 
-        XCTAssertEqual(getResponse.status, .success)
+        XCTAssertEqual(getResponse.status, "success")
         XCTAssertNotNil(getResponse.comments)
-        XCTAssertGreaterThanOrEqual(getResponse.comments?.count ?? 0, 1)
+        XCTAssertGreaterThanOrEqual(getResponse.comments.count, 1)
 
-        let fetchedComment = getResponse.comments?.first
+        let fetchedComment = getResponse.comments.first
         XCTAssertEqual(fetchedComment?.displayLabel, "Swift Tester")
         // When displayName is set, commenterName resolves to the displayName
         XCTAssertEqual(fetchedComment?.commenterName, user.displayName)
@@ -196,8 +196,8 @@ final class SSOIntegrationTests: XCTestCase {
 
         XCTAssertEqual(createResponse.status, .success, "Create comment with simple SSO should succeed")
         XCTAssertNotNil(createResponse.comment)
-        XCTAssertEqual(createResponse.comment?.commenterName, user.username)
-        XCTAssertTrue(createResponse.comment?.commentHTML.contains(commentText) ?? false)
+        XCTAssertEqual(createResponse.comment.commenterName, user.username)
+        XCTAssertTrue(createResponse.comment.commentHTML.contains(commentText))
 
         // Verify user session is returned
         XCTAssertNotNil(createResponse.user, "Create response should include user session info")
@@ -211,12 +211,12 @@ final class SSOIntegrationTests: XCTestCase {
             sso: token
         )
 
-        XCTAssertEqual(getResponse.status, .success, "Get comments with simple SSO should succeed")
+        XCTAssertEqual(getResponse.status, "success", "Get comments with simple SSO should succeed")
         XCTAssertNotNil(getResponse.comments)
-        XCTAssertGreaterThanOrEqual(getResponse.comments?.count ?? 0, 1, "Should have at least one comment")
+        XCTAssertGreaterThanOrEqual(getResponse.comments.count, 1, "Should have at least one comment")
 
         // Verify the fetched comment
-        let fetchedComment = getResponse.comments?.first
+        let fetchedComment = getResponse.comments.first
         XCTAssertNotNil(fetchedComment)
         XCTAssertEqual(fetchedComment?.commenterName, user.username)
         XCTAssertTrue(fetchedComment?.commentHTML.contains(commentText) ?? false)

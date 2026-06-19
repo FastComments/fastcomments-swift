@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateFeedPostParams: Sendable, Codable, ParameterConvertible, Hashable {
+public struct CreateFeedPostParams: Sendable, Codable, Hashable {
 
     public var title: String?
     public var contentHTML: String?

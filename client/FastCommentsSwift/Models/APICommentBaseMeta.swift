@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APICommentBaseMeta: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APICommentBaseMeta: Sendable, Codable, Hashable {
 
     public var wpUserId: String?
     public var wpPostId: String?

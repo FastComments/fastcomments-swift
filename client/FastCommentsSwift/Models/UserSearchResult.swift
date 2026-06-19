@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserSearchResult: Sendable, Codable, ParameterConvertible, Hashable {
+public struct UserSearchResult: Sendable, Codable, Hashable {
 
     public enum ModelType: String, Sendable, Codable, CaseIterable {
         case user = "user"
@@ -48,5 +48,4 @@ public struct UserSearchResult: Sendable, Codable, ParameterConvertible, Hashabl
 }
 
 
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension UserSearchResult: Identifiable {}

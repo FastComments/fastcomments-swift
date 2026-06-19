@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CommentTextUpdateRequest: Sendable, Codable, ParameterConvertible, Hashable {
+public struct CommentTextUpdateRequest: Sendable, Codable, Hashable {
 
     public var comment: String
     public var mentions: [CommentUserMentionInfo]?

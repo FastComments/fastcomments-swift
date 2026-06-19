@@ -7,12 +7,12 @@
 
 import Foundation
 
-public struct BulkCreateHashTagsResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct BulkCreateHashTagsResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
-    public var results: [AddHashTag200Response]
+    public var results: [BulkCreateHashTagsResponseResultsInner]
 
-    public init(status: APIStatus, results: [AddHashTag200Response]) {
+    public init(status: APIStatus, results: [BulkCreateHashTagsResponseResultsInner]) {
         self.status = status
         self.results = results
     }

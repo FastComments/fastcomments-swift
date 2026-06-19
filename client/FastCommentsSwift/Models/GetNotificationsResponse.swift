@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetNotificationsResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetNotificationsResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var notifications: [UserNotification]

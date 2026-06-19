@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DeleteCommentResult: Sendable, Codable, ParameterConvertible, Hashable {
+public struct DeleteCommentResult: Sendable, Codable, Hashable {
 
     public var action: DeleteCommentAction
     public var status: APIStatus

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct BulkCreateHashTagsBodyTagsInner: Sendable, Codable, ParameterConvertible, Hashable {
+public struct BulkCreateHashTagsBodyTagsInner: Sendable, Codable, Hashable {
 
     public var url: String?
     public var tag: String

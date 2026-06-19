@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APICommentBase: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APICommentBase: Sendable, Codable, Hashable {
 
     public var id: String
     public var aiDeterminedSpam: Bool?
@@ -236,5 +236,4 @@ public struct APICommentBase: Sendable, Codable, ParameterConvertible, Hashable 
 }
 
 
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension APICommentBase: Identifiable {}

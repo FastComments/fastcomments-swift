@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CustomConfigParameters: Sendable, Codable, ParameterConvertible, Hashable {
+public struct CustomConfigParameters: Sendable, Codable, Hashable {
 
     public var absoluteAndRelativeDates: Bool?
     public var absoluteDates: Bool?
@@ -61,11 +61,14 @@ public struct CustomConfigParameters: Sendable, Codable, ParameterConvertible, H
     public var noCustomConfig: Bool?
     public var mentionAutoCompleteMode: MentionAutoCompleteMode?
     public var noImageUploads: Bool?
+    public var allowEmbeds: Bool?
+    public var allowedEmbedDomains: [String]?
     public var noStyles: Bool?
     public var pageSize: Int?
     public var readonly: Bool?
     public var noNewRootComments: Bool?
     public var requireSSO: Bool?
+    public var enableFChat: Bool?
     public var enableResizeHandle: Bool?
     public var restrictedLinkDomains: [String]?
     public var showBadgesInTopBar: Bool?
@@ -87,6 +90,8 @@ public struct CustomConfigParameters: Sendable, Codable, ParameterConvertible, H
     public var widgetQuestionsRequired: CommentQuestionsRequired?
     public var widgetSubQuestionVisibility: QuestionSubQuestionVisibility?
     public var wrap: Bool?
+    public var usersListLocation: UsersListLocation?
+    public var usersListIncludeOffline: Bool?
     public var ticketBaseUrl: String?
     public var ticketKBSearchEndpoint: String?
     public var ticketFileUploadsEnabled: Bool?
@@ -94,7 +99,7 @@ public struct CustomConfigParameters: Sendable, Codable, ParameterConvertible, H
     public var ticketAutoAssignUserIds: [String]?
     public var tos: TOSConfig?
 
-    public init(absoluteAndRelativeDates: Bool? = nil, absoluteDates: Bool? = nil, allowAnon: Bool? = nil, allowAnonFlag: Bool? = nil, allowAnonVotes: Bool? = nil, allowedLanguages: [String]? = nil, collapseReplies: Bool? = nil, commentCountFormat: String? = nil, commentHTMLRenderingMode: CommentHTMLRenderingMode? = nil, commentThreadDeleteMode: CommentThreadDeletionMode? = nil, commenterNameFormat: CommenterNameFormats? = nil, countAboveToggle: Int? = nil, customCSS: String? = nil, defaultAvatarSrc: String? = nil, defaultSortDirection: SortDirections? = nil, defaultUsername: String? = nil, disableAutoAdminMigration: Bool? = nil, disableAutoHashTagCreation: Bool? = nil, disableBlocking: Bool? = nil, disableCommenterCommentDelete: Bool? = nil, disableCommenterCommentEdit: Bool? = nil, disableEmailInputs: Bool? = nil, disableLiveCommenting: Bool? = nil, disableNotificationBell: Bool? = nil, disableProfileComments: Bool? = nil, disableProfileDirectMessages: Bool? = nil, disableProfiles: Bool? = nil, disableSuccessMessage: Bool? = nil, disableToolbar: Bool? = nil, disableUnverifiedLabel: Bool? = nil, disableVoting: Bool? = nil, enableCommenterLinks: Bool? = nil, enableSearch: Bool? = nil, enableSpoilers: Bool? = nil, enableThirdPartyCookieBypass: Bool? = nil, enableViewCounts: Bool? = nil, enableVoteList: Bool? = nil, enableWYSIWYG: Bool? = nil, gifRating: GifRating? = nil, hasDarkBackground: Bool? = nil, headerHTML: String? = nil, hideAvatars: Bool? = nil, hideCommentsUnderCountTextFormat: String? = nil, imageContentProfanityLevel: ImageContentProfanityLevel? = nil, inputAfterComments: Bool? = nil, limitCommentsByGroups: Bool? = nil, locale: String? = nil, maxCommentCharacterLength: Int? = nil, maxCommentCreatedCountPUPM: Int? = nil, noCustomConfig: Bool? = nil, mentionAutoCompleteMode: MentionAutoCompleteMode? = nil, noImageUploads: Bool? = nil, noStyles: Bool? = nil, pageSize: Int? = nil, readonly: Bool? = nil, noNewRootComments: Bool? = nil, requireSSO: Bool? = nil, enableResizeHandle: Bool? = nil, restrictedLinkDomains: [String]? = nil, showBadgesInTopBar: Bool? = nil, showCommentSaveSuccess: Bool? = nil, showLiveRightAway: Bool? = nil, showQuestion: Bool? = nil, spamRules: [SpamRule]? = nil, ssoSecLvl: SSOSecurityLevel? = nil, translations: [String: String]? = nil, useShowCommentsToggle: Bool? = nil, useSingleLineCommentInput: Bool? = nil, voteStyle: VoteStyle? = nil, widgetQuestionId: String? = nil, widgetQuestionResultsStyle: CommentQuestionResultsRenderingType? = nil, widgetQuestionShowBreakdown: Bool? = nil, widgetQuestionStyle: QuestionRenderingType? = nil, widgetQuestionWhenToSave: QuestionWhenSave? = nil, widgetQuestionsRequired: CommentQuestionsRequired? = nil, widgetSubQuestionVisibility: QuestionSubQuestionVisibility? = nil, wrap: Bool? = nil, ticketBaseUrl: String? = nil, ticketKBSearchEndpoint: String? = nil, ticketFileUploadsEnabled: Bool? = nil, ticketMaxFileSize: Int? = nil, ticketAutoAssignUserIds: [String]? = nil, tos: TOSConfig? = nil) {
+    public init(absoluteAndRelativeDates: Bool? = nil, absoluteDates: Bool? = nil, allowAnon: Bool? = nil, allowAnonFlag: Bool? = nil, allowAnonVotes: Bool? = nil, allowedLanguages: [String]? = nil, collapseReplies: Bool? = nil, commentCountFormat: String? = nil, commentHTMLRenderingMode: CommentHTMLRenderingMode? = nil, commentThreadDeleteMode: CommentThreadDeletionMode? = nil, commenterNameFormat: CommenterNameFormats? = nil, countAboveToggle: Int? = nil, customCSS: String? = nil, defaultAvatarSrc: String? = nil, defaultSortDirection: SortDirections? = nil, defaultUsername: String? = nil, disableAutoAdminMigration: Bool? = nil, disableAutoHashTagCreation: Bool? = nil, disableBlocking: Bool? = nil, disableCommenterCommentDelete: Bool? = nil, disableCommenterCommentEdit: Bool? = nil, disableEmailInputs: Bool? = nil, disableLiveCommenting: Bool? = nil, disableNotificationBell: Bool? = nil, disableProfileComments: Bool? = nil, disableProfileDirectMessages: Bool? = nil, disableProfiles: Bool? = nil, disableSuccessMessage: Bool? = nil, disableToolbar: Bool? = nil, disableUnverifiedLabel: Bool? = nil, disableVoting: Bool? = nil, enableCommenterLinks: Bool? = nil, enableSearch: Bool? = nil, enableSpoilers: Bool? = nil, enableThirdPartyCookieBypass: Bool? = nil, enableViewCounts: Bool? = nil, enableVoteList: Bool? = nil, enableWYSIWYG: Bool? = nil, gifRating: GifRating? = nil, hasDarkBackground: Bool? = nil, headerHTML: String? = nil, hideAvatars: Bool? = nil, hideCommentsUnderCountTextFormat: String? = nil, imageContentProfanityLevel: ImageContentProfanityLevel? = nil, inputAfterComments: Bool? = nil, limitCommentsByGroups: Bool? = nil, locale: String? = nil, maxCommentCharacterLength: Int? = nil, maxCommentCreatedCountPUPM: Int? = nil, noCustomConfig: Bool? = nil, mentionAutoCompleteMode: MentionAutoCompleteMode? = nil, noImageUploads: Bool? = nil, allowEmbeds: Bool? = nil, allowedEmbedDomains: [String]? = nil, noStyles: Bool? = nil, pageSize: Int? = nil, readonly: Bool? = nil, noNewRootComments: Bool? = nil, requireSSO: Bool? = nil, enableFChat: Bool? = nil, enableResizeHandle: Bool? = nil, restrictedLinkDomains: [String]? = nil, showBadgesInTopBar: Bool? = nil, showCommentSaveSuccess: Bool? = nil, showLiveRightAway: Bool? = nil, showQuestion: Bool? = nil, spamRules: [SpamRule]? = nil, ssoSecLvl: SSOSecurityLevel? = nil, translations: [String: String]? = nil, useShowCommentsToggle: Bool? = nil, useSingleLineCommentInput: Bool? = nil, voteStyle: VoteStyle? = nil, widgetQuestionId: String? = nil, widgetQuestionResultsStyle: CommentQuestionResultsRenderingType? = nil, widgetQuestionShowBreakdown: Bool? = nil, widgetQuestionStyle: QuestionRenderingType? = nil, widgetQuestionWhenToSave: QuestionWhenSave? = nil, widgetQuestionsRequired: CommentQuestionsRequired? = nil, widgetSubQuestionVisibility: QuestionSubQuestionVisibility? = nil, wrap: Bool? = nil, usersListLocation: UsersListLocation? = nil, usersListIncludeOffline: Bool? = nil, ticketBaseUrl: String? = nil, ticketKBSearchEndpoint: String? = nil, ticketFileUploadsEnabled: Bool? = nil, ticketMaxFileSize: Int? = nil, ticketAutoAssignUserIds: [String]? = nil, tos: TOSConfig? = nil) {
         self.absoluteAndRelativeDates = absoluteAndRelativeDates
         self.absoluteDates = absoluteDates
         self.allowAnon = allowAnon
@@ -147,11 +152,14 @@ public struct CustomConfigParameters: Sendable, Codable, ParameterConvertible, H
         self.noCustomConfig = noCustomConfig
         self.mentionAutoCompleteMode = mentionAutoCompleteMode
         self.noImageUploads = noImageUploads
+        self.allowEmbeds = allowEmbeds
+        self.allowedEmbedDomains = allowedEmbedDomains
         self.noStyles = noStyles
         self.pageSize = pageSize
         self.readonly = readonly
         self.noNewRootComments = noNewRootComments
         self.requireSSO = requireSSO
+        self.enableFChat = enableFChat
         self.enableResizeHandle = enableResizeHandle
         self.restrictedLinkDomains = restrictedLinkDomains
         self.showBadgesInTopBar = showBadgesInTopBar
@@ -172,6 +180,8 @@ public struct CustomConfigParameters: Sendable, Codable, ParameterConvertible, H
         self.widgetQuestionsRequired = widgetQuestionsRequired
         self.widgetSubQuestionVisibility = widgetSubQuestionVisibility
         self.wrap = wrap
+        self.usersListLocation = usersListLocation
+        self.usersListIncludeOffline = usersListIncludeOffline
         self.ticketBaseUrl = ticketBaseUrl
         self.ticketKBSearchEndpoint = ticketKBSearchEndpoint
         self.ticketFileUploadsEnabled = ticketFileUploadsEnabled
@@ -233,11 +243,14 @@ public struct CustomConfigParameters: Sendable, Codable, ParameterConvertible, H
         case noCustomConfig
         case mentionAutoCompleteMode
         case noImageUploads
+        case allowEmbeds
+        case allowedEmbedDomains
         case noStyles
         case pageSize
         case readonly
         case noNewRootComments
         case requireSSO
+        case enableFChat
         case enableResizeHandle
         case restrictedLinkDomains
         case showBadgesInTopBar
@@ -258,6 +271,8 @@ public struct CustomConfigParameters: Sendable, Codable, ParameterConvertible, H
         case widgetQuestionsRequired
         case widgetSubQuestionVisibility
         case wrap
+        case usersListLocation
+        case usersListIncludeOffline
         case ticketBaseUrl
         case ticketKBSearchEndpoint
         case ticketFileUploadsEnabled
@@ -322,11 +337,14 @@ public struct CustomConfigParameters: Sendable, Codable, ParameterConvertible, H
         try container.encodeIfPresent(noCustomConfig, forKey: .noCustomConfig)
         try container.encodeIfPresent(mentionAutoCompleteMode, forKey: .mentionAutoCompleteMode)
         try container.encodeIfPresent(noImageUploads, forKey: .noImageUploads)
+        try container.encodeIfPresent(allowEmbeds, forKey: .allowEmbeds)
+        try container.encodeIfPresent(allowedEmbedDomains, forKey: .allowedEmbedDomains)
         try container.encodeIfPresent(noStyles, forKey: .noStyles)
         try container.encodeIfPresent(pageSize, forKey: .pageSize)
         try container.encodeIfPresent(readonly, forKey: .readonly)
         try container.encodeIfPresent(noNewRootComments, forKey: .noNewRootComments)
         try container.encodeIfPresent(requireSSO, forKey: .requireSSO)
+        try container.encodeIfPresent(enableFChat, forKey: .enableFChat)
         try container.encodeIfPresent(enableResizeHandle, forKey: .enableResizeHandle)
         try container.encodeIfPresent(restrictedLinkDomains, forKey: .restrictedLinkDomains)
         try container.encodeIfPresent(showBadgesInTopBar, forKey: .showBadgesInTopBar)
@@ -347,6 +365,8 @@ public struct CustomConfigParameters: Sendable, Codable, ParameterConvertible, H
         try container.encodeIfPresent(widgetQuestionsRequired, forKey: .widgetQuestionsRequired)
         try container.encodeIfPresent(widgetSubQuestionVisibility, forKey: .widgetSubQuestionVisibility)
         try container.encodeIfPresent(wrap, forKey: .wrap)
+        try container.encodeIfPresent(usersListLocation, forKey: .usersListLocation)
+        try container.encodeIfPresent(usersListIncludeOffline, forKey: .usersListIncludeOffline)
         try container.encodeIfPresent(ticketBaseUrl, forKey: .ticketBaseUrl)
         try container.encodeIfPresent(ticketKBSearchEndpoint, forKey: .ticketKBSearchEndpoint)
         try container.encodeIfPresent(ticketFileUploadsEnabled, forKey: .ticketFileUploadsEnabled)

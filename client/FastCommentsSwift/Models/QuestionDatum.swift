@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct QuestionDatum: Sendable, Codable, ParameterConvertible, Hashable {
+public struct QuestionDatum: Sendable, Codable, Hashable {
 
     /** Construct a type with a set of properties K of type T */
     public var v: [String: Double]

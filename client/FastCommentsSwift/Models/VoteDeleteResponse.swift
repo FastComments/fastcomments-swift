@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct VoteDeleteResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct VoteDeleteResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var wasPendingVote: Bool?

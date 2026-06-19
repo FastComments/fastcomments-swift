@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **linkUrl** | **String** |  | 
 **linkText** | **String** |  | 
 **createdAt** | **Date** |  | 
+**type** | **String** | Discriminator for notifications with a special layout/click handler (e.g. \&quot;feedback-offer\&quot;). | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AggregationRequestSort: Sendable, Codable, ParameterConvertible, Hashable {
+public struct AggregationRequestSort: Sendable, Codable, Hashable {
 
     public enum Dir: String, Sendable, Codable, CaseIterable {
         case asc = "asc"

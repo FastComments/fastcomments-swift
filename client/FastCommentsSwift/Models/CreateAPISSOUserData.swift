@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CreateAPISSOUserData: Sendable, Codable, ParameterConvertible, Hashable {
+public struct CreateAPISSOUserData: Sendable, Codable, Hashable {
 
     public var groupIds: [String]?
     public var hasBlockedUsers: Bool?
@@ -104,5 +104,4 @@ public struct CreateAPISSOUserData: Sendable, Codable, ParameterConvertible, Has
 }
 
 
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension CreateAPISSOUserData: Identifiable {}

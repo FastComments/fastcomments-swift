@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserSessionInfo: Sendable, Codable, ParameterConvertible, Hashable {
+public struct UserSessionInfo: Sendable, Codable, Hashable {
 
     public var id: String?
     public var authorized: Bool?
@@ -80,5 +80,4 @@ public struct UserSessionInfo: Sendable, Codable, ParameterConvertible, Hashable
 }
 
 
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension UserSessionInfo: Identifiable {}

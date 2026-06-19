@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetVotesForUserResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetVotesForUserResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var appliedAuthorizedVotes: [PublicVote]

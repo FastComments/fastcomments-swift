@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetSubscriptionsAPIResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetSubscriptionsAPIResponse: Sendable, Codable, Hashable {
 
     public var reason: String?
     public var code: String?

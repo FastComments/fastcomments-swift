@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APIAuditLog: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APIAuditLog: Sendable, Codable, Hashable {
 
     public enum CrudType: String, Sendable, Codable, CaseIterable {
         case c = "c"

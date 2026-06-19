@@ -1,0 +1,29 @@
+name: CI
+
+# Runs on PRs and pushes to the default branch. We use `pull_request` (never
+# `pull_request_target`), so secrets are NOT exposed to pull requests from forks.
+# Runs on macOS because the SDK depends on Alamofire, which is Apple-only.
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: swift build
+      - name: Run tests
+        run: swift test
+        env:
+          FASTCOMMENTS_API_KEY: ${{ secrets.FASTCOMMENTS_API_KEY }}
+          FASTCOMMENTS_TENANT_ID: ${{ secrets.FASTCOMMENTS_TENANT_ID }}

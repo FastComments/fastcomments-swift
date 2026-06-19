@@ -8,22 +8,39 @@ Method | HTTP request | Description
 [**checkedCommentsForBlocked**](PublicAPI.md#checkedcommentsforblocked) | **GET** /check-blocked-comments | 
 [**createCommentPublic**](PublicAPI.md#createcommentpublic) | **POST** /comments/{tenantId} | 
 [**createFeedPostPublic**](PublicAPI.md#createfeedpostpublic) | **POST** /feed-posts/{tenantId} | 
+[**createV1PageReact**](PublicAPI.md#createv1pagereact) | **POST** /page-reacts/v1/likes/{tenantId} | 
+[**createV2PageReact**](PublicAPI.md#createv2pagereact) | **POST** /page-reacts/v2/{tenantId} | 
 [**deleteCommentPublic**](PublicAPI.md#deletecommentpublic) | **DELETE** /comments/{tenantId}/{commentId} | 
 [**deleteCommentVote**](PublicAPI.md#deletecommentvote) | **DELETE** /comments/{tenantId}/{commentId}/vote/{voteId} | 
 [**deleteFeedPostPublic**](PublicAPI.md#deletefeedpostpublic) | **DELETE** /feed-posts/{tenantId}/{postId} | 
+[**deleteV1PageReact**](PublicAPI.md#deletev1pagereact) | **DELETE** /page-reacts/v1/likes/{tenantId} | 
+[**deleteV2PageReact**](PublicAPI.md#deletev2pagereact) | **DELETE** /page-reacts/v2/{tenantId} | 
 [**flagCommentPublic**](PublicAPI.md#flagcommentpublic) | **POST** /flag-comment/{commentId} | 
 [**getCommentText**](PublicAPI.md#getcommenttext) | **GET** /comments/{tenantId}/{commentId}/text | 
 [**getCommentVoteUserNames**](PublicAPI.md#getcommentvoteusernames) | **GET** /comments/{tenantId}/{commentId}/votes | 
+[**getCommentsForUser**](PublicAPI.md#getcommentsforuser) | **GET** /comments-for-user | 
 [**getCommentsPublic**](PublicAPI.md#getcommentspublic) | **GET** /comments/{tenantId} | 
 [**getEventLog**](PublicAPI.md#geteventlog) | **GET** /event-log/{tenantId} | 
 [**getFeedPostsPublic**](PublicAPI.md#getfeedpostspublic) | **GET** /feed-posts/{tenantId} | 
 [**getFeedPostsStats**](PublicAPI.md#getfeedpostsstats) | **GET** /feed-posts/{tenantId}/stats | 
+[**getGifLarge**](PublicAPI.md#getgiflarge) | **GET** /gifs/get-large/{tenantId} | 
+[**getGifsSearch**](PublicAPI.md#getgifssearch) | **GET** /gifs/search/{tenantId} | 
+[**getGifsTrending**](PublicAPI.md#getgifstrending) | **GET** /gifs/trending/{tenantId} | 
 [**getGlobalEventLog**](PublicAPI.md#getglobaleventlog) | **GET** /event-log/global/{tenantId} | 
+[**getOfflineUsers**](PublicAPI.md#getofflineusers) | **GET** /pages/{tenantId}/users/offline | 
+[**getOnlineUsers**](PublicAPI.md#getonlineusers) | **GET** /pages/{tenantId}/users/online | 
+[**getPagesPublic**](PublicAPI.md#getpagespublic) | **GET** /pages/{tenantId} | 
+[**getTranslations**](PublicAPI.md#gettranslations) | **GET** /translations/{namespace}/{component} | 
 [**getUserNotificationCount**](PublicAPI.md#getusernotificationcount) | **GET** /user-notifications/get-count | 
 [**getUserNotifications**](PublicAPI.md#getusernotifications) | **GET** /user-notifications | 
 [**getUserPresenceStatuses**](PublicAPI.md#getuserpresencestatuses) | **GET** /user-presence-status | 
 [**getUserReactsPublic**](PublicAPI.md#getuserreactspublic) | **GET** /feed-posts/{tenantId}/user-reacts | 
+[**getUsersInfo**](PublicAPI.md#getusersinfo) | **GET** /pages/{tenantId}/users/info | 
+[**getV1PageLikes**](PublicAPI.md#getv1pagelikes) | **GET** /page-reacts/v1/likes/{tenantId} | 
+[**getV2PageReactUsers**](PublicAPI.md#getv2pagereactusers) | **GET** /page-reacts/v2/{tenantId}/list | 
+[**getV2PageReacts**](PublicAPI.md#getv2pagereacts) | **GET** /page-reacts/v2/{tenantId} | 
 [**lockComment**](PublicAPI.md#lockcomment) | **POST** /comments/{tenantId}/{commentId}/lock | 
+[**logoutPublic**](PublicAPI.md#logoutpublic) | **PUT** /auth/logout | 
 [**pinComment**](PublicAPI.md#pincomment) | **POST** /comments/{tenantId}/{commentId}/pin | 
 [**reactFeedPostPublic**](PublicAPI.md#reactfeedpostpublic) | **POST** /feed-posts/{tenantId}/react/{postId} | 
 [**resetUserNotificationCount**](PublicAPI.md#resetusernotificationcount) | **POST** /user-notifications/reset-count | 
@@ -43,7 +60,7 @@ Method | HTTP request | Description
 
 # **blockFromCommentPublic**
 ```swift
-    open class func blockFromCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, sso: String? = nil, completion: @escaping (_ data: BlockFromCommentPublic200Response?, _ error: Error?) -> Void)
+    open class func blockFromCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, sso: String? = nil, completion: @escaping (_ data: BlockSuccess?, _ error: Error?) -> Void)
 ```
 
 
@@ -81,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BlockFromCommentPublic200Response**](BlockFromCommentPublic200Response.md)
+[**BlockSuccess**](BlockSuccess.md)
 
 ### Authorization
 
@@ -96,7 +113,7 @@ No authorization required
 
 # **checkedCommentsForBlocked**
 ```swift
-    open class func checkedCommentsForBlocked(tenantId: String, commentIds: String, sso: String? = nil, completion: @escaping (_ data: CheckedCommentsForBlocked200Response?, _ error: Error?) -> Void)
+    open class func checkedCommentsForBlocked(tenantId: String, commentIds: String, sso: String? = nil, completion: @escaping (_ data: CheckBlockedCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -132,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CheckedCommentsForBlocked200Response**](CheckedCommentsForBlocked200Response.md)
+[**CheckBlockedCommentsResponse**](CheckBlockedCommentsResponse.md)
 
 ### Authorization
 
@@ -147,7 +164,7 @@ No authorization required
 
 # **createCommentPublic**
 ```swift
-    open class func createCommentPublic(tenantId: String, urlId: String, broadcastId: String, commentData: CommentData, sessionId: String? = nil, sso: String? = nil, completion: @escaping (_ data: CreateCommentPublic200Response?, _ error: Error?) -> Void)
+    open class func createCommentPublic(tenantId: String, urlId: String, broadcastId: String, commentData: CommentData, sessionId: String? = nil, sso: String? = nil, completion: @escaping (_ data: SaveCommentsResponseWithPresence?, _ error: Error?) -> Void)
 ```
 
 
@@ -160,7 +177,7 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
 let broadcastId = "broadcastId_example" // String | 
-let commentData = CommentData(date: 123, localDateString: "localDateString_example", localDateHours: 123, commenterName: "commenterName_example", commenterEmail: "commenterEmail_example", commenterLink: "commenterLink_example", comment: "comment_example", productId: 123, userId: "userId_example", avatarSrc: "avatarSrc_example", parentId: "parentId_example", mentions: [CommentUserMentionInfo(id: "id_example", tag: "tag_example", rawTag: "rawTag_example", type: "type_example", sent: false)], hashTags: [CommentUserHashTagInfo(id: "id_example", tag: "tag_example", url: "url_example", retain: false)], pageTitle: "pageTitle_example", isFromMyAccountPage: false, url: "url_example", urlId: "urlId_example", meta: 123, moderationGroupIds: ["moderationGroupIds_example"], rating: 123, fromOfflineRestore: false, autoplayDelayMS: 123, feedbackIds: ["feedbackIds_example"], questionValues: "TODO", tos: false) // CommentData | 
+let commentData = CommentData(date: 123, localDateString: "localDateString_example", localDateHours: 123, commenterName: "commenterName_example", commenterEmail: "commenterEmail_example", commenterLink: "commenterLink_example", comment: "comment_example", productId: 123, userId: "userId_example", avatarSrc: "avatarSrc_example", parentId: "parentId_example", mentions: [CommentUserMentionInfo(id: "id_example", tag: "tag_example", rawTag: "rawTag_example", type: "type_example", sent: false)], hashTags: [CommentUserHashTagInfo(id: "id_example", tag: "tag_example", url: "url_example", retain: false)], pageTitle: "pageTitle_example", isFromMyAccountPage: false, url: "url_example", urlId: "urlId_example", meta: 123, moderationGroupIds: ["moderationGroupIds_example"], rating: 123, fromOfflineRestore: false, autoplayDelayMS: 123, feedbackIds: ["feedbackIds_example"], questionValues: "TODO", tos: false, botId: "botId_example") // CommentData | 
 let sessionId = "sessionId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
@@ -189,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateCommentPublic200Response**](CreateCommentPublic200Response.md)
+[**SaveCommentsResponseWithPresence**](SaveCommentsResponseWithPresence.md)
 
 ### Authorization
 
@@ -204,7 +221,7 @@ No authorization required
 
 # **createFeedPostPublic**
 ```swift
-    open class func createFeedPostPublic(tenantId: String, createFeedPostParams: CreateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: CreateFeedPostPublic200Response?, _ error: Error?) -> Void)
+    open class func createFeedPostPublic(tenantId: String, createFeedPostParams: CreateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: CreateFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -242,7 +259,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateFeedPostPublic200Response**](CreateFeedPostPublic200Response.md)
+[**CreateFeedPostResponse**](CreateFeedPostResponse.md)
 
 ### Authorization
 
@@ -255,9 +272,113 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **createV1PageReact**
+```swift
+    open class func createV1PageReact(tenantId: String, urlId: String, title: String? = nil, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | 
+let title = "title_example" // String |  (optional)
+
+PublicAPI.createV1PageReact(tenantId: tenantId, urlId: urlId, title: title) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **urlId** | **String** |  | 
+ **title** | **String** |  | [optional] 
+
+### Return type
+
+[**CreateV1PageReact**](CreateV1PageReact.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createV2PageReact**
+```swift
+    open class func createV2PageReact(tenantId: String, urlId: String, id: String, title: String? = nil, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | 
+let id = "id_example" // String | 
+let title = "title_example" // String |  (optional)
+
+PublicAPI.createV2PageReact(tenantId: tenantId, urlId: urlId, id: id, title: title) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **urlId** | **String** |  | 
+ **id** | **String** |  | 
+ **title** | **String** |  | [optional] 
+
+### Return type
+
+[**CreateV1PageReact**](CreateV1PageReact.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **deleteCommentPublic**
 ```swift
-    open class func deleteCommentPublic(tenantId: String, commentId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: DeleteCommentPublic200Response?, _ error: Error?) -> Void)
+    open class func deleteCommentPublic(tenantId: String, commentId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: PublicAPIDeleteCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -297,7 +418,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteCommentPublic200Response**](DeleteCommentPublic200Response.md)
+[**PublicAPIDeleteCommentResponse**](PublicAPIDeleteCommentResponse.md)
 
 ### Authorization
 
@@ -312,7 +433,7 @@ No authorization required
 
 # **deleteCommentVote**
 ```swift
-    open class func deleteCommentVote(tenantId: String, commentId: String, voteId: String, urlId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: DeleteCommentVote200Response?, _ error: Error?) -> Void)
+    open class func deleteCommentVote(tenantId: String, commentId: String, voteId: String, urlId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteDeleteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -356,7 +477,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteCommentVote200Response**](DeleteCommentVote200Response.md)
+[**VoteDeleteResponse**](VoteDeleteResponse.md)
 
 ### Authorization
 
@@ -371,7 +492,7 @@ No authorization required
 
 # **deleteFeedPostPublic**
 ```swift
-    open class func deleteFeedPostPublic(tenantId: String, postId: String, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: DeleteFeedPostPublic200Response?, _ error: Error?) -> Void)
+    open class func deleteFeedPostPublic(tenantId: String, postId: String, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: DeleteFeedPostPublicResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -409,7 +530,107 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteFeedPostPublic200Response**](DeleteFeedPostPublic200Response.md)
+[**DeleteFeedPostPublicResponse**](DeleteFeedPostPublicResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteV1PageReact**
+```swift
+    open class func deleteV1PageReact(tenantId: String, urlId: String, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | 
+
+PublicAPI.deleteV1PageReact(tenantId: tenantId, urlId: urlId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **urlId** | **String** |  | 
+
+### Return type
+
+[**CreateV1PageReact**](CreateV1PageReact.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteV2PageReact**
+```swift
+    open class func deleteV2PageReact(tenantId: String, urlId: String, id: String, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | 
+let id = "id_example" // String | 
+
+PublicAPI.deleteV2PageReact(tenantId: tenantId, urlId: urlId, id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **urlId** | **String** |  | 
+ **id** | **String** |  | 
+
+### Return type
+
+[**CreateV1PageReact**](CreateV1PageReact.md)
 
 ### Authorization
 
@@ -424,7 +645,7 @@ No authorization required
 
 # **flagCommentPublic**
 ```swift
-    open class func flagCommentPublic(tenantId: String, commentId: String, isFlagged: Bool, sso: String? = nil, completion: @escaping (_ data: FlagCommentPublic200Response?, _ error: Error?) -> Void)
+    open class func flagCommentPublic(tenantId: String, commentId: String, isFlagged: Bool, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -462,7 +683,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FlagCommentPublic200Response**](FlagCommentPublic200Response.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -477,7 +698,7 @@ No authorization required
 
 # **getCommentText**
 ```swift
-    open class func getCommentText(tenantId: String, commentId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetCommentText200Response?, _ error: Error?) -> Void)
+    open class func getCommentText(tenantId: String, commentId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: PublicAPIGetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -515,7 +736,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCommentText200Response**](GetCommentText200Response.md)
+[**PublicAPIGetCommentTextResponse**](PublicAPIGetCommentTextResponse.md)
 
 ### Authorization
 
@@ -530,7 +751,7 @@ No authorization required
 
 # **getCommentVoteUserNames**
 ```swift
-    open class func getCommentVoteUserNames(tenantId: String, commentId: String, dir: Int, sso: String? = nil, completion: @escaping (_ data: GetCommentVoteUserNames200Response?, _ error: Error?) -> Void)
+    open class func getCommentVoteUserNames(tenantId: String, commentId: String, dir: Int, sso: String? = nil, completion: @escaping (_ data: GetCommentVoteUserNamesSuccessResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -568,7 +789,66 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCommentVoteUserNames200Response**](GetCommentVoteUserNames200Response.md)
+[**GetCommentVoteUserNamesSuccessResponse**](GetCommentVoteUserNamesSuccessResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCommentsForUser**
+```swift
+    open class func getCommentsForUser(userId: String? = nil, direction: SortDirections? = nil, repliesToUserId: String? = nil, page: Double? = nil, includei10n: Bool? = nil, locale: String? = nil, isCrawler: Bool? = nil, completion: @escaping (_ data: GetCommentsForUserResponse?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let userId = "userId_example" // String |  (optional)
+let direction = SortDirections() // SortDirections |  (optional)
+let repliesToUserId = "repliesToUserId_example" // String |  (optional)
+let page = 987 // Double |  (optional)
+let includei10n = true // Bool |  (optional)
+let locale = "locale_example" // String |  (optional)
+let isCrawler = true // Bool |  (optional)
+
+PublicAPI.getCommentsForUser(userId: userId, direction: direction, repliesToUserId: repliesToUserId, page: page, includei10n: includei10n, locale: locale, isCrawler: isCrawler) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String** |  | [optional] 
+ **direction** | [**SortDirections**](.md) |  | [optional] 
+ **repliesToUserId** | **String** |  | [optional] 
+ **page** | **Double** |  | [optional] 
+ **includei10n** | **Bool** |  | [optional] 
+ **locale** | **String** |  | [optional] 
+ **isCrawler** | **Bool** |  | [optional] 
+
+### Return type
+
+[**GetCommentsForUserResponse**](GetCommentsForUserResponse.md)
 
 ### Authorization
 
@@ -583,7 +863,7 @@ No authorization required
 
 # **getCommentsPublic**
 ```swift
-    open class func getCommentsPublic(tenantId: String, urlId: String, page: Int? = nil, direction: SortDirections? = nil, sso: String? = nil, skip: Int? = nil, skipChildren: Int? = nil, limit: Int? = nil, limitChildren: Int? = nil, countChildren: Bool? = nil, fetchPageForCommentId: String? = nil, includeConfig: Bool? = nil, countAll: Bool? = nil, includei10n: Bool? = nil, locale: String? = nil, modules: String? = nil, isCrawler: Bool? = nil, includeNotificationCount: Bool? = nil, asTree: Bool? = nil, maxTreeDepth: Int? = nil, useFullTranslationIds: Bool? = nil, parentId: String? = nil, searchText: String? = nil, hashTags: [String]? = nil, userId: String? = nil, customConfigStr: String? = nil, afterCommentId: String? = nil, beforeCommentId: String? = nil, completion: @escaping (_ data: GetCommentsPublic200Response?, _ error: Error?) -> Void)
+    open class func getCommentsPublic(tenantId: String, urlId: String, page: Int? = nil, direction: SortDirections? = nil, sso: String? = nil, skip: Int? = nil, skipChildren: Int? = nil, limit: Int? = nil, limitChildren: Int? = nil, countChildren: Bool? = nil, fetchPageForCommentId: String? = nil, includeConfig: Bool? = nil, countAll: Bool? = nil, includei10n: Bool? = nil, locale: String? = nil, modules: String? = nil, isCrawler: Bool? = nil, includeNotificationCount: Bool? = nil, asTree: Bool? = nil, maxTreeDepth: Int? = nil, useFullTranslationIds: Bool? = nil, parentId: String? = nil, searchText: String? = nil, hashTags: [String]? = nil, userId: String? = nil, customConfigStr: String? = nil, afterCommentId: String? = nil, beforeCommentId: String? = nil, completion: @escaping (_ data: GetCommentsResponseWithPresencePublicComment?, _ error: Error?) -> Void)
 ```
 
 
@@ -671,7 +951,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCommentsPublic200Response**](GetCommentsPublic200Response.md)
+[**GetCommentsResponseWithPresencePublicComment**](GetCommentsResponseWithPresencePublicComment.md)
 
 ### Authorization
 
@@ -686,7 +966,7 @@ No authorization required
 
 # **getEventLog**
 ```swift
-    open class func getEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, endTime: Int64, completion: @escaping (_ data: GetEventLog200Response?, _ error: Error?) -> Void)
+    open class func getEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, endTime: Int64? = nil, completion: @escaping (_ data: GetEventLogResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -702,7 +982,7 @@ let tenantId = "tenantId_example" // String |
 let urlId = "urlId_example" // String | 
 let userIdWS = "userIdWS_example" // String | 
 let startTime = 987 // Int64 | 
-let endTime = 987 // Int64 | 
+let endTime = 987 // Int64 |  (optional)
 
 PublicAPI.getEventLog(tenantId: tenantId, urlId: urlId, userIdWS: userIdWS, startTime: startTime, endTime: endTime) { (response, error) in
     guard error == nil else {
@@ -724,11 +1004,11 @@ Name | Type | Description  | Notes
  **urlId** | **String** |  | 
  **userIdWS** | **String** |  | 
  **startTime** | **Int64** |  | 
- **endTime** | **Int64** |  | 
+ **endTime** | **Int64** |  | [optional] 
 
 ### Return type
 
-[**GetEventLog200Response**](GetEventLog200Response.md)
+[**GetEventLogResponse**](GetEventLogResponse.md)
 
 ### Authorization
 
@@ -743,7 +1023,7 @@ No authorization required
 
 # **getFeedPostsPublic**
 ```swift
-    open class func getFeedPostsPublic(tenantId: String, afterId: String? = nil, limit: Int? = nil, tags: [String]? = nil, sso: String? = nil, isCrawler: Bool? = nil, includeUserInfo: Bool? = nil, completion: @escaping (_ data: GetFeedPostsPublic200Response?, _ error: Error?) -> Void)
+    open class func getFeedPostsPublic(tenantId: String, afterId: String? = nil, limit: Int? = nil, tags: [String]? = nil, sso: String? = nil, isCrawler: Bool? = nil, includeUserInfo: Bool? = nil, completion: @escaping (_ data: PublicFeedPostsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -789,7 +1069,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetFeedPostsPublic200Response**](GetFeedPostsPublic200Response.md)
+[**PublicFeedPostsResponse**](PublicFeedPostsResponse.md)
 
 ### Authorization
 
@@ -804,7 +1084,7 @@ No authorization required
 
 # **getFeedPostsStats**
 ```swift
-    open class func getFeedPostsStats(tenantId: String, postIds: [String], sso: String? = nil, completion: @escaping (_ data: GetFeedPostsStats200Response?, _ error: Error?) -> Void)
+    open class func getFeedPostsStats(tenantId: String, postIds: [String], sso: String? = nil, completion: @escaping (_ data: FeedPostsStatsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -840,7 +1120,164 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetFeedPostsStats200Response**](GetFeedPostsStats200Response.md)
+[**FeedPostsStatsResponse**](FeedPostsStatsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getGifLarge**
+```swift
+    open class func getGifLarge(tenantId: String, largeInternalURLSanitized: String, completion: @escaping (_ data: GifGetLargeResponse?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let largeInternalURLSanitized = "largeInternalURLSanitized_example" // String | 
+
+PublicAPI.getGifLarge(tenantId: tenantId, largeInternalURLSanitized: largeInternalURLSanitized) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **largeInternalURLSanitized** | **String** |  | 
+
+### Return type
+
+[**GifGetLargeResponse**](GifGetLargeResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getGifsSearch**
+```swift
+    open class func getGifsSearch(tenantId: String, search: String, locale: String? = nil, rating: String? = nil, page: Double? = nil, completion: @escaping (_ data: GetGifsSearchResponse?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let search = "search_example" // String | 
+let locale = "locale_example" // String |  (optional)
+let rating = "rating_example" // String |  (optional)
+let page = 987 // Double |  (optional)
+
+PublicAPI.getGifsSearch(tenantId: tenantId, search: search, locale: locale, rating: rating, page: page) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **search** | **String** |  | 
+ **locale** | **String** |  | [optional] 
+ **rating** | **String** |  | [optional] 
+ **page** | **Double** |  | [optional] 
+
+### Return type
+
+[**GetGifsSearchResponse**](GetGifsSearchResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getGifsTrending**
+```swift
+    open class func getGifsTrending(tenantId: String, locale: String? = nil, rating: String? = nil, page: Double? = nil, completion: @escaping (_ data: GetGifsTrendingResponse?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let locale = "locale_example" // String |  (optional)
+let rating = "rating_example" // String |  (optional)
+let page = 987 // Double |  (optional)
+
+PublicAPI.getGifsTrending(tenantId: tenantId, locale: locale, rating: rating, page: page) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **locale** | **String** |  | [optional] 
+ **rating** | **String** |  | [optional] 
+ **page** | **Double** |  | [optional] 
+
+### Return type
+
+[**GetGifsTrendingResponse**](GetGifsTrendingResponse.md)
 
 ### Authorization
 
@@ -855,7 +1292,7 @@ No authorization required
 
 # **getGlobalEventLog**
 ```swift
-    open class func getGlobalEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, endTime: Int64, completion: @escaping (_ data: GetEventLog200Response?, _ error: Error?) -> Void)
+    open class func getGlobalEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, endTime: Int64? = nil, completion: @escaping (_ data: GetEventLogResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -871,7 +1308,7 @@ let tenantId = "tenantId_example" // String |
 let urlId = "urlId_example" // String | 
 let userIdWS = "userIdWS_example" // String | 
 let startTime = 987 // Int64 | 
-let endTime = 987 // Int64 | 
+let endTime = 987 // Int64 |  (optional)
 
 PublicAPI.getGlobalEventLog(tenantId: tenantId, urlId: urlId, userIdWS: userIdWS, startTime: startTime, endTime: endTime) { (response, error) in
     guard error == nil else {
@@ -893,11 +1330,233 @@ Name | Type | Description  | Notes
  **urlId** | **String** |  | 
  **userIdWS** | **String** |  | 
  **startTime** | **Int64** |  | 
- **endTime** | **Int64** |  | 
+ **endTime** | **Int64** |  | [optional] 
 
 ### Return type
 
-[**GetEventLog200Response**](GetEventLog200Response.md)
+[**GetEventLogResponse**](GetEventLogResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getOfflineUsers**
+```swift
+    open class func getOfflineUsers(tenantId: String, urlId: String, afterName: String? = nil, afterUserId: String? = nil, completion: @escaping (_ data: PageUsersOfflineResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Past commenters on the page who are NOT currently online. Sorted by displayName. Use this after exhausting /users/online to render a \"Members\" section. Cursor pagination on commenterName: server walks the partial {tenantId, urlId, commenterName} index from afterName forward via $gt, no $skip cost.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | Page URL identifier (cleaned server-side).
+let afterName = "afterName_example" // String | Cursor: pass nextAfterName from the previous response. (optional)
+let afterUserId = "afterUserId_example" // String | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries. (optional)
+
+PublicAPI.getOfflineUsers(tenantId: tenantId, urlId: urlId, afterName: afterName, afterUserId: afterUserId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **urlId** | **String** | Page URL identifier (cleaned server-side). | 
+ **afterName** | **String** | Cursor: pass nextAfterName from the previous response. | [optional] 
+ **afterUserId** | **String** | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don&#39;t drop entries. | [optional] 
+
+### Return type
+
+[**PageUsersOfflineResponse**](PageUsersOfflineResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getOnlineUsers**
+```swift
+    open class func getOnlineUsers(tenantId: String, urlId: String, afterName: String? = nil, afterUserId: String? = nil, completion: @escaping (_ data: PageUsersOnlineResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Currently-online viewers of a page: people whose websocket session is subscribed to the page right now. Returns anonCount + totalCount (room-wide subscribers, including anon viewers we don't enumerate).
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | Page URL identifier (cleaned server-side).
+let afterName = "afterName_example" // String | Cursor: pass nextAfterName from the previous response. (optional)
+let afterUserId = "afterUserId_example" // String | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries. (optional)
+
+PublicAPI.getOnlineUsers(tenantId: tenantId, urlId: urlId, afterName: afterName, afterUserId: afterUserId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **urlId** | **String** | Page URL identifier (cleaned server-side). | 
+ **afterName** | **String** | Cursor: pass nextAfterName from the previous response. | [optional] 
+ **afterUserId** | **String** | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don&#39;t drop entries. | [optional] 
+
+### Return type
+
+[**PageUsersOnlineResponse**](PageUsersOnlineResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPagesPublic**
+```swift
+    open class func getPagesPublic(tenantId: String, cursor: String? = nil, limit: Int? = nil, q: String? = nil, sortBy: PagesSortBy? = nil, hasComments: Bool? = nil, completion: @escaping (_ data: GetPublicPagesResponse?, _ error: Error?) -> Void)
+```
+
+
+
+List pages for a tenant. Used by the FChat desktop client to populate its room list. Requires `enableFChat` to be true on the resolved custom config for each page. Pages that require SSO are filtered against the requesting user's group access.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let cursor = "cursor_example" // String | Opaque pagination cursor returned as `nextCursor` from a prior request. Tied to the same `sortBy`. (optional)
+let limit = 987 // Int | 1..200, default 50 (optional)
+let q = "q_example" // String | Optional case-insensitive title prefix filter. (optional)
+let sortBy = PagesSortBy() // PagesSortBy | Sort order. `updatedAt` (default, newest first), `commentCount` (most comments first), or `title` (alphabetical). (optional)
+let hasComments = true // Bool | If true, only return pages with at least one comment. (optional)
+
+PublicAPI.getPagesPublic(tenantId: tenantId, cursor: cursor, limit: limit, q: q, sortBy: sortBy, hasComments: hasComments) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **cursor** | **String** | Opaque pagination cursor returned as &#x60;nextCursor&#x60; from a prior request. Tied to the same &#x60;sortBy&#x60;. | [optional] 
+ **limit** | **Int** | 1..200, default 50 | [optional] 
+ **q** | **String** | Optional case-insensitive title prefix filter. | [optional] 
+ **sortBy** | [**PagesSortBy**](.md) | Sort order. &#x60;updatedAt&#x60; (default, newest first), &#x60;commentCount&#x60; (most comments first), or &#x60;title&#x60; (alphabetical). | [optional] 
+ **hasComments** | **Bool** | If true, only return pages with at least one comment. | [optional] 
+
+### Return type
+
+[**GetPublicPagesResponse**](GetPublicPagesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTranslations**
+```swift
+    open class func getTranslations(namespace: String, component: String, locale: String? = nil, useFullTranslationIds: Bool? = nil, completion: @escaping (_ data: GetTranslationsResponse?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let namespace = "namespace_example" // String | 
+let component = "component_example" // String | 
+let locale = "locale_example" // String |  (optional)
+let useFullTranslationIds = true // Bool |  (optional)
+
+PublicAPI.getTranslations(namespace: namespace, component: component, locale: locale, useFullTranslationIds: useFullTranslationIds) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **namespace** | **String** |  | 
+ **component** | **String** |  | 
+ **locale** | **String** |  | [optional] 
+ **useFullTranslationIds** | **Bool** |  | [optional] 
+
+### Return type
+
+[**GetTranslationsResponse**](GetTranslationsResponse.md)
 
 ### Authorization
 
@@ -912,7 +1571,7 @@ No authorization required
 
 # **getUserNotificationCount**
 ```swift
-    open class func getUserNotificationCount(tenantId: String, sso: String? = nil, completion: @escaping (_ data: GetUserNotificationCount200Response?, _ error: Error?) -> Void)
+    open class func getUserNotificationCount(tenantId: String, sso: String? = nil, completion: @escaping (_ data: GetUserNotificationCountResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -946,7 +1605,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetUserNotificationCount200Response**](GetUserNotificationCount200Response.md)
+[**GetUserNotificationCountResponse**](GetUserNotificationCountResponse.md)
 
 ### Authorization
 
@@ -961,7 +1620,7 @@ No authorization required
 
 # **getUserNotifications**
 ```swift
-    open class func getUserNotifications(tenantId: String, pageSize: Int? = nil, afterId: String? = nil, includeContext: Bool? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, includeTranslations: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: GetUserNotifications200Response?, _ error: Error?) -> Void)
+    open class func getUserNotifications(tenantId: String, urlId: String? = nil, pageSize: Int? = nil, afterId: String? = nil, includeContext: Bool? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, includeTranslations: Bool? = nil, includeTenantNotifications: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: GetMyNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -972,6 +1631,7 @@ No authorization required
 import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | Used to determine whether the current page is subscribed. (optional)
 let pageSize = 987 // Int |  (optional)
 let afterId = "afterId_example" // String |  (optional)
 let includeContext = true // Bool |  (optional)
@@ -980,9 +1640,10 @@ let unreadOnly = true // Bool |  (optional)
 let dmOnly = true // Bool |  (optional)
 let noDm = true // Bool |  (optional)
 let includeTranslations = true // Bool |  (optional)
+let includeTenantNotifications = true // Bool |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getUserNotifications(tenantId: tenantId, pageSize: pageSize, afterId: afterId, includeContext: includeContext, afterCreatedAt: afterCreatedAt, unreadOnly: unreadOnly, dmOnly: dmOnly, noDm: noDm, includeTranslations: includeTranslations, sso: sso) { (response, error) in
+PublicAPI.getUserNotifications(tenantId: tenantId, urlId: urlId, pageSize: pageSize, afterId: afterId, includeContext: includeContext, afterCreatedAt: afterCreatedAt, unreadOnly: unreadOnly, dmOnly: dmOnly, noDm: noDm, includeTranslations: includeTranslations, includeTenantNotifications: includeTenantNotifications, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -999,6 +1660,7 @@ PublicAPI.getUserNotifications(tenantId: tenantId, pageSize: pageSize, afterId: 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **String** |  | 
+ **urlId** | **String** | Used to determine whether the current page is subscribed. | [optional] 
  **pageSize** | **Int** |  | [optional] 
  **afterId** | **String** |  | [optional] 
  **includeContext** | **Bool** |  | [optional] 
@@ -1007,11 +1669,12 @@ Name | Type | Description  | Notes
  **dmOnly** | **Bool** |  | [optional] 
  **noDm** | **Bool** |  | [optional] 
  **includeTranslations** | **Bool** |  | [optional] 
+ **includeTenantNotifications** | **Bool** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
 
-[**GetUserNotifications200Response**](GetUserNotifications200Response.md)
+[**GetMyNotificationsResponse**](GetMyNotificationsResponse.md)
 
 ### Authorization
 
@@ -1026,7 +1689,7 @@ No authorization required
 
 # **getUserPresenceStatuses**
 ```swift
-    open class func getUserPresenceStatuses(tenantId: String, urlIdWS: String, userIds: String, completion: @escaping (_ data: GetUserPresenceStatuses200Response?, _ error: Error?) -> Void)
+    open class func getUserPresenceStatuses(tenantId: String, urlIdWS: String, userIds: String, completion: @escaping (_ data: GetUserPresenceStatusesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1062,7 +1725,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetUserPresenceStatuses200Response**](GetUserPresenceStatuses200Response.md)
+[**GetUserPresenceStatusesResponse**](GetUserPresenceStatusesResponse.md)
 
 ### Authorization
 
@@ -1077,7 +1740,7 @@ No authorization required
 
 # **getUserReactsPublic**
 ```swift
-    open class func getUserReactsPublic(tenantId: String, postIds: [String]? = nil, sso: String? = nil, completion: @escaping (_ data: GetUserReactsPublic200Response?, _ error: Error?) -> Void)
+    open class func getUserReactsPublic(tenantId: String, postIds: [String]? = nil, sso: String? = nil, completion: @escaping (_ data: UserReactsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1113,7 +1776,207 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetUserReactsPublic200Response**](GetUserReactsPublic200Response.md)
+[**UserReactsResponse**](UserReactsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getUsersInfo**
+```swift
+    open class func getUsersInfo(tenantId: String, ids: String, completion: @escaping (_ data: PageUsersInfoResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Bulk user info for a tenant. Given userIds, return display info from User / SSOUser. Used by the comment widget to enrich users that just appeared via a presence event. No page context: privacy is enforced uniformly (private profiles are masked).
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let ids = "ids_example" // String | Comma-delimited userIds.
+
+PublicAPI.getUsersInfo(tenantId: tenantId, ids: ids) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **ids** | **String** | Comma-delimited userIds. | 
+
+### Return type
+
+[**PageUsersInfoResponse**](PageUsersInfoResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getV1PageLikes**
+```swift
+    open class func getV1PageLikes(tenantId: String, urlId: String, completion: @escaping (_ data: GetV1PageLikes?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | 
+
+PublicAPI.getV1PageLikes(tenantId: tenantId, urlId: urlId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **urlId** | **String** |  | 
+
+### Return type
+
+[**GetV1PageLikes**](GetV1PageLikes.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getV2PageReactUsers**
+```swift
+    open class func getV2PageReactUsers(tenantId: String, urlId: String, id: String, completion: @escaping (_ data: GetV2PageReactUsersResponse?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | 
+let id = "id_example" // String | 
+
+PublicAPI.getV2PageReactUsers(tenantId: tenantId, urlId: urlId, id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **urlId** | **String** |  | 
+ **id** | **String** |  | 
+
+### Return type
+
+[**GetV2PageReactUsersResponse**](GetV2PageReactUsersResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getV2PageReacts**
+```swift
+    open class func getV2PageReacts(tenantId: String, urlId: String, completion: @escaping (_ data: GetV2PageReacts?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | 
+
+PublicAPI.getV2PageReacts(tenantId: tenantId, urlId: urlId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **urlId** | **String** |  | 
+
+### Return type
+
+[**GetV2PageReacts**](GetV2PageReacts.md)
 
 ### Authorization
 
@@ -1128,7 +1991,7 @@ No authorization required
 
 # **lockComment**
 ```swift
-    open class func lockComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: LockComment200Response?, _ error: Error?) -> Void)
+    open class func lockComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1166,7 +2029,50 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LockComment200Response**](LockComment200Response.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **logoutPublic**
+```swift
+    open class func logoutPublic(completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+
+PublicAPI.logoutPublic() { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -1181,7 +2087,7 @@ No authorization required
 
 # **pinComment**
 ```swift
-    open class func pinComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: PinComment200Response?, _ error: Error?) -> Void)
+    open class func pinComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: ChangeCommentPinStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1219,7 +2125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PinComment200Response**](PinComment200Response.md)
+[**ChangeCommentPinStatusResponse**](ChangeCommentPinStatusResponse.md)
 
 ### Authorization
 
@@ -1234,7 +2140,7 @@ No authorization required
 
 # **reactFeedPostPublic**
 ```swift
-    open class func reactFeedPostPublic(tenantId: String, postId: String, reactBodyParams: ReactBodyParams, isUndo: Bool? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ReactFeedPostPublic200Response?, _ error: Error?) -> Void)
+    open class func reactFeedPostPublic(tenantId: String, postId: String, reactBodyParams: ReactBodyParams, isUndo: Bool? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ReactFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1276,7 +2182,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ReactFeedPostPublic200Response**](ReactFeedPostPublic200Response.md)
+[**ReactFeedPostResponse**](ReactFeedPostResponse.md)
 
 ### Authorization
 
@@ -1291,7 +2197,7 @@ No authorization required
 
 # **resetUserNotificationCount**
 ```swift
-    open class func resetUserNotificationCount(tenantId: String, sso: String? = nil, completion: @escaping (_ data: ResetUserNotifications200Response?, _ error: Error?) -> Void)
+    open class func resetUserNotificationCount(tenantId: String, sso: String? = nil, completion: @escaping (_ data: ResetUserNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1325,7 +2231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResetUserNotifications200Response**](ResetUserNotifications200Response.md)
+[**ResetUserNotificationsResponse**](ResetUserNotificationsResponse.md)
 
 ### Authorization
 
@@ -1340,7 +2246,7 @@ No authorization required
 
 # **resetUserNotifications**
 ```swift
-    open class func resetUserNotifications(tenantId: String, afterId: String? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: ResetUserNotifications200Response?, _ error: Error?) -> Void)
+    open class func resetUserNotifications(tenantId: String, afterId: String? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: ResetUserNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1384,7 +2290,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResetUserNotifications200Response**](ResetUserNotifications200Response.md)
+[**ResetUserNotificationsResponse**](ResetUserNotificationsResponse.md)
 
 ### Authorization
 
@@ -1399,7 +2305,7 @@ No authorization required
 
 # **searchUsers**
 ```swift
-    open class func searchUsers(tenantId: String, urlId: String, usernameStartsWith: String? = nil, mentionGroupIds: [String]? = nil, sso: String? = nil, searchSection: SearchSection_searchUsers? = nil, completion: @escaping (_ data: SearchUsers200Response?, _ error: Error?) -> Void)
+    open class func searchUsers(tenantId: String, urlId: String, usernameStartsWith: String? = nil, mentionGroupIds: [String]? = nil, sso: String? = nil, searchSection: SearchSection_searchUsers? = nil, completion: @escaping (_ data: SearchUsersResult?, _ error: Error?) -> Void)
 ```
 
 
@@ -1441,7 +2347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SearchUsers200Response**](SearchUsers200Response.md)
+[**SearchUsersResult**](SearchUsersResult.md)
 
 ### Authorization
 
@@ -1456,7 +2362,7 @@ No authorization required
 
 # **setCommentText**
 ```swift
-    open class func setCommentText(tenantId: String, commentId: String, broadcastId: String, commentTextUpdateRequest: CommentTextUpdateRequest, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: SetCommentText200Response?, _ error: Error?) -> Void)
+    open class func setCommentText(tenantId: String, commentId: String, broadcastId: String, commentTextUpdateRequest: CommentTextUpdateRequest, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: PublicAPISetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1498,7 +2404,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SetCommentText200Response**](SetCommentText200Response.md)
+[**PublicAPISetCommentTextResponse**](PublicAPISetCommentTextResponse.md)
 
 ### Authorization
 
@@ -1513,7 +2419,7 @@ No authorization required
 
 # **unBlockCommentPublic**
 ```swift
-    open class func unBlockCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, sso: String? = nil, completion: @escaping (_ data: UnBlockCommentPublic200Response?, _ error: Error?) -> Void)
+    open class func unBlockCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, sso: String? = nil, completion: @escaping (_ data: UnblockSuccess?, _ error: Error?) -> Void)
 ```
 
 
@@ -1551,7 +2457,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UnBlockCommentPublic200Response**](UnBlockCommentPublic200Response.md)
+[**UnblockSuccess**](UnblockSuccess.md)
 
 ### Authorization
 
@@ -1566,7 +2472,7 @@ No authorization required
 
 # **unLockComment**
 ```swift
-    open class func unLockComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: LockComment200Response?, _ error: Error?) -> Void)
+    open class func unLockComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1604,7 +2510,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LockComment200Response**](LockComment200Response.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -1619,7 +2525,7 @@ No authorization required
 
 # **unPinComment**
 ```swift
-    open class func unPinComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: PinComment200Response?, _ error: Error?) -> Void)
+    open class func unPinComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: ChangeCommentPinStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1657,7 +2563,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PinComment200Response**](PinComment200Response.md)
+[**ChangeCommentPinStatusResponse**](ChangeCommentPinStatusResponse.md)
 
 ### Authorization
 
@@ -1672,7 +2578,7 @@ No authorization required
 
 # **updateFeedPostPublic**
 ```swift
-    open class func updateFeedPostPublic(tenantId: String, postId: String, updateFeedPostParams: UpdateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: CreateFeedPostPublic200Response?, _ error: Error?) -> Void)
+    open class func updateFeedPostPublic(tenantId: String, postId: String, updateFeedPostParams: UpdateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: CreateFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1712,7 +2618,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateFeedPostPublic200Response**](CreateFeedPostPublic200Response.md)
+[**CreateFeedPostResponse**](CreateFeedPostResponse.md)
 
 ### Authorization
 
@@ -1727,7 +2633,7 @@ No authorization required
 
 # **updateUserNotificationCommentSubscriptionStatus**
 ```swift
-    open class func updateUserNotificationCommentSubscriptionStatus(tenantId: String, notificationId: String, optedInOrOut: OptedInOrOut_updateUserNotificationCommentSubscriptionStatus, commentId: String, sso: String? = nil, completion: @escaping (_ data: UpdateUserNotificationStatus200Response?, _ error: Error?) -> Void)
+    open class func updateUserNotificationCommentSubscriptionStatus(tenantId: String, notificationId: String, optedInOrOut: OptedInOrOut_updateUserNotificationCommentSubscriptionStatus, commentId: String, sso: String? = nil, completion: @escaping (_ data: UpdateUserNotificationCommentSubscriptionStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1769,7 +2675,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateUserNotificationStatus200Response**](UpdateUserNotificationStatus200Response.md)
+[**UpdateUserNotificationCommentSubscriptionStatusResponse**](UpdateUserNotificationCommentSubscriptionStatusResponse.md)
 
 ### Authorization
 
@@ -1784,7 +2690,7 @@ No authorization required
 
 # **updateUserNotificationPageSubscriptionStatus**
 ```swift
-    open class func updateUserNotificationPageSubscriptionStatus(tenantId: String, urlId: String, url: String, pageTitle: String, subscribedOrUnsubscribed: SubscribedOrUnsubscribed_updateUserNotificationPageSubscriptionStatus, sso: String? = nil, completion: @escaping (_ data: UpdateUserNotificationStatus200Response?, _ error: Error?) -> Void)
+    open class func updateUserNotificationPageSubscriptionStatus(tenantId: String, urlId: String, url: String, pageTitle: String, subscribedOrUnsubscribed: SubscribedOrUnsubscribed_updateUserNotificationPageSubscriptionStatus, sso: String? = nil, completion: @escaping (_ data: UpdateUserNotificationPageSubscriptionStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1828,7 +2734,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateUserNotificationStatus200Response**](UpdateUserNotificationStatus200Response.md)
+[**UpdateUserNotificationPageSubscriptionStatusResponse**](UpdateUserNotificationPageSubscriptionStatusResponse.md)
 
 ### Authorization
 
@@ -1843,7 +2749,7 @@ No authorization required
 
 # **updateUserNotificationStatus**
 ```swift
-    open class func updateUserNotificationStatus(tenantId: String, notificationId: String, newStatus: NewStatus_updateUserNotificationStatus, sso: String? = nil, completion: @escaping (_ data: UpdateUserNotificationStatus200Response?, _ error: Error?) -> Void)
+    open class func updateUserNotificationStatus(tenantId: String, notificationId: String, newStatus: NewStatus_updateUserNotificationStatus, sso: String? = nil, completion: @escaping (_ data: UpdateUserNotificationStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1881,7 +2787,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateUserNotificationStatus200Response**](UpdateUserNotificationStatus200Response.md)
+[**UpdateUserNotificationStatusResponse**](UpdateUserNotificationStatusResponse.md)
 
 ### Authorization
 
@@ -1951,7 +2857,7 @@ No authorization required
 
 # **voteComment**
 ```swift
-    open class func voteComment(tenantId: String, commentId: String, urlId: String, broadcastId: String, voteBodyParams: VoteBodyParams, sessionId: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteComment200Response?, _ error: Error?) -> Void)
+    open class func voteComment(tenantId: String, commentId: String, urlId: String, broadcastId: String, voteBodyParams: VoteBodyParams, sessionId: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1995,7 +2901,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VoteComment200Response**](VoteComment200Response.md)
+[**VoteResponse**](VoteResponse.md)
 
 ### Authorization
 

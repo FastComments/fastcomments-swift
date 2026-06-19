@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CommentLogData: Sendable, Codable, ParameterConvertible, Hashable {
+public struct CommentLogData: Sendable, Codable, Hashable {
 
     public enum PermanentFlag: String, Sendable, Codable, CaseIterable {
         case permanent = "permanent"
@@ -27,6 +27,7 @@ public struct CommentLogData: Sendable, Codable, ParameterConvertible, Hashable 
     public var engineResponse: String?
     public var engineTokens: Double?
     public var trustFactor: Double?
+    public var source: String?
     public var rule: SpamRule?
     public var userId: String?
     public var subscribers: Double?
@@ -59,7 +60,7 @@ public struct CommentLogData: Sendable, Codable, ParameterConvertible, Hashable 
     public var detectedLocale: String?
     public var detectedLanguage: String?
 
-    public init(clearContent: Bool? = nil, isDeletedUser: Bool? = nil, phrase: String? = nil, badWord: String? = nil, word: String? = nil, locale: String? = nil, tenantBadgeId: String? = nil, badgeId: String? = nil, wasLoggedIn: Bool? = nil, foundUser: Bool? = nil, verified: Bool? = nil, engine: String? = nil, engineResponse: String? = nil, engineTokens: Double? = nil, trustFactor: Double? = nil, rule: SpamRule? = nil, userId: String? = nil, subscribers: Double? = nil, notificationCount: Double? = nil, votesBefore: Double? = nil, votesUpBefore: Double? = nil, votesDownBefore: Double? = nil, votesAfter: Double? = nil, votesUpAfter: Double? = nil, votesDownAfter: Double? = nil, repeatAction: RepeatCommentHandlingAction? = nil, reason: RepeatCommentCheckIgnoredReason? = nil, otherData: JSONValue? = nil, spamBefore: Bool? = nil, spamAfter: Bool? = nil, permanentFlag: PermanentFlag? = nil, approvedBefore: Bool? = nil, approvedAfter: Bool? = nil, reviewedBefore: Bool? = nil, reviewedAfter: Bool? = nil, textBefore: String? = nil, textAfter: String? = nil, expireBefore: Date? = nil, expireAfter: Date? = nil, flagCountBefore: Double? = nil, trustFactorBefore: Double? = nil, trustFactorAfter: Double? = nil, referencedCommentId: String? = nil, invalidLocale: String? = nil, detectedLocale: String? = nil, detectedLanguage: String? = nil) {
+    public init(clearContent: Bool? = nil, isDeletedUser: Bool? = nil, phrase: String? = nil, badWord: String? = nil, word: String? = nil, locale: String? = nil, tenantBadgeId: String? = nil, badgeId: String? = nil, wasLoggedIn: Bool? = nil, foundUser: Bool? = nil, verified: Bool? = nil, engine: String? = nil, engineResponse: String? = nil, engineTokens: Double? = nil, trustFactor: Double? = nil, source: String? = nil, rule: SpamRule? = nil, userId: String? = nil, subscribers: Double? = nil, notificationCount: Double? = nil, votesBefore: Double? = nil, votesUpBefore: Double? = nil, votesDownBefore: Double? = nil, votesAfter: Double? = nil, votesUpAfter: Double? = nil, votesDownAfter: Double? = nil, repeatAction: RepeatCommentHandlingAction? = nil, reason: RepeatCommentCheckIgnoredReason? = nil, otherData: JSONValue? = nil, spamBefore: Bool? = nil, spamAfter: Bool? = nil, permanentFlag: PermanentFlag? = nil, approvedBefore: Bool? = nil, approvedAfter: Bool? = nil, reviewedBefore: Bool? = nil, reviewedAfter: Bool? = nil, textBefore: String? = nil, textAfter: String? = nil, expireBefore: Date? = nil, expireAfter: Date? = nil, flagCountBefore: Double? = nil, trustFactorBefore: Double? = nil, trustFactorAfter: Double? = nil, referencedCommentId: String? = nil, invalidLocale: String? = nil, detectedLocale: String? = nil, detectedLanguage: String? = nil) {
         self.clearContent = clearContent
         self.isDeletedUser = isDeletedUser
         self.phrase = phrase
@@ -75,6 +76,7 @@ public struct CommentLogData: Sendable, Codable, ParameterConvertible, Hashable 
         self.engineResponse = engineResponse
         self.engineTokens = engineTokens
         self.trustFactor = trustFactor
+        self.source = source
         self.rule = rule
         self.userId = userId
         self.subscribers = subscribers
@@ -124,6 +126,7 @@ public struct CommentLogData: Sendable, Codable, ParameterConvertible, Hashable 
         case engineResponse
         case engineTokens
         case trustFactor
+        case source
         case rule
         case userId
         case subscribers
@@ -176,6 +179,7 @@ public struct CommentLogData: Sendable, Codable, ParameterConvertible, Hashable 
         try container.encodeIfPresent(engineResponse, forKey: .engineResponse)
         try container.encodeIfPresent(engineTokens, forKey: .engineTokens)
         try container.encodeIfPresent(trustFactor, forKey: .trustFactor)
+        try container.encodeIfPresent(source, forKey: .source)
         try container.encodeIfPresent(rule, forKey: .rule)
         try container.encodeIfPresent(userId, forKey: .userId)
         try container.encodeIfPresent(subscribers, forKey: .subscribers)

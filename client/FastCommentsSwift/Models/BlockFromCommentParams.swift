@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct BlockFromCommentParams: Sendable, Codable, ParameterConvertible, Hashable {
+public struct BlockFromCommentParams: Sendable, Codable, Hashable {
 
     public var commentIdsToCheck: [String]?
 

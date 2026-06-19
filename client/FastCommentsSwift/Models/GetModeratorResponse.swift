@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetModeratorResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetModeratorResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var moderator: Moderator

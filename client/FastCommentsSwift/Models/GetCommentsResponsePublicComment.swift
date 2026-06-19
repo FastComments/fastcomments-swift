@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetCommentsResponsePublicComment: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetCommentsResponsePublicComment: Sendable, Codable, Hashable {
 
     public var statusCode: Int?
     public var status: String

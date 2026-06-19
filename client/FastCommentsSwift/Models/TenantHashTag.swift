@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TenantHashTag: Sendable, Codable, ParameterConvertible, Hashable {
+public struct TenantHashTag: Sendable, Codable, Hashable {
 
     public var id: String
     public var createdAt: Date

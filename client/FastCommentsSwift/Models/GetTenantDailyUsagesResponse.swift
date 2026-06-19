@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetTenantDailyUsagesResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct GetTenantDailyUsagesResponse: Sendable, Codable, Hashable {
 
     public var status: APIStatus
     public var tenantDailyUsages: [APITenantDailyUsage]

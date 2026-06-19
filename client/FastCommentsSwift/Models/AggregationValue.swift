@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AggregationValue: Sendable, Codable, ParameterConvertible, Hashable {
+public struct AggregationValue: Sendable, Codable, Hashable {
 
     /** Construct a type with a set of properties K of type T */
     public var groups: [String: String]?

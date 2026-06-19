@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct EmailTemplateRenderErrorResponse: Sendable, Codable, ParameterConvertible, Hashable {
+public struct EmailTemplateRenderErrorResponse: Sendable, Codable, Hashable {
 
     public var id: String
     public var tenantId: String
@@ -52,5 +52,4 @@ public struct EmailTemplateRenderErrorResponse: Sendable, Codable, ParameterConv
 }
 
 
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension EmailTemplateRenderErrorResponse: Identifiable {}

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct User: Sendable, Codable, ParameterConvertible, Hashable {
+public struct User: Sendable, Codable, Hashable {
 
     public var id: String
     public var tenantId: String?
@@ -48,6 +48,7 @@ public struct User: Sendable, Codable, ParameterConvertible, Hashable {
     public var digestEmailFrequency: DigestEmailFrequency?
     public var notificationFrequency: Double?
     public var adminNotificationFrequency: Double?
+    public var agentApprovalNotificationFrequency: ImportedAgentApprovalNotificationFrequency?
     public var lastTenantNotificationSentDate: Date?
     public var lastReplyNotificationSentDate: Date?
     public var ignoredAddToMySiteMessages: Bool?
@@ -69,7 +70,7 @@ public struct User: Sendable, Codable, ParameterConvertible, Hashable {
     public var hasTwoFactor: Bool?
     public var isEmailSuppressed: Bool?
 
-    public init(id: String, tenantId: String? = nil, username: String, displayName: String? = nil, websiteUrl: String? = nil, email: String?, pendingEmail: String? = nil, backupEmail: String? = nil, pendingBackupEmail: String? = nil, signUpDate: Int64, createdFromUrlId: String? = nil, createdFromTenantId: String?, createdFromIpHashed: String, verified: Bool, loginId: String, loginIdDate: Int64, loginCount: Int? = nil, optedInNotifications: Bool? = nil, optedInTenantNotifications: Bool? = nil, hideAccountCode: Bool? = nil, avatarSrc: String? = nil, isFastCommentsHelpRequestAdmin: Bool? = nil, isHelpRequestAdmin: Bool? = nil, isAccountOwner: Bool? = nil, isAdminAdmin: Bool? = nil, isBillingAdmin: Bool? = nil, isAnalyticsAdmin: Bool? = nil, isCustomizationAdmin: Bool? = nil, isManageDataAdmin: Bool? = nil, isCommentModeratorAdmin: Bool? = nil, isAPIAdmin: Bool? = nil, isSiteAdmin: Bool? = nil, moderatorIds: [String]? = nil, isImpersonator: Bool? = nil, isCouponManager: Bool? = nil, locale: String? = nil, digestEmailFrequency: DigestEmailFrequency? = nil, notificationFrequency: Double? = nil, adminNotificationFrequency: Double? = nil, lastTenantNotificationSentDate: Date? = nil, lastReplyNotificationSentDate: Date? = nil, ignoredAddToMySiteMessages: Bool? = nil, lastLoginDate: Date? = nil, displayLabel: String? = nil, isProfileActivityPrivate: Bool? = nil, isProfileCommentsPrivate: Bool? = nil, isProfileDMDisabled: Bool? = nil, profileCommentApprovalMode: Double? = nil, karma: Double? = nil, passwordHash: String? = nil, averageTicketAckTimeMS: Double? = nil, hasBlockedUsers: Bool? = nil, bio: String? = nil, headerBackgroundSrc: String? = nil, countryCode: String? = nil, countryFlag: String? = nil, socialLinks: [String]? = nil, hasTwoFactor: Bool? = nil, isEmailSuppressed: Bool? = nil) {
+    public init(id: String, tenantId: String? = nil, username: String, displayName: String? = nil, websiteUrl: String? = nil, email: String?, pendingEmail: String? = nil, backupEmail: String? = nil, pendingBackupEmail: String? = nil, signUpDate: Int64, createdFromUrlId: String? = nil, createdFromTenantId: String?, createdFromIpHashed: String, verified: Bool, loginId: String, loginIdDate: Int64, loginCount: Int? = nil, optedInNotifications: Bool? = nil, optedInTenantNotifications: Bool? = nil, hideAccountCode: Bool? = nil, avatarSrc: String? = nil, isFastCommentsHelpRequestAdmin: Bool? = nil, isHelpRequestAdmin: Bool? = nil, isAccountOwner: Bool? = nil, isAdminAdmin: Bool? = nil, isBillingAdmin: Bool? = nil, isAnalyticsAdmin: Bool? = nil, isCustomizationAdmin: Bool? = nil, isManageDataAdmin: Bool? = nil, isCommentModeratorAdmin: Bool? = nil, isAPIAdmin: Bool? = nil, isSiteAdmin: Bool? = nil, moderatorIds: [String]? = nil, isImpersonator: Bool? = nil, isCouponManager: Bool? = nil, locale: String? = nil, digestEmailFrequency: DigestEmailFrequency? = nil, notificationFrequency: Double? = nil, adminNotificationFrequency: Double? = nil, agentApprovalNotificationFrequency: ImportedAgentApprovalNotificationFrequency? = nil, lastTenantNotificationSentDate: Date? = nil, lastReplyNotificationSentDate: Date? = nil, ignoredAddToMySiteMessages: Bool? = nil, lastLoginDate: Date? = nil, displayLabel: String? = nil, isProfileActivityPrivate: Bool? = nil, isProfileCommentsPrivate: Bool? = nil, isProfileDMDisabled: Bool? = nil, profileCommentApprovalMode: Double? = nil, karma: Double? = nil, passwordHash: String? = nil, averageTicketAckTimeMS: Double? = nil, hasBlockedUsers: Bool? = nil, bio: String? = nil, headerBackgroundSrc: String? = nil, countryCode: String? = nil, countryFlag: String? = nil, socialLinks: [String]? = nil, hasTwoFactor: Bool? = nil, isEmailSuppressed: Bool? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.username = username
@@ -109,6 +110,7 @@ public struct User: Sendable, Codable, ParameterConvertible, Hashable {
         self.digestEmailFrequency = digestEmailFrequency
         self.notificationFrequency = notificationFrequency
         self.adminNotificationFrequency = adminNotificationFrequency
+        self.agentApprovalNotificationFrequency = agentApprovalNotificationFrequency
         self.lastTenantNotificationSentDate = lastTenantNotificationSentDate
         self.lastReplyNotificationSentDate = lastReplyNotificationSentDate
         self.ignoredAddToMySiteMessages = ignoredAddToMySiteMessages
@@ -171,6 +173,7 @@ public struct User: Sendable, Codable, ParameterConvertible, Hashable {
         case digestEmailFrequency
         case notificationFrequency
         case adminNotificationFrequency
+        case agentApprovalNotificationFrequency
         case lastTenantNotificationSentDate
         case lastReplyNotificationSentDate
         case ignoredAddToMySiteMessages
@@ -236,6 +239,7 @@ public struct User: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encodeIfPresent(digestEmailFrequency, forKey: .digestEmailFrequency)
         try container.encodeIfPresent(notificationFrequency, forKey: .notificationFrequency)
         try container.encodeIfPresent(adminNotificationFrequency, forKey: .adminNotificationFrequency)
+        try container.encodeIfPresent(agentApprovalNotificationFrequency, forKey: .agentApprovalNotificationFrequency)
         try container.encodeIfPresent(lastTenantNotificationSentDate, forKey: .lastTenantNotificationSentDate)
         try container.encodeIfPresent(lastReplyNotificationSentDate, forKey: .lastReplyNotificationSentDate)
         try container.encodeIfPresent(ignoredAddToMySiteMessages, forKey: .ignoredAddToMySiteMessages)

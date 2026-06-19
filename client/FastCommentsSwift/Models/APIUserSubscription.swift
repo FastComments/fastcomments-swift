@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct APIUserSubscription: Sendable, Codable, ParameterConvertible, Hashable {
+public struct APIUserSubscription: Sendable, Codable, Hashable {
 
     public var notificationFrequency: Double?
     public var createdAt: Date
@@ -56,5 +56,4 @@ public struct APIUserSubscription: Sendable, Codable, ParameterConvertible, Hash
 }
 
 
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
 extension APIUserSubscription: Identifiable {}
