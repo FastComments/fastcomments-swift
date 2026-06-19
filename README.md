@@ -95,12 +95,8 @@ do {
 ```swift
 import FastCommentsSwift
 
-// Create configuration with API key
-let defaultApi = DefaultAPI()
-defaultApi.apiKey = "your-api-key"
-
-// List comments awaiting moderation
-// Moderation methods accept an `sso` token to act as an SSO-authenticated moderator
+// Moderation methods are authorized with an `sso` token for the acting moderator
+// (generate it with FastCommentsSSO, see the SSO section above).
 do {
     let response = try await ModerationAPI.getApiComments(
         page: 0,
