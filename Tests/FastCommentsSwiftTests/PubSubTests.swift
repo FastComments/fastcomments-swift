@@ -288,7 +288,7 @@ final class PubSubTests: XCTestCase {
         XCTAssertEqual(badge.backgroundColor, "#gold")
     }
 
-    // MARK: - EventLogResponse
+    // MARK: - GetEventLogResponse
 
     func testEventLogResponseDecoding() throws {
         let innerEventJson = """
@@ -304,6 +304,7 @@ final class PubSubTests: XCTestCase {
             "events": [
                 {
                     "_id": "entry-1",
+                    "createdAt": "2023-11-14T22:13:20Z",
                     "tenantId": "t1",
                     "urlId": "u1",
                     "broadcastId": "bc1",
@@ -312,15 +313,16 @@ final class PubSubTests: XCTestCase {
             ]
         }
         """
-        let response = try JSONDecoder().decode(EventLogResponse.self, from: json.data(using: .utf8)!)
-        XCTAssertEqual(response.status, "success")
-        XCTAssertEqual(response.events?.count, 1)
+        // Use the SDK decoder so the ISO8601 `createdAt` Date decodes correctly.
+        let response = try CodableHelper().jsonDecoder.decode(GetEventLogResponse.self, from: json.data(using: .utf8)!)
+        XCTAssertEqual(response.status, .success)
+        XCTAssertEqual(response.events.count, 1)
 
-        let entry = response.events![0]
+        let entry = response.events[0]
         XCTAssertEqual(entry.id, "entry-1")
 
         // Parse the nested data string
-        let eventData = entry.data!.data(using: .utf8)!
+        let eventData = entry.data.data(using: .utf8)!
         let event = try JSONDecoder().decode(LiveEvent.self, from: eventData)
         XCTAssertEqual(event.type, .newComment)
         XCTAssertEqual(event.comment?.id, "c1")
