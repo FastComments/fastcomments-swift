@@ -51,7 +51,7 @@ Method | HTTP request | Description
 
 # **deleteModerationVote**
 ```swift
-    open class func deleteModerationVote(commentId: String, voteId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: DeleteModerationVoteResponse?, _ error: Error?) -> Void)
+    open class func deleteModerationVote(commentId: String, voteId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteDeleteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteModerationVoteResponse**](DeleteModerationVoteResponse.md)
+[**VoteDeleteResponse**](VoteDeleteResponse.md)
 
 ### Authorization
 
@@ -106,7 +106,7 @@ No authorization required
 
 # **getApiComments**
 ```swift
-    open class func getApiComments(page: Double? = nil, count: Double? = nil, textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, sorts: String? = nil, demo: Bool? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetApiCommentsResponse?, _ error: Error?) -> Void)
+    open class func getApiComments(page: Double? = nil, count: Double? = nil, textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, sorts: String? = nil, demo: Bool? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationAPIGetCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetApiCommentsResponse**](GetApiCommentsResponse.md)
+[**ModerationAPIGetCommentsResponse**](ModerationAPIGetCommentsResponse.md)
 
 ### Authorization
 
@@ -171,7 +171,7 @@ No authorization required
 
 # **getApiExportStatus**
 ```swift
-    open class func getApiExportStatus(batchJobId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetApiExportStatusResponse?, _ error: Error?) -> Void)
+    open class func getApiExportStatus(batchJobId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationExportStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetApiExportStatusResponse**](GetApiExportStatusResponse.md)
+[**ModerationExportStatusResponse**](ModerationExportStatusResponse.md)
 
 ### Authorization
 
@@ -222,7 +222,7 @@ No authorization required
 
 # **getApiIds**
 ```swift
-    open class func getApiIds(textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, afterId: String? = nil, demo: Bool? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetApiIdsResponse?, _ error: Error?) -> Void)
+    open class func getApiIds(textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, afterId: String? = nil, demo: Bool? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationAPIGetCommentIdsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetApiIdsResponse**](GetApiIdsResponse.md)
+[**ModerationAPIGetCommentIdsResponse**](ModerationAPIGetCommentIdsResponse.md)
 
 ### Authorization
 
@@ -283,7 +283,7 @@ No authorization required
 
 # **getBanUsersFromComment**
 ```swift
-    open class func getBanUsersFromComment(commentId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetBanUsersFromCommentResponse?, _ error: Error?) -> Void)
+    open class func getBanUsersFromComment(commentId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetBannedUsersFromCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetBanUsersFromCommentResponse**](GetBanUsersFromCommentResponse.md)
+[**GetBannedUsersFromCommentResponse**](GetBannedUsersFromCommentResponse.md)
 
 ### Authorization
 
@@ -334,7 +334,7 @@ No authorization required
 
 # **getCommentBanStatus**
 ```swift
-    open class func getCommentBanStatus(commentId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetCommentBanStatusResponse1?, _ error: Error?) -> Void)
+    open class func getCommentBanStatus(commentId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetCommentBanStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -370,7 +370,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCommentBanStatusResponse1**](GetCommentBanStatusResponse1.md)
+[**GetCommentBanStatusResponse**](GetCommentBanStatusResponse.md)
 
 ### Authorization
 
@@ -385,7 +385,7 @@ No authorization required
 
 # **getCommentChildren**
 ```swift
-    open class func getCommentChildren(commentId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetCommentChildrenResponse?, _ error: Error?) -> Void)
+    open class func getCommentChildren(commentId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationAPIChildCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -421,7 +421,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCommentChildrenResponse**](GetCommentChildrenResponse.md)
+[**ModerationAPIChildCommentsResponse**](ModerationAPIChildCommentsResponse.md)
 
 ### Authorization
 
@@ -436,7 +436,7 @@ No authorization required
 
 # **getCount**
 ```swift
-    open class func getCount(textSearch: String? = nil, byIPFromComment: String? = nil, filter: String? = nil, searchFilters: String? = nil, demo: Bool? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetCountResponse?, _ error: Error?) -> Void)
+    open class func getCount(textSearch: String? = nil, byIPFromComment: String? = nil, filter: String? = nil, searchFilters: String? = nil, demo: Bool? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationAPICountCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -480,7 +480,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCountResponse**](GetCountResponse.md)
+[**ModerationAPICountCommentsResponse**](ModerationAPICountCommentsResponse.md)
 
 ### Authorization
 
@@ -495,7 +495,7 @@ No authorization required
 
 # **getCounts**
 ```swift
-    open class func getCounts(tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetCountsResponse?, _ error: Error?) -> Void)
+    open class func getCounts(tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetBannedUsersCountResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -529,7 +529,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCountsResponse**](GetCountsResponse.md)
+[**GetBannedUsersCountResponse**](GetBannedUsersCountResponse.md)
 
 ### Authorization
 
@@ -544,7 +544,7 @@ No authorization required
 
 # **getLogs**
 ```swift
-    open class func getLogs(commentId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetLogsResponse?, _ error: Error?) -> Void)
+    open class func getLogs(commentId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationAPIGetLogsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -580,7 +580,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetLogsResponse**](GetLogsResponse.md)
+[**ModerationAPIGetLogsResponse**](ModerationAPIGetLogsResponse.md)
 
 ### Authorization
 
@@ -595,7 +595,7 @@ No authorization required
 
 # **getManualBadges**
 ```swift
-    open class func getManualBadges(tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetManualBadgesResponse?, _ error: Error?) -> Void)
+    open class func getManualBadges(tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetTenantManualBadgesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -629,7 +629,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetManualBadgesResponse**](GetManualBadgesResponse.md)
+[**GetTenantManualBadgesResponse**](GetTenantManualBadgesResponse.md)
 
 ### Authorization
 
@@ -644,7 +644,7 @@ No authorization required
 
 # **getManualBadgesForUser**
 ```swift
-    open class func getManualBadgesForUser(badgesUserId: String? = nil, commentId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetManualBadgesForUserResponse?, _ error: Error?) -> Void)
+    open class func getManualBadgesForUser(badgesUserId: String? = nil, commentId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetUserManualBadgesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -682,7 +682,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetManualBadgesForUserResponse**](GetManualBadgesForUserResponse.md)
+[**GetUserManualBadgesResponse**](GetUserManualBadgesResponse.md)
 
 ### Authorization
 
@@ -697,7 +697,7 @@ No authorization required
 
 # **getModerationComment**
 ```swift
-    open class func getModerationComment(commentId: String, includeEmail: Bool? = nil, includeIP: Bool? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetModerationCommentResponse?, _ error: Error?) -> Void)
+    open class func getModerationComment(commentId: String, includeEmail: Bool? = nil, includeIP: Bool? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationAPICommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -737,7 +737,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetModerationCommentResponse**](GetModerationCommentResponse.md)
+[**ModerationAPICommentResponse**](ModerationAPICommentResponse.md)
 
 ### Authorization
 
@@ -752,7 +752,7 @@ No authorization required
 
 # **getModerationCommentText**
 ```swift
-    open class func getModerationCommentText(commentId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetModerationCommentTextResponse?, _ error: Error?) -> Void)
+    open class func getModerationCommentText(commentId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -788,7 +788,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetModerationCommentTextResponse**](GetModerationCommentTextResponse.md)
+[**GetCommentTextResponse**](GetCommentTextResponse.md)
 
 ### Authorization
 
@@ -803,7 +803,7 @@ No authorization required
 
 # **getPreBanSummary**
 ```swift
-    open class func getPreBanSummary(commentId: String, includeByUserIdAndEmail: Bool? = nil, includeByIP: Bool? = nil, includeByEmailDomain: Bool? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetPreBanSummaryResponse?, _ error: Error?) -> Void)
+    open class func getPreBanSummary(commentId: String, includeByUserIdAndEmail: Bool? = nil, includeByIP: Bool? = nil, includeByEmailDomain: Bool? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PreBanSummary?, _ error: Error?) -> Void)
 ```
 
 
@@ -845,7 +845,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetPreBanSummaryResponse**](GetPreBanSummaryResponse.md)
+[**PreBanSummary**](PreBanSummary.md)
 
 ### Authorization
 
@@ -860,7 +860,7 @@ No authorization required
 
 # **getSearchCommentsSummary**
 ```swift
-    open class func getSearchCommentsSummary(value: String? = nil, filters: String? = nil, searchFilters: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetSearchCommentsSummaryResponse?, _ error: Error?) -> Void)
+    open class func getSearchCommentsSummary(value: String? = nil, filters: String? = nil, searchFilters: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationCommentSearchResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -900,7 +900,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetSearchCommentsSummaryResponse**](GetSearchCommentsSummaryResponse.md)
+[**ModerationCommentSearchResponse**](ModerationCommentSearchResponse.md)
 
 ### Authorization
 
@@ -915,7 +915,7 @@ No authorization required
 
 # **getSearchPages**
 ```swift
-    open class func getSearchPages(value: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetSearchPagesResponse?, _ error: Error?) -> Void)
+    open class func getSearchPages(value: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationPageSearchResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -951,7 +951,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetSearchPagesResponse**](GetSearchPagesResponse.md)
+[**ModerationPageSearchResponse**](ModerationPageSearchResponse.md)
 
 ### Authorization
 
@@ -966,7 +966,7 @@ No authorization required
 
 # **getSearchSites**
 ```swift
-    open class func getSearchSites(value: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetSearchSitesResponse?, _ error: Error?) -> Void)
+    open class func getSearchSites(value: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationSiteSearchResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1002,7 +1002,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetSearchSitesResponse**](GetSearchSitesResponse.md)
+[**ModerationSiteSearchResponse**](ModerationSiteSearchResponse.md)
 
 ### Authorization
 
@@ -1017,7 +1017,7 @@ No authorization required
 
 # **getSearchSuggest**
 ```swift
-    open class func getSearchSuggest(textSearch: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetSearchSuggestResponse?, _ error: Error?) -> Void)
+    open class func getSearchSuggest(textSearch: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationSuggestResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1053,7 +1053,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetSearchSuggestResponse**](GetSearchSuggestResponse.md)
+[**ModerationSuggestResponse**](ModerationSuggestResponse.md)
 
 ### Authorization
 
@@ -1068,7 +1068,7 @@ No authorization required
 
 # **getSearchUsers**
 ```swift
-    open class func getSearchUsers(value: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetSearchUsersResponse?, _ error: Error?) -> Void)
+    open class func getSearchUsers(value: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationUserSearchResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1104,7 +1104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetSearchUsersResponse**](GetSearchUsersResponse.md)
+[**ModerationUserSearchResponse**](ModerationUserSearchResponse.md)
 
 ### Authorization
 
@@ -1119,7 +1119,7 @@ No authorization required
 
 # **getTrustFactor**
 ```swift
-    open class func getTrustFactor(userId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetTrustFactorResponse?, _ error: Error?) -> Void)
+    open class func getTrustFactor(userId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetUserTrustFactorResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1155,7 +1155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetTrustFactorResponse**](GetTrustFactorResponse.md)
+[**GetUserTrustFactorResponse**](GetUserTrustFactorResponse.md)
 
 ### Authorization
 
@@ -1170,7 +1170,7 @@ No authorization required
 
 # **getUserBanPreference**
 ```swift
-    open class func getUserBanPreference(tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetUserBanPreferenceResponse?, _ error: Error?) -> Void)
+    open class func getUserBanPreference(tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIModerateGetUserBanPreferencesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1204,7 +1204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetUserBanPreferenceResponse**](GetUserBanPreferenceResponse.md)
+[**APIModerateGetUserBanPreferencesResponse**](APIModerateGetUserBanPreferencesResponse.md)
 
 ### Authorization
 
@@ -1219,7 +1219,7 @@ No authorization required
 
 # **getUserInternalProfile**
 ```swift
-    open class func getUserInternalProfile(commentId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetUserInternalProfileResponse1?, _ error: Error?) -> Void)
+    open class func getUserInternalProfile(commentId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetUserInternalProfileResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1255,7 +1255,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetUserInternalProfileResponse1**](GetUserInternalProfileResponse1.md)
+[**GetUserInternalProfileResponse**](GetUserInternalProfileResponse.md)
 
 ### Authorization
 
@@ -1270,7 +1270,7 @@ No authorization required
 
 # **postAdjustCommentVotes**
 ```swift
-    open class func postAdjustCommentVotes(commentId: String, adjustCommentVotesParams: AdjustCommentVotesParams, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostAdjustCommentVotesResponse?, _ error: Error?) -> Void)
+    open class func postAdjustCommentVotes(commentId: String, adjustCommentVotesParams: AdjustCommentVotesParams, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: AdjustVotesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1310,7 +1310,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostAdjustCommentVotesResponse**](PostAdjustCommentVotesResponse.md)
+[**AdjustVotesResponse**](AdjustVotesResponse.md)
 
 ### Authorization
 
@@ -1325,7 +1325,7 @@ No authorization required
 
 # **postApiExport**
 ```swift
-    open class func postApiExport(textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, sorts: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostApiExportResponse?, _ error: Error?) -> Void)
+    open class func postApiExport(textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, sorts: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationExportResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1369,7 +1369,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostApiExportResponse**](PostApiExportResponse.md)
+[**ModerationExportResponse**](ModerationExportResponse.md)
 
 ### Authorization
 
@@ -1384,7 +1384,7 @@ No authorization required
 
 # **postBanUserFromComment**
 ```swift
-    open class func postBanUserFromComment(commentId: String, banEmail: Bool? = nil, banEmailDomain: Bool? = nil, banIP: Bool? = nil, deleteAllUsersComments: Bool? = nil, bannedUntil: String? = nil, isShadowBan: Bool? = nil, updateId: String? = nil, banReason: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostBanUserFromCommentResponse?, _ error: Error?) -> Void)
+    open class func postBanUserFromComment(commentId: String, banEmail: Bool? = nil, banEmailDomain: Bool? = nil, banIP: Bool? = nil, deleteAllUsersComments: Bool? = nil, bannedUntil: String? = nil, isShadowBan: Bool? = nil, updateId: String? = nil, banReason: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: BanUserFromCommentResult?, _ error: Error?) -> Void)
 ```
 
 
@@ -1436,7 +1436,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostBanUserFromCommentResponse**](PostBanUserFromCommentResponse.md)
+[**BanUserFromCommentResult**](BanUserFromCommentResult.md)
 
 ### Authorization
 
@@ -1451,7 +1451,7 @@ No authorization required
 
 # **postBanUserUndo**
 ```swift
-    open class func postBanUserUndo(banUserUndoParams: BanUserUndoParams, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostBanUserUndoResponse?, _ error: Error?) -> Void)
+    open class func postBanUserUndo(banUserUndoParams: BanUserUndoParams, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1487,7 +1487,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostBanUserUndoResponse**](PostBanUserUndoResponse.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -1502,7 +1502,7 @@ No authorization required
 
 # **postBulkPreBanSummary**
 ```swift
-    open class func postBulkPreBanSummary(bulkPreBanParams: BulkPreBanParams, includeByUserIdAndEmail: Bool? = nil, includeByIP: Bool? = nil, includeByEmailDomain: Bool? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostBulkPreBanSummaryResponse?, _ error: Error?) -> Void)
+    open class func postBulkPreBanSummary(bulkPreBanParams: BulkPreBanParams, includeByUserIdAndEmail: Bool? = nil, includeByIP: Bool? = nil, includeByEmailDomain: Bool? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: BulkPreBanSummary?, _ error: Error?) -> Void)
 ```
 
 
@@ -1544,7 +1544,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostBulkPreBanSummaryResponse**](PostBulkPreBanSummaryResponse.md)
+[**BulkPreBanSummary**](BulkPreBanSummary.md)
 
 ### Authorization
 
@@ -1559,7 +1559,7 @@ No authorization required
 
 # **postCommentsByIds**
 ```swift
-    open class func postCommentsByIds(commentsByIdsParams: CommentsByIdsParams, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostCommentsByIdsResponse?, _ error: Error?) -> Void)
+    open class func postCommentsByIds(commentsByIdsParams: CommentsByIdsParams, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationAPIChildCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1595,7 +1595,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostCommentsByIdsResponse**](PostCommentsByIdsResponse.md)
+[**ModerationAPIChildCommentsResponse**](ModerationAPIChildCommentsResponse.md)
 
 ### Authorization
 
@@ -1610,7 +1610,7 @@ No authorization required
 
 # **postFlagComment**
 ```swift
-    open class func postFlagComment(commentId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostFlagCommentResponse?, _ error: Error?) -> Void)
+    open class func postFlagComment(commentId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1648,7 +1648,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostFlagCommentResponse**](PostFlagCommentResponse.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -1716,7 +1716,7 @@ No authorization required
 
 # **postRestoreDeletedComment**
 ```swift
-    open class func postRestoreDeletedComment(commentId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostRestoreDeletedCommentResponse?, _ error: Error?) -> Void)
+    open class func postRestoreDeletedComment(commentId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1754,7 +1754,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostRestoreDeletedCommentResponse**](PostRestoreDeletedCommentResponse.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -1769,7 +1769,7 @@ No authorization required
 
 # **postSetCommentApprovalStatus**
 ```swift
-    open class func postSetCommentApprovalStatus(commentId: String, approved: Bool? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostSetCommentApprovalStatusResponse?, _ error: Error?) -> Void)
+    open class func postSetCommentApprovalStatus(commentId: String, approved: Bool? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: SetCommentApprovedResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1809,7 +1809,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetCommentApprovalStatusResponse**](PostSetCommentApprovalStatusResponse.md)
+[**SetCommentApprovedResponse**](SetCommentApprovedResponse.md)
 
 ### Authorization
 
@@ -1824,7 +1824,7 @@ No authorization required
 
 # **postSetCommentReviewStatus**
 ```swift
-    open class func postSetCommentReviewStatus(commentId: String, reviewed: Bool? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostSetCommentReviewStatusResponse?, _ error: Error?) -> Void)
+    open class func postSetCommentReviewStatus(commentId: String, reviewed: Bool? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1864,7 +1864,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetCommentReviewStatusResponse**](PostSetCommentReviewStatusResponse.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -1879,7 +1879,7 @@ No authorization required
 
 # **postSetCommentSpamStatus**
 ```swift
-    open class func postSetCommentSpamStatus(commentId: String, spam: Bool? = nil, permNotSpam: Bool? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostSetCommentSpamStatusResponse?, _ error: Error?) -> Void)
+    open class func postSetCommentSpamStatus(commentId: String, spam: Bool? = nil, permNotSpam: Bool? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1921,7 +1921,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetCommentSpamStatusResponse**](PostSetCommentSpamStatusResponse.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -1936,7 +1936,7 @@ No authorization required
 
 # **postSetCommentText**
 ```swift
-    open class func postSetCommentText(commentId: String, setCommentTextParams: SetCommentTextParams, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostSetCommentTextResponse?, _ error: Error?) -> Void)
+    open class func postSetCommentText(commentId: String, setCommentTextParams: SetCommentTextParams, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: SetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1976,7 +1976,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetCommentTextResponse**](PostSetCommentTextResponse.md)
+[**SetCommentTextResponse**](SetCommentTextResponse.md)
 
 ### Authorization
 
@@ -1991,7 +1991,7 @@ No authorization required
 
 # **postUnFlagComment**
 ```swift
-    open class func postUnFlagComment(commentId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostUnFlagCommentResponse?, _ error: Error?) -> Void)
+    open class func postUnFlagComment(commentId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2029,7 +2029,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostUnFlagCommentResponse**](PostUnFlagCommentResponse.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -2044,7 +2044,7 @@ No authorization required
 
 # **postVote**
 ```swift
-    open class func postVote(commentId: String, direction: String? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostVoteResponse?, _ error: Error?) -> Void)
+    open class func postVote(commentId: String, direction: String? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2084,7 +2084,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostVoteResponse**](PostVoteResponse.md)
+[**VoteResponse**](VoteResponse.md)
 
 ### Authorization
 
@@ -2099,7 +2099,7 @@ No authorization required
 
 # **putAwardBadge**
 ```swift
-    open class func putAwardBadge(badgeId: String, userId: String? = nil, commentId: String? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PutAwardBadgeResponse?, _ error: Error?) -> Void)
+    open class func putAwardBadge(badgeId: String, userId: String? = nil, commentId: String? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: AwardUserBadgeResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2141,7 +2141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PutAwardBadgeResponse**](PutAwardBadgeResponse.md)
+[**AwardUserBadgeResponse**](AwardUserBadgeResponse.md)
 
 ### Authorization
 
@@ -2156,7 +2156,7 @@ No authorization required
 
 # **putCloseThread**
 ```swift
-    open class func putCloseThread(urlId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PutCloseThreadResponse?, _ error: Error?) -> Void)
+    open class func putCloseThread(urlId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2192,7 +2192,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PutCloseThreadResponse**](PutCloseThreadResponse.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -2207,7 +2207,7 @@ No authorization required
 
 # **putRemoveBadge**
 ```swift
-    open class func putRemoveBadge(badgeId: String, userId: String? = nil, commentId: String? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PutRemoveBadgeResponse?, _ error: Error?) -> Void)
+    open class func putRemoveBadge(badgeId: String, userId: String? = nil, commentId: String? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: RemoveUserBadgeResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2249,7 +2249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PutRemoveBadgeResponse**](PutRemoveBadgeResponse.md)
+[**RemoveUserBadgeResponse**](RemoveUserBadgeResponse.md)
 
 ### Authorization
 
@@ -2264,7 +2264,7 @@ No authorization required
 
 # **putReopenThread**
 ```swift
-    open class func putReopenThread(urlId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PutReopenThreadResponse?, _ error: Error?) -> Void)
+    open class func putReopenThread(urlId: String, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2300,7 +2300,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PutReopenThreadResponse**](PutReopenThreadResponse.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -2315,7 +2315,7 @@ No authorization required
 
 # **setTrustFactor**
 ```swift
-    open class func setTrustFactor(userId: String? = nil, trustFactor: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: SetTrustFactorResponse?, _ error: Error?) -> Void)
+    open class func setTrustFactor(userId: String? = nil, trustFactor: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: SetUserTrustFactorResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2353,7 +2353,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SetTrustFactorResponse**](SetTrustFactorResponse.md)
+[**SetUserTrustFactorResponse**](SetUserTrustFactorResponse.md)
 
 ### Authorization
 

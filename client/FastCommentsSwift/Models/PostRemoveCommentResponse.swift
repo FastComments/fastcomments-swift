@@ -9,53 +9,25 @@ import Foundation
 
 public struct PostRemoveCommentResponse: Sendable, Codable, Hashable {
 
-    public var action: String?
-    public var status: APIStatus
-    public var reason: String?
-    public var code: String?
-    public var secondaryCode: String?
-    public var bannedUntil: Int64?
-    public var maxCharacterLength: Int?
-    public var translatedError: String?
-    public var customConfig: CustomConfigParameters?
+    public var action: String
+    public var status: String
 
-    public init(action: String? = nil, status: APIStatus, reason: String? = nil, code: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
+    public init(action: String, status: String) {
         self.action = action
         self.status = status
-        self.reason = reason
-        self.code = code
-        self.secondaryCode = secondaryCode
-        self.bannedUntil = bannedUntil
-        self.maxCharacterLength = maxCharacterLength
-        self.translatedError = translatedError
-        self.customConfig = customConfig
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case action
         case status
-        case reason
-        case code
-        case secondaryCode
-        case bannedUntil
-        case maxCharacterLength
-        case translatedError
-        case customConfig
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(action, forKey: .action)
+        try container.encode(action, forKey: .action)
         try container.encode(status, forKey: .status)
-        try container.encodeIfPresent(reason, forKey: .reason)
-        try container.encodeIfPresent(code, forKey: .code)
-        try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)
-        try container.encodeIfPresent(bannedUntil, forKey: .bannedUntil)
-        try container.encodeIfPresent(maxCharacterLength, forKey: .maxCharacterLength)
-        try container.encodeIfPresent(translatedError, forKey: .translatedError)
-        try container.encodeIfPresent(customConfig, forKey: .customConfig)
     }
 }
 

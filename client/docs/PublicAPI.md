@@ -60,7 +60,7 @@ Method | HTTP request | Description
 
 # **blockFromCommentPublic**
 ```swift
-    open class func blockFromCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, sso: String? = nil, completion: @escaping (_ data: BlockFromCommentPublicResponse?, _ error: Error?) -> Void)
+    open class func blockFromCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, sso: String? = nil, completion: @escaping (_ data: BlockSuccess?, _ error: Error?) -> Void)
 ```
 
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BlockFromCommentPublicResponse**](BlockFromCommentPublicResponse.md)
+[**BlockSuccess**](BlockSuccess.md)
 
 ### Authorization
 
@@ -113,7 +113,7 @@ No authorization required
 
 # **checkedCommentsForBlocked**
 ```swift
-    open class func checkedCommentsForBlocked(tenantId: String, commentIds: String, sso: String? = nil, completion: @escaping (_ data: CheckedCommentsForBlockedResponse?, _ error: Error?) -> Void)
+    open class func checkedCommentsForBlocked(tenantId: String, commentIds: String, sso: String? = nil, completion: @escaping (_ data: CheckBlockedCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CheckedCommentsForBlockedResponse**](CheckedCommentsForBlockedResponse.md)
+[**CheckBlockedCommentsResponse**](CheckBlockedCommentsResponse.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ No authorization required
 
 # **createCommentPublic**
 ```swift
-    open class func createCommentPublic(tenantId: String, urlId: String, broadcastId: String, commentData: CommentData, sessionId: String? = nil, sso: String? = nil, completion: @escaping (_ data: CreateCommentPublicResponse?, _ error: Error?) -> Void)
+    open class func createCommentPublic(tenantId: String, urlId: String, broadcastId: String, commentData: CommentData, sessionId: String? = nil, sso: String? = nil, completion: @escaping (_ data: SaveCommentsResponseWithPresence?, _ error: Error?) -> Void)
 ```
 
 
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateCommentPublicResponse**](CreateCommentPublicResponse.md)
+[**SaveCommentsResponseWithPresence**](SaveCommentsResponseWithPresence.md)
 
 ### Authorization
 
@@ -221,7 +221,7 @@ No authorization required
 
 # **createFeedPostPublic**
 ```swift
-    open class func createFeedPostPublic(tenantId: String, createFeedPostParams: CreateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: CreateFeedPostPublicResponse?, _ error: Error?) -> Void)
+    open class func createFeedPostPublic(tenantId: String, createFeedPostParams: CreateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: CreateFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateFeedPostPublicResponse**](CreateFeedPostPublicResponse.md)
+[**CreateFeedPostResponse**](CreateFeedPostResponse.md)
 
 ### Authorization
 
@@ -274,7 +274,7 @@ No authorization required
 
 # **createV1PageReact**
 ```swift
-    open class func createV1PageReact(tenantId: String, urlId: String, title: String? = nil, completion: @escaping (_ data: CreateV1PageReactResponse?, _ error: Error?) -> Void)
+    open class func createV1PageReact(tenantId: String, urlId: String, title: String? = nil, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateV1PageReactResponse**](CreateV1PageReactResponse.md)
+[**CreateV1PageReact**](CreateV1PageReact.md)
 
 ### Authorization
 
@@ -325,7 +325,7 @@ No authorization required
 
 # **createV2PageReact**
 ```swift
-    open class func createV2PageReact(tenantId: String, urlId: String, id: String, title: String? = nil, completion: @escaping (_ data: CreateV2PageReactResponse?, _ error: Error?) -> Void)
+    open class func createV2PageReact(tenantId: String, urlId: String, id: String, title: String? = nil, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateV2PageReactResponse**](CreateV2PageReactResponse.md)
+[**CreateV1PageReact**](CreateV1PageReact.md)
 
 ### Authorization
 
@@ -378,7 +378,7 @@ No authorization required
 
 # **deleteCommentPublic**
 ```swift
-    open class func deleteCommentPublic(tenantId: String, commentId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: DeleteCommentPublicResponse?, _ error: Error?) -> Void)
+    open class func deleteCommentPublic(tenantId: String, commentId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: PublicAPIDeleteCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -418,7 +418,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteCommentPublicResponse**](DeleteCommentPublicResponse.md)
+[**PublicAPIDeleteCommentResponse**](PublicAPIDeleteCommentResponse.md)
 
 ### Authorization
 
@@ -433,7 +433,7 @@ No authorization required
 
 # **deleteCommentVote**
 ```swift
-    open class func deleteCommentVote(tenantId: String, commentId: String, voteId: String, urlId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: DeleteCommentVoteResponse?, _ error: Error?) -> Void)
+    open class func deleteCommentVote(tenantId: String, commentId: String, voteId: String, urlId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteDeleteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -477,7 +477,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteCommentVoteResponse**](DeleteCommentVoteResponse.md)
+[**VoteDeleteResponse**](VoteDeleteResponse.md)
 
 ### Authorization
 
@@ -545,7 +545,7 @@ No authorization required
 
 # **deleteV1PageReact**
 ```swift
-    open class func deleteV1PageReact(tenantId: String, urlId: String, completion: @escaping (_ data: DeleteV1PageReactResponse?, _ error: Error?) -> Void)
+    open class func deleteV1PageReact(tenantId: String, urlId: String, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -579,7 +579,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteV1PageReactResponse**](DeleteV1PageReactResponse.md)
+[**CreateV1PageReact**](CreateV1PageReact.md)
 
 ### Authorization
 
@@ -594,7 +594,7 @@ No authorization required
 
 # **deleteV2PageReact**
 ```swift
-    open class func deleteV2PageReact(tenantId: String, urlId: String, id: String, completion: @escaping (_ data: DeleteV2PageReactResponse?, _ error: Error?) -> Void)
+    open class func deleteV2PageReact(tenantId: String, urlId: String, id: String, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -630,7 +630,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteV2PageReactResponse**](DeleteV2PageReactResponse.md)
+[**CreateV1PageReact**](CreateV1PageReact.md)
 
 ### Authorization
 
@@ -645,7 +645,7 @@ No authorization required
 
 # **flagCommentPublic**
 ```swift
-    open class func flagCommentPublic(tenantId: String, commentId: String, isFlagged: Bool, sso: String? = nil, completion: @escaping (_ data: FlagCommentPublicResponse?, _ error: Error?) -> Void)
+    open class func flagCommentPublic(tenantId: String, commentId: String, isFlagged: Bool, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -683,7 +683,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FlagCommentPublicResponse**](FlagCommentPublicResponse.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -698,7 +698,7 @@ No authorization required
 
 # **getCommentText**
 ```swift
-    open class func getCommentText(tenantId: String, commentId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetCommentTextResponse1?, _ error: Error?) -> Void)
+    open class func getCommentText(tenantId: String, commentId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: PublicAPIGetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -736,7 +736,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCommentTextResponse1**](GetCommentTextResponse1.md)
+[**PublicAPIGetCommentTextResponse**](PublicAPIGetCommentTextResponse.md)
 
 ### Authorization
 
@@ -751,7 +751,7 @@ No authorization required
 
 # **getCommentVoteUserNames**
 ```swift
-    open class func getCommentVoteUserNames(tenantId: String, commentId: String, dir: Int, sso: String? = nil, completion: @escaping (_ data: GetCommentVoteUserNamesResponse?, _ error: Error?) -> Void)
+    open class func getCommentVoteUserNames(tenantId: String, commentId: String, dir: Int, sso: String? = nil, completion: @escaping (_ data: GetCommentVoteUserNamesSuccessResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -789,7 +789,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCommentVoteUserNamesResponse**](GetCommentVoteUserNamesResponse.md)
+[**GetCommentVoteUserNamesSuccessResponse**](GetCommentVoteUserNamesSuccessResponse.md)
 
 ### Authorization
 
@@ -804,7 +804,7 @@ No authorization required
 
 # **getCommentsForUser**
 ```swift
-    open class func getCommentsForUser(userId: String? = nil, direction: SortDirections? = nil, repliesToUserId: String? = nil, page: Double? = nil, includei10n: Bool? = nil, locale: String? = nil, isCrawler: Bool? = nil, completion: @escaping (_ data: GetCommentsForUserResponse1?, _ error: Error?) -> Void)
+    open class func getCommentsForUser(userId: String? = nil, direction: SortDirections? = nil, repliesToUserId: String? = nil, page: Double? = nil, includei10n: Bool? = nil, locale: String? = nil, isCrawler: Bool? = nil, completion: @escaping (_ data: GetCommentsForUserResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -848,7 +848,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCommentsForUserResponse1**](GetCommentsForUserResponse1.md)
+[**GetCommentsForUserResponse**](GetCommentsForUserResponse.md)
 
 ### Authorization
 
@@ -863,7 +863,7 @@ No authorization required
 
 # **getCommentsPublic**
 ```swift
-    open class func getCommentsPublic(tenantId: String, urlId: String, page: Int? = nil, direction: SortDirections? = nil, sso: String? = nil, skip: Int? = nil, skipChildren: Int? = nil, limit: Int? = nil, limitChildren: Int? = nil, countChildren: Bool? = nil, fetchPageForCommentId: String? = nil, includeConfig: Bool? = nil, countAll: Bool? = nil, includei10n: Bool? = nil, locale: String? = nil, modules: String? = nil, isCrawler: Bool? = nil, includeNotificationCount: Bool? = nil, asTree: Bool? = nil, maxTreeDepth: Int? = nil, useFullTranslationIds: Bool? = nil, parentId: String? = nil, searchText: String? = nil, hashTags: [String]? = nil, userId: String? = nil, customConfigStr: String? = nil, afterCommentId: String? = nil, beforeCommentId: String? = nil, completion: @escaping (_ data: GetCommentsPublicResponse?, _ error: Error?) -> Void)
+    open class func getCommentsPublic(tenantId: String, urlId: String, page: Int? = nil, direction: SortDirections? = nil, sso: String? = nil, skip: Int? = nil, skipChildren: Int? = nil, limit: Int? = nil, limitChildren: Int? = nil, countChildren: Bool? = nil, fetchPageForCommentId: String? = nil, includeConfig: Bool? = nil, countAll: Bool? = nil, includei10n: Bool? = nil, locale: String? = nil, modules: String? = nil, isCrawler: Bool? = nil, includeNotificationCount: Bool? = nil, asTree: Bool? = nil, maxTreeDepth: Int? = nil, useFullTranslationIds: Bool? = nil, parentId: String? = nil, searchText: String? = nil, hashTags: [String]? = nil, userId: String? = nil, customConfigStr: String? = nil, afterCommentId: String? = nil, beforeCommentId: String? = nil, completion: @escaping (_ data: GetCommentsResponseWithPresencePublicComment?, _ error: Error?) -> Void)
 ```
 
 
@@ -951,7 +951,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCommentsPublicResponse**](GetCommentsPublicResponse.md)
+[**GetCommentsResponseWithPresencePublicComment**](GetCommentsResponseWithPresencePublicComment.md)
 
 ### Authorization
 
@@ -966,7 +966,7 @@ No authorization required
 
 # **getEventLog**
 ```swift
-    open class func getEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, endTime: Int64? = nil, completion: @escaping (_ data: GetEventLogResponse1?, _ error: Error?) -> Void)
+    open class func getEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, endTime: Int64? = nil, completion: @escaping (_ data: GetEventLogResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1008,7 +1008,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetEventLogResponse1**](GetEventLogResponse1.md)
+[**GetEventLogResponse**](GetEventLogResponse.md)
 
 ### Authorization
 
@@ -1023,7 +1023,7 @@ No authorization required
 
 # **getFeedPostsPublic**
 ```swift
-    open class func getFeedPostsPublic(tenantId: String, afterId: String? = nil, limit: Int? = nil, tags: [String]? = nil, sso: String? = nil, isCrawler: Bool? = nil, includeUserInfo: Bool? = nil, completion: @escaping (_ data: GetFeedPostsPublicResponse?, _ error: Error?) -> Void)
+    open class func getFeedPostsPublic(tenantId: String, afterId: String? = nil, limit: Int? = nil, tags: [String]? = nil, sso: String? = nil, isCrawler: Bool? = nil, includeUserInfo: Bool? = nil, completion: @escaping (_ data: PublicFeedPostsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1069,7 +1069,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetFeedPostsPublicResponse**](GetFeedPostsPublicResponse.md)
+[**PublicFeedPostsResponse**](PublicFeedPostsResponse.md)
 
 ### Authorization
 
@@ -1084,7 +1084,7 @@ No authorization required
 
 # **getFeedPostsStats**
 ```swift
-    open class func getFeedPostsStats(tenantId: String, postIds: [String], sso: String? = nil, completion: @escaping (_ data: GetFeedPostsStatsResponse?, _ error: Error?) -> Void)
+    open class func getFeedPostsStats(tenantId: String, postIds: [String], sso: String? = nil, completion: @escaping (_ data: FeedPostsStatsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1120,7 +1120,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetFeedPostsStatsResponse**](GetFeedPostsStatsResponse.md)
+[**FeedPostsStatsResponse**](FeedPostsStatsResponse.md)
 
 ### Authorization
 
@@ -1135,7 +1135,7 @@ No authorization required
 
 # **getGifLarge**
 ```swift
-    open class func getGifLarge(tenantId: String, largeInternalURLSanitized: String, completion: @escaping (_ data: GetGifLargeResponse?, _ error: Error?) -> Void)
+    open class func getGifLarge(tenantId: String, largeInternalURLSanitized: String, completion: @escaping (_ data: GifGetLargeResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1169,7 +1169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetGifLargeResponse**](GetGifLargeResponse.md)
+[**GifGetLargeResponse**](GifGetLargeResponse.md)
 
 ### Authorization
 
@@ -1292,7 +1292,7 @@ No authorization required
 
 # **getGlobalEventLog**
 ```swift
-    open class func getGlobalEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, endTime: Int64? = nil, completion: @escaping (_ data: GetGlobalEventLogResponse?, _ error: Error?) -> Void)
+    open class func getGlobalEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, endTime: Int64? = nil, completion: @escaping (_ data: GetEventLogResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1334,7 +1334,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetGlobalEventLogResponse**](GetGlobalEventLogResponse.md)
+[**GetEventLogResponse**](GetEventLogResponse.md)
 
 ### Authorization
 
@@ -1349,7 +1349,7 @@ No authorization required
 
 # **getOfflineUsers**
 ```swift
-    open class func getOfflineUsers(tenantId: String, urlId: String, afterName: String? = nil, afterUserId: String? = nil, completion: @escaping (_ data: GetOfflineUsersResponse?, _ error: Error?) -> Void)
+    open class func getOfflineUsers(tenantId: String, urlId: String, afterName: String? = nil, afterUserId: String? = nil, completion: @escaping (_ data: PageUsersOfflineResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1389,7 +1389,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetOfflineUsersResponse**](GetOfflineUsersResponse.md)
+[**PageUsersOfflineResponse**](PageUsersOfflineResponse.md)
 
 ### Authorization
 
@@ -1404,7 +1404,7 @@ No authorization required
 
 # **getOnlineUsers**
 ```swift
-    open class func getOnlineUsers(tenantId: String, urlId: String, afterName: String? = nil, afterUserId: String? = nil, completion: @escaping (_ data: GetOnlineUsersResponse?, _ error: Error?) -> Void)
+    open class func getOnlineUsers(tenantId: String, urlId: String, afterName: String? = nil, afterUserId: String? = nil, completion: @escaping (_ data: PageUsersOnlineResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1444,7 +1444,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetOnlineUsersResponse**](GetOnlineUsersResponse.md)
+[**PageUsersOnlineResponse**](PageUsersOnlineResponse.md)
 
 ### Authorization
 
@@ -1459,7 +1459,7 @@ No authorization required
 
 # **getPagesPublic**
 ```swift
-    open class func getPagesPublic(tenantId: String, cursor: String? = nil, limit: Int? = nil, q: String? = nil, sortBy: PagesSortBy? = nil, hasComments: Bool? = nil, completion: @escaping (_ data: GetPagesPublicResponse?, _ error: Error?) -> Void)
+    open class func getPagesPublic(tenantId: String, cursor: String? = nil, limit: Int? = nil, q: String? = nil, sortBy: PagesSortBy? = nil, hasComments: Bool? = nil, completion: @escaping (_ data: GetPublicPagesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1503,7 +1503,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetPagesPublicResponse**](GetPagesPublicResponse.md)
+[**GetPublicPagesResponse**](GetPublicPagesResponse.md)
 
 ### Authorization
 
@@ -1518,7 +1518,7 @@ No authorization required
 
 # **getTranslations**
 ```swift
-    open class func getTranslations(namespace: String, component: String, locale: String? = nil, useFullTranslationIds: Bool? = nil, completion: @escaping (_ data: GetTranslationsResponse1?, _ error: Error?) -> Void)
+    open class func getTranslations(namespace: String, component: String, locale: String? = nil, useFullTranslationIds: Bool? = nil, completion: @escaping (_ data: GetTranslationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1556,7 +1556,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetTranslationsResponse1**](GetTranslationsResponse1.md)
+[**GetTranslationsResponse**](GetTranslationsResponse.md)
 
 ### Authorization
 
@@ -1571,7 +1571,7 @@ No authorization required
 
 # **getUserNotificationCount**
 ```swift
-    open class func getUserNotificationCount(tenantId: String, sso: String? = nil, completion: @escaping (_ data: GetUserNotificationCountResponse1?, _ error: Error?) -> Void)
+    open class func getUserNotificationCount(tenantId: String, sso: String? = nil, completion: @escaping (_ data: GetUserNotificationCountResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1605,7 +1605,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetUserNotificationCountResponse1**](GetUserNotificationCountResponse1.md)
+[**GetUserNotificationCountResponse**](GetUserNotificationCountResponse.md)
 
 ### Authorization
 
@@ -1620,7 +1620,7 @@ No authorization required
 
 # **getUserNotifications**
 ```swift
-    open class func getUserNotifications(tenantId: String, urlId: String? = nil, pageSize: Int? = nil, afterId: String? = nil, includeContext: Bool? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, includeTranslations: Bool? = nil, includeTenantNotifications: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: GetUserNotificationsResponse?, _ error: Error?) -> Void)
+    open class func getUserNotifications(tenantId: String, urlId: String? = nil, pageSize: Int? = nil, afterId: String? = nil, includeContext: Bool? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, includeTranslations: Bool? = nil, includeTenantNotifications: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: GetMyNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1674,7 +1674,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetUserNotificationsResponse**](GetUserNotificationsResponse.md)
+[**GetMyNotificationsResponse**](GetMyNotificationsResponse.md)
 
 ### Authorization
 
@@ -1689,7 +1689,7 @@ No authorization required
 
 # **getUserPresenceStatuses**
 ```swift
-    open class func getUserPresenceStatuses(tenantId: String, urlIdWS: String, userIds: String, completion: @escaping (_ data: GetUserPresenceStatusesResponse1?, _ error: Error?) -> Void)
+    open class func getUserPresenceStatuses(tenantId: String, urlIdWS: String, userIds: String, completion: @escaping (_ data: GetUserPresenceStatusesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1725,7 +1725,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetUserPresenceStatusesResponse1**](GetUserPresenceStatusesResponse1.md)
+[**GetUserPresenceStatusesResponse**](GetUserPresenceStatusesResponse.md)
 
 ### Authorization
 
@@ -1740,7 +1740,7 @@ No authorization required
 
 # **getUserReactsPublic**
 ```swift
-    open class func getUserReactsPublic(tenantId: String, postIds: [String]? = nil, sso: String? = nil, completion: @escaping (_ data: GetUserReactsPublicResponse?, _ error: Error?) -> Void)
+    open class func getUserReactsPublic(tenantId: String, postIds: [String]? = nil, sso: String? = nil, completion: @escaping (_ data: UserReactsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1776,7 +1776,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetUserReactsPublicResponse**](GetUserReactsPublicResponse.md)
+[**UserReactsResponse**](UserReactsResponse.md)
 
 ### Authorization
 
@@ -1791,7 +1791,7 @@ No authorization required
 
 # **getUsersInfo**
 ```swift
-    open class func getUsersInfo(tenantId: String, ids: String, completion: @escaping (_ data: GetUsersInfoResponse?, _ error: Error?) -> Void)
+    open class func getUsersInfo(tenantId: String, ids: String, completion: @escaping (_ data: PageUsersInfoResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1827,7 +1827,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetUsersInfoResponse**](GetUsersInfoResponse.md)
+[**PageUsersInfoResponse**](PageUsersInfoResponse.md)
 
 ### Authorization
 
@@ -1842,7 +1842,7 @@ No authorization required
 
 # **getV1PageLikes**
 ```swift
-    open class func getV1PageLikes(tenantId: String, urlId: String, completion: @escaping (_ data: GetV1PageLikesResponse?, _ error: Error?) -> Void)
+    open class func getV1PageLikes(tenantId: String, urlId: String, completion: @escaping (_ data: GetV1PageLikes?, _ error: Error?) -> Void)
 ```
 
 
@@ -1876,7 +1876,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetV1PageLikesResponse**](GetV1PageLikesResponse.md)
+[**GetV1PageLikes**](GetV1PageLikes.md)
 
 ### Authorization
 
@@ -1891,7 +1891,7 @@ No authorization required
 
 # **getV2PageReactUsers**
 ```swift
-    open class func getV2PageReactUsers(tenantId: String, urlId: String, id: String, completion: @escaping (_ data: GetV2PageReactUsersResponse1?, _ error: Error?) -> Void)
+    open class func getV2PageReactUsers(tenantId: String, urlId: String, id: String, completion: @escaping (_ data: GetV2PageReactUsersResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1927,7 +1927,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetV2PageReactUsersResponse1**](GetV2PageReactUsersResponse1.md)
+[**GetV2PageReactUsersResponse**](GetV2PageReactUsersResponse.md)
 
 ### Authorization
 
@@ -1942,7 +1942,7 @@ No authorization required
 
 # **getV2PageReacts**
 ```swift
-    open class func getV2PageReacts(tenantId: String, urlId: String, completion: @escaping (_ data: GetV2PageReactsResponse?, _ error: Error?) -> Void)
+    open class func getV2PageReacts(tenantId: String, urlId: String, completion: @escaping (_ data: GetV2PageReacts?, _ error: Error?) -> Void)
 ```
 
 
@@ -1976,7 +1976,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetV2PageReactsResponse**](GetV2PageReactsResponse.md)
+[**GetV2PageReacts**](GetV2PageReacts.md)
 
 ### Authorization
 
@@ -1991,7 +1991,7 @@ No authorization required
 
 # **lockComment**
 ```swift
-    open class func lockComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: LockCommentResponse?, _ error: Error?) -> Void)
+    open class func lockComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2029,7 +2029,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LockCommentResponse**](LockCommentResponse.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -2087,7 +2087,7 @@ No authorization required
 
 # **pinComment**
 ```swift
-    open class func pinComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: PinCommentResponse?, _ error: Error?) -> Void)
+    open class func pinComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: ChangeCommentPinStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2125,7 +2125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PinCommentResponse**](PinCommentResponse.md)
+[**ChangeCommentPinStatusResponse**](ChangeCommentPinStatusResponse.md)
 
 ### Authorization
 
@@ -2140,7 +2140,7 @@ No authorization required
 
 # **reactFeedPostPublic**
 ```swift
-    open class func reactFeedPostPublic(tenantId: String, postId: String, reactBodyParams: ReactBodyParams, isUndo: Bool? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ReactFeedPostPublicResponse?, _ error: Error?) -> Void)
+    open class func reactFeedPostPublic(tenantId: String, postId: String, reactBodyParams: ReactBodyParams, isUndo: Bool? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ReactFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2182,7 +2182,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ReactFeedPostPublicResponse**](ReactFeedPostPublicResponse.md)
+[**ReactFeedPostResponse**](ReactFeedPostResponse.md)
 
 ### Authorization
 
@@ -2197,7 +2197,7 @@ No authorization required
 
 # **resetUserNotificationCount**
 ```swift
-    open class func resetUserNotificationCount(tenantId: String, sso: String? = nil, completion: @escaping (_ data: ResetUserNotificationCountResponse?, _ error: Error?) -> Void)
+    open class func resetUserNotificationCount(tenantId: String, sso: String? = nil, completion: @escaping (_ data: ResetUserNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2231,7 +2231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResetUserNotificationCountResponse**](ResetUserNotificationCountResponse.md)
+[**ResetUserNotificationsResponse**](ResetUserNotificationsResponse.md)
 
 ### Authorization
 
@@ -2246,7 +2246,7 @@ No authorization required
 
 # **resetUserNotifications**
 ```swift
-    open class func resetUserNotifications(tenantId: String, afterId: String? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: ResetUserNotificationsResponse1?, _ error: Error?) -> Void)
+    open class func resetUserNotifications(tenantId: String, afterId: String? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: ResetUserNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2290,7 +2290,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResetUserNotificationsResponse1**](ResetUserNotificationsResponse1.md)
+[**ResetUserNotificationsResponse**](ResetUserNotificationsResponse.md)
 
 ### Authorization
 
@@ -2305,7 +2305,7 @@ No authorization required
 
 # **searchUsers**
 ```swift
-    open class func searchUsers(tenantId: String, urlId: String, usernameStartsWith: String? = nil, mentionGroupIds: [String]? = nil, sso: String? = nil, searchSection: SearchSection_searchUsers? = nil, completion: @escaping (_ data: SearchUsersResponse1?, _ error: Error?) -> Void)
+    open class func searchUsers(tenantId: String, urlId: String, usernameStartsWith: String? = nil, mentionGroupIds: [String]? = nil, sso: String? = nil, searchSection: SearchSection_searchUsers? = nil, completion: @escaping (_ data: SearchUsersResult?, _ error: Error?) -> Void)
 ```
 
 
@@ -2347,7 +2347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SearchUsersResponse1**](SearchUsersResponse1.md)
+[**SearchUsersResult**](SearchUsersResult.md)
 
 ### Authorization
 
@@ -2362,7 +2362,7 @@ No authorization required
 
 # **setCommentText**
 ```swift
-    open class func setCommentText(tenantId: String, commentId: String, broadcastId: String, commentTextUpdateRequest: CommentTextUpdateRequest, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: SetCommentTextResponse1?, _ error: Error?) -> Void)
+    open class func setCommentText(tenantId: String, commentId: String, broadcastId: String, commentTextUpdateRequest: CommentTextUpdateRequest, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: PublicAPISetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2404,7 +2404,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SetCommentTextResponse1**](SetCommentTextResponse1.md)
+[**PublicAPISetCommentTextResponse**](PublicAPISetCommentTextResponse.md)
 
 ### Authorization
 
@@ -2419,7 +2419,7 @@ No authorization required
 
 # **unBlockCommentPublic**
 ```swift
-    open class func unBlockCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, sso: String? = nil, completion: @escaping (_ data: UnBlockCommentPublicResponse?, _ error: Error?) -> Void)
+    open class func unBlockCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, sso: String? = nil, completion: @escaping (_ data: UnblockSuccess?, _ error: Error?) -> Void)
 ```
 
 
@@ -2457,7 +2457,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UnBlockCommentPublicResponse**](UnBlockCommentPublicResponse.md)
+[**UnblockSuccess**](UnblockSuccess.md)
 
 ### Authorization
 
@@ -2472,7 +2472,7 @@ No authorization required
 
 # **unLockComment**
 ```swift
-    open class func unLockComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: UnLockCommentResponse?, _ error: Error?) -> Void)
+    open class func unLockComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2510,7 +2510,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UnLockCommentResponse**](UnLockCommentResponse.md)
+[**APIEmptyResponse**](APIEmptyResponse.md)
 
 ### Authorization
 
@@ -2525,7 +2525,7 @@ No authorization required
 
 # **unPinComment**
 ```swift
-    open class func unPinComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: UnPinCommentResponse?, _ error: Error?) -> Void)
+    open class func unPinComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: ChangeCommentPinStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2563,7 +2563,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UnPinCommentResponse**](UnPinCommentResponse.md)
+[**ChangeCommentPinStatusResponse**](ChangeCommentPinStatusResponse.md)
 
 ### Authorization
 
@@ -2578,7 +2578,7 @@ No authorization required
 
 # **updateFeedPostPublic**
 ```swift
-    open class func updateFeedPostPublic(tenantId: String, postId: String, updateFeedPostParams: UpdateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: UpdateFeedPostPublicResponse?, _ error: Error?) -> Void)
+    open class func updateFeedPostPublic(tenantId: String, postId: String, updateFeedPostParams: UpdateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: CreateFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2618,7 +2618,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateFeedPostPublicResponse**](UpdateFeedPostPublicResponse.md)
+[**CreateFeedPostResponse**](CreateFeedPostResponse.md)
 
 ### Authorization
 
@@ -2857,7 +2857,7 @@ No authorization required
 
 # **voteComment**
 ```swift
-    open class func voteComment(tenantId: String, commentId: String, urlId: String, broadcastId: String, voteBodyParams: VoteBodyParams, sessionId: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteCommentResponse?, _ error: Error?) -> Void)
+    open class func voteComment(tenantId: String, commentId: String, urlId: String, broadcastId: String, voteBodyParams: VoteBodyParams, sessionId: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2901,7 +2901,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VoteCommentResponse**](VoteCommentResponse.md)
+[**VoteResponse**](VoteResponse.md)
 
 ### Authorization
 
