@@ -3,8 +3,15 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**action** | **String** |  | 
-**status** | **String** |  | 
+**action** | **String** |  | [optional] 
+**status** | [**APIStatus**](APIStatus.md) |  | 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
+**secondaryCode** | **String** |  | [optional] 
+**bannedUntil** | **Int64** |  | [optional] 
+**maxCharacterLength** | **Int** |  | [optional] 
+**translatedError** | **String** |  | [optional] 
+**customConfig** | [**CustomConfigParameters**](CustomConfigParameters.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

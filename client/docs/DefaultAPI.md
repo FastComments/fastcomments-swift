@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 # **addHashTag**
 ```swift
-    open class func addHashTag(tenantId: String? = nil, createHashTagBody: CreateHashTagBody? = nil, completion: @escaping (_ data: CreateHashTagResponse?, _ error: Error?) -> Void)
+    open class func addHashTag(tenantId: String? = nil, createHashTagBody: CreateHashTagBody? = nil, completion: @escaping (_ data: AddHashTagResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateHashTagResponse**](CreateHashTagResponse.md)
+[**AddHashTagResponse**](AddHashTagResponse.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 # **addHashTagsBulk**
 ```swift
-    open class func addHashTagsBulk(tenantId: String? = nil, bulkCreateHashTagsBody: BulkCreateHashTagsBody? = nil, completion: @escaping (_ data: BulkCreateHashTagsResponse?, _ error: Error?) -> Void)
+    open class func addHashTagsBulk(tenantId: String? = nil, bulkCreateHashTagsBody: BulkCreateHashTagsBody? = nil, completion: @escaping (_ data: AddHashTagsBulkResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkCreateHashTagsResponse**](BulkCreateHashTagsResponse.md)
+[**AddHashTagsBulkResponse**](AddHashTagsBulkResponse.md)
 
 ### Authorization
 
@@ -422,7 +422,7 @@ Name | Type | Description  | Notes
 
 # **aggregateQuestionResults**
 ```swift
-    open class func aggregateQuestionResults(tenantId: String, questionId: String? = nil, questionIds: [String]? = nil, urlId: String? = nil, timeBucket: AggregateTimeBucket? = nil, startDate: Date? = nil, forceRecalculate: Bool? = nil, completion: @escaping (_ data: AggregateQuestionResultsResponse?, _ error: Error?) -> Void)
+    open class func aggregateQuestionResults(tenantId: String, questionId: String? = nil, questionIds: [String]? = nil, urlId: String? = nil, timeBucket: AggregateTimeBucket? = nil, startDate: Date? = nil, forceRecalculate: Bool? = nil, completion: @escaping (_ data: AggregateQuestionResultsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -466,7 +466,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AggregateQuestionResultsResponse**](AggregateQuestionResultsResponse.md)
+[**AggregateQuestionResultsResponse1**](AggregateQuestionResultsResponse1.md)
 
 ### Authorization
 
@@ -481,7 +481,7 @@ Name | Type | Description  | Notes
 
 # **blockUserFromComment**
 ```swift
-    open class func blockUserFromComment(tenantId: String, id: String, blockFromCommentParams: BlockFromCommentParams, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: BlockSuccess?, _ error: Error?) -> Void)
+    open class func blockUserFromComment(tenantId: String, id: String, blockFromCommentParams: BlockFromCommentParams, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: BlockUserFromCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -521,7 +521,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BlockSuccess**](BlockSuccess.md)
+[**BlockUserFromCommentResponse**](BlockUserFromCommentResponse.md)
 
 ### Authorization
 
@@ -536,7 +536,7 @@ Name | Type | Description  | Notes
 
 # **bulkAggregateQuestionResults**
 ```swift
-    open class func bulkAggregateQuestionResults(tenantId: String, bulkAggregateQuestionResultsRequest: BulkAggregateQuestionResultsRequest, forceRecalculate: Bool? = nil, completion: @escaping (_ data: BulkAggregateQuestionResultsResponse?, _ error: Error?) -> Void)
+    open class func bulkAggregateQuestionResults(tenantId: String, bulkAggregateQuestionResultsRequest: BulkAggregateQuestionResultsRequest, forceRecalculate: Bool? = nil, completion: @escaping (_ data: BulkAggregateQuestionResultsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -572,7 +572,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkAggregateQuestionResultsResponse**](BulkAggregateQuestionResultsResponse.md)
+[**BulkAggregateQuestionResultsResponse1**](BulkAggregateQuestionResultsResponse1.md)
 
 ### Authorization
 
@@ -587,7 +587,7 @@ Name | Type | Description  | Notes
 
 # **changeTicketState**
 ```swift
-    open class func changeTicketState(tenantId: String, userId: String, id: String, changeTicketStateBody: ChangeTicketStateBody, completion: @escaping (_ data: ChangeTicketStateResponse?, _ error: Error?) -> Void)
+    open class func changeTicketState(tenantId: String, userId: String, id: String, changeTicketStateBody: ChangeTicketStateBody, completion: @escaping (_ data: ChangeTicketStateResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -625,7 +625,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ChangeTicketStateResponse**](ChangeTicketStateResponse.md)
+[**ChangeTicketStateResponse1**](ChangeTicketStateResponse1.md)
 
 ### Authorization
 
@@ -640,7 +640,7 @@ Name | Type | Description  | Notes
 
 # **combineCommentsWithQuestionResults**
 ```swift
-    open class func combineCommentsWithQuestionResults(tenantId: String, questionId: String? = nil, questionIds: [String]? = nil, urlId: String? = nil, startDate: Date? = nil, forceRecalculate: Bool? = nil, minValue: Double? = nil, maxValue: Double? = nil, limit: Double? = nil, completion: @escaping (_ data: CombineQuestionResultsWithCommentsResponse?, _ error: Error?) -> Void)
+    open class func combineCommentsWithQuestionResults(tenantId: String, questionId: String? = nil, questionIds: [String]? = nil, urlId: String? = nil, startDate: Date? = nil, forceRecalculate: Bool? = nil, minValue: Double? = nil, maxValue: Double? = nil, limit: Double? = nil, completion: @escaping (_ data: CombineCommentsWithQuestionResultsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -688,7 +688,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CombineQuestionResultsWithCommentsResponse**](CombineQuestionResultsWithCommentsResponse.md)
+[**CombineCommentsWithQuestionResultsResponse**](CombineCommentsWithQuestionResultsResponse.md)
 
 ### Authorization
 
@@ -703,7 +703,7 @@ Name | Type | Description  | Notes
 
 # **createEmailTemplate**
 ```swift
-    open class func createEmailTemplate(tenantId: String, createEmailTemplateBody: CreateEmailTemplateBody, completion: @escaping (_ data: CreateEmailTemplateResponse?, _ error: Error?) -> Void)
+    open class func createEmailTemplate(tenantId: String, createEmailTemplateBody: CreateEmailTemplateBody, completion: @escaping (_ data: CreateEmailTemplateResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -737,7 +737,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateEmailTemplateResponse**](CreateEmailTemplateResponse.md)
+[**CreateEmailTemplateResponse1**](CreateEmailTemplateResponse1.md)
 
 ### Authorization
 
@@ -752,7 +752,7 @@ Name | Type | Description  | Notes
 
 # **createFeedPost**
 ```swift
-    open class func createFeedPost(tenantId: String, createFeedPostParams: CreateFeedPostParams, broadcastId: String? = nil, isLive: Bool? = nil, doSpamCheck: Bool? = nil, skipDupCheck: Bool? = nil, completion: @escaping (_ data: CreateFeedPostsResponse?, _ error: Error?) -> Void)
+    open class func createFeedPost(tenantId: String, createFeedPostParams: CreateFeedPostParams, broadcastId: String? = nil, isLive: Bool? = nil, doSpamCheck: Bool? = nil, skipDupCheck: Bool? = nil, completion: @escaping (_ data: CreateFeedPostResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -794,7 +794,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateFeedPostsResponse**](CreateFeedPostsResponse.md)
+[**CreateFeedPostResponse1**](CreateFeedPostResponse1.md)
 
 ### Authorization
 
@@ -809,7 +809,7 @@ Name | Type | Description  | Notes
 
 # **createModerator**
 ```swift
-    open class func createModerator(tenantId: String, createModeratorBody: CreateModeratorBody, completion: @escaping (_ data: CreateModeratorResponse?, _ error: Error?) -> Void)
+    open class func createModerator(tenantId: String, createModeratorBody: CreateModeratorBody, completion: @escaping (_ data: CreateModeratorResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -843,7 +843,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateModeratorResponse**](CreateModeratorResponse.md)
+[**CreateModeratorResponse1**](CreateModeratorResponse1.md)
 
 ### Authorization
 
@@ -858,7 +858,7 @@ Name | Type | Description  | Notes
 
 # **createQuestionConfig**
 ```swift
-    open class func createQuestionConfig(tenantId: String, createQuestionConfigBody: CreateQuestionConfigBody, completion: @escaping (_ data: CreateQuestionConfigResponse?, _ error: Error?) -> Void)
+    open class func createQuestionConfig(tenantId: String, createQuestionConfigBody: CreateQuestionConfigBody, completion: @escaping (_ data: CreateQuestionConfigResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -892,7 +892,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateQuestionConfigResponse**](CreateQuestionConfigResponse.md)
+[**CreateQuestionConfigResponse1**](CreateQuestionConfigResponse1.md)
 
 ### Authorization
 
@@ -907,7 +907,7 @@ Name | Type | Description  | Notes
 
 # **createQuestionResult**
 ```swift
-    open class func createQuestionResult(tenantId: String, createQuestionResultBody: CreateQuestionResultBody, completion: @escaping (_ data: CreateQuestionResultResponse?, _ error: Error?) -> Void)
+    open class func createQuestionResult(tenantId: String, createQuestionResultBody: CreateQuestionResultBody, completion: @escaping (_ data: CreateQuestionResultResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -941,7 +941,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateQuestionResultResponse**](CreateQuestionResultResponse.md)
+[**CreateQuestionResultResponse1**](CreateQuestionResultResponse1.md)
 
 ### Authorization
 
@@ -1005,7 +1005,7 @@ Name | Type | Description  | Notes
 
 # **createTenant**
 ```swift
-    open class func createTenant(tenantId: String, createTenantBody: CreateTenantBody, completion: @escaping (_ data: CreateTenantResponse?, _ error: Error?) -> Void)
+    open class func createTenant(tenantId: String, createTenantBody: CreateTenantBody, completion: @escaping (_ data: CreateTenantResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -1039,7 +1039,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateTenantResponse**](CreateTenantResponse.md)
+[**CreateTenantResponse1**](CreateTenantResponse1.md)
 
 ### Authorization
 
@@ -1054,7 +1054,7 @@ Name | Type | Description  | Notes
 
 # **createTenantPackage**
 ```swift
-    open class func createTenantPackage(tenantId: String, createTenantPackageBody: CreateTenantPackageBody, completion: @escaping (_ data: CreateTenantPackageResponse?, _ error: Error?) -> Void)
+    open class func createTenantPackage(tenantId: String, createTenantPackageBody: CreateTenantPackageBody, completion: @escaping (_ data: CreateTenantPackageResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -1088,7 +1088,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateTenantPackageResponse**](CreateTenantPackageResponse.md)
+[**CreateTenantPackageResponse1**](CreateTenantPackageResponse1.md)
 
 ### Authorization
 
@@ -1103,7 +1103,7 @@ Name | Type | Description  | Notes
 
 # **createTenantUser**
 ```swift
-    open class func createTenantUser(tenantId: String, createTenantUserBody: CreateTenantUserBody, completion: @escaping (_ data: CreateTenantUserResponse?, _ error: Error?) -> Void)
+    open class func createTenantUser(tenantId: String, createTenantUserBody: CreateTenantUserBody, completion: @escaping (_ data: CreateTenantUserResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -1137,7 +1137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateTenantUserResponse**](CreateTenantUserResponse.md)
+[**CreateTenantUserResponse1**](CreateTenantUserResponse1.md)
 
 ### Authorization
 
@@ -1152,7 +1152,7 @@ Name | Type | Description  | Notes
 
 # **createTicket**
 ```swift
-    open class func createTicket(tenantId: String, userId: String, createTicketBody: CreateTicketBody, completion: @escaping (_ data: CreateTicketResponse?, _ error: Error?) -> Void)
+    open class func createTicket(tenantId: String, userId: String, createTicketBody: CreateTicketBody, completion: @escaping (_ data: CreateTicketResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -1188,7 +1188,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateTicketResponse**](CreateTicketResponse.md)
+[**CreateTicketResponse1**](CreateTicketResponse1.md)
 
 ### Authorization
 
@@ -1203,7 +1203,7 @@ Name | Type | Description  | Notes
 
 # **createUserBadge**
 ```swift
-    open class func createUserBadge(tenantId: String, createUserBadgeParams: CreateUserBadgeParams, completion: @escaping (_ data: APICreateUserBadgeResponse?, _ error: Error?) -> Void)
+    open class func createUserBadge(tenantId: String, createUserBadgeParams: CreateUserBadgeParams, completion: @escaping (_ data: CreateUserBadgeResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1237,7 +1237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APICreateUserBadgeResponse**](APICreateUserBadgeResponse.md)
+[**CreateUserBadgeResponse**](CreateUserBadgeResponse.md)
 
 ### Authorization
 
@@ -1252,7 +1252,7 @@ Name | Type | Description  | Notes
 
 # **createVote**
 ```swift
-    open class func createVote(tenantId: String, commentId: String, direction: Direction_createVote, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
+    open class func createVote(tenantId: String, commentId: String, direction: Direction_createVote, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: CreateVoteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1292,7 +1292,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VoteResponse**](VoteResponse.md)
+[**CreateVoteResponse**](CreateVoteResponse.md)
 
 ### Authorization
 
@@ -1307,7 +1307,7 @@ Name | Type | Description  | Notes
 
 # **deleteComment**
 ```swift
-    open class func deleteComment(tenantId: String, id: String, contextUserId: String? = nil, isLive: Bool? = nil, completion: @escaping (_ data: DeleteCommentResult?, _ error: Error?) -> Void)
+    open class func deleteComment(tenantId: String, id: String, contextUserId: String? = nil, isLive: Bool? = nil, completion: @escaping (_ data: DeleteCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1345,7 +1345,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteCommentResult**](DeleteCommentResult.md)
+[**DeleteCommentResponse**](DeleteCommentResponse.md)
 
 ### Authorization
 
@@ -1409,7 +1409,7 @@ Name | Type | Description  | Notes
 
 # **deleteEmailTemplate**
 ```swift
-    open class func deleteEmailTemplate(tenantId: String, id: String, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deleteEmailTemplate(tenantId: String, id: String, completion: @escaping (_ data: DeleteEmailTemplateResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1443,7 +1443,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**DeleteEmailTemplateResponse**](DeleteEmailTemplateResponse.md)
 
 ### Authorization
 
@@ -1458,7 +1458,7 @@ Name | Type | Description  | Notes
 
 # **deleteEmailTemplateRenderError**
 ```swift
-    open class func deleteEmailTemplateRenderError(tenantId: String, id: String, errorId: String, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deleteEmailTemplateRenderError(tenantId: String, id: String, errorId: String, completion: @escaping (_ data: DeleteEmailTemplateRenderErrorResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1494,7 +1494,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**DeleteEmailTemplateRenderErrorResponse**](DeleteEmailTemplateRenderErrorResponse.md)
 
 ### Authorization
 
@@ -1509,7 +1509,7 @@ Name | Type | Description  | Notes
 
 # **deleteHashTag**
 ```swift
-    open class func deleteHashTag(tag: String, tenantId: String? = nil, deleteHashTagRequestBody: DeleteHashTagRequestBody? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deleteHashTag(tag: String, tenantId: String? = nil, deleteHashTagRequestBody: DeleteHashTagRequestBody? = nil, completion: @escaping (_ data: DeleteHashTagResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1545,7 +1545,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**DeleteHashTagResponse**](DeleteHashTagResponse.md)
 
 ### Authorization
 
@@ -1560,7 +1560,7 @@ Name | Type | Description  | Notes
 
 # **deleteModerator**
 ```swift
-    open class func deleteModerator(tenantId: String, id: String, sendEmail: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deleteModerator(tenantId: String, id: String, sendEmail: String? = nil, completion: @escaping (_ data: DeleteModeratorResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1596,7 +1596,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**DeleteModeratorResponse**](DeleteModeratorResponse.md)
 
 ### Authorization
 
@@ -1611,7 +1611,7 @@ Name | Type | Description  | Notes
 
 # **deleteNotificationCount**
 ```swift
-    open class func deleteNotificationCount(tenantId: String, id: String, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deleteNotificationCount(tenantId: String, id: String, completion: @escaping (_ data: DeleteNotificationCountResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1645,7 +1645,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**DeleteNotificationCountResponse**](DeleteNotificationCountResponse.md)
 
 ### Authorization
 
@@ -1709,7 +1709,7 @@ Name | Type | Description  | Notes
 
 # **deletePendingWebhookEvent**
 ```swift
-    open class func deletePendingWebhookEvent(tenantId: String, id: String, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deletePendingWebhookEvent(tenantId: String, id: String, completion: @escaping (_ data: DeletePendingWebhookEventResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1743,7 +1743,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**DeletePendingWebhookEventResponse**](DeletePendingWebhookEventResponse.md)
 
 ### Authorization
 
@@ -1758,7 +1758,7 @@ Name | Type | Description  | Notes
 
 # **deleteQuestionConfig**
 ```swift
-    open class func deleteQuestionConfig(tenantId: String, id: String, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deleteQuestionConfig(tenantId: String, id: String, completion: @escaping (_ data: DeleteQuestionConfigResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1792,7 +1792,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**DeleteQuestionConfigResponse**](DeleteQuestionConfigResponse.md)
 
 ### Authorization
 
@@ -1807,7 +1807,7 @@ Name | Type | Description  | Notes
 
 # **deleteQuestionResult**
 ```swift
-    open class func deleteQuestionResult(tenantId: String, id: String, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deleteQuestionResult(tenantId: String, id: String, completion: @escaping (_ data: DeleteQuestionResultResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1841,7 +1841,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**DeleteQuestionResultResponse**](DeleteQuestionResultResponse.md)
 
 ### Authorization
 
@@ -1960,7 +1960,7 @@ Name | Type | Description  | Notes
 
 # **deleteTenant**
 ```swift
-    open class func deleteTenant(tenantId: String, id: String, sure: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deleteTenant(tenantId: String, id: String, sure: String? = nil, completion: @escaping (_ data: DeleteTenantResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1996,7 +1996,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**DeleteTenantResponse**](DeleteTenantResponse.md)
 
 ### Authorization
 
@@ -2011,7 +2011,7 @@ Name | Type | Description  | Notes
 
 # **deleteTenantPackage**
 ```swift
-    open class func deleteTenantPackage(tenantId: String, id: String, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deleteTenantPackage(tenantId: String, id: String, completion: @escaping (_ data: DeleteTenantPackageResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2045,7 +2045,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**DeleteTenantPackageResponse**](DeleteTenantPackageResponse.md)
 
 ### Authorization
 
@@ -2060,7 +2060,7 @@ Name | Type | Description  | Notes
 
 # **deleteTenantUser**
 ```swift
-    open class func deleteTenantUser(tenantId: String, id: String, deleteComments: String? = nil, commentDeleteMode: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deleteTenantUser(tenantId: String, id: String, deleteComments: String? = nil, commentDeleteMode: String? = nil, completion: @escaping (_ data: DeleteTenantUserResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2098,7 +2098,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**DeleteTenantUserResponse**](DeleteTenantUserResponse.md)
 
 ### Authorization
 
@@ -2113,7 +2113,7 @@ Name | Type | Description  | Notes
 
 # **deleteUserBadge**
 ```swift
-    open class func deleteUserBadge(tenantId: String, id: String, completion: @escaping (_ data: APIEmptySuccessResponse?, _ error: Error?) -> Void)
+    open class func deleteUserBadge(tenantId: String, id: String, completion: @escaping (_ data: DeleteUserBadgeResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2147,7 +2147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptySuccessResponse**](APIEmptySuccessResponse.md)
+[**DeleteUserBadgeResponse**](DeleteUserBadgeResponse.md)
 
 ### Authorization
 
@@ -2162,7 +2162,7 @@ Name | Type | Description  | Notes
 
 # **deleteVote**
 ```swift
-    open class func deleteVote(tenantId: String, id: String, editKey: String? = nil, completion: @escaping (_ data: VoteDeleteResponse?, _ error: Error?) -> Void)
+    open class func deleteVote(tenantId: String, id: String, editKey: String? = nil, completion: @escaping (_ data: DeleteVoteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2198,7 +2198,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VoteDeleteResponse**](VoteDeleteResponse.md)
+[**DeleteVoteResponse**](DeleteVoteResponse.md)
 
 ### Authorization
 
@@ -2213,7 +2213,7 @@ Name | Type | Description  | Notes
 
 # **flagComment**
 ```swift
-    open class func flagComment(tenantId: String, id: String, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: FlagCommentResponse?, _ error: Error?) -> Void)
+    open class func flagComment(tenantId: String, id: String, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: FlagCommentResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -2251,7 +2251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FlagCommentResponse**](FlagCommentResponse.md)
+[**FlagCommentResponse1**](FlagCommentResponse1.md)
 
 ### Authorization
 
@@ -2266,7 +2266,7 @@ Name | Type | Description  | Notes
 
 # **getAuditLogs**
 ```swift
-    open class func getAuditLogs(tenantId: String, limit: Double? = nil, skip: Double? = nil, order: SORTDIR? = nil, after: Double? = nil, before: Double? = nil, completion: @escaping (_ data: GetAuditLogsResponse?, _ error: Error?) -> Void)
+    open class func getAuditLogs(tenantId: String, limit: Double? = nil, skip: Double? = nil, order: SORTDIR? = nil, after: Double? = nil, before: Double? = nil, completion: @escaping (_ data: GetAuditLogsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -2308,7 +2308,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetAuditLogsResponse**](GetAuditLogsResponse.md)
+[**GetAuditLogsResponse1**](GetAuditLogsResponse1.md)
 
 ### Authorization
 
@@ -2323,7 +2323,7 @@ Name | Type | Description  | Notes
 
 # **getCachedNotificationCount**
 ```swift
-    open class func getCachedNotificationCount(tenantId: String, id: String, completion: @escaping (_ data: GetCachedNotificationCountResponse?, _ error: Error?) -> Void)
+    open class func getCachedNotificationCount(tenantId: String, id: String, completion: @escaping (_ data: GetCachedNotificationCountResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -2357,7 +2357,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetCachedNotificationCountResponse**](GetCachedNotificationCountResponse.md)
+[**GetCachedNotificationCountResponse1**](GetCachedNotificationCountResponse1.md)
 
 ### Authorization
 
@@ -2372,7 +2372,7 @@ Name | Type | Description  | Notes
 
 # **getComment**
 ```swift
-    open class func getComment(tenantId: String, id: String, completion: @escaping (_ data: APIGetCommentResponse?, _ error: Error?) -> Void)
+    open class func getComment(tenantId: String, id: String, completion: @escaping (_ data: GetCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2406,7 +2406,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIGetCommentResponse**](APIGetCommentResponse.md)
+[**GetCommentResponse**](GetCommentResponse.md)
 
 ### Authorization
 
@@ -2421,7 +2421,7 @@ Name | Type | Description  | Notes
 
 # **getComments**
 ```swift
-    open class func getComments(tenantId: String, page: Int? = nil, limit: Int? = nil, skip: Int? = nil, asTree: Bool? = nil, skipChildren: Int? = nil, limitChildren: Int? = nil, maxTreeDepth: Int? = nil, urlId: String? = nil, userId: String? = nil, anonUserId: String? = nil, contextUserId: String? = nil, hashTag: String? = nil, parentId: String? = nil, direction: SortDirections? = nil, fromDate: Int64? = nil, toDate: Int64? = nil, completion: @escaping (_ data: APIGetCommentsResponse?, _ error: Error?) -> Void)
+    open class func getComments(tenantId: String, page: Int? = nil, limit: Int? = nil, skip: Int? = nil, asTree: Bool? = nil, skipChildren: Int? = nil, limitChildren: Int? = nil, maxTreeDepth: Int? = nil, urlId: String? = nil, userId: String? = nil, anonUserId: String? = nil, contextUserId: String? = nil, hashTag: String? = nil, parentId: String? = nil, direction: SortDirections? = nil, fromDate: Int64? = nil, toDate: Int64? = nil, completion: @escaping (_ data: GetCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2485,7 +2485,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIGetCommentsResponse**](APIGetCommentsResponse.md)
+[**GetCommentsResponse**](GetCommentsResponse.md)
 
 ### Authorization
 
@@ -2596,7 +2596,7 @@ Name | Type | Description  | Notes
 
 # **getEmailTemplate**
 ```swift
-    open class func getEmailTemplate(tenantId: String, id: String, completion: @escaping (_ data: GetEmailTemplateResponse?, _ error: Error?) -> Void)
+    open class func getEmailTemplate(tenantId: String, id: String, completion: @escaping (_ data: GetEmailTemplateResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -2630,7 +2630,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetEmailTemplateResponse**](GetEmailTemplateResponse.md)
+[**GetEmailTemplateResponse1**](GetEmailTemplateResponse1.md)
 
 ### Authorization
 
@@ -2645,7 +2645,7 @@ Name | Type | Description  | Notes
 
 # **getEmailTemplateDefinitions**
 ```swift
-    open class func getEmailTemplateDefinitions(tenantId: String, completion: @escaping (_ data: GetEmailTemplateDefinitionsResponse?, _ error: Error?) -> Void)
+    open class func getEmailTemplateDefinitions(tenantId: String, completion: @escaping (_ data: GetEmailTemplateDefinitionsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -2677,7 +2677,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetEmailTemplateDefinitionsResponse**](GetEmailTemplateDefinitionsResponse.md)
+[**GetEmailTemplateDefinitionsResponse1**](GetEmailTemplateDefinitionsResponse1.md)
 
 ### Authorization
 
@@ -2692,7 +2692,7 @@ Name | Type | Description  | Notes
 
 # **getEmailTemplateRenderErrors**
 ```swift
-    open class func getEmailTemplateRenderErrors(tenantId: String, id: String, skip: Double? = nil, completion: @escaping (_ data: GetEmailTemplateRenderErrorsResponse?, _ error: Error?) -> Void)
+    open class func getEmailTemplateRenderErrors(tenantId: String, id: String, skip: Double? = nil, completion: @escaping (_ data: GetEmailTemplateRenderErrorsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -2728,7 +2728,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetEmailTemplateRenderErrorsResponse**](GetEmailTemplateRenderErrorsResponse.md)
+[**GetEmailTemplateRenderErrorsResponse1**](GetEmailTemplateRenderErrorsResponse1.md)
 
 ### Authorization
 
@@ -2743,7 +2743,7 @@ Name | Type | Description  | Notes
 
 # **getEmailTemplates**
 ```swift
-    open class func getEmailTemplates(tenantId: String, skip: Double? = nil, completion: @escaping (_ data: GetEmailTemplatesResponse?, _ error: Error?) -> Void)
+    open class func getEmailTemplates(tenantId: String, skip: Double? = nil, completion: @escaping (_ data: GetEmailTemplatesResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -2777,7 +2777,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetEmailTemplatesResponse**](GetEmailTemplatesResponse.md)
+[**GetEmailTemplatesResponse1**](GetEmailTemplatesResponse1.md)
 
 ### Authorization
 
@@ -2792,7 +2792,7 @@ Name | Type | Description  | Notes
 
 # **getFeedPosts**
 ```swift
-    open class func getFeedPosts(tenantId: String, afterId: String? = nil, limit: Int? = nil, tags: [String]? = nil, completion: @escaping (_ data: GetFeedPostsResponse?, _ error: Error?) -> Void)
+    open class func getFeedPosts(tenantId: String, afterId: String? = nil, limit: Int? = nil, tags: [String]? = nil, completion: @escaping (_ data: GetFeedPostsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -2832,7 +2832,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetFeedPostsResponse**](GetFeedPostsResponse.md)
+[**GetFeedPostsResponse1**](GetFeedPostsResponse1.md)
 
 ### Authorization
 
@@ -2847,7 +2847,7 @@ Name | Type | Description  | Notes
 
 # **getHashTags**
 ```swift
-    open class func getHashTags(tenantId: String, page: Double? = nil, completion: @escaping (_ data: GetHashTagsResponse?, _ error: Error?) -> Void)
+    open class func getHashTags(tenantId: String, page: Double? = nil, completion: @escaping (_ data: GetHashTagsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -2881,7 +2881,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetHashTagsResponse**](GetHashTagsResponse.md)
+[**GetHashTagsResponse1**](GetHashTagsResponse1.md)
 
 ### Authorization
 
@@ -2896,7 +2896,7 @@ Name | Type | Description  | Notes
 
 # **getModerator**
 ```swift
-    open class func getModerator(tenantId: String, id: String, completion: @escaping (_ data: GetModeratorResponse?, _ error: Error?) -> Void)
+    open class func getModerator(tenantId: String, id: String, completion: @escaping (_ data: GetModeratorResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -2930,7 +2930,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetModeratorResponse**](GetModeratorResponse.md)
+[**GetModeratorResponse1**](GetModeratorResponse1.md)
 
 ### Authorization
 
@@ -2945,7 +2945,7 @@ Name | Type | Description  | Notes
 
 # **getModerators**
 ```swift
-    open class func getModerators(tenantId: String, skip: Double? = nil, completion: @escaping (_ data: GetModeratorsResponse?, _ error: Error?) -> Void)
+    open class func getModerators(tenantId: String, skip: Double? = nil, completion: @escaping (_ data: GetModeratorsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -2979,7 +2979,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetModeratorsResponse**](GetModeratorsResponse.md)
+[**GetModeratorsResponse1**](GetModeratorsResponse1.md)
 
 ### Authorization
 
@@ -2994,7 +2994,7 @@ Name | Type | Description  | Notes
 
 # **getNotificationCount**
 ```swift
-    open class func getNotificationCount(tenantId: String, userId: String? = nil, urlId: String? = nil, fromCommentId: String? = nil, viewed: Bool? = nil, type: String? = nil, completion: @escaping (_ data: GetNotificationCountResponse?, _ error: Error?) -> Void)
+    open class func getNotificationCount(tenantId: String, userId: String? = nil, urlId: String? = nil, fromCommentId: String? = nil, viewed: Bool? = nil, type: String? = nil, completion: @escaping (_ data: GetNotificationCountResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3036,7 +3036,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetNotificationCountResponse**](GetNotificationCountResponse.md)
+[**GetNotificationCountResponse1**](GetNotificationCountResponse1.md)
 
 ### Authorization
 
@@ -3051,7 +3051,7 @@ Name | Type | Description  | Notes
 
 # **getNotifications**
 ```swift
-    open class func getNotifications(tenantId: String, userId: String? = nil, urlId: String? = nil, fromCommentId: String? = nil, viewed: Bool? = nil, type: String? = nil, skip: Double? = nil, completion: @escaping (_ data: GetNotificationsResponse?, _ error: Error?) -> Void)
+    open class func getNotifications(tenantId: String, userId: String? = nil, urlId: String? = nil, fromCommentId: String? = nil, viewed: Bool? = nil, type: String? = nil, skip: Double? = nil, completion: @escaping (_ data: GetNotificationsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3095,7 +3095,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetNotificationsResponse**](GetNotificationsResponse.md)
+[**GetNotificationsResponse1**](GetNotificationsResponse1.md)
 
 ### Authorization
 
@@ -3206,7 +3206,7 @@ Name | Type | Description  | Notes
 
 # **getPendingWebhookEventCount**
 ```swift
-    open class func getPendingWebhookEventCount(tenantId: String, commentId: String? = nil, externalId: String? = nil, eventType: String? = nil, type: String? = nil, domain: String? = nil, attemptCountGT: Double? = nil, completion: @escaping (_ data: GetPendingWebhookEventCountResponse?, _ error: Error?) -> Void)
+    open class func getPendingWebhookEventCount(tenantId: String, commentId: String? = nil, externalId: String? = nil, eventType: String? = nil, type: String? = nil, domain: String? = nil, attemptCountGT: Double? = nil, completion: @escaping (_ data: GetPendingWebhookEventCountResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3250,7 +3250,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetPendingWebhookEventCountResponse**](GetPendingWebhookEventCountResponse.md)
+[**GetPendingWebhookEventCountResponse1**](GetPendingWebhookEventCountResponse1.md)
 
 ### Authorization
 
@@ -3265,7 +3265,7 @@ Name | Type | Description  | Notes
 
 # **getPendingWebhookEvents**
 ```swift
-    open class func getPendingWebhookEvents(tenantId: String, commentId: String? = nil, externalId: String? = nil, eventType: String? = nil, type: String? = nil, domain: String? = nil, attemptCountGT: Double? = nil, skip: Double? = nil, completion: @escaping (_ data: GetPendingWebhookEventsResponse?, _ error: Error?) -> Void)
+    open class func getPendingWebhookEvents(tenantId: String, commentId: String? = nil, externalId: String? = nil, eventType: String? = nil, type: String? = nil, domain: String? = nil, attemptCountGT: Double? = nil, skip: Double? = nil, completion: @escaping (_ data: GetPendingWebhookEventsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3311,7 +3311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetPendingWebhookEventsResponse**](GetPendingWebhookEventsResponse.md)
+[**GetPendingWebhookEventsResponse1**](GetPendingWebhookEventsResponse1.md)
 
 ### Authorization
 
@@ -3326,7 +3326,7 @@ Name | Type | Description  | Notes
 
 # **getQuestionConfig**
 ```swift
-    open class func getQuestionConfig(tenantId: String, id: String, completion: @escaping (_ data: GetQuestionConfigResponse?, _ error: Error?) -> Void)
+    open class func getQuestionConfig(tenantId: String, id: String, completion: @escaping (_ data: GetQuestionConfigResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3360,7 +3360,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetQuestionConfigResponse**](GetQuestionConfigResponse.md)
+[**GetQuestionConfigResponse1**](GetQuestionConfigResponse1.md)
 
 ### Authorization
 
@@ -3375,7 +3375,7 @@ Name | Type | Description  | Notes
 
 # **getQuestionConfigs**
 ```swift
-    open class func getQuestionConfigs(tenantId: String, skip: Double? = nil, completion: @escaping (_ data: GetQuestionConfigsResponse?, _ error: Error?) -> Void)
+    open class func getQuestionConfigs(tenantId: String, skip: Double? = nil, completion: @escaping (_ data: GetQuestionConfigsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3409,7 +3409,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetQuestionConfigsResponse**](GetQuestionConfigsResponse.md)
+[**GetQuestionConfigsResponse1**](GetQuestionConfigsResponse1.md)
 
 ### Authorization
 
@@ -3424,7 +3424,7 @@ Name | Type | Description  | Notes
 
 # **getQuestionResult**
 ```swift
-    open class func getQuestionResult(tenantId: String, id: String, completion: @escaping (_ data: GetQuestionResultResponse?, _ error: Error?) -> Void)
+    open class func getQuestionResult(tenantId: String, id: String, completion: @escaping (_ data: GetQuestionResultResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3458,7 +3458,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetQuestionResultResponse**](GetQuestionResultResponse.md)
+[**GetQuestionResultResponse1**](GetQuestionResultResponse1.md)
 
 ### Authorization
 
@@ -3473,7 +3473,7 @@ Name | Type | Description  | Notes
 
 # **getQuestionResults**
 ```swift
-    open class func getQuestionResults(tenantId: String, urlId: String? = nil, userId: String? = nil, startDate: String? = nil, questionId: String? = nil, questionIds: String? = nil, skip: Double? = nil, completion: @escaping (_ data: GetQuestionResultsResponse?, _ error: Error?) -> Void)
+    open class func getQuestionResults(tenantId: String, urlId: String? = nil, userId: String? = nil, startDate: String? = nil, questionId: String? = nil, questionIds: String? = nil, skip: Double? = nil, completion: @escaping (_ data: GetQuestionResultsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3517,7 +3517,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetQuestionResultsResponse**](GetQuestionResultsResponse.md)
+[**GetQuestionResultsResponse1**](GetQuestionResultsResponse1.md)
 
 ### Authorization
 
@@ -3728,7 +3728,7 @@ Name | Type | Description  | Notes
 
 # **getTenant**
 ```swift
-    open class func getTenant(tenantId: String, id: String, completion: @escaping (_ data: GetTenantResponse?, _ error: Error?) -> Void)
+    open class func getTenant(tenantId: String, id: String, completion: @escaping (_ data: GetTenantResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3762,7 +3762,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetTenantResponse**](GetTenantResponse.md)
+[**GetTenantResponse1**](GetTenantResponse1.md)
 
 ### Authorization
 
@@ -3777,7 +3777,7 @@ Name | Type | Description  | Notes
 
 # **getTenantDailyUsages**
 ```swift
-    open class func getTenantDailyUsages(tenantId: String, yearNumber: Double? = nil, monthNumber: Double? = nil, dayNumber: Double? = nil, skip: Double? = nil, completion: @escaping (_ data: GetTenantDailyUsagesResponse?, _ error: Error?) -> Void)
+    open class func getTenantDailyUsages(tenantId: String, yearNumber: Double? = nil, monthNumber: Double? = nil, dayNumber: Double? = nil, skip: Double? = nil, completion: @escaping (_ data: GetTenantDailyUsagesResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3817,7 +3817,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetTenantDailyUsagesResponse**](GetTenantDailyUsagesResponse.md)
+[**GetTenantDailyUsagesResponse1**](GetTenantDailyUsagesResponse1.md)
 
 ### Authorization
 
@@ -3832,7 +3832,7 @@ Name | Type | Description  | Notes
 
 # **getTenantPackage**
 ```swift
-    open class func getTenantPackage(tenantId: String, id: String, completion: @escaping (_ data: GetTenantPackageResponse?, _ error: Error?) -> Void)
+    open class func getTenantPackage(tenantId: String, id: String, completion: @escaping (_ data: GetTenantPackageResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3866,7 +3866,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetTenantPackageResponse**](GetTenantPackageResponse.md)
+[**GetTenantPackageResponse1**](GetTenantPackageResponse1.md)
 
 ### Authorization
 
@@ -3881,7 +3881,7 @@ Name | Type | Description  | Notes
 
 # **getTenantPackages**
 ```swift
-    open class func getTenantPackages(tenantId: String, skip: Double? = nil, completion: @escaping (_ data: GetTenantPackagesResponse?, _ error: Error?) -> Void)
+    open class func getTenantPackages(tenantId: String, skip: Double? = nil, completion: @escaping (_ data: GetTenantPackagesResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3915,7 +3915,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetTenantPackagesResponse**](GetTenantPackagesResponse.md)
+[**GetTenantPackagesResponse1**](GetTenantPackagesResponse1.md)
 
 ### Authorization
 
@@ -3930,7 +3930,7 @@ Name | Type | Description  | Notes
 
 # **getTenantUser**
 ```swift
-    open class func getTenantUser(tenantId: String, id: String, completion: @escaping (_ data: GetTenantUserResponse?, _ error: Error?) -> Void)
+    open class func getTenantUser(tenantId: String, id: String, completion: @escaping (_ data: GetTenantUserResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -3964,7 +3964,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetTenantUserResponse**](GetTenantUserResponse.md)
+[**GetTenantUserResponse1**](GetTenantUserResponse1.md)
 
 ### Authorization
 
@@ -3979,7 +3979,7 @@ Name | Type | Description  | Notes
 
 # **getTenantUsers**
 ```swift
-    open class func getTenantUsers(tenantId: String, skip: Double? = nil, completion: @escaping (_ data: GetTenantUsersResponse?, _ error: Error?) -> Void)
+    open class func getTenantUsers(tenantId: String, skip: Double? = nil, completion: @escaping (_ data: GetTenantUsersResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -4013,7 +4013,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetTenantUsersResponse**](GetTenantUsersResponse.md)
+[**GetTenantUsersResponse1**](GetTenantUsersResponse1.md)
 
 ### Authorization
 
@@ -4028,7 +4028,7 @@ Name | Type | Description  | Notes
 
 # **getTenants**
 ```swift
-    open class func getTenants(tenantId: String, meta: String? = nil, skip: Double? = nil, completion: @escaping (_ data: GetTenantsResponse?, _ error: Error?) -> Void)
+    open class func getTenants(tenantId: String, meta: String? = nil, skip: Double? = nil, completion: @escaping (_ data: GetTenantsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -4064,7 +4064,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetTenantsResponse**](GetTenantsResponse.md)
+[**GetTenantsResponse1**](GetTenantsResponse1.md)
 
 ### Authorization
 
@@ -4079,7 +4079,7 @@ Name | Type | Description  | Notes
 
 # **getTicket**
 ```swift
-    open class func getTicket(tenantId: String, id: String, userId: String? = nil, completion: @escaping (_ data: GetTicketResponse?, _ error: Error?) -> Void)
+    open class func getTicket(tenantId: String, id: String, userId: String? = nil, completion: @escaping (_ data: GetTicketResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -4115,7 +4115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetTicketResponse**](GetTicketResponse.md)
+[**GetTicketResponse1**](GetTicketResponse1.md)
 
 ### Authorization
 
@@ -4130,7 +4130,7 @@ Name | Type | Description  | Notes
 
 # **getTickets**
 ```swift
-    open class func getTickets(tenantId: String, userId: String? = nil, state: Double? = nil, skip: Double? = nil, limit: Double? = nil, completion: @escaping (_ data: GetTicketsResponse?, _ error: Error?) -> Void)
+    open class func getTickets(tenantId: String, userId: String? = nil, state: Double? = nil, skip: Double? = nil, limit: Double? = nil, completion: @escaping (_ data: GetTicketsResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -4170,7 +4170,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetTicketsResponse**](GetTicketsResponse.md)
+[**GetTicketsResponse1**](GetTicketsResponse1.md)
 
 ### Authorization
 
@@ -4185,7 +4185,7 @@ Name | Type | Description  | Notes
 
 # **getUser**
 ```swift
-    open class func getUser(tenantId: String, id: String, completion: @escaping (_ data: GetUserResponse?, _ error: Error?) -> Void)
+    open class func getUser(tenantId: String, id: String, completion: @escaping (_ data: GetUserResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -4219,7 +4219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetUserResponse**](GetUserResponse.md)
+[**GetUserResponse1**](GetUserResponse1.md)
 
 ### Authorization
 
@@ -4234,7 +4234,7 @@ Name | Type | Description  | Notes
 
 # **getUserBadge**
 ```swift
-    open class func getUserBadge(tenantId: String, id: String, completion: @escaping (_ data: APIGetUserBadgeResponse?, _ error: Error?) -> Void)
+    open class func getUserBadge(tenantId: String, id: String, completion: @escaping (_ data: GetUserBadgeResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4268,7 +4268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIGetUserBadgeResponse**](APIGetUserBadgeResponse.md)
+[**GetUserBadgeResponse**](GetUserBadgeResponse.md)
 
 ### Authorization
 
@@ -4283,7 +4283,7 @@ Name | Type | Description  | Notes
 
 # **getUserBadgeProgressById**
 ```swift
-    open class func getUserBadgeProgressById(tenantId: String, id: String, completion: @escaping (_ data: APIGetUserBadgeProgressResponse?, _ error: Error?) -> Void)
+    open class func getUserBadgeProgressById(tenantId: String, id: String, completion: @escaping (_ data: GetUserBadgeProgressByIdResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4317,7 +4317,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIGetUserBadgeProgressResponse**](APIGetUserBadgeProgressResponse.md)
+[**GetUserBadgeProgressByIdResponse**](GetUserBadgeProgressByIdResponse.md)
 
 ### Authorization
 
@@ -4332,7 +4332,7 @@ Name | Type | Description  | Notes
 
 # **getUserBadgeProgressByUserId**
 ```swift
-    open class func getUserBadgeProgressByUserId(tenantId: String, userId: String, completion: @escaping (_ data: APIGetUserBadgeProgressResponse?, _ error: Error?) -> Void)
+    open class func getUserBadgeProgressByUserId(tenantId: String, userId: String, completion: @escaping (_ data: GetUserBadgeProgressByUserIdResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4366,7 +4366,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIGetUserBadgeProgressResponse**](APIGetUserBadgeProgressResponse.md)
+[**GetUserBadgeProgressByUserIdResponse**](GetUserBadgeProgressByUserIdResponse.md)
 
 ### Authorization
 
@@ -4381,7 +4381,7 @@ Name | Type | Description  | Notes
 
 # **getUserBadgeProgressList**
 ```swift
-    open class func getUserBadgeProgressList(tenantId: String, userId: String? = nil, limit: Double? = nil, skip: Double? = nil, completion: @escaping (_ data: APIGetUserBadgeProgressListResponse?, _ error: Error?) -> Void)
+    open class func getUserBadgeProgressList(tenantId: String, userId: String? = nil, limit: Double? = nil, skip: Double? = nil, completion: @escaping (_ data: GetUserBadgeProgressListResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4419,7 +4419,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIGetUserBadgeProgressListResponse**](APIGetUserBadgeProgressListResponse.md)
+[**GetUserBadgeProgressListResponse**](GetUserBadgeProgressListResponse.md)
 
 ### Authorization
 
@@ -4434,7 +4434,7 @@ Name | Type | Description  | Notes
 
 # **getUserBadges**
 ```swift
-    open class func getUserBadges(tenantId: String, userId: String? = nil, badgeId: String? = nil, type: Double? = nil, displayedOnComments: Bool? = nil, limit: Double? = nil, skip: Double? = nil, completion: @escaping (_ data: APIGetUserBadgesResponse?, _ error: Error?) -> Void)
+    open class func getUserBadges(tenantId: String, userId: String? = nil, badgeId: String? = nil, type: Double? = nil, displayedOnComments: Bool? = nil, limit: Double? = nil, skip: Double? = nil, completion: @escaping (_ data: GetUserBadgesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4478,7 +4478,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIGetUserBadgesResponse**](APIGetUserBadgesResponse.md)
+[**GetUserBadgesResponse**](GetUserBadgesResponse.md)
 
 ### Authorization
 
@@ -4493,7 +4493,7 @@ Name | Type | Description  | Notes
 
 # **getVotes**
 ```swift
-    open class func getVotes(tenantId: String, urlId: String, completion: @escaping (_ data: GetVotesResponse?, _ error: Error?) -> Void)
+    open class func getVotes(tenantId: String, urlId: String, completion: @escaping (_ data: GetVotesResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -4527,7 +4527,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetVotesResponse**](GetVotesResponse.md)
+[**GetVotesResponse1**](GetVotesResponse1.md)
 
 ### Authorization
 
@@ -4542,7 +4542,7 @@ Name | Type | Description  | Notes
 
 # **getVotesForUser**
 ```swift
-    open class func getVotesForUser(tenantId: String, urlId: String, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: GetVotesForUserResponse?, _ error: Error?) -> Void)
+    open class func getVotesForUser(tenantId: String, urlId: String, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: GetVotesForUserResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -4580,7 +4580,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetVotesForUserResponse**](GetVotesForUserResponse.md)
+[**GetVotesForUserResponse1**](GetVotesForUserResponse1.md)
 
 ### Authorization
 
@@ -4646,7 +4646,7 @@ Name | Type | Description  | Notes
 
 # **patchHashTag**
 ```swift
-    open class func patchHashTag(tag: String, tenantId: String? = nil, updateHashTagBody: UpdateHashTagBody? = nil, completion: @escaping (_ data: UpdateHashTagResponse?, _ error: Error?) -> Void)
+    open class func patchHashTag(tag: String, tenantId: String? = nil, updateHashTagBody: UpdateHashTagBody? = nil, completion: @escaping (_ data: PatchHashTagResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4682,7 +4682,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateHashTagResponse**](UpdateHashTagResponse.md)
+[**PatchHashTagResponse**](PatchHashTagResponse.md)
 
 ### Authorization
 
@@ -4905,7 +4905,7 @@ Name | Type | Description  | Notes
 
 # **renderEmailTemplate**
 ```swift
-    open class func renderEmailTemplate(tenantId: String, renderEmailTemplateBody: RenderEmailTemplateBody, locale: String? = nil, completion: @escaping (_ data: RenderEmailTemplateResponse?, _ error: Error?) -> Void)
+    open class func renderEmailTemplate(tenantId: String, renderEmailTemplateBody: RenderEmailTemplateBody, locale: String? = nil, completion: @escaping (_ data: RenderEmailTemplateResponse1?, _ error: Error?) -> Void)
 ```
 
 
@@ -4941,7 +4941,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RenderEmailTemplateResponse**](RenderEmailTemplateResponse.md)
+[**RenderEmailTemplateResponse1**](RenderEmailTemplateResponse1.md)
 
 ### Authorization
 
@@ -4956,7 +4956,7 @@ Name | Type | Description  | Notes
 
 # **replaceTenantPackage**
 ```swift
-    open class func replaceTenantPackage(tenantId: String, id: String, replaceTenantPackageBody: ReplaceTenantPackageBody, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func replaceTenantPackage(tenantId: String, id: String, replaceTenantPackageBody: ReplaceTenantPackageBody, completion: @escaping (_ data: ReplaceTenantPackageResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4992,7 +4992,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**ReplaceTenantPackageResponse**](ReplaceTenantPackageResponse.md)
 
 ### Authorization
 
@@ -5007,7 +5007,7 @@ Name | Type | Description  | Notes
 
 # **replaceTenantUser**
 ```swift
-    open class func replaceTenantUser(tenantId: String, id: String, replaceTenantUserBody: ReplaceTenantUserBody, updateComments: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func replaceTenantUser(tenantId: String, id: String, replaceTenantUserBody: ReplaceTenantUserBody, updateComments: String? = nil, completion: @escaping (_ data: ReplaceTenantUserResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5045,7 +5045,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**ReplaceTenantUserResponse**](ReplaceTenantUserResponse.md)
 
 ### Authorization
 
@@ -5060,7 +5060,7 @@ Name | Type | Description  | Notes
 
 # **saveComment**
 ```swift
-    open class func saveComment(tenantId: String, createCommentParams: CreateCommentParams, isLive: Bool? = nil, doSpamCheck: Bool? = nil, sendEmails: Bool? = nil, populateNotifications: Bool? = nil, completion: @escaping (_ data: APISaveCommentResponse?, _ error: Error?) -> Void)
+    open class func saveComment(tenantId: String, createCommentParams: CreateCommentParams, isLive: Bool? = nil, doSpamCheck: Bool? = nil, sendEmails: Bool? = nil, populateNotifications: Bool? = nil, completion: @escaping (_ data: SaveCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5102,7 +5102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APISaveCommentResponse**](APISaveCommentResponse.md)
+[**SaveCommentResponse**](SaveCommentResponse.md)
 
 ### Authorization
 
@@ -5174,7 +5174,7 @@ Name | Type | Description  | Notes
 
 # **sendInvite**
 ```swift
-    open class func sendInvite(tenantId: String, id: String, fromName: String, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func sendInvite(tenantId: String, id: String, fromName: String, completion: @escaping (_ data: SendInviteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5210,7 +5210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**SendInviteResponse**](SendInviteResponse.md)
 
 ### Authorization
 
@@ -5225,7 +5225,7 @@ Name | Type | Description  | Notes
 
 # **sendLoginLink**
 ```swift
-    open class func sendLoginLink(tenantId: String, id: String, redirectURL: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func sendLoginLink(tenantId: String, id: String, redirectURL: String? = nil, completion: @escaping (_ data: SendLoginLinkResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5261,7 +5261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**SendLoginLinkResponse**](SendLoginLinkResponse.md)
 
 ### Authorization
 
@@ -5276,7 +5276,7 @@ Name | Type | Description  | Notes
 
 # **unBlockUserFromComment**
 ```swift
-    open class func unBlockUserFromComment(tenantId: String, id: String, unBlockFromCommentParams: UnBlockFromCommentParams, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: UnblockSuccess?, _ error: Error?) -> Void)
+    open class func unBlockUserFromComment(tenantId: String, id: String, unBlockFromCommentParams: UnBlockFromCommentParams, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: UnBlockUserFromCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5316,7 +5316,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UnblockSuccess**](UnblockSuccess.md)
+[**UnBlockUserFromCommentResponse**](UnBlockUserFromCommentResponse.md)
 
 ### Authorization
 
@@ -5331,7 +5331,7 @@ Name | Type | Description  | Notes
 
 # **unFlagComment**
 ```swift
-    open class func unFlagComment(tenantId: String, id: String, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: FlagCommentResponse?, _ error: Error?) -> Void)
+    open class func unFlagComment(tenantId: String, id: String, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: UnFlagCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5369,7 +5369,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FlagCommentResponse**](FlagCommentResponse.md)
+[**UnFlagCommentResponse**](UnFlagCommentResponse.md)
 
 ### Authorization
 
@@ -5384,7 +5384,7 @@ Name | Type | Description  | Notes
 
 # **updateComment**
 ```swift
-    open class func updateComment(tenantId: String, id: String, updatableCommentParams: UpdatableCommentParams, contextUserId: String? = nil, doSpamCheck: Bool? = nil, isLive: Bool? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func updateComment(tenantId: String, id: String, updatableCommentParams: UpdatableCommentParams, contextUserId: String? = nil, doSpamCheck: Bool? = nil, isLive: Bool? = nil, completion: @escaping (_ data: UpdateCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5426,7 +5426,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**UpdateCommentResponse**](UpdateCommentResponse.md)
 
 ### Authorization
 
@@ -5441,7 +5441,7 @@ Name | Type | Description  | Notes
 
 # **updateEmailTemplate**
 ```swift
-    open class func updateEmailTemplate(tenantId: String, id: String, updateEmailTemplateBody: UpdateEmailTemplateBody, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func updateEmailTemplate(tenantId: String, id: String, updateEmailTemplateBody: UpdateEmailTemplateBody, completion: @escaping (_ data: UpdateEmailTemplateResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5477,7 +5477,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**UpdateEmailTemplateResponse**](UpdateEmailTemplateResponse.md)
 
 ### Authorization
 
@@ -5492,7 +5492,7 @@ Name | Type | Description  | Notes
 
 # **updateFeedPost**
 ```swift
-    open class func updateFeedPost(tenantId: String, id: String, feedPost: FeedPost, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func updateFeedPost(tenantId: String, id: String, feedPost: FeedPost, completion: @escaping (_ data: UpdateFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5528,7 +5528,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**UpdateFeedPostResponse**](UpdateFeedPostResponse.md)
 
 ### Authorization
 
@@ -5543,7 +5543,7 @@ Name | Type | Description  | Notes
 
 # **updateModerator**
 ```swift
-    open class func updateModerator(tenantId: String, id: String, updateModeratorBody: UpdateModeratorBody, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func updateModerator(tenantId: String, id: String, updateModeratorBody: UpdateModeratorBody, completion: @escaping (_ data: UpdateModeratorResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5579,7 +5579,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**UpdateModeratorResponse**](UpdateModeratorResponse.md)
 
 ### Authorization
 
@@ -5594,7 +5594,7 @@ Name | Type | Description  | Notes
 
 # **updateNotification**
 ```swift
-    open class func updateNotification(tenantId: String, id: String, updateNotificationBody: UpdateNotificationBody, userId: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func updateNotification(tenantId: String, id: String, updateNotificationBody: UpdateNotificationBody, userId: String? = nil, completion: @escaping (_ data: UpdateNotificationResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5632,7 +5632,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**UpdateNotificationResponse**](UpdateNotificationResponse.md)
 
 ### Authorization
 
@@ -5647,7 +5647,7 @@ Name | Type | Description  | Notes
 
 # **updateQuestionConfig**
 ```swift
-    open class func updateQuestionConfig(tenantId: String, id: String, updateQuestionConfigBody: UpdateQuestionConfigBody, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func updateQuestionConfig(tenantId: String, id: String, updateQuestionConfigBody: UpdateQuestionConfigBody, completion: @escaping (_ data: UpdateQuestionConfigResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5683,7 +5683,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**UpdateQuestionConfigResponse**](UpdateQuestionConfigResponse.md)
 
 ### Authorization
 
@@ -5698,7 +5698,7 @@ Name | Type | Description  | Notes
 
 # **updateQuestionResult**
 ```swift
-    open class func updateQuestionResult(tenantId: String, id: String, updateQuestionResultBody: UpdateQuestionResultBody, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func updateQuestionResult(tenantId: String, id: String, updateQuestionResultBody: UpdateQuestionResultBody, completion: @escaping (_ data: UpdateQuestionResultResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5734,7 +5734,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**UpdateQuestionResultResponse**](UpdateQuestionResultResponse.md)
 
 ### Authorization
 
@@ -5802,7 +5802,7 @@ Name | Type | Description  | Notes
 
 # **updateTenant**
 ```swift
-    open class func updateTenant(tenantId: String, id: String, updateTenantBody: UpdateTenantBody, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func updateTenant(tenantId: String, id: String, updateTenantBody: UpdateTenantBody, completion: @escaping (_ data: UpdateTenantResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5838,7 +5838,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**UpdateTenantResponse**](UpdateTenantResponse.md)
 
 ### Authorization
 
@@ -5853,7 +5853,7 @@ Name | Type | Description  | Notes
 
 # **updateTenantPackage**
 ```swift
-    open class func updateTenantPackage(tenantId: String, id: String, updateTenantPackageBody: UpdateTenantPackageBody, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func updateTenantPackage(tenantId: String, id: String, updateTenantPackageBody: UpdateTenantPackageBody, completion: @escaping (_ data: UpdateTenantPackageResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5889,7 +5889,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**UpdateTenantPackageResponse**](UpdateTenantPackageResponse.md)
 
 ### Authorization
 
@@ -5904,7 +5904,7 @@ Name | Type | Description  | Notes
 
 # **updateTenantUser**
 ```swift
-    open class func updateTenantUser(tenantId: String, id: String, updateTenantUserBody: UpdateTenantUserBody, updateComments: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func updateTenantUser(tenantId: String, id: String, updateTenantUserBody: UpdateTenantUserBody, updateComments: String? = nil, completion: @escaping (_ data: UpdateTenantUserResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5942,7 +5942,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptyResponse**](APIEmptyResponse.md)
+[**UpdateTenantUserResponse**](UpdateTenantUserResponse.md)
 
 ### Authorization
 
@@ -5957,7 +5957,7 @@ Name | Type | Description  | Notes
 
 # **updateUserBadge**
 ```swift
-    open class func updateUserBadge(tenantId: String, id: String, updateUserBadgeParams: UpdateUserBadgeParams, completion: @escaping (_ data: APIEmptySuccessResponse?, _ error: Error?) -> Void)
+    open class func updateUserBadge(tenantId: String, id: String, updateUserBadgeParams: UpdateUserBadgeParams, completion: @escaping (_ data: UpdateUserBadgeResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5993,7 +5993,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**APIEmptySuccessResponse**](APIEmptySuccessResponse.md)
+[**UpdateUserBadgeResponse**](UpdateUserBadgeResponse.md)
 
 ### Authorization
 

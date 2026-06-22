@@ -17,12 +17,26 @@ public struct UpdateUserNotificationStatusResponse: Sendable, Codable, Hashable 
     public var matchedCount: Int64?
     public var modifiedCount: Int64?
     public var note: Note?
+    public var reason: String?
+    public var code: String?
+    public var secondaryCode: String?
+    public var bannedUntil: Int64?
+    public var maxCharacterLength: Int?
+    public var translatedError: String?
+    public var customConfig: CustomConfigParameters?
 
-    public init(status: APIStatus, matchedCount: Int64? = nil, modifiedCount: Int64? = nil, note: Note? = nil) {
+    public init(status: APIStatus, matchedCount: Int64? = nil, modifiedCount: Int64? = nil, note: Note? = nil, reason: String? = nil, code: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.status = status
         self.matchedCount = matchedCount
         self.modifiedCount = modifiedCount
         self.note = note
+        self.reason = reason
+        self.code = code
+        self.secondaryCode = secondaryCode
+        self.bannedUntil = bannedUntil
+        self.maxCharacterLength = maxCharacterLength
+        self.translatedError = translatedError
+        self.customConfig = customConfig
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -30,6 +44,13 @@ public struct UpdateUserNotificationStatusResponse: Sendable, Codable, Hashable 
         case matchedCount
         case modifiedCount
         case note
+        case reason
+        case code
+        case secondaryCode
+        case bannedUntil
+        case maxCharacterLength
+        case translatedError
+        case customConfig
     }
 
     // Encodable protocol methods
@@ -40,6 +61,13 @@ public struct UpdateUserNotificationStatusResponse: Sendable, Codable, Hashable 
         try container.encodeIfPresent(matchedCount, forKey: .matchedCount)
         try container.encodeIfPresent(modifiedCount, forKey: .modifiedCount)
         try container.encodeIfPresent(note, forKey: .note)
+        try container.encodeIfPresent(reason, forKey: .reason)
+        try container.encodeIfPresent(code, forKey: .code)
+        try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)
+        try container.encodeIfPresent(bannedUntil, forKey: .bannedUntil)
+        try container.encodeIfPresent(maxCharacterLength, forKey: .maxCharacterLength)
+        try container.encodeIfPresent(translatedError, forKey: .translatedError)
+        try container.encodeIfPresent(customConfig, forKey: .customConfig)
     }
 }
 

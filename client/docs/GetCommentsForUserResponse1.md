@@ -1,0 +1,18 @@
+# GetCommentsForUserResponse1
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**moderatingTenantIds** | **[String]** |  | [optional] 
+**status** | [**APIStatus**](APIStatus.md) |  | [optional] 
+**reason** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
+**secondaryCode** | **String** |  | [optional] 
+**bannedUntil** | **Int64** |  | [optional] 
+**maxCharacterLength** | **Int** |  | [optional] 
+**translatedError** | **String** |  | [optional] 
+**customConfig** | [**CustomConfigParameters**](CustomConfigParameters.md) |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

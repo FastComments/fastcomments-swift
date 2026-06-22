@@ -12,17 +12,35 @@ public struct GetGifsSearchResponse: Sendable, Codable, Hashable {
     public var images: [[GifSearchResponseImagesInnerInner]]?
     public var status: APIStatus
     public var code: String?
+    public var reason: String?
+    public var secondaryCode: String?
+    public var bannedUntil: Int64?
+    public var maxCharacterLength: Int?
+    public var translatedError: String?
+    public var customConfig: CustomConfigParameters?
 
-    public init(images: [[GifSearchResponseImagesInnerInner]]? = nil, status: APIStatus, code: String? = nil) {
+    public init(images: [[GifSearchResponseImagesInnerInner]]? = nil, status: APIStatus, code: String? = nil, reason: String? = nil, secondaryCode: String? = nil, bannedUntil: Int64? = nil, maxCharacterLength: Int? = nil, translatedError: String? = nil, customConfig: CustomConfigParameters? = nil) {
         self.images = images
         self.status = status
         self.code = code
+        self.reason = reason
+        self.secondaryCode = secondaryCode
+        self.bannedUntil = bannedUntil
+        self.maxCharacterLength = maxCharacterLength
+        self.translatedError = translatedError
+        self.customConfig = customConfig
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case images
         case status
         case code
+        case reason
+        case secondaryCode
+        case bannedUntil
+        case maxCharacterLength
+        case translatedError
+        case customConfig
     }
 
     // Encodable protocol methods
@@ -32,6 +50,12 @@ public struct GetGifsSearchResponse: Sendable, Codable, Hashable {
         try container.encodeIfPresent(images, forKey: .images)
         try container.encode(status, forKey: .status)
         try container.encodeIfPresent(code, forKey: .code)
+        try container.encodeIfPresent(reason, forKey: .reason)
+        try container.encodeIfPresent(secondaryCode, forKey: .secondaryCode)
+        try container.encodeIfPresent(bannedUntil, forKey: .bannedUntil)
+        try container.encodeIfPresent(maxCharacterLength, forKey: .maxCharacterLength)
+        try container.encodeIfPresent(translatedError, forKey: .translatedError)
+        try container.encodeIfPresent(customConfig, forKey: .customConfig)
     }
 }
 
