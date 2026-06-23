@@ -60,7 +60,7 @@ Method | HTTP request | Description
 
 # **blockFromCommentPublic**
 ```swift
-    open class func blockFromCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, sso: String? = nil, completion: @escaping (_ data: BlockSuccess?, _ error: Error?) -> Void)
+    open class func blockFromCommentPublic(request: ApiBlockFromCommentPublicRequest, completion: @escaping (_ data: BlockSuccess?, _ error: Error?) -> Void)
 ```
 
 
@@ -75,7 +75,7 @@ let commentId = "commentId_example" // String |
 let publicBlockFromCommentParams = PublicBlockFromCommentParams(commentIds: ["commentIds_example"]) // PublicBlockFromCommentParams | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.blockFromCommentPublic(tenantId: tenantId, commentId: commentId, publicBlockFromCommentParams: publicBlockFromCommentParams, sso: sso) { (response, error) in
+PublicAPI.blockFromCommentPublic(request: PublicAPI.ApiBlockFromCommentPublicRequest(tenantId: tenantId, commentId: commentId, publicBlockFromCommentParams: publicBlockFromCommentParams, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -113,7 +113,7 @@ No authorization required
 
 # **checkedCommentsForBlocked**
 ```swift
-    open class func checkedCommentsForBlocked(tenantId: String, commentIds: String, sso: String? = nil, completion: @escaping (_ data: CheckBlockedCommentsResponse?, _ error: Error?) -> Void)
+    open class func checkedCommentsForBlocked(request: ApiCheckedCommentsForBlockedRequest, completion: @escaping (_ data: CheckBlockedCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -127,7 +127,7 @@ let tenantId = "tenantId_example" // String |
 let commentIds = "commentIds_example" // String | A comma separated list of comment ids.
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.checkedCommentsForBlocked(tenantId: tenantId, commentIds: commentIds, sso: sso) { (response, error) in
+PublicAPI.checkedCommentsForBlocked(request: PublicAPI.ApiCheckedCommentsForBlockedRequest(tenantId: tenantId, commentIds: commentIds, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -164,7 +164,7 @@ No authorization required
 
 # **createCommentPublic**
 ```swift
-    open class func createCommentPublic(tenantId: String, urlId: String, broadcastId: String, commentData: CommentData, sessionId: String? = nil, sso: String? = nil, completion: @escaping (_ data: SaveCommentsResponseWithPresence?, _ error: Error?) -> Void)
+    open class func createCommentPublic(request: ApiCreateCommentPublicRequest, completion: @escaping (_ data: SaveCommentsResponseWithPresence?, _ error: Error?) -> Void)
 ```
 
 
@@ -181,7 +181,7 @@ let commentData = CommentData(date: 123, localDateString: "localDateString_examp
 let sessionId = "sessionId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.createCommentPublic(tenantId: tenantId, urlId: urlId, broadcastId: broadcastId, commentData: commentData, sessionId: sessionId, sso: sso) { (response, error) in
+PublicAPI.createCommentPublic(request: PublicAPI.ApiCreateCommentPublicRequest(tenantId: tenantId, urlId: urlId, broadcastId: broadcastId, commentData: commentData, sessionId: sessionId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -221,7 +221,7 @@ No authorization required
 
 # **createFeedPostPublic**
 ```swift
-    open class func createFeedPostPublic(tenantId: String, createFeedPostParams: CreateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: CreateFeedPostResponse?, _ error: Error?) -> Void)
+    open class func createFeedPostPublic(request: ApiCreateFeedPostPublicRequest, completion: @escaping (_ data: CreateFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -236,7 +236,7 @@ let createFeedPostParams = CreateFeedPostParams(title: "title_example", contentH
 let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.createFeedPostPublic(tenantId: tenantId, createFeedPostParams: createFeedPostParams, broadcastId: broadcastId, sso: sso) { (response, error) in
+PublicAPI.createFeedPostPublic(request: PublicAPI.ApiCreateFeedPostPublicRequest(tenantId: tenantId, createFeedPostParams: createFeedPostParams, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -274,7 +274,7 @@ No authorization required
 
 # **createV1PageReact**
 ```swift
-    open class func createV1PageReact(tenantId: String, urlId: String, title: String? = nil, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+    open class func createV1PageReact(request: ApiCreateV1PageReactRequest, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -288,7 +288,7 @@ let tenantId = "tenantId_example" // String |
 let urlId = "urlId_example" // String | 
 let title = "title_example" // String |  (optional)
 
-PublicAPI.createV1PageReact(tenantId: tenantId, urlId: urlId, title: title) { (response, error) in
+PublicAPI.createV1PageReact(request: PublicAPI.ApiCreateV1PageReactRequest(tenantId: tenantId, urlId: urlId, title: title)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -325,7 +325,7 @@ No authorization required
 
 # **createV2PageReact**
 ```swift
-    open class func createV2PageReact(tenantId: String, urlId: String, id: String, title: String? = nil, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+    open class func createV2PageReact(request: ApiCreateV2PageReactRequest, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -340,7 +340,7 @@ let urlId = "urlId_example" // String |
 let id = "id_example" // String | 
 let title = "title_example" // String |  (optional)
 
-PublicAPI.createV2PageReact(tenantId: tenantId, urlId: urlId, id: id, title: title) { (response, error) in
+PublicAPI.createV2PageReact(request: PublicAPI.ApiCreateV2PageReactRequest(tenantId: tenantId, urlId: urlId, id: id, title: title)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -378,7 +378,7 @@ No authorization required
 
 # **deleteCommentPublic**
 ```swift
-    open class func deleteCommentPublic(tenantId: String, commentId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: PublicAPIDeleteCommentResponse?, _ error: Error?) -> Void)
+    open class func deleteCommentPublic(request: ApiDeleteCommentPublicRequest, completion: @escaping (_ data: PublicAPIDeleteCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -394,7 +394,7 @@ let broadcastId = "broadcastId_example" // String |
 let editKey = "editKey_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.deleteCommentPublic(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, editKey: editKey, sso: sso) { (response, error) in
+PublicAPI.deleteCommentPublic(request: PublicAPI.ApiDeleteCommentPublicRequest(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, editKey: editKey, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -433,7 +433,7 @@ No authorization required
 
 # **deleteCommentVote**
 ```swift
-    open class func deleteCommentVote(tenantId: String, commentId: String, voteId: String, urlId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteDeleteResponse?, _ error: Error?) -> Void)
+    open class func deleteCommentVote(request: ApiDeleteCommentVoteRequest, completion: @escaping (_ data: VoteDeleteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -451,7 +451,7 @@ let broadcastId = "broadcastId_example" // String |
 let editKey = "editKey_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.deleteCommentVote(tenantId: tenantId, commentId: commentId, voteId: voteId, urlId: urlId, broadcastId: broadcastId, editKey: editKey, sso: sso) { (response, error) in
+PublicAPI.deleteCommentVote(request: PublicAPI.ApiDeleteCommentVoteRequest(tenantId: tenantId, commentId: commentId, voteId: voteId, urlId: urlId, broadcastId: broadcastId, editKey: editKey, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -492,7 +492,7 @@ No authorization required
 
 # **deleteFeedPostPublic**
 ```swift
-    open class func deleteFeedPostPublic(tenantId: String, postId: String, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: DeleteFeedPostPublicResponse?, _ error: Error?) -> Void)
+    open class func deleteFeedPostPublic(request: ApiDeleteFeedPostPublicRequest, completion: @escaping (_ data: DeleteFeedPostPublicResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -507,7 +507,7 @@ let postId = "postId_example" // String |
 let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.deleteFeedPostPublic(tenantId: tenantId, postId: postId, broadcastId: broadcastId, sso: sso) { (response, error) in
+PublicAPI.deleteFeedPostPublic(request: PublicAPI.ApiDeleteFeedPostPublicRequest(tenantId: tenantId, postId: postId, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -545,7 +545,7 @@ No authorization required
 
 # **deleteV1PageReact**
 ```swift
-    open class func deleteV1PageReact(tenantId: String, urlId: String, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+    open class func deleteV1PageReact(request: ApiDeleteV1PageReactRequest, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -558,7 +558,7 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
 
-PublicAPI.deleteV1PageReact(tenantId: tenantId, urlId: urlId) { (response, error) in
+PublicAPI.deleteV1PageReact(request: PublicAPI.ApiDeleteV1PageReactRequest(tenantId: tenantId, urlId: urlId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -594,7 +594,7 @@ No authorization required
 
 # **deleteV2PageReact**
 ```swift
-    open class func deleteV2PageReact(tenantId: String, urlId: String, id: String, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+    open class func deleteV2PageReact(request: ApiDeleteV2PageReactRequest, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -608,7 +608,7 @@ let tenantId = "tenantId_example" // String |
 let urlId = "urlId_example" // String | 
 let id = "id_example" // String | 
 
-PublicAPI.deleteV2PageReact(tenantId: tenantId, urlId: urlId, id: id) { (response, error) in
+PublicAPI.deleteV2PageReact(request: PublicAPI.ApiDeleteV2PageReactRequest(tenantId: tenantId, urlId: urlId, id: id)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -645,7 +645,7 @@ No authorization required
 
 # **flagCommentPublic**
 ```swift
-    open class func flagCommentPublic(tenantId: String, commentId: String, isFlagged: Bool, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func flagCommentPublic(request: ApiFlagCommentPublicRequest, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -660,7 +660,7 @@ let commentId = "commentId_example" // String |
 let isFlagged = true // Bool | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.flagCommentPublic(tenantId: tenantId, commentId: commentId, isFlagged: isFlagged, sso: sso) { (response, error) in
+PublicAPI.flagCommentPublic(request: PublicAPI.ApiFlagCommentPublicRequest(tenantId: tenantId, commentId: commentId, isFlagged: isFlagged, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -698,7 +698,7 @@ No authorization required
 
 # **getCommentText**
 ```swift
-    open class func getCommentText(tenantId: String, commentId: String, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: PublicAPIGetCommentTextResponse?, _ error: Error?) -> Void)
+    open class func getCommentText(request: ApiGetCommentTextRequest, completion: @escaping (_ data: PublicAPIGetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -713,7 +713,7 @@ let commentId = "commentId_example" // String |
 let editKey = "editKey_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getCommentText(tenantId: tenantId, commentId: commentId, editKey: editKey, sso: sso) { (response, error) in
+PublicAPI.getCommentText(request: PublicAPI.ApiGetCommentTextRequest(tenantId: tenantId, commentId: commentId, editKey: editKey, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -751,7 +751,7 @@ No authorization required
 
 # **getCommentVoteUserNames**
 ```swift
-    open class func getCommentVoteUserNames(tenantId: String, commentId: String, dir: Int, sso: String? = nil, completion: @escaping (_ data: GetCommentVoteUserNamesSuccessResponse?, _ error: Error?) -> Void)
+    open class func getCommentVoteUserNames(request: ApiGetCommentVoteUserNamesRequest, completion: @escaping (_ data: GetCommentVoteUserNamesSuccessResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -766,7 +766,7 @@ let commentId = "commentId_example" // String |
 let dir = 987 // Int | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getCommentVoteUserNames(tenantId: tenantId, commentId: commentId, dir: dir, sso: sso) { (response, error) in
+PublicAPI.getCommentVoteUserNames(request: PublicAPI.ApiGetCommentVoteUserNamesRequest(tenantId: tenantId, commentId: commentId, dir: dir, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -804,7 +804,7 @@ No authorization required
 
 # **getCommentsForUser**
 ```swift
-    open class func getCommentsForUser(userId: String? = nil, direction: SortDirections? = nil, repliesToUserId: String? = nil, page: Double? = nil, includei10n: Bool? = nil, locale: String? = nil, isCrawler: Bool? = nil, completion: @escaping (_ data: GetCommentsForUserResponse?, _ error: Error?) -> Void)
+    open class func getCommentsForUser(request: ApiGetCommentsForUserRequest, completion: @escaping (_ data: GetCommentsForUserResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -822,7 +822,7 @@ let includei10n = true // Bool |  (optional)
 let locale = "locale_example" // String |  (optional)
 let isCrawler = true // Bool |  (optional)
 
-PublicAPI.getCommentsForUser(userId: userId, direction: direction, repliesToUserId: repliesToUserId, page: page, includei10n: includei10n, locale: locale, isCrawler: isCrawler) { (response, error) in
+PublicAPI.getCommentsForUser(request: PublicAPI.ApiGetCommentsForUserRequest(userId: userId, direction: direction, repliesToUserId: repliesToUserId, page: page, includei10n: includei10n, locale: locale, isCrawler: isCrawler)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -863,7 +863,7 @@ No authorization required
 
 # **getCommentsPublic**
 ```swift
-    open class func getCommentsPublic(tenantId: String, urlId: String, page: Int? = nil, direction: SortDirections? = nil, sso: String? = nil, skip: Int? = nil, skipChildren: Int? = nil, limit: Int? = nil, limitChildren: Int? = nil, countChildren: Bool? = nil, fetchPageForCommentId: String? = nil, includeConfig: Bool? = nil, countAll: Bool? = nil, includei10n: Bool? = nil, locale: String? = nil, modules: String? = nil, isCrawler: Bool? = nil, includeNotificationCount: Bool? = nil, asTree: Bool? = nil, maxTreeDepth: Int? = nil, useFullTranslationIds: Bool? = nil, parentId: String? = nil, searchText: String? = nil, hashTags: [String]? = nil, userId: String? = nil, customConfigStr: String? = nil, afterCommentId: String? = nil, beforeCommentId: String? = nil, completion: @escaping (_ data: GetCommentsResponseWithPresencePublicComment?, _ error: Error?) -> Void)
+    open class func getCommentsPublic(request: ApiGetCommentsPublicRequest, completion: @escaping (_ data: GetCommentsResponseWithPresencePublicComment?, _ error: Error?) -> Void)
 ```
 
 
@@ -904,7 +904,7 @@ let customConfigStr = "customConfigStr_example" // String |  (optional)
 let afterCommentId = "afterCommentId_example" // String |  (optional)
 let beforeCommentId = "beforeCommentId_example" // String |  (optional)
 
-PublicAPI.getCommentsPublic(tenantId: tenantId, urlId: urlId, page: page, direction: direction, sso: sso, skip: skip, skipChildren: skipChildren, limit: limit, limitChildren: limitChildren, countChildren: countChildren, fetchPageForCommentId: fetchPageForCommentId, includeConfig: includeConfig, countAll: countAll, includei10n: includei10n, locale: locale, modules: modules, isCrawler: isCrawler, includeNotificationCount: includeNotificationCount, asTree: asTree, maxTreeDepth: maxTreeDepth, useFullTranslationIds: useFullTranslationIds, parentId: parentId, searchText: searchText, hashTags: hashTags, userId: userId, customConfigStr: customConfigStr, afterCommentId: afterCommentId, beforeCommentId: beforeCommentId) { (response, error) in
+PublicAPI.getCommentsPublic(request: PublicAPI.ApiGetCommentsPublicRequest(tenantId: tenantId, urlId: urlId, page: page, direction: direction, sso: sso, skip: skip, skipChildren: skipChildren, limit: limit, limitChildren: limitChildren, countChildren: countChildren, fetchPageForCommentId: fetchPageForCommentId, includeConfig: includeConfig, countAll: countAll, includei10n: includei10n, locale: locale, modules: modules, isCrawler: isCrawler, includeNotificationCount: includeNotificationCount, asTree: asTree, maxTreeDepth: maxTreeDepth, useFullTranslationIds: useFullTranslationIds, parentId: parentId, searchText: searchText, hashTags: hashTags, userId: userId, customConfigStr: customConfigStr, afterCommentId: afterCommentId, beforeCommentId: beforeCommentId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -966,7 +966,7 @@ No authorization required
 
 # **getEventLog**
 ```swift
-    open class func getEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, endTime: Int64? = nil, completion: @escaping (_ data: GetEventLogResponse?, _ error: Error?) -> Void)
+    open class func getEventLog(request: ApiGetEventLogRequest, completion: @escaping (_ data: GetEventLogResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -984,7 +984,7 @@ let userIdWS = "userIdWS_example" // String |
 let startTime = 987 // Int64 | 
 let endTime = 987 // Int64 |  (optional)
 
-PublicAPI.getEventLog(tenantId: tenantId, urlId: urlId, userIdWS: userIdWS, startTime: startTime, endTime: endTime) { (response, error) in
+PublicAPI.getEventLog(request: PublicAPI.ApiGetEventLogRequest(tenantId: tenantId, urlId: urlId, userIdWS: userIdWS, startTime: startTime, endTime: endTime)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1023,7 +1023,7 @@ No authorization required
 
 # **getFeedPostsPublic**
 ```swift
-    open class func getFeedPostsPublic(tenantId: String, afterId: String? = nil, limit: Int? = nil, tags: [String]? = nil, sso: String? = nil, isCrawler: Bool? = nil, includeUserInfo: Bool? = nil, completion: @escaping (_ data: PublicFeedPostsResponse?, _ error: Error?) -> Void)
+    open class func getFeedPostsPublic(request: ApiGetFeedPostsPublicRequest, completion: @escaping (_ data: PublicFeedPostsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1043,7 +1043,7 @@ let sso = "sso_example" // String |  (optional)
 let isCrawler = true // Bool |  (optional)
 let includeUserInfo = true // Bool |  (optional)
 
-PublicAPI.getFeedPostsPublic(tenantId: tenantId, afterId: afterId, limit: limit, tags: tags, sso: sso, isCrawler: isCrawler, includeUserInfo: includeUserInfo) { (response, error) in
+PublicAPI.getFeedPostsPublic(request: PublicAPI.ApiGetFeedPostsPublicRequest(tenantId: tenantId, afterId: afterId, limit: limit, tags: tags, sso: sso, isCrawler: isCrawler, includeUserInfo: includeUserInfo)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1084,7 +1084,7 @@ No authorization required
 
 # **getFeedPostsStats**
 ```swift
-    open class func getFeedPostsStats(tenantId: String, postIds: [String], sso: String? = nil, completion: @escaping (_ data: FeedPostsStatsResponse?, _ error: Error?) -> Void)
+    open class func getFeedPostsStats(request: ApiGetFeedPostsStatsRequest, completion: @escaping (_ data: FeedPostsStatsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1098,7 +1098,7 @@ let tenantId = "tenantId_example" // String |
 let postIds = ["inner_example"] // [String] | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getFeedPostsStats(tenantId: tenantId, postIds: postIds, sso: sso) { (response, error) in
+PublicAPI.getFeedPostsStats(request: PublicAPI.ApiGetFeedPostsStatsRequest(tenantId: tenantId, postIds: postIds, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1135,7 +1135,7 @@ No authorization required
 
 # **getGifLarge**
 ```swift
-    open class func getGifLarge(tenantId: String, largeInternalURLSanitized: String, completion: @escaping (_ data: GifGetLargeResponse?, _ error: Error?) -> Void)
+    open class func getGifLarge(request: ApiGetGifLargeRequest, completion: @escaping (_ data: GifGetLargeResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1148,7 +1148,7 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let largeInternalURLSanitized = "largeInternalURLSanitized_example" // String | 
 
-PublicAPI.getGifLarge(tenantId: tenantId, largeInternalURLSanitized: largeInternalURLSanitized) { (response, error) in
+PublicAPI.getGifLarge(request: PublicAPI.ApiGetGifLargeRequest(tenantId: tenantId, largeInternalURLSanitized: largeInternalURLSanitized)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1184,7 +1184,7 @@ No authorization required
 
 # **getGifsSearch**
 ```swift
-    open class func getGifsSearch(tenantId: String, search: String, locale: String? = nil, rating: String? = nil, page: Double? = nil, completion: @escaping (_ data: GetGifsSearchResponse?, _ error: Error?) -> Void)
+    open class func getGifsSearch(request: ApiGetGifsSearchRequest, completion: @escaping (_ data: GetGifsSearchResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1200,7 +1200,7 @@ let locale = "locale_example" // String |  (optional)
 let rating = "rating_example" // String |  (optional)
 let page = 987 // Double |  (optional)
 
-PublicAPI.getGifsSearch(tenantId: tenantId, search: search, locale: locale, rating: rating, page: page) { (response, error) in
+PublicAPI.getGifsSearch(request: PublicAPI.ApiGetGifsSearchRequest(tenantId: tenantId, search: search, locale: locale, rating: rating, page: page)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1239,7 +1239,7 @@ No authorization required
 
 # **getGifsTrending**
 ```swift
-    open class func getGifsTrending(tenantId: String, locale: String? = nil, rating: String? = nil, page: Double? = nil, completion: @escaping (_ data: GetGifsTrendingResponse?, _ error: Error?) -> Void)
+    open class func getGifsTrending(request: ApiGetGifsTrendingRequest, completion: @escaping (_ data: GetGifsTrendingResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1254,7 +1254,7 @@ let locale = "locale_example" // String |  (optional)
 let rating = "rating_example" // String |  (optional)
 let page = 987 // Double |  (optional)
 
-PublicAPI.getGifsTrending(tenantId: tenantId, locale: locale, rating: rating, page: page) { (response, error) in
+PublicAPI.getGifsTrending(request: PublicAPI.ApiGetGifsTrendingRequest(tenantId: tenantId, locale: locale, rating: rating, page: page)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1292,7 +1292,7 @@ No authorization required
 
 # **getGlobalEventLog**
 ```swift
-    open class func getGlobalEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, endTime: Int64? = nil, completion: @escaping (_ data: GetEventLogResponse?, _ error: Error?) -> Void)
+    open class func getGlobalEventLog(request: ApiGetGlobalEventLogRequest, completion: @escaping (_ data: GetEventLogResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1310,7 +1310,7 @@ let userIdWS = "userIdWS_example" // String |
 let startTime = 987 // Int64 | 
 let endTime = 987 // Int64 |  (optional)
 
-PublicAPI.getGlobalEventLog(tenantId: tenantId, urlId: urlId, userIdWS: userIdWS, startTime: startTime, endTime: endTime) { (response, error) in
+PublicAPI.getGlobalEventLog(request: PublicAPI.ApiGetGlobalEventLogRequest(tenantId: tenantId, urlId: urlId, userIdWS: userIdWS, startTime: startTime, endTime: endTime)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1349,7 +1349,7 @@ No authorization required
 
 # **getOfflineUsers**
 ```swift
-    open class func getOfflineUsers(tenantId: String, urlId: String, afterName: String? = nil, afterUserId: String? = nil, completion: @escaping (_ data: PageUsersOfflineResponse?, _ error: Error?) -> Void)
+    open class func getOfflineUsers(request: ApiGetOfflineUsersRequest, completion: @escaping (_ data: PageUsersOfflineResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1366,7 +1366,7 @@ let urlId = "urlId_example" // String | Page URL identifier (cleaned server-side
 let afterName = "afterName_example" // String | Cursor: pass nextAfterName from the previous response. (optional)
 let afterUserId = "afterUserId_example" // String | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries. (optional)
 
-PublicAPI.getOfflineUsers(tenantId: tenantId, urlId: urlId, afterName: afterName, afterUserId: afterUserId) { (response, error) in
+PublicAPI.getOfflineUsers(request: PublicAPI.ApiGetOfflineUsersRequest(tenantId: tenantId, urlId: urlId, afterName: afterName, afterUserId: afterUserId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1404,7 +1404,7 @@ No authorization required
 
 # **getOnlineUsers**
 ```swift
-    open class func getOnlineUsers(tenantId: String, urlId: String, afterName: String? = nil, afterUserId: String? = nil, completion: @escaping (_ data: PageUsersOnlineResponse?, _ error: Error?) -> Void)
+    open class func getOnlineUsers(request: ApiGetOnlineUsersRequest, completion: @escaping (_ data: PageUsersOnlineResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1421,7 +1421,7 @@ let urlId = "urlId_example" // String | Page URL identifier (cleaned server-side
 let afterName = "afterName_example" // String | Cursor: pass nextAfterName from the previous response. (optional)
 let afterUserId = "afterUserId_example" // String | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries. (optional)
 
-PublicAPI.getOnlineUsers(tenantId: tenantId, urlId: urlId, afterName: afterName, afterUserId: afterUserId) { (response, error) in
+PublicAPI.getOnlineUsers(request: PublicAPI.ApiGetOnlineUsersRequest(tenantId: tenantId, urlId: urlId, afterName: afterName, afterUserId: afterUserId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1459,7 +1459,7 @@ No authorization required
 
 # **getPagesPublic**
 ```swift
-    open class func getPagesPublic(tenantId: String, cursor: String? = nil, limit: Int? = nil, q: String? = nil, sortBy: PagesSortBy? = nil, hasComments: Bool? = nil, completion: @escaping (_ data: GetPublicPagesResponse?, _ error: Error?) -> Void)
+    open class func getPagesPublic(request: ApiGetPagesPublicRequest, completion: @escaping (_ data: GetPublicPagesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1478,7 +1478,7 @@ let q = "q_example" // String | Optional case-insensitive title prefix filter. (
 let sortBy = PagesSortBy() // PagesSortBy | Sort order. `updatedAt` (default, newest first), `commentCount` (most comments first), or `title` (alphabetical). (optional)
 let hasComments = true // Bool | If true, only return pages with at least one comment. (optional)
 
-PublicAPI.getPagesPublic(tenantId: tenantId, cursor: cursor, limit: limit, q: q, sortBy: sortBy, hasComments: hasComments) { (response, error) in
+PublicAPI.getPagesPublic(request: PublicAPI.ApiGetPagesPublicRequest(tenantId: tenantId, cursor: cursor, limit: limit, q: q, sortBy: sortBy, hasComments: hasComments)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1518,7 +1518,7 @@ No authorization required
 
 # **getTranslations**
 ```swift
-    open class func getTranslations(namespace: String, component: String, locale: String? = nil, useFullTranslationIds: Bool? = nil, completion: @escaping (_ data: GetTranslationsResponse?, _ error: Error?) -> Void)
+    open class func getTranslations(request: ApiGetTranslationsRequest, completion: @escaping (_ data: GetTranslationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1533,7 +1533,7 @@ let component = "component_example" // String |
 let locale = "locale_example" // String |  (optional)
 let useFullTranslationIds = true // Bool |  (optional)
 
-PublicAPI.getTranslations(namespace: namespace, component: component, locale: locale, useFullTranslationIds: useFullTranslationIds) { (response, error) in
+PublicAPI.getTranslations(request: PublicAPI.ApiGetTranslationsRequest(namespace: namespace, component: component, locale: locale, useFullTranslationIds: useFullTranslationIds)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1571,7 +1571,7 @@ No authorization required
 
 # **getUserNotificationCount**
 ```swift
-    open class func getUserNotificationCount(tenantId: String, sso: String? = nil, completion: @escaping (_ data: GetUserNotificationCountResponse?, _ error: Error?) -> Void)
+    open class func getUserNotificationCount(request: ApiGetUserNotificationCountRequest, completion: @escaping (_ data: GetUserNotificationCountResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1584,7 +1584,7 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getUserNotificationCount(tenantId: tenantId, sso: sso) { (response, error) in
+PublicAPI.getUserNotificationCount(request: PublicAPI.ApiGetUserNotificationCountRequest(tenantId: tenantId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1620,7 +1620,7 @@ No authorization required
 
 # **getUserNotifications**
 ```swift
-    open class func getUserNotifications(tenantId: String, urlId: String? = nil, pageSize: Int? = nil, afterId: String? = nil, includeContext: Bool? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, includeTranslations: Bool? = nil, includeTenantNotifications: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: GetMyNotificationsResponse?, _ error: Error?) -> Void)
+    open class func getUserNotifications(request: ApiGetUserNotificationsRequest, completion: @escaping (_ data: GetMyNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1643,7 +1643,7 @@ let includeTranslations = true // Bool |  (optional)
 let includeTenantNotifications = true // Bool |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getUserNotifications(tenantId: tenantId, urlId: urlId, pageSize: pageSize, afterId: afterId, includeContext: includeContext, afterCreatedAt: afterCreatedAt, unreadOnly: unreadOnly, dmOnly: dmOnly, noDm: noDm, includeTranslations: includeTranslations, includeTenantNotifications: includeTenantNotifications, sso: sso) { (response, error) in
+PublicAPI.getUserNotifications(request: PublicAPI.ApiGetUserNotificationsRequest(tenantId: tenantId, urlId: urlId, pageSize: pageSize, afterId: afterId, includeContext: includeContext, afterCreatedAt: afterCreatedAt, unreadOnly: unreadOnly, dmOnly: dmOnly, noDm: noDm, includeTranslations: includeTranslations, includeTenantNotifications: includeTenantNotifications, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1689,7 +1689,7 @@ No authorization required
 
 # **getUserPresenceStatuses**
 ```swift
-    open class func getUserPresenceStatuses(tenantId: String, urlIdWS: String, userIds: String, completion: @escaping (_ data: GetUserPresenceStatusesResponse?, _ error: Error?) -> Void)
+    open class func getUserPresenceStatuses(request: ApiGetUserPresenceStatusesRequest, completion: @escaping (_ data: GetUserPresenceStatusesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1703,7 +1703,7 @@ let tenantId = "tenantId_example" // String |
 let urlIdWS = "urlIdWS_example" // String | 
 let userIds = "userIds_example" // String | 
 
-PublicAPI.getUserPresenceStatuses(tenantId: tenantId, urlIdWS: urlIdWS, userIds: userIds) { (response, error) in
+PublicAPI.getUserPresenceStatuses(request: PublicAPI.ApiGetUserPresenceStatusesRequest(tenantId: tenantId, urlIdWS: urlIdWS, userIds: userIds)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1740,7 +1740,7 @@ No authorization required
 
 # **getUserReactsPublic**
 ```swift
-    open class func getUserReactsPublic(tenantId: String, postIds: [String]? = nil, sso: String? = nil, completion: @escaping (_ data: UserReactsResponse?, _ error: Error?) -> Void)
+    open class func getUserReactsPublic(request: ApiGetUserReactsPublicRequest, completion: @escaping (_ data: UserReactsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1754,7 +1754,7 @@ let tenantId = "tenantId_example" // String |
 let postIds = ["inner_example"] // [String] |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getUserReactsPublic(tenantId: tenantId, postIds: postIds, sso: sso) { (response, error) in
+PublicAPI.getUserReactsPublic(request: PublicAPI.ApiGetUserReactsPublicRequest(tenantId: tenantId, postIds: postIds, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1791,7 +1791,7 @@ No authorization required
 
 # **getUsersInfo**
 ```swift
-    open class func getUsersInfo(tenantId: String, ids: String, completion: @escaping (_ data: PageUsersInfoResponse?, _ error: Error?) -> Void)
+    open class func getUsersInfo(request: ApiGetUsersInfoRequest, completion: @escaping (_ data: PageUsersInfoResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1806,7 +1806,7 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let ids = "ids_example" // String | Comma-delimited userIds.
 
-PublicAPI.getUsersInfo(tenantId: tenantId, ids: ids) { (response, error) in
+PublicAPI.getUsersInfo(request: PublicAPI.ApiGetUsersInfoRequest(tenantId: tenantId, ids: ids)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1842,7 +1842,7 @@ No authorization required
 
 # **getV1PageLikes**
 ```swift
-    open class func getV1PageLikes(tenantId: String, urlId: String, completion: @escaping (_ data: GetV1PageLikes?, _ error: Error?) -> Void)
+    open class func getV1PageLikes(request: ApiGetV1PageLikesRequest, completion: @escaping (_ data: GetV1PageLikes?, _ error: Error?) -> Void)
 ```
 
 
@@ -1855,7 +1855,7 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
 
-PublicAPI.getV1PageLikes(tenantId: tenantId, urlId: urlId) { (response, error) in
+PublicAPI.getV1PageLikes(request: PublicAPI.ApiGetV1PageLikesRequest(tenantId: tenantId, urlId: urlId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1891,7 +1891,7 @@ No authorization required
 
 # **getV2PageReactUsers**
 ```swift
-    open class func getV2PageReactUsers(tenantId: String, urlId: String, id: String, completion: @escaping (_ data: GetV2PageReactUsersResponse?, _ error: Error?) -> Void)
+    open class func getV2PageReactUsers(request: ApiGetV2PageReactUsersRequest, completion: @escaping (_ data: GetV2PageReactUsersResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1905,7 +1905,7 @@ let tenantId = "tenantId_example" // String |
 let urlId = "urlId_example" // String | 
 let id = "id_example" // String | 
 
-PublicAPI.getV2PageReactUsers(tenantId: tenantId, urlId: urlId, id: id) { (response, error) in
+PublicAPI.getV2PageReactUsers(request: PublicAPI.ApiGetV2PageReactUsersRequest(tenantId: tenantId, urlId: urlId, id: id)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1942,7 +1942,7 @@ No authorization required
 
 # **getV2PageReacts**
 ```swift
-    open class func getV2PageReacts(tenantId: String, urlId: String, completion: @escaping (_ data: GetV2PageReacts?, _ error: Error?) -> Void)
+    open class func getV2PageReacts(request: ApiGetV2PageReactsRequest, completion: @escaping (_ data: GetV2PageReacts?, _ error: Error?) -> Void)
 ```
 
 
@@ -1955,7 +1955,7 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
 
-PublicAPI.getV2PageReacts(tenantId: tenantId, urlId: urlId) { (response, error) in
+PublicAPI.getV2PageReacts(request: PublicAPI.ApiGetV2PageReactsRequest(tenantId: tenantId, urlId: urlId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1991,7 +1991,7 @@ No authorization required
 
 # **lockComment**
 ```swift
-    open class func lockComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func lockComment(request: ApiLockCommentRequest, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2006,7 +2006,7 @@ let commentId = "commentId_example" // String |
 let broadcastId = "broadcastId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.lockComment(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, sso: sso) { (response, error) in
+PublicAPI.lockComment(request: PublicAPI.ApiLockCommentRequest(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2087,7 +2087,7 @@ No authorization required
 
 # **pinComment**
 ```swift
-    open class func pinComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: ChangeCommentPinStatusResponse?, _ error: Error?) -> Void)
+    open class func pinComment(request: ApiPinCommentRequest, completion: @escaping (_ data: ChangeCommentPinStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2102,7 +2102,7 @@ let commentId = "commentId_example" // String |
 let broadcastId = "broadcastId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.pinComment(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, sso: sso) { (response, error) in
+PublicAPI.pinComment(request: PublicAPI.ApiPinCommentRequest(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2140,7 +2140,7 @@ No authorization required
 
 # **reactFeedPostPublic**
 ```swift
-    open class func reactFeedPostPublic(tenantId: String, postId: String, reactBodyParams: ReactBodyParams, isUndo: Bool? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ReactFeedPostResponse?, _ error: Error?) -> Void)
+    open class func reactFeedPostPublic(request: ApiReactFeedPostPublicRequest, completion: @escaping (_ data: ReactFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2157,7 +2157,7 @@ let isUndo = true // Bool |  (optional)
 let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.reactFeedPostPublic(tenantId: tenantId, postId: postId, reactBodyParams: reactBodyParams, isUndo: isUndo, broadcastId: broadcastId, sso: sso) { (response, error) in
+PublicAPI.reactFeedPostPublic(request: PublicAPI.ApiReactFeedPostPublicRequest(tenantId: tenantId, postId: postId, reactBodyParams: reactBodyParams, isUndo: isUndo, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2197,7 +2197,7 @@ No authorization required
 
 # **resetUserNotificationCount**
 ```swift
-    open class func resetUserNotificationCount(tenantId: String, sso: String? = nil, completion: @escaping (_ data: ResetUserNotificationsResponse?, _ error: Error?) -> Void)
+    open class func resetUserNotificationCount(request: ApiResetUserNotificationCountRequest, completion: @escaping (_ data: ResetUserNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2210,7 +2210,7 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.resetUserNotificationCount(tenantId: tenantId, sso: sso) { (response, error) in
+PublicAPI.resetUserNotificationCount(request: PublicAPI.ApiResetUserNotificationCountRequest(tenantId: tenantId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2246,7 +2246,7 @@ No authorization required
 
 # **resetUserNotifications**
 ```swift
-    open class func resetUserNotifications(tenantId: String, afterId: String? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: ResetUserNotificationsResponse?, _ error: Error?) -> Void)
+    open class func resetUserNotifications(request: ApiResetUserNotificationsRequest, completion: @escaping (_ data: ResetUserNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2264,7 +2264,7 @@ let dmOnly = true // Bool |  (optional)
 let noDm = true // Bool |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.resetUserNotifications(tenantId: tenantId, afterId: afterId, afterCreatedAt: afterCreatedAt, unreadOnly: unreadOnly, dmOnly: dmOnly, noDm: noDm, sso: sso) { (response, error) in
+PublicAPI.resetUserNotifications(request: PublicAPI.ApiResetUserNotificationsRequest(tenantId: tenantId, afterId: afterId, afterCreatedAt: afterCreatedAt, unreadOnly: unreadOnly, dmOnly: dmOnly, noDm: noDm, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2305,7 +2305,7 @@ No authorization required
 
 # **searchUsers**
 ```swift
-    open class func searchUsers(tenantId: String, urlId: String, usernameStartsWith: String? = nil, mentionGroupIds: [String]? = nil, sso: String? = nil, searchSection: SearchSection_searchUsers? = nil, completion: @escaping (_ data: SearchUsersResult?, _ error: Error?) -> Void)
+    open class func searchUsers(request: ApiSearchUsersRequest, completion: @escaping (_ data: SearchUsersResult?, _ error: Error?) -> Void)
 ```
 
 
@@ -2322,7 +2322,7 @@ let mentionGroupIds = ["inner_example"] // [String] |  (optional)
 let sso = "sso_example" // String |  (optional)
 let searchSection = "searchSection_example" // String |  (optional)
 
-PublicAPI.searchUsers(tenantId: tenantId, urlId: urlId, usernameStartsWith: usernameStartsWith, mentionGroupIds: mentionGroupIds, sso: sso, searchSection: searchSection) { (response, error) in
+PublicAPI.searchUsers(request: PublicAPI.ApiSearchUsersRequest(tenantId: tenantId, urlId: urlId, usernameStartsWith: usernameStartsWith, mentionGroupIds: mentionGroupIds, sso: sso, searchSection: searchSection)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2362,7 +2362,7 @@ No authorization required
 
 # **setCommentText**
 ```swift
-    open class func setCommentText(tenantId: String, commentId: String, broadcastId: String, commentTextUpdateRequest: CommentTextUpdateRequest, editKey: String? = nil, sso: String? = nil, completion: @escaping (_ data: PublicAPISetCommentTextResponse?, _ error: Error?) -> Void)
+    open class func setCommentText(request: ApiSetCommentTextRequest, completion: @escaping (_ data: PublicAPISetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2379,7 +2379,7 @@ let commentTextUpdateRequest = CommentTextUpdateRequest(comment: "comment_exampl
 let editKey = "editKey_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.setCommentText(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, commentTextUpdateRequest: commentTextUpdateRequest, editKey: editKey, sso: sso) { (response, error) in
+PublicAPI.setCommentText(request: PublicAPI.ApiSetCommentTextRequest(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, commentTextUpdateRequest: commentTextUpdateRequest, editKey: editKey, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2419,7 +2419,7 @@ No authorization required
 
 # **unBlockCommentPublic**
 ```swift
-    open class func unBlockCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, sso: String? = nil, completion: @escaping (_ data: UnblockSuccess?, _ error: Error?) -> Void)
+    open class func unBlockCommentPublic(request: ApiUnBlockCommentPublicRequest, completion: @escaping (_ data: UnblockSuccess?, _ error: Error?) -> Void)
 ```
 
 
@@ -2434,7 +2434,7 @@ let commentId = "commentId_example" // String |
 let publicBlockFromCommentParams = PublicBlockFromCommentParams(commentIds: ["commentIds_example"]) // PublicBlockFromCommentParams | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.unBlockCommentPublic(tenantId: tenantId, commentId: commentId, publicBlockFromCommentParams: publicBlockFromCommentParams, sso: sso) { (response, error) in
+PublicAPI.unBlockCommentPublic(request: PublicAPI.ApiUnBlockCommentPublicRequest(tenantId: tenantId, commentId: commentId, publicBlockFromCommentParams: publicBlockFromCommentParams, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2472,7 +2472,7 @@ No authorization required
 
 # **unLockComment**
 ```swift
-    open class func unLockComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func unLockComment(request: ApiUnLockCommentRequest, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2487,7 +2487,7 @@ let commentId = "commentId_example" // String |
 let broadcastId = "broadcastId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.unLockComment(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, sso: sso) { (response, error) in
+PublicAPI.unLockComment(request: PublicAPI.ApiUnLockCommentRequest(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2525,7 +2525,7 @@ No authorization required
 
 # **unPinComment**
 ```swift
-    open class func unPinComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: ChangeCommentPinStatusResponse?, _ error: Error?) -> Void)
+    open class func unPinComment(request: ApiUnPinCommentRequest, completion: @escaping (_ data: ChangeCommentPinStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2540,7 +2540,7 @@ let commentId = "commentId_example" // String |
 let broadcastId = "broadcastId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.unPinComment(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, sso: sso) { (response, error) in
+PublicAPI.unPinComment(request: PublicAPI.ApiUnPinCommentRequest(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2578,7 +2578,7 @@ No authorization required
 
 # **updateFeedPostPublic**
 ```swift
-    open class func updateFeedPostPublic(tenantId: String, postId: String, updateFeedPostParams: UpdateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: CreateFeedPostResponse?, _ error: Error?) -> Void)
+    open class func updateFeedPostPublic(request: ApiUpdateFeedPostPublicRequest, completion: @escaping (_ data: CreateFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2594,7 +2594,7 @@ let updateFeedPostParams = UpdateFeedPostParams(title: "title_example", contentH
 let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.updateFeedPostPublic(tenantId: tenantId, postId: postId, updateFeedPostParams: updateFeedPostParams, broadcastId: broadcastId, sso: sso) { (response, error) in
+PublicAPI.updateFeedPostPublic(request: PublicAPI.ApiUpdateFeedPostPublicRequest(tenantId: tenantId, postId: postId, updateFeedPostParams: updateFeedPostParams, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2633,7 +2633,7 @@ No authorization required
 
 # **updateUserNotificationCommentSubscriptionStatus**
 ```swift
-    open class func updateUserNotificationCommentSubscriptionStatus(tenantId: String, notificationId: String, optedInOrOut: OptedInOrOut_updateUserNotificationCommentSubscriptionStatus, commentId: String, sso: String? = nil, completion: @escaping (_ data: UpdateUserNotificationCommentSubscriptionStatusResponse?, _ error: Error?) -> Void)
+    open class func updateUserNotificationCommentSubscriptionStatus(request: ApiUpdateUserNotificationCommentSubscriptionStatusRequest, completion: @escaping (_ data: UpdateUserNotificationCommentSubscriptionStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2651,7 +2651,7 @@ let optedInOrOut = "optedInOrOut_example" // String |
 let commentId = "commentId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.updateUserNotificationCommentSubscriptionStatus(tenantId: tenantId, notificationId: notificationId, optedInOrOut: optedInOrOut, commentId: commentId, sso: sso) { (response, error) in
+PublicAPI.updateUserNotificationCommentSubscriptionStatus(request: PublicAPI.ApiUpdateUserNotificationCommentSubscriptionStatusRequest(tenantId: tenantId, notificationId: notificationId, optedInOrOut: optedInOrOut, commentId: commentId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2690,7 +2690,7 @@ No authorization required
 
 # **updateUserNotificationPageSubscriptionStatus**
 ```swift
-    open class func updateUserNotificationPageSubscriptionStatus(tenantId: String, urlId: String, url: String, pageTitle: String, subscribedOrUnsubscribed: SubscribedOrUnsubscribed_updateUserNotificationPageSubscriptionStatus, sso: String? = nil, completion: @escaping (_ data: UpdateUserNotificationPageSubscriptionStatusResponse?, _ error: Error?) -> Void)
+    open class func updateUserNotificationPageSubscriptionStatus(request: ApiUpdateUserNotificationPageSubscriptionStatusRequest, completion: @escaping (_ data: UpdateUserNotificationPageSubscriptionStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2709,7 +2709,7 @@ let pageTitle = "pageTitle_example" // String |
 let subscribedOrUnsubscribed = "subscribedOrUnsubscribed_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.updateUserNotificationPageSubscriptionStatus(tenantId: tenantId, urlId: urlId, url: url, pageTitle: pageTitle, subscribedOrUnsubscribed: subscribedOrUnsubscribed, sso: sso) { (response, error) in
+PublicAPI.updateUserNotificationPageSubscriptionStatus(request: PublicAPI.ApiUpdateUserNotificationPageSubscriptionStatusRequest(tenantId: tenantId, urlId: urlId, url: url, pageTitle: pageTitle, subscribedOrUnsubscribed: subscribedOrUnsubscribed, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2749,7 +2749,7 @@ No authorization required
 
 # **updateUserNotificationStatus**
 ```swift
-    open class func updateUserNotificationStatus(tenantId: String, notificationId: String, newStatus: NewStatus_updateUserNotificationStatus, sso: String? = nil, completion: @escaping (_ data: UpdateUserNotificationStatusResponse?, _ error: Error?) -> Void)
+    open class func updateUserNotificationStatus(request: ApiUpdateUserNotificationStatusRequest, completion: @escaping (_ data: UpdateUserNotificationStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2764,7 +2764,7 @@ let notificationId = "notificationId_example" // String |
 let newStatus = "newStatus_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.updateUserNotificationStatus(tenantId: tenantId, notificationId: notificationId, newStatus: newStatus, sso: sso) { (response, error) in
+PublicAPI.updateUserNotificationStatus(request: PublicAPI.ApiUpdateUserNotificationStatusRequest(tenantId: tenantId, notificationId: notificationId, newStatus: newStatus, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2802,7 +2802,7 @@ No authorization required
 
 # **uploadImage**
 ```swift
-    open class func uploadImage(tenantId: String, file: URL, sizePreset: SizePreset? = nil, urlId: String? = nil, completion: @escaping (_ data: UploadImageResponse?, _ error: Error?) -> Void)
+    open class func uploadImage(request: ApiUploadImageRequest, completion: @escaping (_ data: UploadImageResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2819,7 +2819,7 @@ let file = URL(string: "https://example.com")! // URL |
 let sizePreset = SizePreset() // SizePreset | Size preset: \"Default\" (1000x1000px) or \"CrossPlatform\" (creates sizes for popular devices) (optional)
 let urlId = "urlId_example" // String | Page id that upload is happening from, to configure (optional)
 
-PublicAPI.uploadImage(tenantId: tenantId, file: file, sizePreset: sizePreset, urlId: urlId) { (response, error) in
+PublicAPI.uploadImage(request: PublicAPI.ApiUploadImageRequest(tenantId: tenantId, file: file, sizePreset: sizePreset, urlId: urlId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2857,7 +2857,7 @@ No authorization required
 
 # **voteComment**
 ```swift
-    open class func voteComment(tenantId: String, commentId: String, urlId: String, broadcastId: String, voteBodyParams: VoteBodyParams, sessionId: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
+    open class func voteComment(request: ApiVoteCommentRequest, completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2875,7 +2875,7 @@ let voteBodyParams = VoteBodyParams(commenterEmail: "commenterEmail_example", co
 let sessionId = "sessionId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.voteComment(tenantId: tenantId, commentId: commentId, urlId: urlId, broadcastId: broadcastId, voteBodyParams: voteBodyParams, sessionId: sessionId, sso: sso) { (response, error) in
+PublicAPI.voteComment(request: PublicAPI.ApiVoteCommentRequest(tenantId: tenantId, commentId: commentId, urlId: urlId, broadcastId: broadcastId, voteBodyParams: voteBodyParams, sessionId: sessionId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
