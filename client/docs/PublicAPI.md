@@ -60,7 +60,7 @@ Method | HTTP request | Description
 
 # **blockFromCommentPublic**
 ```swift
-    open class func blockFromCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, options: ApiBlockFromCommentPublicOptions = .init(), completion: @escaping (_ data: BlockSuccess?, _ error: Error?) -> Void)
+    open class func blockFromCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, sso: String? = nil, completion: @escaping (_ data: BlockSuccess?, _ error: Error?) -> Void)
 ```
 
 
@@ -75,7 +75,7 @@ let commentId = "commentId_example" // String |
 let publicBlockFromCommentParams = PublicBlockFromCommentParams(commentIds: ["commentIds_example"]) // PublicBlockFromCommentParams | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.blockFromCommentPublic(tenantId: tenantId, commentId: commentId, publicBlockFromCommentParams: publicBlockFromCommentParams, options: PublicAPI.ApiBlockFromCommentPublicOptions(sso: sso)) { (response, error) in
+PublicAPI.blockFromCommentPublic(tenantId: tenantId, commentId: commentId, publicBlockFromCommentParams: publicBlockFromCommentParams, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -113,7 +113,7 @@ No authorization required
 
 # **checkedCommentsForBlocked**
 ```swift
-    open class func checkedCommentsForBlocked(tenantId: String, commentIds: String, options: ApiCheckedCommentsForBlockedOptions = .init(), completion: @escaping (_ data: CheckBlockedCommentsResponse?, _ error: Error?) -> Void)
+    open class func checkedCommentsForBlocked(tenantId: String, commentIds: String, sso: String? = nil, completion: @escaping (_ data: CheckBlockedCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -127,7 +127,7 @@ let tenantId = "tenantId_example" // String |
 let commentIds = "commentIds_example" // String | A comma separated list of comment ids.
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.checkedCommentsForBlocked(tenantId: tenantId, commentIds: commentIds, options: PublicAPI.ApiCheckedCommentsForBlockedOptions(sso: sso)) { (response, error) in
+PublicAPI.checkedCommentsForBlocked(tenantId: tenantId, commentIds: commentIds, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -274,7 +274,7 @@ No authorization required
 
 # **createV1PageReact**
 ```swift
-    open class func createV1PageReact(tenantId: String, urlId: String, options: ApiCreateV1PageReactOptions = .init(), completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+    open class func createV1PageReact(tenantId: String, urlId: String, title: String? = nil, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -288,7 +288,7 @@ let tenantId = "tenantId_example" // String |
 let urlId = "urlId_example" // String | 
 let title = "title_example" // String |  (optional)
 
-PublicAPI.createV1PageReact(tenantId: tenantId, urlId: urlId, options: PublicAPI.ApiCreateV1PageReactOptions(title: title)) { (response, error) in
+PublicAPI.createV1PageReact(tenantId: tenantId, urlId: urlId, title: title) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -325,7 +325,7 @@ No authorization required
 
 # **createV2PageReact**
 ```swift
-    open class func createV2PageReact(tenantId: String, urlId: String, id: String, options: ApiCreateV2PageReactOptions = .init(), completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+    open class func createV2PageReact(tenantId: String, urlId: String, id: String, title: String? = nil, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -340,7 +340,7 @@ let urlId = "urlId_example" // String |
 let id = "id_example" // String | 
 let title = "title_example" // String |  (optional)
 
-PublicAPI.createV2PageReact(tenantId: tenantId, urlId: urlId, id: id, options: PublicAPI.ApiCreateV2PageReactOptions(title: title)) { (response, error) in
+PublicAPI.createV2PageReact(tenantId: tenantId, urlId: urlId, id: id, title: title) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -645,7 +645,7 @@ No authorization required
 
 # **flagCommentPublic**
 ```swift
-    open class func flagCommentPublic(tenantId: String, commentId: String, isFlagged: Bool, options: ApiFlagCommentPublicOptions = .init(), completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func flagCommentPublic(tenantId: String, commentId: String, isFlagged: Bool, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -660,7 +660,7 @@ let commentId = "commentId_example" // String |
 let isFlagged = true // Bool | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.flagCommentPublic(tenantId: tenantId, commentId: commentId, isFlagged: isFlagged, options: PublicAPI.ApiFlagCommentPublicOptions(sso: sso)) { (response, error) in
+PublicAPI.flagCommentPublic(tenantId: tenantId, commentId: commentId, isFlagged: isFlagged, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -751,7 +751,7 @@ No authorization required
 
 # **getCommentVoteUserNames**
 ```swift
-    open class func getCommentVoteUserNames(tenantId: String, commentId: String, dir: Int, options: ApiGetCommentVoteUserNamesOptions = .init(), completion: @escaping (_ data: GetCommentVoteUserNamesSuccessResponse?, _ error: Error?) -> Void)
+    open class func getCommentVoteUserNames(tenantId: String, commentId: String, dir: Int, sso: String? = nil, completion: @escaping (_ data: GetCommentVoteUserNamesSuccessResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -766,7 +766,7 @@ let commentId = "commentId_example" // String |
 let dir = 987 // Int | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getCommentVoteUserNames(tenantId: tenantId, commentId: commentId, dir: dir, options: PublicAPI.ApiGetCommentVoteUserNamesOptions(sso: sso)) { (response, error) in
+PublicAPI.getCommentVoteUserNames(tenantId: tenantId, commentId: commentId, dir: dir, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -966,7 +966,7 @@ No authorization required
 
 # **getEventLog**
 ```swift
-    open class func getEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, options: ApiGetEventLogOptions = .init(), completion: @escaping (_ data: GetEventLogResponse?, _ error: Error?) -> Void)
+    open class func getEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, endTime: Int64? = nil, completion: @escaping (_ data: GetEventLogResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -984,7 +984,7 @@ let userIdWS = "userIdWS_example" // String |
 let startTime = 987 // Int64 | 
 let endTime = 987 // Int64 |  (optional)
 
-PublicAPI.getEventLog(tenantId: tenantId, urlId: urlId, userIdWS: userIdWS, startTime: startTime, options: PublicAPI.ApiGetEventLogOptions(endTime: endTime)) { (response, error) in
+PublicAPI.getEventLog(tenantId: tenantId, urlId: urlId, userIdWS: userIdWS, startTime: startTime, endTime: endTime) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1084,7 +1084,7 @@ No authorization required
 
 # **getFeedPostsStats**
 ```swift
-    open class func getFeedPostsStats(tenantId: String, postIds: [String], options: ApiGetFeedPostsStatsOptions = .init(), completion: @escaping (_ data: FeedPostsStatsResponse?, _ error: Error?) -> Void)
+    open class func getFeedPostsStats(tenantId: String, postIds: [String], sso: String? = nil, completion: @escaping (_ data: FeedPostsStatsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1098,7 +1098,7 @@ let tenantId = "tenantId_example" // String |
 let postIds = ["inner_example"] // [String] | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getFeedPostsStats(tenantId: tenantId, postIds: postIds, options: PublicAPI.ApiGetFeedPostsStatsOptions(sso: sso)) { (response, error) in
+PublicAPI.getFeedPostsStats(tenantId: tenantId, postIds: postIds, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1292,7 +1292,7 @@ No authorization required
 
 # **getGlobalEventLog**
 ```swift
-    open class func getGlobalEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, options: ApiGetGlobalEventLogOptions = .init(), completion: @escaping (_ data: GetEventLogResponse?, _ error: Error?) -> Void)
+    open class func getGlobalEventLog(tenantId: String, urlId: String, userIdWS: String, startTime: Int64, endTime: Int64? = nil, completion: @escaping (_ data: GetEventLogResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1310,7 +1310,7 @@ let userIdWS = "userIdWS_example" // String |
 let startTime = 987 // Int64 | 
 let endTime = 987 // Int64 |  (optional)
 
-PublicAPI.getGlobalEventLog(tenantId: tenantId, urlId: urlId, userIdWS: userIdWS, startTime: startTime, options: PublicAPI.ApiGetGlobalEventLogOptions(endTime: endTime)) { (response, error) in
+PublicAPI.getGlobalEventLog(tenantId: tenantId, urlId: urlId, userIdWS: userIdWS, startTime: startTime, endTime: endTime) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1571,7 +1571,7 @@ No authorization required
 
 # **getUserNotificationCount**
 ```swift
-    open class func getUserNotificationCount(tenantId: String, options: ApiGetUserNotificationCountOptions = .init(), completion: @escaping (_ data: GetUserNotificationCountResponse?, _ error: Error?) -> Void)
+    open class func getUserNotificationCount(tenantId: String, sso: String? = nil, completion: @escaping (_ data: GetUserNotificationCountResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1584,7 +1584,7 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getUserNotificationCount(tenantId: tenantId, options: PublicAPI.ApiGetUserNotificationCountOptions(sso: sso)) { (response, error) in
+PublicAPI.getUserNotificationCount(tenantId: tenantId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1991,7 +1991,7 @@ No authorization required
 
 # **lockComment**
 ```swift
-    open class func lockComment(tenantId: String, commentId: String, broadcastId: String, options: ApiLockCommentOptions = .init(), completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func lockComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2006,7 +2006,7 @@ let commentId = "commentId_example" // String |
 let broadcastId = "broadcastId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.lockComment(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, options: PublicAPI.ApiLockCommentOptions(sso: sso)) { (response, error) in
+PublicAPI.lockComment(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2087,7 +2087,7 @@ No authorization required
 
 # **pinComment**
 ```swift
-    open class func pinComment(tenantId: String, commentId: String, broadcastId: String, options: ApiPinCommentOptions = .init(), completion: @escaping (_ data: ChangeCommentPinStatusResponse?, _ error: Error?) -> Void)
+    open class func pinComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: ChangeCommentPinStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2102,7 +2102,7 @@ let commentId = "commentId_example" // String |
 let broadcastId = "broadcastId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.pinComment(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, options: PublicAPI.ApiPinCommentOptions(sso: sso)) { (response, error) in
+PublicAPI.pinComment(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2197,7 +2197,7 @@ No authorization required
 
 # **resetUserNotificationCount**
 ```swift
-    open class func resetUserNotificationCount(tenantId: String, options: ApiResetUserNotificationCountOptions = .init(), completion: @escaping (_ data: ResetUserNotificationsResponse?, _ error: Error?) -> Void)
+    open class func resetUserNotificationCount(tenantId: String, sso: String? = nil, completion: @escaping (_ data: ResetUserNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2210,7 +2210,7 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.resetUserNotificationCount(tenantId: tenantId, options: PublicAPI.ApiResetUserNotificationCountOptions(sso: sso)) { (response, error) in
+PublicAPI.resetUserNotificationCount(tenantId: tenantId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2419,7 +2419,7 @@ No authorization required
 
 # **unBlockCommentPublic**
 ```swift
-    open class func unBlockCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, options: ApiUnBlockCommentPublicOptions = .init(), completion: @escaping (_ data: UnblockSuccess?, _ error: Error?) -> Void)
+    open class func unBlockCommentPublic(tenantId: String, commentId: String, publicBlockFromCommentParams: PublicBlockFromCommentParams, sso: String? = nil, completion: @escaping (_ data: UnblockSuccess?, _ error: Error?) -> Void)
 ```
 
 
@@ -2434,7 +2434,7 @@ let commentId = "commentId_example" // String |
 let publicBlockFromCommentParams = PublicBlockFromCommentParams(commentIds: ["commentIds_example"]) // PublicBlockFromCommentParams | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.unBlockCommentPublic(tenantId: tenantId, commentId: commentId, publicBlockFromCommentParams: publicBlockFromCommentParams, options: PublicAPI.ApiUnBlockCommentPublicOptions(sso: sso)) { (response, error) in
+PublicAPI.unBlockCommentPublic(tenantId: tenantId, commentId: commentId, publicBlockFromCommentParams: publicBlockFromCommentParams, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2472,7 +2472,7 @@ No authorization required
 
 # **unLockComment**
 ```swift
-    open class func unLockComment(tenantId: String, commentId: String, broadcastId: String, options: ApiUnLockCommentOptions = .init(), completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func unLockComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2487,7 +2487,7 @@ let commentId = "commentId_example" // String |
 let broadcastId = "broadcastId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.unLockComment(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, options: PublicAPI.ApiUnLockCommentOptions(sso: sso)) { (response, error) in
+PublicAPI.unLockComment(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2525,7 +2525,7 @@ No authorization required
 
 # **unPinComment**
 ```swift
-    open class func unPinComment(tenantId: String, commentId: String, broadcastId: String, options: ApiUnPinCommentOptions = .init(), completion: @escaping (_ data: ChangeCommentPinStatusResponse?, _ error: Error?) -> Void)
+    open class func unPinComment(tenantId: String, commentId: String, broadcastId: String, sso: String? = nil, completion: @escaping (_ data: ChangeCommentPinStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2540,7 +2540,7 @@ let commentId = "commentId_example" // String |
 let broadcastId = "broadcastId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.unPinComment(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, options: PublicAPI.ApiUnPinCommentOptions(sso: sso)) { (response, error) in
+PublicAPI.unPinComment(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2633,7 +2633,7 @@ No authorization required
 
 # **updateUserNotificationCommentSubscriptionStatus**
 ```swift
-    open class func updateUserNotificationCommentSubscriptionStatus(tenantId: String, notificationId: String, optedInOrOut: OptedInOrOut_updateUserNotificationCommentSubscriptionStatus, commentId: String, options: ApiUpdateUserNotificationCommentSubscriptionStatusOptions = .init(), completion: @escaping (_ data: UpdateUserNotificationCommentSubscriptionStatusResponse?, _ error: Error?) -> Void)
+    open class func updateUserNotificationCommentSubscriptionStatus(tenantId: String, notificationId: String, optedInOrOut: OptedInOrOut_updateUserNotificationCommentSubscriptionStatus, commentId: String, sso: String? = nil, completion: @escaping (_ data: UpdateUserNotificationCommentSubscriptionStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2651,7 +2651,7 @@ let optedInOrOut = "optedInOrOut_example" // String |
 let commentId = "commentId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.updateUserNotificationCommentSubscriptionStatus(tenantId: tenantId, notificationId: notificationId, optedInOrOut: optedInOrOut, commentId: commentId, options: PublicAPI.ApiUpdateUserNotificationCommentSubscriptionStatusOptions(sso: sso)) { (response, error) in
+PublicAPI.updateUserNotificationCommentSubscriptionStatus(tenantId: tenantId, notificationId: notificationId, optedInOrOut: optedInOrOut, commentId: commentId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2690,7 +2690,7 @@ No authorization required
 
 # **updateUserNotificationPageSubscriptionStatus**
 ```swift
-    open class func updateUserNotificationPageSubscriptionStatus(tenantId: String, urlId: String, url: String, pageTitle: String, subscribedOrUnsubscribed: SubscribedOrUnsubscribed_updateUserNotificationPageSubscriptionStatus, options: ApiUpdateUserNotificationPageSubscriptionStatusOptions = .init(), completion: @escaping (_ data: UpdateUserNotificationPageSubscriptionStatusResponse?, _ error: Error?) -> Void)
+    open class func updateUserNotificationPageSubscriptionStatus(tenantId: String, urlId: String, url: String, pageTitle: String, subscribedOrUnsubscribed: SubscribedOrUnsubscribed_updateUserNotificationPageSubscriptionStatus, sso: String? = nil, completion: @escaping (_ data: UpdateUserNotificationPageSubscriptionStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2709,7 +2709,7 @@ let pageTitle = "pageTitle_example" // String |
 let subscribedOrUnsubscribed = "subscribedOrUnsubscribed_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.updateUserNotificationPageSubscriptionStatus(tenantId: tenantId, urlId: urlId, url: url, pageTitle: pageTitle, subscribedOrUnsubscribed: subscribedOrUnsubscribed, options: PublicAPI.ApiUpdateUserNotificationPageSubscriptionStatusOptions(sso: sso)) { (response, error) in
+PublicAPI.updateUserNotificationPageSubscriptionStatus(tenantId: tenantId, urlId: urlId, url: url, pageTitle: pageTitle, subscribedOrUnsubscribed: subscribedOrUnsubscribed, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2749,7 +2749,7 @@ No authorization required
 
 # **updateUserNotificationStatus**
 ```swift
-    open class func updateUserNotificationStatus(tenantId: String, notificationId: String, newStatus: NewStatus_updateUserNotificationStatus, options: ApiUpdateUserNotificationStatusOptions = .init(), completion: @escaping (_ data: UpdateUserNotificationStatusResponse?, _ error: Error?) -> Void)
+    open class func updateUserNotificationStatus(tenantId: String, notificationId: String, newStatus: NewStatus_updateUserNotificationStatus, sso: String? = nil, completion: @escaping (_ data: UpdateUserNotificationStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2764,7 +2764,7 @@ let notificationId = "notificationId_example" // String |
 let newStatus = "newStatus_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.updateUserNotificationStatus(tenantId: tenantId, notificationId: notificationId, newStatus: newStatus, options: PublicAPI.ApiUpdateUserNotificationStatusOptions(sso: sso)) { (response, error) in
+PublicAPI.updateUserNotificationStatus(tenantId: tenantId, notificationId: notificationId, newStatus: newStatus, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
