@@ -46,14 +46,13 @@ The FastComments Swift SDK consists of several modules:
 ```swift
 import FastCommentsSwift
 
-// Create API client
-let publicApi = PublicAPI()
-
 // Fetch comments for a page
 do {
-    let response = try await publicApi.getCommentsPublic(
-        tenantId: "your-tenant-id",
-        urlId: "page-url-id"
+    let response = try await PublicAPI.getCommentsPublic(
+        request: PublicAPI.ApiGetCommentsPublicRequest(
+            tenantId: "your-tenant-id",
+            urlId: "page-url-id"
+        )
     )
 
     print("Found \(response.comments?.count ?? 0) comments")
@@ -70,15 +69,16 @@ do {
 ```swift
 import FastCommentsSwift
 
-// Create configuration with API key
-let defaultApi = DefaultAPI()
-defaultApi.apiKey = "your-api-key"
+// Configure your API key on the shared configuration (sent as the x-api-key header)
+FastCommentsSwiftAPIConfiguration.shared.customHeaders["x-api-key"] = "your-api-key"
 
 // Fetch comments using authenticated API
 do {
-    let response = try await defaultApi.getComments(
-        tenantId: "your-tenant-id",
-        urlId: "page-url-id"
+    let response = try await DefaultAPI.getComments(
+        request: DefaultAPI.ApiGetCommentsRequest(
+            tenantId: "your-tenant-id",
+            urlId: "page-url-id"
+        )
     )
 
     print("Total comments: \(response.count ?? 0)")
@@ -99,9 +99,11 @@ import FastCommentsSwift
 // (generate it with FastCommentsSSO, see the SSO section above).
 do {
     let response = try await ModerationAPI.getApiComments(
-        page: 0,
-        count: 30,
-        sso: ssoToken
+        request: ModerationAPI.ApiGetApiCommentsRequest(
+            page: 0,
+            count: 30,
+            sso: ssoToken
+        )
     )
 
     print("Found \(response.comments.count) comments to moderate")
@@ -207,9 +209,11 @@ Every `ModerationAPI` method accepts an `sso` parameter so moderators can be aut
 The Swift SDK uses modern async/await syntax for all API calls:
 
 ```swift
-let response = try await publicApi.getCommentsPublic(
-    tenantId: "your-tenant-id",
-    urlId: "page-url-id"
+let response = try await PublicAPI.getCommentsPublic(
+    request: PublicAPI.ApiGetCommentsPublicRequest(
+        tenantId: "your-tenant-id",
+        urlId: "page-url-id"
+    )
 )
 ```
 
@@ -221,11 +225,10 @@ If you're getting 401 errors when using the authenticated API:
 
 1. **Check your API key**: Ensure you're using the correct API key from your FastComments dashboard
 2. **Verify the tenant ID**: Make sure the tenant ID matches your account
-3. **API key format**: The API key should be set on the API client:
+3. **API key format**: The API key should be set as the `x-api-key` header on the shared configuration:
 
 ```swift
-let defaultApi = DefaultAPI()
-defaultApi.apiKey = "YOUR_API_KEY"
+FastCommentsSwiftAPIConfiguration.shared.customHeaders["x-api-key"] = "YOUR_API_KEY"
 ```
 
 4. **Using the wrong API**: Make sure you're using `DefaultAPI` (not `PublicAPI`) for authenticated calls

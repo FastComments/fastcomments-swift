@@ -51,7 +51,7 @@ Method | HTTP request | Description
 
 # **deleteModerationVote**
 ```swift
-    open class func deleteModerationVote(commentId: String, voteId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteDeleteResponse?, _ error: Error?) -> Void)
+    open class func deleteModerationVote(commentId: String, voteId: String, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteDeleteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -63,11 +63,11 @@ import FastCommentsSwift
 
 let commentId = "commentId_example" // String | 
 let voteId = "voteId_example" // String | 
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.deleteModerationVote(commentId: commentId, voteId: voteId, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.deleteModerationVote(commentId: commentId, voteId: voteId, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -85,8 +85,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **String** |  | 
  **voteId** | **String** |  | 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1270,7 +1270,7 @@ No authorization required
 
 # **postAdjustCommentVotes**
 ```swift
-    open class func postAdjustCommentVotes(commentId: String, adjustCommentVotesParams: AdjustCommentVotesParams, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: AdjustVotesResponse?, _ error: Error?) -> Void)
+    open class func postAdjustCommentVotes(commentId: String, adjustCommentVotesParams: AdjustCommentVotesParams, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: AdjustVotesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1282,11 +1282,11 @@ import FastCommentsSwift
 
 let commentId = "commentId_example" // String | 
 let adjustCommentVotesParams = AdjustCommentVotesParams(adjustVoteAmount: 123) // AdjustCommentVotesParams | 
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postAdjustCommentVotes(commentId: commentId, adjustCommentVotesParams: adjustCommentVotesParams, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.postAdjustCommentVotes(commentId: commentId, adjustCommentVotesParams: adjustCommentVotesParams, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1304,8 +1304,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **String** |  | 
  **adjustCommentVotesParams** | [**AdjustCommentVotesParams**](AdjustCommentVotesParams.md) |  | 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1610,7 +1610,7 @@ No authorization required
 
 # **postFlagComment**
 ```swift
-    open class func postFlagComment(commentId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func postFlagComment(commentId: String, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1621,11 +1621,11 @@ No authorization required
 import FastCommentsSwift
 
 let commentId = "commentId_example" // String | 
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postFlagComment(commentId: commentId, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.postFlagComment(commentId: commentId, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1642,8 +1642,8 @@ ModerationAPI.postFlagComment(commentId: commentId, broadcastId: broadcastId, te
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **String** |  | 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1663,7 +1663,7 @@ No authorization required
 
 # **postRemoveComment**
 ```swift
-    open class func postRemoveComment(commentId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostRemoveCommentResponse?, _ error: Error?) -> Void)
+    open class func postRemoveComment(commentId: String, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: PostRemoveCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1674,11 +1674,11 @@ No authorization required
 import FastCommentsSwift
 
 let commentId = "commentId_example" // String | 
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postRemoveComment(commentId: commentId, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.postRemoveComment(commentId: commentId, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1695,8 +1695,8 @@ ModerationAPI.postRemoveComment(commentId: commentId, broadcastId: broadcastId, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **String** |  | 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1716,7 +1716,7 @@ No authorization required
 
 # **postRestoreDeletedComment**
 ```swift
-    open class func postRestoreDeletedComment(commentId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func postRestoreDeletedComment(commentId: String, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1727,11 +1727,11 @@ No authorization required
 import FastCommentsSwift
 
 let commentId = "commentId_example" // String | 
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postRestoreDeletedComment(commentId: commentId, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.postRestoreDeletedComment(commentId: commentId, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1748,8 +1748,8 @@ ModerationAPI.postRestoreDeletedComment(commentId: commentId, broadcastId: broad
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **String** |  | 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1769,7 +1769,7 @@ No authorization required
 
 # **postSetCommentApprovalStatus**
 ```swift
-    open class func postSetCommentApprovalStatus(commentId: String, approved: Bool? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: SetCommentApprovedResponse?, _ error: Error?) -> Void)
+    open class func postSetCommentApprovalStatus(commentId: String, approved: Bool? = nil, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: SetCommentApprovedResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1781,11 +1781,11 @@ import FastCommentsSwift
 
 let commentId = "commentId_example" // String | 
 let approved = true // Bool |  (optional)
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postSetCommentApprovalStatus(commentId: commentId, approved: approved, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.postSetCommentApprovalStatus(commentId: commentId, approved: approved, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1803,8 +1803,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **String** |  | 
  **approved** | **Bool** |  | [optional] 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1824,7 +1824,7 @@ No authorization required
 
 # **postSetCommentReviewStatus**
 ```swift
-    open class func postSetCommentReviewStatus(commentId: String, reviewed: Bool? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func postSetCommentReviewStatus(commentId: String, reviewed: Bool? = nil, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1836,11 +1836,11 @@ import FastCommentsSwift
 
 let commentId = "commentId_example" // String | 
 let reviewed = true // Bool |  (optional)
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postSetCommentReviewStatus(commentId: commentId, reviewed: reviewed, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.postSetCommentReviewStatus(commentId: commentId, reviewed: reviewed, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1858,8 +1858,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **String** |  | 
  **reviewed** | **Bool** |  | [optional] 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1879,7 +1879,7 @@ No authorization required
 
 # **postSetCommentSpamStatus**
 ```swift
-    open class func postSetCommentSpamStatus(commentId: String, spam: Bool? = nil, permNotSpam: Bool? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func postSetCommentSpamStatus(commentId: String, spam: Bool? = nil, permNotSpam: Bool? = nil, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1892,11 +1892,11 @@ import FastCommentsSwift
 let commentId = "commentId_example" // String | 
 let spam = true // Bool |  (optional)
 let permNotSpam = true // Bool |  (optional)
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postSetCommentSpamStatus(commentId: commentId, spam: spam, permNotSpam: permNotSpam, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.postSetCommentSpamStatus(commentId: commentId, spam: spam, permNotSpam: permNotSpam, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1915,8 +1915,8 @@ Name | Type | Description  | Notes
  **commentId** | **String** |  | 
  **spam** | **Bool** |  | [optional] 
  **permNotSpam** | **Bool** |  | [optional] 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1936,7 +1936,7 @@ No authorization required
 
 # **postSetCommentText**
 ```swift
-    open class func postSetCommentText(commentId: String, setCommentTextParams: SetCommentTextParams, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: SetCommentTextResponse?, _ error: Error?) -> Void)
+    open class func postSetCommentText(commentId: String, setCommentTextParams: SetCommentTextParams, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: SetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1948,11 +1948,11 @@ import FastCommentsSwift
 
 let commentId = "commentId_example" // String | 
 let setCommentTextParams = SetCommentTextParams(comment: "comment_example") // SetCommentTextParams | 
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postSetCommentText(commentId: commentId, setCommentTextParams: setCommentTextParams, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.postSetCommentText(commentId: commentId, setCommentTextParams: setCommentTextParams, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1970,8 +1970,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **String** |  | 
  **setCommentTextParams** | [**SetCommentTextParams**](SetCommentTextParams.md) |  | 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1991,7 +1991,7 @@ No authorization required
 
 # **postUnFlagComment**
 ```swift
-    open class func postUnFlagComment(commentId: String, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func postUnFlagComment(commentId: String, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2002,11 +2002,11 @@ No authorization required
 import FastCommentsSwift
 
 let commentId = "commentId_example" // String | 
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postUnFlagComment(commentId: commentId, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.postUnFlagComment(commentId: commentId, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2023,8 +2023,8 @@ ModerationAPI.postUnFlagComment(commentId: commentId, broadcastId: broadcastId, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **String** |  | 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -2044,7 +2044,7 @@ No authorization required
 
 # **postVote**
 ```swift
-    open class func postVote(commentId: String, direction: String? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
+    open class func postVote(commentId: String, direction: String? = nil, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2056,11 +2056,11 @@ import FastCommentsSwift
 
 let commentId = "commentId_example" // String | 
 let direction = "direction_example" // String |  (optional)
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postVote(commentId: commentId, direction: direction, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.postVote(commentId: commentId, direction: direction, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2078,8 +2078,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | **String** |  | 
  **direction** | **String** |  | [optional] 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -2099,7 +2099,7 @@ No authorization required
 
 # **putAwardBadge**
 ```swift
-    open class func putAwardBadge(badgeId: String, userId: String? = nil, commentId: String? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: AwardUserBadgeResponse?, _ error: Error?) -> Void)
+    open class func putAwardBadge(badgeId: String, userId: String? = nil, commentId: String? = nil, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: AwardUserBadgeResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2112,11 +2112,11 @@ import FastCommentsSwift
 let badgeId = "badgeId_example" // String | 
 let userId = "userId_example" // String |  (optional)
 let commentId = "commentId_example" // String |  (optional)
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.putAwardBadge(badgeId: badgeId, userId: userId, commentId: commentId, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.putAwardBadge(badgeId: badgeId, userId: userId, commentId: commentId, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2135,8 +2135,8 @@ Name | Type | Description  | Notes
  **badgeId** | **String** |  | 
  **userId** | **String** |  | [optional] 
  **commentId** | **String** |  | [optional] 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -2207,7 +2207,7 @@ No authorization required
 
 # **putRemoveBadge**
 ```swift
-    open class func putRemoveBadge(badgeId: String, userId: String? = nil, commentId: String? = nil, broadcastId: String? = nil, tenantId: String? = nil, sso: String? = nil, completion: @escaping (_ data: RemoveUserBadgeResponse?, _ error: Error?) -> Void)
+    open class func putRemoveBadge(badgeId: String, userId: String? = nil, commentId: String? = nil, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: RemoveUserBadgeResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2220,11 +2220,11 @@ import FastCommentsSwift
 let badgeId = "badgeId_example" // String | 
 let userId = "userId_example" // String |  (optional)
 let commentId = "commentId_example" // String |  (optional)
-let broadcastId = "broadcastId_example" // String |  (optional)
 let tenantId = "tenantId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.putRemoveBadge(badgeId: badgeId, userId: userId, commentId: commentId, broadcastId: broadcastId, tenantId: tenantId, sso: sso) { (response, error) in
+ModerationAPI.putRemoveBadge(badgeId: badgeId, userId: userId, commentId: commentId, tenantId: tenantId, broadcastId: broadcastId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2243,8 +2243,8 @@ Name | Type | Description  | Notes
  **badgeId** | **String** |  | 
  **userId** | **String** |  | [optional] 
  **commentId** | **String** |  | [optional] 
- **broadcastId** | **String** |  | [optional] 
  **tenantId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type

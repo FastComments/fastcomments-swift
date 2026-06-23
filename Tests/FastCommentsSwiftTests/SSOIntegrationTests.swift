@@ -50,11 +50,13 @@ final class SSOIntegrationTests: XCTestCase {
         )
 
         let createResponse = try await PublicAPI.createCommentPublic(
-            tenantId: tenantId,
-            urlId: testUrlId,
-            broadcastId: "swift-test-\(timestamp)",
-            commentData: commentData,
-            sso: token
+            request: PublicAPI.ApiCreateCommentPublicRequest(
+                tenantId: tenantId,
+                urlId: testUrlId,
+                broadcastId: "swift-test-\(timestamp)",
+                commentData: commentData,
+                sso: token
+            )
         )
 
         XCTAssertEqual(createResponse.status, .success, "Create comment should succeed")
@@ -69,9 +71,11 @@ final class SSOIntegrationTests: XCTestCase {
 
         // Fetch comments back with the same SSO token
         let getResponse = try await PublicAPI.getCommentsPublic(
-            tenantId: tenantId,
-            urlId: testUrlId,
-            sso: token
+            request: PublicAPI.ApiGetCommentsPublicRequest(
+                tenantId: tenantId,
+                urlId: testUrlId,
+                sso: token
+            )
         )
 
         XCTAssertEqual(getResponse.status, "success", "Get comments should succeed")
@@ -120,11 +124,13 @@ final class SSOIntegrationTests: XCTestCase {
         )
 
         let createResponse = try await PublicAPI.createCommentPublic(
-            tenantId: tenantId,
-            urlId: testUrlId,
-            broadcastId: "swift-opts-\(timestamp)",
-            commentData: commentData,
-            sso: token
+            request: PublicAPI.ApiCreateCommentPublicRequest(
+                tenantId: tenantId,
+                urlId: testUrlId,
+                broadcastId: "swift-opts-\(timestamp)",
+                commentData: commentData,
+                sso: token
+            )
         )
 
         XCTAssertEqual(createResponse.status, .success, "Create comment with optional SSO fields should succeed")
@@ -138,9 +144,11 @@ final class SSOIntegrationTests: XCTestCase {
 
         // Fetch and verify the comment carries the display label
         let getResponse = try await PublicAPI.getCommentsPublic(
-            tenantId: tenantId,
-            urlId: testUrlId,
-            sso: token
+            request: PublicAPI.ApiGetCommentsPublicRequest(
+                tenantId: tenantId,
+                urlId: testUrlId,
+                sso: token
+            )
         )
 
         XCTAssertEqual(getResponse.status, "success")
@@ -187,11 +195,13 @@ final class SSOIntegrationTests: XCTestCase {
         )
 
         let createResponse = try await PublicAPI.createCommentPublic(
-            tenantId: tenantId,
-            urlId: testUrlId,
-            broadcastId: "swift-simple-\(timestamp)",
-            commentData: commentData,
-            sso: token
+            request: PublicAPI.ApiCreateCommentPublicRequest(
+                tenantId: tenantId,
+                urlId: testUrlId,
+                broadcastId: "swift-simple-\(timestamp)",
+                commentData: commentData,
+                sso: token
+            )
         )
 
         XCTAssertEqual(createResponse.status, .success, "Create comment with simple SSO should succeed")
@@ -206,9 +216,11 @@ final class SSOIntegrationTests: XCTestCase {
 
         // Fetch comments back with the same simple SSO token
         let getResponse = try await PublicAPI.getCommentsPublic(
-            tenantId: tenantId,
-            urlId: testUrlId,
-            sso: token
+            request: PublicAPI.ApiGetCommentsPublicRequest(
+                tenantId: tenantId,
+                urlId: testUrlId,
+                sso: token
+            )
         )
 
         XCTAssertEqual(getResponse.status, "success", "Get comments with simple SSO should succeed")
