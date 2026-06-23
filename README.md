@@ -49,10 +49,8 @@ import FastCommentsSwift
 // Fetch comments for a page
 do {
     let response = try await PublicAPI.getCommentsPublic(
-        request: PublicAPI.ApiGetCommentsPublicRequest(
-            tenantId: "your-tenant-id",
-            urlId: "page-url-id"
-        )
+        tenantId: "your-tenant-id",
+        urlId: "page-url-id"
     )
 
     print("Found \(response.comments?.count ?? 0) comments")
@@ -75,10 +73,8 @@ FastCommentsSwiftAPIConfiguration.shared.customHeaders["x-api-key"] = "your-api-
 // Fetch comments using authenticated API
 do {
     let response = try await DefaultAPI.getComments(
-        request: DefaultAPI.ApiGetCommentsRequest(
-            tenantId: "your-tenant-id",
-            urlId: "page-url-id"
-        )
+        tenantId: "your-tenant-id",
+        options: .init(urlId: "page-url-id")
     )
 
     print("Total comments: \(response.count ?? 0)")
@@ -99,7 +95,7 @@ import FastCommentsSwift
 // (generate it with FastCommentsSSO, see the SSO section above).
 do {
     let response = try await ModerationAPI.getApiComments(
-        request: ModerationAPI.ApiGetApiCommentsRequest(
+        options: .init(
             page: 0,
             count: 30,
             sso: ssoToken
@@ -210,10 +206,8 @@ The Swift SDK uses modern async/await syntax for all API calls:
 
 ```swift
 let response = try await PublicAPI.getCommentsPublic(
-    request: PublicAPI.ApiGetCommentsPublicRequest(
-        tenantId: "your-tenant-id",
-        urlId: "page-url-id"
-    )
+    tenantId: "your-tenant-id",
+    urlId: "page-url-id"
 )
 ```
 
