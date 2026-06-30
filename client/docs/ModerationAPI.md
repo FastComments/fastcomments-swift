@@ -4,54 +4,54 @@ All URIs are relative to *https://fastcomments.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteModerationVote**](ModerationAPI.md#deletemoderationvote) | **DELETE** /auth/my-account/moderate-comments/vote/{commentId}/{voteId} | 
-[**getApiComments**](ModerationAPI.md#getapicomments) | **GET** /auth/my-account/moderate-comments/api/comments | 
-[**getApiExportStatus**](ModerationAPI.md#getapiexportstatus) | **GET** /auth/my-account/moderate-comments/api/export/status | 
-[**getApiIds**](ModerationAPI.md#getapiids) | **GET** /auth/my-account/moderate-comments/api/ids | 
-[**getBanUsersFromComment**](ModerationAPI.md#getbanusersfromcomment) | **GET** /auth/my-account/moderate-comments/ban-users/from-comment/{commentId} | 
-[**getCommentBanStatus**](ModerationAPI.md#getcommentbanstatus) | **GET** /auth/my-account/moderate-comments/get-comment-ban-status/{commentId} | 
-[**getCommentChildren**](ModerationAPI.md#getcommentchildren) | **GET** /auth/my-account/moderate-comments/comment-children/{commentId} | 
-[**getCount**](ModerationAPI.md#getcount) | **GET** /auth/my-account/moderate-comments/count | 
-[**getCounts**](ModerationAPI.md#getcounts) | **GET** /auth/my-account/moderate-comments/banned-users/counts | 
-[**getLogs**](ModerationAPI.md#getlogs) | **GET** /auth/my-account/moderate-comments/logs/{commentId} | 
-[**getManualBadges**](ModerationAPI.md#getmanualbadges) | **GET** /auth/my-account/moderate-comments/get-manual-badges | 
-[**getManualBadgesForUser**](ModerationAPI.md#getmanualbadgesforuser) | **GET** /auth/my-account/moderate-comments/get-manual-badges-for-user | 
-[**getModerationComment**](ModerationAPI.md#getmoderationcomment) | **GET** /auth/my-account/moderate-comments/comment/{commentId} | 
-[**getModerationCommentText**](ModerationAPI.md#getmoderationcommenttext) | **GET** /auth/my-account/moderate-comments/get-comment-text/{commentId} | 
-[**getPreBanSummary**](ModerationAPI.md#getprebansummary) | **GET** /auth/my-account/moderate-comments/pre-ban-summary/{commentId} | 
-[**getSearchCommentsSummary**](ModerationAPI.md#getsearchcommentssummary) | **GET** /auth/my-account/moderate-comments/search/comments/summary | 
-[**getSearchPages**](ModerationAPI.md#getsearchpages) | **GET** /auth/my-account/moderate-comments/search/pages | 
-[**getSearchSites**](ModerationAPI.md#getsearchsites) | **GET** /auth/my-account/moderate-comments/search/sites | 
-[**getSearchSuggest**](ModerationAPI.md#getsearchsuggest) | **GET** /auth/my-account/moderate-comments/search/suggest | 
-[**getSearchUsers**](ModerationAPI.md#getsearchusers) | **GET** /auth/my-account/moderate-comments/search/users | 
-[**getTrustFactor**](ModerationAPI.md#gettrustfactor) | **GET** /auth/my-account/moderate-comments/get-trust-factor | 
-[**getUserBanPreference**](ModerationAPI.md#getuserbanpreference) | **GET** /auth/my-account/moderate-comments/user-ban-preference | 
-[**getUserInternalProfile**](ModerationAPI.md#getuserinternalprofile) | **GET** /auth/my-account/moderate-comments/get-user-internal-profile | 
-[**postAdjustCommentVotes**](ModerationAPI.md#postadjustcommentvotes) | **POST** /auth/my-account/moderate-comments/adjust-comment-votes/{commentId} | 
-[**postApiExport**](ModerationAPI.md#postapiexport) | **POST** /auth/my-account/moderate-comments/api/export | 
-[**postBanUserFromComment**](ModerationAPI.md#postbanuserfromcomment) | **POST** /auth/my-account/moderate-comments/ban-user/from-comment/{commentId} | 
-[**postBanUserUndo**](ModerationAPI.md#postbanuserundo) | **POST** /auth/my-account/moderate-comments/ban-user/undo | 
-[**postBulkPreBanSummary**](ModerationAPI.md#postbulkprebansummary) | **POST** /auth/my-account/moderate-comments/bulk-pre-ban-summary | 
-[**postCommentsByIds**](ModerationAPI.md#postcommentsbyids) | **POST** /auth/my-account/moderate-comments/comments-by-ids | 
-[**postFlagComment**](ModerationAPI.md#postflagcomment) | **POST** /auth/my-account/moderate-comments/flag-comment/{commentId} | 
-[**postRemoveComment**](ModerationAPI.md#postremovecomment) | **POST** /auth/my-account/moderate-comments/remove-comment/{commentId} | 
-[**postRestoreDeletedComment**](ModerationAPI.md#postrestoredeletedcomment) | **POST** /auth/my-account/moderate-comments/restore-deleted-comment/{commentId} | 
-[**postSetCommentApprovalStatus**](ModerationAPI.md#postsetcommentapprovalstatus) | **POST** /auth/my-account/moderate-comments/set-comment-approval-status/{commentId} | 
-[**postSetCommentReviewStatus**](ModerationAPI.md#postsetcommentreviewstatus) | **POST** /auth/my-account/moderate-comments/set-comment-review-status/{commentId} | 
-[**postSetCommentSpamStatus**](ModerationAPI.md#postsetcommentspamstatus) | **POST** /auth/my-account/moderate-comments/set-comment-spam-status/{commentId} | 
-[**postSetCommentText**](ModerationAPI.md#postsetcommenttext) | **POST** /auth/my-account/moderate-comments/set-comment-text/{commentId} | 
-[**postUnFlagComment**](ModerationAPI.md#postunflagcomment) | **POST** /auth/my-account/moderate-comments/un-flag-comment/{commentId} | 
-[**postVote**](ModerationAPI.md#postvote) | **POST** /auth/my-account/moderate-comments/vote/{commentId} | 
-[**putAwardBadge**](ModerationAPI.md#putawardbadge) | **PUT** /auth/my-account/moderate-comments/award-badge | 
-[**putCloseThread**](ModerationAPI.md#putclosethread) | **PUT** /auth/my-account/moderate-comments/close-thread | 
-[**putRemoveBadge**](ModerationAPI.md#putremovebadge) | **PUT** /auth/my-account/moderate-comments/remove-badge | 
-[**putReopenThread**](ModerationAPI.md#putreopenthread) | **PUT** /auth/my-account/moderate-comments/reopen-thread | 
-[**setTrustFactor**](ModerationAPI.md#settrustfactor) | **PUT** /auth/my-account/moderate-comments/set-trust-factor | 
+[**deleteModerationVote**](ModerationAPI.md#deletemoderationvote) | **DELETE** /auth/my-account/moderate-comments/mod_api/vote/{commentId}/{voteId} | 
+[**getApiComments**](ModerationAPI.md#getapicomments) | **GET** /auth/my-account/moderate-comments/mod_api/api/comments | 
+[**getApiExportStatus**](ModerationAPI.md#getapiexportstatus) | **GET** /auth/my-account/moderate-comments/mod_api/api/export/status | 
+[**getApiIds**](ModerationAPI.md#getapiids) | **GET** /auth/my-account/moderate-comments/mod_api/api/ids | 
+[**getBanUsersFromComment**](ModerationAPI.md#getbanusersfromcomment) | **GET** /auth/my-account/moderate-comments/mod_api/ban-users/from-comment/{commentId} | 
+[**getCommentBanStatus**](ModerationAPI.md#getcommentbanstatus) | **GET** /auth/my-account/moderate-comments/mod_api/get-comment-ban-status/{commentId} | 
+[**getCommentChildren**](ModerationAPI.md#getcommentchildren) | **GET** /auth/my-account/moderate-comments/mod_api/comment-children/{commentId} | 
+[**getCount**](ModerationAPI.md#getcount) | **GET** /auth/my-account/moderate-comments/mod_api/count | 
+[**getCounts**](ModerationAPI.md#getcounts) | **GET** /auth/my-account/moderate-comments/banned-users/mod_api/counts | 
+[**getLogs**](ModerationAPI.md#getlogs) | **GET** /auth/my-account/moderate-comments/mod_api/logs/{commentId} | 
+[**getManualBadges**](ModerationAPI.md#getmanualbadges) | **GET** /auth/my-account/moderate-comments/mod_api/get-manual-badges | 
+[**getManualBadgesForUser**](ModerationAPI.md#getmanualbadgesforuser) | **GET** /auth/my-account/moderate-comments/mod_api/get-manual-badges-for-user | 
+[**getModerationComment**](ModerationAPI.md#getmoderationcomment) | **GET** /auth/my-account/moderate-comments/mod_api/comment/{commentId} | 
+[**getModerationCommentText**](ModerationAPI.md#getmoderationcommenttext) | **GET** /auth/my-account/moderate-comments/mod_api/get-comment-text/{commentId} | 
+[**getPreBanSummary**](ModerationAPI.md#getprebansummary) | **GET** /auth/my-account/moderate-comments/mod_api/pre-ban-summary/{commentId} | 
+[**getSearchCommentsSummary**](ModerationAPI.md#getsearchcommentssummary) | **GET** /auth/my-account/moderate-comments/mod_api/search/comments/summary | 
+[**getSearchPages**](ModerationAPI.md#getsearchpages) | **GET** /auth/my-account/moderate-comments/mod_api/search/pages | 
+[**getSearchSites**](ModerationAPI.md#getsearchsites) | **GET** /auth/my-account/moderate-comments/mod_api/search/sites | 
+[**getSearchSuggest**](ModerationAPI.md#getsearchsuggest) | **GET** /auth/my-account/moderate-comments/mod_api/search/suggest | 
+[**getSearchUsers**](ModerationAPI.md#getsearchusers) | **GET** /auth/my-account/moderate-comments/mod_api/search/users | 
+[**getTrustFactor**](ModerationAPI.md#gettrustfactor) | **GET** /auth/my-account/moderate-comments/mod_api/get-trust-factor | 
+[**getUserBanPreference**](ModerationAPI.md#getuserbanpreference) | **GET** /auth/my-account/moderate-comments/mod_api/user-ban-preference | 
+[**getUserInternalProfile**](ModerationAPI.md#getuserinternalprofile) | **GET** /auth/my-account/moderate-comments/mod_api/get-user-internal-profile | 
+[**postAdjustCommentVotes**](ModerationAPI.md#postadjustcommentvotes) | **POST** /auth/my-account/moderate-comments/mod_api/adjust-comment-votes/{commentId} | 
+[**postApiExport**](ModerationAPI.md#postapiexport) | **POST** /auth/my-account/moderate-comments/mod_api/api/export | 
+[**postBanUserFromComment**](ModerationAPI.md#postbanuserfromcomment) | **POST** /auth/my-account/moderate-comments/mod_api/ban-user/from-comment/{commentId} | 
+[**postBanUserUndo**](ModerationAPI.md#postbanuserundo) | **POST** /auth/my-account/moderate-comments/mod_api/ban-user/undo | 
+[**postBulkPreBanSummary**](ModerationAPI.md#postbulkprebansummary) | **POST** /auth/my-account/moderate-comments/mod_api/bulk-pre-ban-summary | 
+[**postCommentsByIds**](ModerationAPI.md#postcommentsbyids) | **POST** /auth/my-account/moderate-comments/mod_api/comments-by-ids | 
+[**postFlagComment**](ModerationAPI.md#postflagcomment) | **POST** /auth/my-account/moderate-comments/mod_api/flag-comment/{commentId} | 
+[**postRemoveComment**](ModerationAPI.md#postremovecomment) | **POST** /auth/my-account/moderate-comments/mod_api/remove-comment/{commentId} | 
+[**postRestoreDeletedComment**](ModerationAPI.md#postrestoredeletedcomment) | **POST** /auth/my-account/moderate-comments/mod_api/restore-deleted-comment/{commentId} | 
+[**postSetCommentApprovalStatus**](ModerationAPI.md#postsetcommentapprovalstatus) | **POST** /auth/my-account/moderate-comments/mod_api/set-comment-approval-status/{commentId} | 
+[**postSetCommentReviewStatus**](ModerationAPI.md#postsetcommentreviewstatus) | **POST** /auth/my-account/moderate-comments/mod_api/set-comment-review-status/{commentId} | 
+[**postSetCommentSpamStatus**](ModerationAPI.md#postsetcommentspamstatus) | **POST** /auth/my-account/moderate-comments/mod_api/set-comment-spam-status/{commentId} | 
+[**postSetCommentText**](ModerationAPI.md#postsetcommenttext) | **POST** /auth/my-account/moderate-comments/mod_api/set-comment-text/{commentId} | 
+[**postUnFlagComment**](ModerationAPI.md#postunflagcomment) | **POST** /auth/my-account/moderate-comments/mod_api/un-flag-comment/{commentId} | 
+[**postVote**](ModerationAPI.md#postvote) | **POST** /auth/my-account/moderate-comments/mod_api/vote/{commentId} | 
+[**putAwardBadge**](ModerationAPI.md#putawardbadge) | **PUT** /auth/my-account/moderate-comments/mod_api/award-badge | 
+[**putCloseThread**](ModerationAPI.md#putclosethread) | **PUT** /auth/my-account/moderate-comments/mod_api/close-thread | 
+[**putRemoveBadge**](ModerationAPI.md#putremovebadge) | **PUT** /auth/my-account/moderate-comments/mod_api/remove-badge | 
+[**putReopenThread**](ModerationAPI.md#putreopenthread) | **PUT** /auth/my-account/moderate-comments/mod_api/reopen-thread | 
+[**setTrustFactor**](ModerationAPI.md#settrustfactor) | **PUT** /auth/my-account/moderate-comments/mod_api/set-trust-factor | 
 
 
 # **deleteModerationVote**
 ```swift
-    open class func deleteModerationVote(commentId: String, voteId: String, sso: String? = nil, completion: @escaping (_ data: VoteDeleteResponse?, _ error: Error?) -> Void)
+    open class func deleteModerationVote(tenantId: String, commentId: String, voteId: String, options: DeleteModerationVoteOptions = .init(), completion: @escaping (_ data: VoteDeleteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -61,11 +61,13 @@ Method | HTTP request | Description
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let voteId = "voteId_example" // String | 
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.deleteModerationVote(commentId: commentId, voteId: voteId, sso: sso) { (response, error) in
+ModerationAPI.deleteModerationVote(tenantId: tenantId, commentId: commentId, voteId: voteId, options: ModerationAPI.DeleteModerationVoteOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -81,8 +83,10 @@ ModerationAPI.deleteModerationVote(commentId: commentId, voteId: voteId, sso: ss
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **voteId** | **String** |  | 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -102,7 +106,7 @@ No authorization required
 
 # **getApiComments**
 ```swift
-    open class func getApiComments(page: Double? = nil, count: Double? = nil, textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, sorts: String? = nil, demo: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationAPIGetCommentsResponse?, _ error: Error?) -> Void)
+    open class func getApiComments(tenantId: String, options: GetApiCommentsOptions = .init(), completion: @escaping (_ data: ModerationAPIGetCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -112,6 +116,7 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let page = 987 // Double |  (optional)
 let count = 987 // Double |  (optional)
 let textSearch = "textSearch_example" // String |  (optional)
@@ -122,7 +127,7 @@ let sorts = "sorts_example" // String |  (optional)
 let demo = true // Bool |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getApiComments(page: page, count: count, textSearch: textSearch, byIPFromComment: byIPFromComment, filters: filters, searchFilters: searchFilters, sorts: sorts, demo: demo, sso: sso) { (response, error) in
+ModerationAPI.getApiComments(tenantId: tenantId, options: ModerationAPI.GetApiCommentsOptions(page: page, count: count, textSearch: textSearch, byIPFromComment: byIPFromComment, filters: filters, searchFilters: searchFilters, sorts: sorts, demo: demo, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -138,6 +143,7 @@ ModerationAPI.getApiComments(page: page, count: count, textSearch: textSearch, b
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **page** | **Double** |  | [optional] 
  **count** | **Double** |  | [optional] 
  **textSearch** | **String** |  | [optional] 
@@ -165,7 +171,7 @@ No authorization required
 
 # **getApiExportStatus**
 ```swift
-    open class func getApiExportStatus(batchJobId: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationExportStatusResponse?, _ error: Error?) -> Void)
+    open class func getApiExportStatus(tenantId: String, options: GetApiExportStatusOptions = .init(), completion: @escaping (_ data: ModerationExportStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -175,10 +181,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let batchJobId = "batchJobId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getApiExportStatus(batchJobId: batchJobId, sso: sso) { (response, error) in
+ModerationAPI.getApiExportStatus(tenantId: tenantId, options: ModerationAPI.GetApiExportStatusOptions(batchJobId: batchJobId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -194,6 +201,7 @@ ModerationAPI.getApiExportStatus(batchJobId: batchJobId, sso: sso) { (response, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **batchJobId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
@@ -214,7 +222,7 @@ No authorization required
 
 # **getApiIds**
 ```swift
-    open class func getApiIds(textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, afterId: String? = nil, demo: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationAPIGetCommentIdsResponse?, _ error: Error?) -> Void)
+    open class func getApiIds(tenantId: String, options: GetApiIdsOptions = .init(), completion: @escaping (_ data: ModerationAPIGetCommentIdsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -224,6 +232,7 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let textSearch = "textSearch_example" // String |  (optional)
 let byIPFromComment = "byIPFromComment_example" // String |  (optional)
 let filters = "filters_example" // String |  (optional)
@@ -232,7 +241,7 @@ let afterId = "afterId_example" // String |  (optional)
 let demo = true // Bool |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getApiIds(textSearch: textSearch, byIPFromComment: byIPFromComment, filters: filters, searchFilters: searchFilters, afterId: afterId, demo: demo, sso: sso) { (response, error) in
+ModerationAPI.getApiIds(tenantId: tenantId, options: ModerationAPI.GetApiIdsOptions(textSearch: textSearch, byIPFromComment: byIPFromComment, filters: filters, searchFilters: searchFilters, afterId: afterId, demo: demo, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -248,6 +257,7 @@ ModerationAPI.getApiIds(textSearch: textSearch, byIPFromComment: byIPFromComment
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **textSearch** | **String** |  | [optional] 
  **byIPFromComment** | **String** |  | [optional] 
  **filters** | **String** |  | [optional] 
@@ -273,7 +283,7 @@ No authorization required
 
 # **getBanUsersFromComment**
 ```swift
-    open class func getBanUsersFromComment(commentId: String, sso: String? = nil, completion: @escaping (_ data: GetBannedUsersFromCommentResponse?, _ error: Error?) -> Void)
+    open class func getBanUsersFromComment(tenantId: String, commentId: String, sso: String? = nil, completion: @escaping (_ data: GetBannedUsersFromCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -283,10 +293,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getBanUsersFromComment(commentId: commentId, sso: sso) { (response, error) in
+ModerationAPI.getBanUsersFromComment(tenantId: tenantId, commentId: commentId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -302,6 +313,7 @@ ModerationAPI.getBanUsersFromComment(commentId: commentId, sso: sso) { (response
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **sso** | **String** |  | [optional] 
 
@@ -322,7 +334,7 @@ No authorization required
 
 # **getCommentBanStatus**
 ```swift
-    open class func getCommentBanStatus(commentId: String, sso: String? = nil, completion: @escaping (_ data: GetCommentBanStatusResponse?, _ error: Error?) -> Void)
+    open class func getCommentBanStatus(tenantId: String, commentId: String, sso: String? = nil, completion: @escaping (_ data: GetCommentBanStatusResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -332,10 +344,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getCommentBanStatus(commentId: commentId, sso: sso) { (response, error) in
+ModerationAPI.getCommentBanStatus(tenantId: tenantId, commentId: commentId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -351,6 +364,7 @@ ModerationAPI.getCommentBanStatus(commentId: commentId, sso: sso) { (response, e
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **sso** | **String** |  | [optional] 
 
@@ -371,7 +385,7 @@ No authorization required
 
 # **getCommentChildren**
 ```swift
-    open class func getCommentChildren(commentId: String, sso: String? = nil, completion: @escaping (_ data: ModerationAPIChildCommentsResponse?, _ error: Error?) -> Void)
+    open class func getCommentChildren(tenantId: String, commentId: String, sso: String? = nil, completion: @escaping (_ data: ModerationAPIChildCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -381,10 +395,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getCommentChildren(commentId: commentId, sso: sso) { (response, error) in
+ModerationAPI.getCommentChildren(tenantId: tenantId, commentId: commentId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -400,6 +415,7 @@ ModerationAPI.getCommentChildren(commentId: commentId, sso: sso) { (response, er
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **sso** | **String** |  | [optional] 
 
@@ -420,7 +436,7 @@ No authorization required
 
 # **getCount**
 ```swift
-    open class func getCount(textSearch: String? = nil, byIPFromComment: String? = nil, filter: String? = nil, searchFilters: String? = nil, demo: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationAPICountCommentsResponse?, _ error: Error?) -> Void)
+    open class func getCount(tenantId: String, options: GetCountOptions = .init(), completion: @escaping (_ data: ModerationAPICountCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -430,6 +446,7 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let textSearch = "textSearch_example" // String |  (optional)
 let byIPFromComment = "byIPFromComment_example" // String |  (optional)
 let filter = "filter_example" // String |  (optional)
@@ -437,7 +454,7 @@ let searchFilters = "searchFilters_example" // String |  (optional)
 let demo = true // Bool |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getCount(textSearch: textSearch, byIPFromComment: byIPFromComment, filter: filter, searchFilters: searchFilters, demo: demo, sso: sso) { (response, error) in
+ModerationAPI.getCount(tenantId: tenantId, options: ModerationAPI.GetCountOptions(textSearch: textSearch, byIPFromComment: byIPFromComment, filter: filter, searchFilters: searchFilters, demo: demo, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -453,6 +470,7 @@ ModerationAPI.getCount(textSearch: textSearch, byIPFromComment: byIPFromComment,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **textSearch** | **String** |  | [optional] 
  **byIPFromComment** | **String** |  | [optional] 
  **filter** | **String** |  | [optional] 
@@ -477,7 +495,7 @@ No authorization required
 
 # **getCounts**
 ```swift
-    open class func getCounts(sso: String? = nil, completion: @escaping (_ data: GetBannedUsersCountResponse?, _ error: Error?) -> Void)
+    open class func getCounts(tenantId: String, sso: String? = nil, completion: @escaping (_ data: GetBannedUsersCountResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -487,9 +505,10 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getCounts(sso: sso) { (response, error) in
+ModerationAPI.getCounts(tenantId: tenantId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -505,6 +524,7 @@ ModerationAPI.getCounts(sso: sso) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -524,7 +544,7 @@ No authorization required
 
 # **getLogs**
 ```swift
-    open class func getLogs(commentId: String, sso: String? = nil, completion: @escaping (_ data: ModerationAPIGetLogsResponse?, _ error: Error?) -> Void)
+    open class func getLogs(tenantId: String, commentId: String, sso: String? = nil, completion: @escaping (_ data: ModerationAPIGetLogsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -534,10 +554,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getLogs(commentId: commentId, sso: sso) { (response, error) in
+ModerationAPI.getLogs(tenantId: tenantId, commentId: commentId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -553,6 +574,7 @@ ModerationAPI.getLogs(commentId: commentId, sso: sso) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **sso** | **String** |  | [optional] 
 
@@ -573,7 +595,7 @@ No authorization required
 
 # **getManualBadges**
 ```swift
-    open class func getManualBadges(sso: String? = nil, completion: @escaping (_ data: GetTenantManualBadgesResponse?, _ error: Error?) -> Void)
+    open class func getManualBadges(tenantId: String, sso: String? = nil, completion: @escaping (_ data: GetTenantManualBadgesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -583,9 +605,10 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getManualBadges(sso: sso) { (response, error) in
+ModerationAPI.getManualBadges(tenantId: tenantId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -601,6 +624,7 @@ ModerationAPI.getManualBadges(sso: sso) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -620,7 +644,7 @@ No authorization required
 
 # **getManualBadgesForUser**
 ```swift
-    open class func getManualBadgesForUser(badgesUserId: String? = nil, commentId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetUserManualBadgesResponse?, _ error: Error?) -> Void)
+    open class func getManualBadgesForUser(tenantId: String, options: GetManualBadgesForUserOptions = .init(), completion: @escaping (_ data: GetUserManualBadgesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -630,11 +654,12 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let badgesUserId = "badgesUserId_example" // String |  (optional)
 let commentId = "commentId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getManualBadgesForUser(badgesUserId: badgesUserId, commentId: commentId, sso: sso) { (response, error) in
+ModerationAPI.getManualBadgesForUser(tenantId: tenantId, options: ModerationAPI.GetManualBadgesForUserOptions(badgesUserId: badgesUserId, commentId: commentId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -650,6 +675,7 @@ ModerationAPI.getManualBadgesForUser(badgesUserId: badgesUserId, commentId: comm
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **badgesUserId** | **String** |  | [optional] 
  **commentId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
@@ -671,7 +697,7 @@ No authorization required
 
 # **getModerationComment**
 ```swift
-    open class func getModerationComment(commentId: String, includeEmail: Bool? = nil, includeIP: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationAPICommentResponse?, _ error: Error?) -> Void)
+    open class func getModerationComment(tenantId: String, commentId: String, options: GetModerationCommentOptions = .init(), completion: @escaping (_ data: ModerationAPICommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -681,12 +707,13 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let includeEmail = true // Bool |  (optional)
 let includeIP = true // Bool |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getModerationComment(commentId: commentId, includeEmail: includeEmail, includeIP: includeIP, sso: sso) { (response, error) in
+ModerationAPI.getModerationComment(tenantId: tenantId, commentId: commentId, options: ModerationAPI.GetModerationCommentOptions(includeEmail: includeEmail, includeIP: includeIP, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -702,6 +729,7 @@ ModerationAPI.getModerationComment(commentId: commentId, includeEmail: includeEm
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **includeEmail** | **Bool** |  | [optional] 
  **includeIP** | **Bool** |  | [optional] 
@@ -724,7 +752,7 @@ No authorization required
 
 # **getModerationCommentText**
 ```swift
-    open class func getModerationCommentText(commentId: String, sso: String? = nil, completion: @escaping (_ data: GetCommentTextResponse?, _ error: Error?) -> Void)
+    open class func getModerationCommentText(tenantId: String, commentId: String, sso: String? = nil, completion: @escaping (_ data: GetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -734,10 +762,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getModerationCommentText(commentId: commentId, sso: sso) { (response, error) in
+ModerationAPI.getModerationCommentText(tenantId: tenantId, commentId: commentId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -753,6 +782,7 @@ ModerationAPI.getModerationCommentText(commentId: commentId, sso: sso) { (respon
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **sso** | **String** |  | [optional] 
 
@@ -773,7 +803,7 @@ No authorization required
 
 # **getPreBanSummary**
 ```swift
-    open class func getPreBanSummary(commentId: String, includeByUserIdAndEmail: Bool? = nil, includeByIP: Bool? = nil, includeByEmailDomain: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: PreBanSummary?, _ error: Error?) -> Void)
+    open class func getPreBanSummary(tenantId: String, commentId: String, options: GetPreBanSummaryOptions = .init(), completion: @escaping (_ data: PreBanSummary?, _ error: Error?) -> Void)
 ```
 
 
@@ -783,13 +813,14 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let includeByUserIdAndEmail = true // Bool |  (optional)
 let includeByIP = true // Bool |  (optional)
 let includeByEmailDomain = true // Bool |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getPreBanSummary(commentId: commentId, includeByUserIdAndEmail: includeByUserIdAndEmail, includeByIP: includeByIP, includeByEmailDomain: includeByEmailDomain, sso: sso) { (response, error) in
+ModerationAPI.getPreBanSummary(tenantId: tenantId, commentId: commentId, options: ModerationAPI.GetPreBanSummaryOptions(includeByUserIdAndEmail: includeByUserIdAndEmail, includeByIP: includeByIP, includeByEmailDomain: includeByEmailDomain, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -805,6 +836,7 @@ ModerationAPI.getPreBanSummary(commentId: commentId, includeByUserIdAndEmail: in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **includeByUserIdAndEmail** | **Bool** |  | [optional] 
  **includeByIP** | **Bool** |  | [optional] 
@@ -828,7 +860,7 @@ No authorization required
 
 # **getSearchCommentsSummary**
 ```swift
-    open class func getSearchCommentsSummary(value: String? = nil, filters: String? = nil, searchFilters: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationCommentSearchResponse?, _ error: Error?) -> Void)
+    open class func getSearchCommentsSummary(tenantId: String, options: GetSearchCommentsSummaryOptions = .init(), completion: @escaping (_ data: ModerationCommentSearchResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -838,12 +870,13 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let value = "value_example" // String |  (optional)
 let filters = "filters_example" // String |  (optional)
 let searchFilters = "searchFilters_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getSearchCommentsSummary(value: value, filters: filters, searchFilters: searchFilters, sso: sso) { (response, error) in
+ModerationAPI.getSearchCommentsSummary(tenantId: tenantId, options: ModerationAPI.GetSearchCommentsSummaryOptions(value: value, filters: filters, searchFilters: searchFilters, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -859,6 +892,7 @@ ModerationAPI.getSearchCommentsSummary(value: value, filters: filters, searchFil
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **value** | **String** |  | [optional] 
  **filters** | **String** |  | [optional] 
  **searchFilters** | **String** |  | [optional] 
@@ -881,7 +915,7 @@ No authorization required
 
 # **getSearchPages**
 ```swift
-    open class func getSearchPages(value: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationPageSearchResponse?, _ error: Error?) -> Void)
+    open class func getSearchPages(tenantId: String, options: GetSearchPagesOptions = .init(), completion: @escaping (_ data: ModerationPageSearchResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -891,10 +925,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let value = "value_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getSearchPages(value: value, sso: sso) { (response, error) in
+ModerationAPI.getSearchPages(tenantId: tenantId, options: ModerationAPI.GetSearchPagesOptions(value: value, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -910,6 +945,7 @@ ModerationAPI.getSearchPages(value: value, sso: sso) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **value** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
@@ -930,7 +966,7 @@ No authorization required
 
 # **getSearchSites**
 ```swift
-    open class func getSearchSites(value: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationSiteSearchResponse?, _ error: Error?) -> Void)
+    open class func getSearchSites(tenantId: String, options: GetSearchSitesOptions = .init(), completion: @escaping (_ data: ModerationSiteSearchResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -940,10 +976,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let value = "value_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getSearchSites(value: value, sso: sso) { (response, error) in
+ModerationAPI.getSearchSites(tenantId: tenantId, options: ModerationAPI.GetSearchSitesOptions(value: value, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -959,6 +996,7 @@ ModerationAPI.getSearchSites(value: value, sso: sso) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **value** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
@@ -979,7 +1017,7 @@ No authorization required
 
 # **getSearchSuggest**
 ```swift
-    open class func getSearchSuggest(textSearch: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationSuggestResponse?, _ error: Error?) -> Void)
+    open class func getSearchSuggest(tenantId: String, options: GetSearchSuggestOptions = .init(), completion: @escaping (_ data: ModerationSuggestResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -989,10 +1027,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let textSearch = "textSearch_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getSearchSuggest(textSearch: textSearch, sso: sso) { (response, error) in
+ModerationAPI.getSearchSuggest(tenantId: tenantId, options: ModerationAPI.GetSearchSuggestOptions(textSearch: textSearch, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1008,6 +1047,7 @@ ModerationAPI.getSearchSuggest(textSearch: textSearch, sso: sso) { (response, er
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **textSearch** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
@@ -1028,7 +1068,7 @@ No authorization required
 
 # **getSearchUsers**
 ```swift
-    open class func getSearchUsers(value: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationUserSearchResponse?, _ error: Error?) -> Void)
+    open class func getSearchUsers(tenantId: String, options: GetSearchUsersOptions = .init(), completion: @escaping (_ data: ModerationUserSearchResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1038,10 +1078,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let value = "value_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getSearchUsers(value: value, sso: sso) { (response, error) in
+ModerationAPI.getSearchUsers(tenantId: tenantId, options: ModerationAPI.GetSearchUsersOptions(value: value, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1057,6 +1098,7 @@ ModerationAPI.getSearchUsers(value: value, sso: sso) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **value** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
@@ -1077,7 +1119,7 @@ No authorization required
 
 # **getTrustFactor**
 ```swift
-    open class func getTrustFactor(userId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetUserTrustFactorResponse?, _ error: Error?) -> Void)
+    open class func getTrustFactor(tenantId: String, options: GetTrustFactorOptions = .init(), completion: @escaping (_ data: GetUserTrustFactorResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1087,10 +1129,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let userId = "userId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getTrustFactor(userId: userId, sso: sso) { (response, error) in
+ModerationAPI.getTrustFactor(tenantId: tenantId, options: ModerationAPI.GetTrustFactorOptions(userId: userId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1106,6 +1149,7 @@ ModerationAPI.getTrustFactor(userId: userId, sso: sso) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **userId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
@@ -1126,7 +1170,7 @@ No authorization required
 
 # **getUserBanPreference**
 ```swift
-    open class func getUserBanPreference(sso: String? = nil, completion: @escaping (_ data: APIModerateGetUserBanPreferencesResponse?, _ error: Error?) -> Void)
+    open class func getUserBanPreference(tenantId: String, sso: String? = nil, completion: @escaping (_ data: APIModerateGetUserBanPreferencesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1136,9 +1180,10 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getUserBanPreference(sso: sso) { (response, error) in
+ModerationAPI.getUserBanPreference(tenantId: tenantId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1154,6 +1199,7 @@ ModerationAPI.getUserBanPreference(sso: sso) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1173,7 +1219,7 @@ No authorization required
 
 # **getUserInternalProfile**
 ```swift
-    open class func getUserInternalProfile(commentId: String? = nil, sso: String? = nil, completion: @escaping (_ data: GetUserInternalProfileResponse?, _ error: Error?) -> Void)
+    open class func getUserInternalProfile(tenantId: String, options: GetUserInternalProfileOptions = .init(), completion: @escaping (_ data: GetUserInternalProfileResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1183,10 +1229,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.getUserInternalProfile(commentId: commentId, sso: sso) { (response, error) in
+ModerationAPI.getUserInternalProfile(tenantId: tenantId, options: ModerationAPI.GetUserInternalProfileOptions(commentId: commentId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1202,6 +1249,7 @@ ModerationAPI.getUserInternalProfile(commentId: commentId, sso: sso) { (response
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
@@ -1222,7 +1270,7 @@ No authorization required
 
 # **postAdjustCommentVotes**
 ```swift
-    open class func postAdjustCommentVotes(commentId: String, adjustCommentVotesParams: AdjustCommentVotesParams, sso: String? = nil, completion: @escaping (_ data: AdjustVotesResponse?, _ error: Error?) -> Void)
+    open class func postAdjustCommentVotes(tenantId: String, commentId: String, adjustCommentVotesParams: AdjustCommentVotesParams, options: PostAdjustCommentVotesOptions = .init(), completion: @escaping (_ data: AdjustVotesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1232,11 +1280,13 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let adjustCommentVotesParams = AdjustCommentVotesParams(adjustVoteAmount: 123) // AdjustCommentVotesParams | 
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postAdjustCommentVotes(commentId: commentId, adjustCommentVotesParams: adjustCommentVotesParams, sso: sso) { (response, error) in
+ModerationAPI.postAdjustCommentVotes(tenantId: tenantId, commentId: commentId, adjustCommentVotesParams: adjustCommentVotesParams, options: ModerationAPI.PostAdjustCommentVotesOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1252,8 +1302,10 @@ ModerationAPI.postAdjustCommentVotes(commentId: commentId, adjustCommentVotesPar
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **adjustCommentVotesParams** | [**AdjustCommentVotesParams**](AdjustCommentVotesParams.md) |  | 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1273,7 +1325,7 @@ No authorization required
 
 # **postApiExport**
 ```swift
-    open class func postApiExport(textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, sorts: String? = nil, sso: String? = nil, completion: @escaping (_ data: ModerationExportResponse?, _ error: Error?) -> Void)
+    open class func postApiExport(tenantId: String, options: PostApiExportOptions = .init(), completion: @escaping (_ data: ModerationExportResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1283,6 +1335,7 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let textSearch = "textSearch_example" // String |  (optional)
 let byIPFromComment = "byIPFromComment_example" // String |  (optional)
 let filters = "filters_example" // String |  (optional)
@@ -1290,7 +1343,7 @@ let searchFilters = "searchFilters_example" // String |  (optional)
 let sorts = "sorts_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postApiExport(textSearch: textSearch, byIPFromComment: byIPFromComment, filters: filters, searchFilters: searchFilters, sorts: sorts, sso: sso) { (response, error) in
+ModerationAPI.postApiExport(tenantId: tenantId, options: ModerationAPI.PostApiExportOptions(textSearch: textSearch, byIPFromComment: byIPFromComment, filters: filters, searchFilters: searchFilters, sorts: sorts, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1306,6 +1359,7 @@ ModerationAPI.postApiExport(textSearch: textSearch, byIPFromComment: byIPFromCom
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **textSearch** | **String** |  | [optional] 
  **byIPFromComment** | **String** |  | [optional] 
  **filters** | **String** |  | [optional] 
@@ -1330,7 +1384,7 @@ No authorization required
 
 # **postBanUserFromComment**
 ```swift
-    open class func postBanUserFromComment(commentId: String, banEmail: Bool? = nil, banEmailDomain: Bool? = nil, banIP: Bool? = nil, deleteAllUsersComments: Bool? = nil, bannedUntil: String? = nil, isShadowBan: Bool? = nil, updateId: String? = nil, banReason: String? = nil, sso: String? = nil, completion: @escaping (_ data: BanUserFromCommentResult?, _ error: Error?) -> Void)
+    open class func postBanUserFromComment(tenantId: String, commentId: String, options: PostBanUserFromCommentOptions = .init(), completion: @escaping (_ data: BanUserFromCommentResult?, _ error: Error?) -> Void)
 ```
 
 
@@ -1340,6 +1394,7 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let banEmail = true // Bool |  (optional)
 let banEmailDomain = true // Bool |  (optional)
@@ -1351,7 +1406,7 @@ let updateId = "updateId_example" // String |  (optional)
 let banReason = "banReason_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postBanUserFromComment(commentId: commentId, banEmail: banEmail, banEmailDomain: banEmailDomain, banIP: banIP, deleteAllUsersComments: deleteAllUsersComments, bannedUntil: bannedUntil, isShadowBan: isShadowBan, updateId: updateId, banReason: banReason, sso: sso) { (response, error) in
+ModerationAPI.postBanUserFromComment(tenantId: tenantId, commentId: commentId, options: ModerationAPI.PostBanUserFromCommentOptions(banEmail: banEmail, banEmailDomain: banEmailDomain, banIP: banIP, deleteAllUsersComments: deleteAllUsersComments, bannedUntil: bannedUntil, isShadowBan: isShadowBan, updateId: updateId, banReason: banReason, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1367,6 +1422,7 @@ ModerationAPI.postBanUserFromComment(commentId: commentId, banEmail: banEmail, b
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **banEmail** | **Bool** |  | [optional] 
  **banEmailDomain** | **Bool** |  | [optional] 
@@ -1395,7 +1451,7 @@ No authorization required
 
 # **postBanUserUndo**
 ```swift
-    open class func postBanUserUndo(banUserUndoParams: BanUserUndoParams, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func postBanUserUndo(tenantId: String, banUserUndoParams: BanUserUndoParams, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1405,10 +1461,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let banUserUndoParams = BanUserUndoParams(changelog: APIBanUserChangeLog(createdBannedUserId: "createdBannedUserId_example", updatedBannedUserId: "updatedBannedUserId_example", deletedBannedUsers: [APIBannedUser(id: "id_example", tenantId: "tenantId_example", userId: "userId_example", email: "email_example", username: "username_example", ipHash: "ipHash_example", createdAt: Date(), bannedByUserId: "bannedByUserId_example", bannedCommentText: "bannedCommentText_example", banType: "banType_example", bannedUntil: Date(), hasEmailWildcard: false, banReason: "banReason_example")], changedValuesBefore: APIBanUserChangedValues(id: "id_example", tenantId: "tenantId_example", userId: "userId_example", email: "email_example", username: "username_example", ipHash: "ipHash_example", createdAt: Date(), bannedByUserId: "bannedByUserId_example", bannedCommentText: "bannedCommentText_example", banType: "banType_example", bannedUntil: Date(), hasEmailWildcard: false, banReason: "banReason_example"))) // BanUserUndoParams | 
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postBanUserUndo(banUserUndoParams: banUserUndoParams, sso: sso) { (response, error) in
+ModerationAPI.postBanUserUndo(tenantId: tenantId, banUserUndoParams: banUserUndoParams, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1424,6 +1481,7 @@ ModerationAPI.postBanUserUndo(banUserUndoParams: banUserUndoParams, sso: sso) { 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **banUserUndoParams** | [**BanUserUndoParams**](BanUserUndoParams.md) |  | 
  **sso** | **String** |  | [optional] 
 
@@ -1444,7 +1502,7 @@ No authorization required
 
 # **postBulkPreBanSummary**
 ```swift
-    open class func postBulkPreBanSummary(bulkPreBanParams: BulkPreBanParams, includeByUserIdAndEmail: Bool? = nil, includeByIP: Bool? = nil, includeByEmailDomain: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: BulkPreBanSummary?, _ error: Error?) -> Void)
+    open class func postBulkPreBanSummary(tenantId: String, bulkPreBanParams: BulkPreBanParams, options: PostBulkPreBanSummaryOptions = .init(), completion: @escaping (_ data: BulkPreBanSummary?, _ error: Error?) -> Void)
 ```
 
 
@@ -1454,13 +1512,14 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let bulkPreBanParams = BulkPreBanParams(commentIds: ["commentIds_example"]) // BulkPreBanParams | 
 let includeByUserIdAndEmail = true // Bool |  (optional)
 let includeByIP = true // Bool |  (optional)
 let includeByEmailDomain = true // Bool |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postBulkPreBanSummary(bulkPreBanParams: bulkPreBanParams, includeByUserIdAndEmail: includeByUserIdAndEmail, includeByIP: includeByIP, includeByEmailDomain: includeByEmailDomain, sso: sso) { (response, error) in
+ModerationAPI.postBulkPreBanSummary(tenantId: tenantId, bulkPreBanParams: bulkPreBanParams, options: ModerationAPI.PostBulkPreBanSummaryOptions(includeByUserIdAndEmail: includeByUserIdAndEmail, includeByIP: includeByIP, includeByEmailDomain: includeByEmailDomain, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1476,6 +1535,7 @@ ModerationAPI.postBulkPreBanSummary(bulkPreBanParams: bulkPreBanParams, includeB
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **bulkPreBanParams** | [**BulkPreBanParams**](BulkPreBanParams.md) |  | 
  **includeByUserIdAndEmail** | **Bool** |  | [optional] 
  **includeByIP** | **Bool** |  | [optional] 
@@ -1499,7 +1559,7 @@ No authorization required
 
 # **postCommentsByIds**
 ```swift
-    open class func postCommentsByIds(commentsByIdsParams: CommentsByIdsParams, sso: String? = nil, completion: @escaping (_ data: ModerationAPIChildCommentsResponse?, _ error: Error?) -> Void)
+    open class func postCommentsByIds(tenantId: String, commentsByIdsParams: CommentsByIdsParams, sso: String? = nil, completion: @escaping (_ data: ModerationAPIChildCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1509,10 +1569,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentsByIdsParams = CommentsByIdsParams(ids: ["ids_example"]) // CommentsByIdsParams | 
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postCommentsByIds(commentsByIdsParams: commentsByIdsParams, sso: sso) { (response, error) in
+ModerationAPI.postCommentsByIds(tenantId: tenantId, commentsByIdsParams: commentsByIdsParams, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1528,6 +1589,7 @@ ModerationAPI.postCommentsByIds(commentsByIdsParams: commentsByIdsParams, sso: s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentsByIdsParams** | [**CommentsByIdsParams**](CommentsByIdsParams.md) |  | 
  **sso** | **String** |  | [optional] 
 
@@ -1548,7 +1610,7 @@ No authorization required
 
 # **postFlagComment**
 ```swift
-    open class func postFlagComment(commentId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func postFlagComment(tenantId: String, commentId: String, options: PostFlagCommentOptions = .init(), completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1558,10 +1620,12 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postFlagComment(commentId: commentId, sso: sso) { (response, error) in
+ModerationAPI.postFlagComment(tenantId: tenantId, commentId: commentId, options: ModerationAPI.PostFlagCommentOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1577,7 +1641,9 @@ ModerationAPI.postFlagComment(commentId: commentId, sso: sso) { (response, error
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1597,7 +1663,7 @@ No authorization required
 
 # **postRemoveComment**
 ```swift
-    open class func postRemoveComment(commentId: String, sso: String? = nil, completion: @escaping (_ data: PostRemoveCommentResponse?, _ error: Error?) -> Void)
+    open class func postRemoveComment(tenantId: String, commentId: String, options: PostRemoveCommentOptions = .init(), completion: @escaping (_ data: PostRemoveCommentApiResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1607,10 +1673,12 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postRemoveComment(commentId: commentId, sso: sso) { (response, error) in
+ModerationAPI.postRemoveComment(tenantId: tenantId, commentId: commentId, options: ModerationAPI.PostRemoveCommentOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1626,12 +1694,14 @@ ModerationAPI.postRemoveComment(commentId: commentId, sso: sso) { (response, err
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
 
-[**PostRemoveCommentResponse**](PostRemoveCommentResponse.md)
+[**PostRemoveCommentApiResponse**](PostRemoveCommentApiResponse.md)
 
 ### Authorization
 
@@ -1646,7 +1716,7 @@ No authorization required
 
 # **postRestoreDeletedComment**
 ```swift
-    open class func postRestoreDeletedComment(commentId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func postRestoreDeletedComment(tenantId: String, commentId: String, options: PostRestoreDeletedCommentOptions = .init(), completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1656,10 +1726,12 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postRestoreDeletedComment(commentId: commentId, sso: sso) { (response, error) in
+ModerationAPI.postRestoreDeletedComment(tenantId: tenantId, commentId: commentId, options: ModerationAPI.PostRestoreDeletedCommentOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1675,7 +1747,9 @@ ModerationAPI.postRestoreDeletedComment(commentId: commentId, sso: sso) { (respo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1695,7 +1769,7 @@ No authorization required
 
 # **postSetCommentApprovalStatus**
 ```swift
-    open class func postSetCommentApprovalStatus(commentId: String, approved: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: SetCommentApprovedResponse?, _ error: Error?) -> Void)
+    open class func postSetCommentApprovalStatus(tenantId: String, commentId: String, options: PostSetCommentApprovalStatusOptions = .init(), completion: @escaping (_ data: SetCommentApprovedResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1705,11 +1779,13 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let approved = true // Bool |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postSetCommentApprovalStatus(commentId: commentId, approved: approved, sso: sso) { (response, error) in
+ModerationAPI.postSetCommentApprovalStatus(tenantId: tenantId, commentId: commentId, options: ModerationAPI.PostSetCommentApprovalStatusOptions(approved: approved, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1725,8 +1801,10 @@ ModerationAPI.postSetCommentApprovalStatus(commentId: commentId, approved: appro
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **approved** | **Bool** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1746,7 +1824,7 @@ No authorization required
 
 # **postSetCommentReviewStatus**
 ```swift
-    open class func postSetCommentReviewStatus(commentId: String, reviewed: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func postSetCommentReviewStatus(tenantId: String, commentId: String, options: PostSetCommentReviewStatusOptions = .init(), completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1756,11 +1834,13 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let reviewed = true // Bool |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postSetCommentReviewStatus(commentId: commentId, reviewed: reviewed, sso: sso) { (response, error) in
+ModerationAPI.postSetCommentReviewStatus(tenantId: tenantId, commentId: commentId, options: ModerationAPI.PostSetCommentReviewStatusOptions(reviewed: reviewed, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1776,8 +1856,10 @@ ModerationAPI.postSetCommentReviewStatus(commentId: commentId, reviewed: reviewe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **reviewed** | **Bool** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1797,7 +1879,7 @@ No authorization required
 
 # **postSetCommentSpamStatus**
 ```swift
-    open class func postSetCommentSpamStatus(commentId: String, spam: Bool? = nil, permNotSpam: Bool? = nil, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func postSetCommentSpamStatus(tenantId: String, commentId: String, options: PostSetCommentSpamStatusOptions = .init(), completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1807,12 +1889,14 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let spam = true // Bool |  (optional)
 let permNotSpam = true // Bool |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postSetCommentSpamStatus(commentId: commentId, spam: spam, permNotSpam: permNotSpam, sso: sso) { (response, error) in
+ModerationAPI.postSetCommentSpamStatus(tenantId: tenantId, commentId: commentId, options: ModerationAPI.PostSetCommentSpamStatusOptions(spam: spam, permNotSpam: permNotSpam, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1828,9 +1912,11 @@ ModerationAPI.postSetCommentSpamStatus(commentId: commentId, spam: spam, permNot
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **spam** | **Bool** |  | [optional] 
  **permNotSpam** | **Bool** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1850,7 +1936,7 @@ No authorization required
 
 # **postSetCommentText**
 ```swift
-    open class func postSetCommentText(commentId: String, setCommentTextParams: SetCommentTextParams, sso: String? = nil, completion: @escaping (_ data: SetCommentTextResponse?, _ error: Error?) -> Void)
+    open class func postSetCommentText(tenantId: String, commentId: String, setCommentTextParams: SetCommentTextParams, options: PostSetCommentTextOptions = .init(), completion: @escaping (_ data: SetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1860,11 +1946,13 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let setCommentTextParams = SetCommentTextParams(comment: "comment_example") // SetCommentTextParams | 
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postSetCommentText(commentId: commentId, setCommentTextParams: setCommentTextParams, sso: sso) { (response, error) in
+ModerationAPI.postSetCommentText(tenantId: tenantId, commentId: commentId, setCommentTextParams: setCommentTextParams, options: ModerationAPI.PostSetCommentTextOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1880,8 +1968,10 @@ ModerationAPI.postSetCommentText(commentId: commentId, setCommentTextParams: set
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **setCommentTextParams** | [**SetCommentTextParams**](SetCommentTextParams.md) |  | 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1901,7 +1991,7 @@ No authorization required
 
 # **postUnFlagComment**
 ```swift
-    open class func postUnFlagComment(commentId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func postUnFlagComment(tenantId: String, commentId: String, options: PostUnFlagCommentOptions = .init(), completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1911,10 +2001,12 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postUnFlagComment(commentId: commentId, sso: sso) { (response, error) in
+ModerationAPI.postUnFlagComment(tenantId: tenantId, commentId: commentId, options: ModerationAPI.PostUnFlagCommentOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1930,7 +2022,9 @@ ModerationAPI.postUnFlagComment(commentId: commentId, sso: sso) { (response, err
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -1950,7 +2044,7 @@ No authorization required
 
 # **postVote**
 ```swift
-    open class func postVote(commentId: String, direction: String? = nil, sso: String? = nil, completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
+    open class func postVote(tenantId: String, commentId: String, options: PostVoteOptions = .init(), completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1960,11 +2054,13 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let commentId = "commentId_example" // String | 
 let direction = "direction_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.postVote(commentId: commentId, direction: direction, sso: sso) { (response, error) in
+ModerationAPI.postVote(tenantId: tenantId, commentId: commentId, options: ModerationAPI.PostVoteOptions(direction: direction, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1980,8 +2076,10 @@ ModerationAPI.postVote(commentId: commentId, direction: direction, sso: sso) { (
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **commentId** | **String** |  | 
  **direction** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
 
 ### Return type
@@ -2001,7 +2099,7 @@ No authorization required
 
 # **putAwardBadge**
 ```swift
-    open class func putAwardBadge(badgeId: String, userId: String? = nil, commentId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: AwardUserBadgeResponse?, _ error: Error?) -> Void)
+    open class func putAwardBadge(tenantId: String, badgeId: String, options: PutAwardBadgeOptions = .init(), completion: @escaping (_ data: AwardUserBadgeResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2011,13 +2109,14 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let badgeId = "badgeId_example" // String | 
 let userId = "userId_example" // String |  (optional)
 let commentId = "commentId_example" // String |  (optional)
 let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.putAwardBadge(badgeId: badgeId, userId: userId, commentId: commentId, broadcastId: broadcastId, sso: sso) { (response, error) in
+ModerationAPI.putAwardBadge(tenantId: tenantId, badgeId: badgeId, options: ModerationAPI.PutAwardBadgeOptions(userId: userId, commentId: commentId, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2033,6 +2132,7 @@ ModerationAPI.putAwardBadge(badgeId: badgeId, userId: userId, commentId: comment
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **badgeId** | **String** |  | 
  **userId** | **String** |  | [optional] 
  **commentId** | **String** |  | [optional] 
@@ -2056,7 +2156,7 @@ No authorization required
 
 # **putCloseThread**
 ```swift
-    open class func putCloseThread(urlId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func putCloseThread(tenantId: String, urlId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2066,10 +2166,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.putCloseThread(urlId: urlId, sso: sso) { (response, error) in
+ModerationAPI.putCloseThread(tenantId: tenantId, urlId: urlId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2085,6 +2186,7 @@ ModerationAPI.putCloseThread(urlId: urlId, sso: sso) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **urlId** | **String** |  | 
  **sso** | **String** |  | [optional] 
 
@@ -2105,7 +2207,7 @@ No authorization required
 
 # **putRemoveBadge**
 ```swift
-    open class func putRemoveBadge(badgeId: String, userId: String? = nil, commentId: String? = nil, broadcastId: String? = nil, sso: String? = nil, completion: @escaping (_ data: RemoveUserBadgeResponse?, _ error: Error?) -> Void)
+    open class func putRemoveBadge(tenantId: String, badgeId: String, options: PutRemoveBadgeOptions = .init(), completion: @escaping (_ data: RemoveUserBadgeResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2115,13 +2217,14 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let badgeId = "badgeId_example" // String | 
 let userId = "userId_example" // String |  (optional)
 let commentId = "commentId_example" // String |  (optional)
 let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.putRemoveBadge(badgeId: badgeId, userId: userId, commentId: commentId, broadcastId: broadcastId, sso: sso) { (response, error) in
+ModerationAPI.putRemoveBadge(tenantId: tenantId, badgeId: badgeId, options: ModerationAPI.PutRemoveBadgeOptions(userId: userId, commentId: commentId, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2137,6 +2240,7 @@ ModerationAPI.putRemoveBadge(badgeId: badgeId, userId: userId, commentId: commen
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **badgeId** | **String** |  | 
  **userId** | **String** |  | [optional] 
  **commentId** | **String** |  | [optional] 
@@ -2160,7 +2264,7 @@ No authorization required
 
 # **putReopenThread**
 ```swift
-    open class func putReopenThread(urlId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func putReopenThread(tenantId: String, urlId: String, sso: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2170,10 +2274,11 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.putReopenThread(urlId: urlId, sso: sso) { (response, error) in
+ModerationAPI.putReopenThread(tenantId: tenantId, urlId: urlId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2189,6 +2294,7 @@ ModerationAPI.putReopenThread(urlId: urlId, sso: sso) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **urlId** | **String** |  | 
  **sso** | **String** |  | [optional] 
 
@@ -2209,7 +2315,7 @@ No authorization required
 
 # **setTrustFactor**
 ```swift
-    open class func setTrustFactor(userId: String? = nil, trustFactor: String? = nil, sso: String? = nil, completion: @escaping (_ data: SetUserTrustFactorResponse?, _ error: Error?) -> Void)
+    open class func setTrustFactor(tenantId: String, options: SetTrustFactorOptions = .init(), completion: @escaping (_ data: SetUserTrustFactorResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2219,11 +2325,12 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let userId = "userId_example" // String |  (optional)
 let trustFactor = "trustFactor_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-ModerationAPI.setTrustFactor(userId: userId, trustFactor: trustFactor, sso: sso) { (response, error) in
+ModerationAPI.setTrustFactor(tenantId: tenantId, options: ModerationAPI.SetTrustFactorOptions(userId: userId, trustFactor: trustFactor, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2239,6 +2346,7 @@ ModerationAPI.setTrustFactor(userId: userId, trustFactor: trustFactor, sso: sso)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **userId** | **String** |  | [optional] 
  **trustFactor** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 

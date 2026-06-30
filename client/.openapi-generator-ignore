@@ -21,3 +21,8 @@
 #docs/*.md
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
+
+# Preserve manually-patched infrastructure files from being overwritten.
+# NOTE: update.sh's `rm -rf ./client` wipes this file before generation, so the ignore
+# alone is not enough -- update.sh also restores these files from git after generation.
+FastCommentsSwift/Infrastructure/URLSessionImplementations.swift

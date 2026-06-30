@@ -10,7 +10,7 @@ Add the following to your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/fastcomments/fastcomments-swift.git", from: "2.0.0")
+    .package(url: "https://github.com/fastcomments/fastcomments-swift.git", from: "3.0.0")
 ]
 ```
 
@@ -46,12 +46,9 @@ The FastComments Swift SDK consists of several modules:
 ```swift
 import FastCommentsSwift
 
-// Create API client
-let publicApi = PublicAPI()
-
 // Fetch comments for a page
 do {
-    let response = try await publicApi.getCommentsPublic(
+    let response = try await PublicAPI.getCommentsPublic(
         tenantId: "your-tenant-id",
         urlId: "page-url-id"
     )
@@ -70,15 +67,14 @@ do {
 ```swift
 import FastCommentsSwift
 
-// Create configuration with API key
-let defaultApi = DefaultAPI()
-defaultApi.apiKey = "your-api-key"
+// Configure your API key on the shared configuration (sent as the x-api-key header)
+FastCommentsSwiftAPIConfiguration.shared.customHeaders["x-api-key"] = "your-api-key"
 
 // Fetch comments using authenticated API
 do {
-    let response = try await defaultApi.getComments(
+    let response = try await DefaultAPI.getComments(
         tenantId: "your-tenant-id",
-        urlId: "page-url-id"
+        options: .init(urlId: "page-url-id")
     )
 
     print("Total comments: \(response.count ?? 0)")
@@ -99,9 +95,11 @@ import FastCommentsSwift
 // (generate it with FastCommentsSSO, see the SSO section above).
 do {
     let response = try await ModerationAPI.getApiComments(
-        page: 0,
-        count: 30,
-        sso: ssoToken
+        options: .init(
+            page: 0,
+            count: 30,
+            sso: ssoToken
+        )
     )
 
     print("Found \(response.comments.count) comments to moderate")
@@ -190,13 +188,7 @@ The `DefaultAPI` contains authenticated methods that require an API key. These m
 
 ### ModerationAPI - Moderator Dashboard Methods
 
-The `ModerationAPI` contains methods that power the moderator dashboard. These methods cover:
-- **Comment moderation** - list, count, search, retrieve logs, and export comments
-- **Moderation actions** - remove/restore comments, flag, set review/spam/approval status, manage votes, and reopen/close threads
-- **Bans** - ban a user from a comment, undo bans, fetch pre-ban summaries, check ban status and preferences, and read banned-user counts
-- **Badges & trust** - award/remove badges, list manual badges, get/set a user's trust factor, and read a user's internal profile
-
-Every `ModerationAPI` method accepts an `sso` parameter so moderators can be authenticated via SSO.
+The `ModerationAPI` provides an extensive suite of live and fast moderation APIs. Every `ModerationAPI` method accepts an `sso` parameter and can authenticate via SSO or a FastComments.com session cookie.
 
 **Example use case**: Building a moderation experience for moderators of your community
 
@@ -207,7 +199,7 @@ Every `ModerationAPI` method accepts an `sso` parameter so moderators can be aut
 The Swift SDK uses modern async/await syntax for all API calls:
 
 ```swift
-let response = try await publicApi.getCommentsPublic(
+let response = try await PublicAPI.getCommentsPublic(
     tenantId: "your-tenant-id",
     urlId: "page-url-id"
 )
@@ -221,11 +213,10 @@ If you're getting 401 errors when using the authenticated API:
 
 1. **Check your API key**: Ensure you're using the correct API key from your FastComments dashboard
 2. **Verify the tenant ID**: Make sure the tenant ID matches your account
-3. **API key format**: The API key should be set on the API client:
+3. **API key format**: The API key should be set as the `x-api-key` header on the shared configuration:
 
 ```swift
-let defaultApi = DefaultAPI()
-defaultApi.apiKey = "YOUR_API_KEY"
+FastCommentsSwiftAPIConfiguration.shared.customHeaders["x-api-key"] = "YOUR_API_KEY"
 ```
 
 4. **Using the wrong API**: Make sure you're using `DefaultAPI` (not `PublicAPI`) for authenticated calls

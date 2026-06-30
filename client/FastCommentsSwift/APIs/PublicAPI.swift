@@ -99,6 +99,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for createCommentPublic. */
+    public struct CreateCommentPublicOptions: Sendable {
+        public var sessionId: String?
+        public var sso: String?
+
+        public init(sessionId: String? = nil, sso: String? = nil) {
+            self.sessionId = sessionId
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -110,8 +121,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SaveCommentsResponseWithPresence
      */
-    open class func createCommentPublic(tenantId: String, urlId: String, broadcastId: String, commentData: CommentData, sessionId: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SaveCommentsResponseWithPresence {
-        return try await createCommentPublicWithRequestBuilder(tenantId: tenantId, urlId: urlId, broadcastId: broadcastId, commentData: commentData, sessionId: sessionId, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func createCommentPublic(tenantId: String, urlId: String, broadcastId: String, commentData: CommentData, options: CreateCommentPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SaveCommentsResponseWithPresence {
+        return try await createCommentPublicWithRequestBuilder(tenantId: tenantId, urlId: urlId, broadcastId: broadcastId, commentData: commentData, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -125,7 +136,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<SaveCommentsResponseWithPresence> 
      */
-    open class func createCommentPublicWithRequestBuilder(tenantId: String, urlId: String, broadcastId: String, commentData: CommentData, sessionId: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SaveCommentsResponseWithPresence> {
+    open class func createCommentPublicWithRequestBuilder(tenantId: String, urlId: String, broadcastId: String, commentData: CommentData, options: CreateCommentPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SaveCommentsResponseWithPresence> {
+        let sessionId = options.sessionId
+        let sso = options.sso
         var localVariablePath = "/comments/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -152,6 +165,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for createFeedPostPublic. */
+    public struct CreateFeedPostPublicOptions: Sendable {
+        public var broadcastId: String?
+        public var sso: String?
+
+        public init(broadcastId: String? = nil, sso: String? = nil) {
+            self.broadcastId = broadcastId
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -161,8 +185,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: CreateFeedPostResponse
      */
-    open class func createFeedPostPublic(tenantId: String, createFeedPostParams: CreateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateFeedPostResponse {
-        return try await createFeedPostPublicWithRequestBuilder(tenantId: tenantId, createFeedPostParams: createFeedPostParams, broadcastId: broadcastId, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func createFeedPostPublic(tenantId: String, createFeedPostParams: CreateFeedPostParams, options: CreateFeedPostPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateFeedPostResponse {
+        return try await createFeedPostPublicWithRequestBuilder(tenantId: tenantId, createFeedPostParams: createFeedPostParams, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -174,7 +198,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<CreateFeedPostResponse> 
      */
-    open class func createFeedPostPublicWithRequestBuilder(tenantId: String, createFeedPostParams: CreateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateFeedPostResponse> {
+    open class func createFeedPostPublicWithRequestBuilder(tenantId: String, createFeedPostParams: CreateFeedPostParams, options: CreateFeedPostPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateFeedPostResponse> {
+        let broadcastId = options.broadcastId
+        let sso = options.sso
         var localVariablePath = "/feed-posts/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -292,6 +318,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for deleteCommentPublic. */
+    public struct DeleteCommentPublicOptions: Sendable {
+        public var editKey: String?
+        public var sso: String?
+
+        public init(editKey: String? = nil, sso: String? = nil) {
+            self.editKey = editKey
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -302,8 +339,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: PublicAPIDeleteCommentResponse
      */
-    open class func deleteCommentPublic(tenantId: String, commentId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PublicAPIDeleteCommentResponse {
-        return try await deleteCommentPublicWithRequestBuilder(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, editKey: editKey, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func deleteCommentPublic(tenantId: String, commentId: String, broadcastId: String, options: DeleteCommentPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PublicAPIDeleteCommentResponse {
+        return try await deleteCommentPublicWithRequestBuilder(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -316,7 +353,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<PublicAPIDeleteCommentResponse> 
      */
-    open class func deleteCommentPublicWithRequestBuilder(tenantId: String, commentId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PublicAPIDeleteCommentResponse> {
+    open class func deleteCommentPublicWithRequestBuilder(tenantId: String, commentId: String, broadcastId: String, options: DeleteCommentPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PublicAPIDeleteCommentResponse> {
+        let editKey = options.editKey
+        let sso = options.sso
         var localVariablePath = "/comments/{tenantId}/{commentId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -345,6 +384,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for deleteCommentVote. */
+    public struct DeleteCommentVoteOptions: Sendable {
+        public var editKey: String?
+        public var sso: String?
+
+        public init(editKey: String? = nil, sso: String? = nil) {
+            self.editKey = editKey
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -357,8 +407,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: VoteDeleteResponse
      */
-    open class func deleteCommentVote(tenantId: String, commentId: String, voteId: String, urlId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> VoteDeleteResponse {
-        return try await deleteCommentVoteWithRequestBuilder(tenantId: tenantId, commentId: commentId, voteId: voteId, urlId: urlId, broadcastId: broadcastId, editKey: editKey, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func deleteCommentVote(tenantId: String, commentId: String, voteId: String, urlId: String, broadcastId: String, options: DeleteCommentVoteOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> VoteDeleteResponse {
+        return try await deleteCommentVoteWithRequestBuilder(tenantId: tenantId, commentId: commentId, voteId: voteId, urlId: urlId, broadcastId: broadcastId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -373,7 +423,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<VoteDeleteResponse> 
      */
-    open class func deleteCommentVoteWithRequestBuilder(tenantId: String, commentId: String, voteId: String, urlId: String, broadcastId: String, editKey: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<VoteDeleteResponse> {
+    open class func deleteCommentVoteWithRequestBuilder(tenantId: String, commentId: String, voteId: String, urlId: String, broadcastId: String, options: DeleteCommentVoteOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<VoteDeleteResponse> {
+        let editKey = options.editKey
+        let sso = options.sso
         var localVariablePath = "/comments/{tenantId}/{commentId}/vote/{voteId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -406,6 +458,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for deleteFeedPostPublic. */
+    public struct DeleteFeedPostPublicOptions: Sendable {
+        public var broadcastId: String?
+        public var sso: String?
+
+        public init(broadcastId: String? = nil, sso: String? = nil) {
+            self.broadcastId = broadcastId
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -415,8 +478,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: DeleteFeedPostPublicResponse
      */
-    open class func deleteFeedPostPublic(tenantId: String, postId: String, broadcastId: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> DeleteFeedPostPublicResponse {
-        return try await deleteFeedPostPublicWithRequestBuilder(tenantId: tenantId, postId: postId, broadcastId: broadcastId, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func deleteFeedPostPublic(tenantId: String, postId: String, options: DeleteFeedPostPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> DeleteFeedPostPublicResponse {
+        return try await deleteFeedPostPublicWithRequestBuilder(tenantId: tenantId, postId: postId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -428,7 +491,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<DeleteFeedPostPublicResponse> 
      */
-    open class func deleteFeedPostPublicWithRequestBuilder(tenantId: String, postId: String, broadcastId: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<DeleteFeedPostPublicResponse> {
+    open class func deleteFeedPostPublicWithRequestBuilder(tenantId: String, postId: String, options: DeleteFeedPostPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<DeleteFeedPostPublicResponse> {
+        let broadcastId = options.broadcastId
+        let sso = options.sso
         var localVariablePath = "/feed-posts/{tenantId}/{postId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -591,6 +656,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getCommentText. */
+    public struct GetCommentTextOptions: Sendable {
+        public var editKey: String?
+        public var sso: String?
+
+        public init(editKey: String? = nil, sso: String? = nil) {
+            self.editKey = editKey
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -600,8 +676,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: PublicAPIGetCommentTextResponse
      */
-    open class func getCommentText(tenantId: String, commentId: String, editKey: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PublicAPIGetCommentTextResponse {
-        return try await getCommentTextWithRequestBuilder(tenantId: tenantId, commentId: commentId, editKey: editKey, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func getCommentText(tenantId: String, commentId: String, options: GetCommentTextOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PublicAPIGetCommentTextResponse {
+        return try await getCommentTextWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -613,7 +689,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<PublicAPIGetCommentTextResponse> 
      */
-    open class func getCommentTextWithRequestBuilder(tenantId: String, commentId: String, editKey: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PublicAPIGetCommentTextResponse> {
+    open class func getCommentTextWithRequestBuilder(tenantId: String, commentId: String, options: GetCommentTextOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PublicAPIGetCommentTextResponse> {
+        let editKey = options.editKey
+        let sso = options.sso
         var localVariablePath = "/comments/{tenantId}/{commentId}/text"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -691,6 +769,27 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getCommentsForUser. */
+    public struct GetCommentsForUserOptions: Sendable {
+        public var userId: String?
+        public var direction: SortDirections?
+        public var repliesToUserId: String?
+        public var page: Double?
+        public var includei10n: Bool?
+        public var locale: String?
+        public var isCrawler: Bool?
+
+        public init(userId: String? = nil, direction: SortDirections? = nil, repliesToUserId: String? = nil, page: Double? = nil, includei10n: Bool? = nil, locale: String? = nil, isCrawler: Bool? = nil) {
+            self.userId = userId
+            self.direction = direction
+            self.repliesToUserId = repliesToUserId
+            self.page = page
+            self.includei10n = includei10n
+            self.locale = locale
+            self.isCrawler = isCrawler
+        }
+    }
+
     /**
 
      - parameter userId: (query)  (optional)
@@ -703,8 +802,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetCommentsForUserResponse
      */
-    open class func getCommentsForUser(userId: String? = nil, direction: SortDirections? = nil, repliesToUserId: String? = nil, page: Double? = nil, includei10n: Bool? = nil, locale: String? = nil, isCrawler: Bool? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetCommentsForUserResponse {
-        return try await getCommentsForUserWithRequestBuilder(userId: userId, direction: direction, repliesToUserId: repliesToUserId, page: page, includei10n: includei10n, locale: locale, isCrawler: isCrawler, apiConfiguration: apiConfiguration).execute().body
+    open class func getCommentsForUser(options: GetCommentsForUserOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetCommentsForUserResponse {
+        return try await getCommentsForUserWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -719,7 +818,14 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetCommentsForUserResponse> 
      */
-    open class func getCommentsForUserWithRequestBuilder(userId: String? = nil, direction: SortDirections? = nil, repliesToUserId: String? = nil, page: Double? = nil, includei10n: Bool? = nil, locale: String? = nil, isCrawler: Bool? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetCommentsForUserResponse> {
+    open class func getCommentsForUserWithRequestBuilder(options: GetCommentsForUserOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetCommentsForUserResponse> {
+        let userId = options.userId
+        let direction = options.direction
+        let repliesToUserId = options.repliesToUserId
+        let page = options.page
+        let includei10n = options.includei10n
+        let locale = options.locale
+        let isCrawler = options.isCrawler
         let localVariablePath = "/comments-for-user"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -744,6 +850,65 @@ open class PublicAPI {
         let localVariableRequestBuilder: RequestBuilder<GetCommentsForUserResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /** Optional parameters for getCommentsPublic. */
+    public struct GetCommentsPublicOptions: Sendable {
+        public var page: Int?
+        public var direction: SortDirections?
+        public var sso: String?
+        public var skip: Int?
+        public var skipChildren: Int?
+        public var limit: Int?
+        public var limitChildren: Int?
+        public var countChildren: Bool?
+        public var fetchPageForCommentId: String?
+        public var includeConfig: Bool?
+        public var countAll: Bool?
+        public var includei10n: Bool?
+        public var locale: String?
+        public var modules: String?
+        public var isCrawler: Bool?
+        public var includeNotificationCount: Bool?
+        public var asTree: Bool?
+        public var maxTreeDepth: Int?
+        public var useFullTranslationIds: Bool?
+        public var parentId: String?
+        public var searchText: String?
+        public var hashTags: [String]?
+        public var userId: String?
+        public var customConfigStr: String?
+        public var afterCommentId: String?
+        public var beforeCommentId: String?
+
+        public init(page: Int? = nil, direction: SortDirections? = nil, sso: String? = nil, skip: Int? = nil, skipChildren: Int? = nil, limit: Int? = nil, limitChildren: Int? = nil, countChildren: Bool? = nil, fetchPageForCommentId: String? = nil, includeConfig: Bool? = nil, countAll: Bool? = nil, includei10n: Bool? = nil, locale: String? = nil, modules: String? = nil, isCrawler: Bool? = nil, includeNotificationCount: Bool? = nil, asTree: Bool? = nil, maxTreeDepth: Int? = nil, useFullTranslationIds: Bool? = nil, parentId: String? = nil, searchText: String? = nil, hashTags: [String]? = nil, userId: String? = nil, customConfigStr: String? = nil, afterCommentId: String? = nil, beforeCommentId: String? = nil) {
+            self.page = page
+            self.direction = direction
+            self.sso = sso
+            self.skip = skip
+            self.skipChildren = skipChildren
+            self.limit = limit
+            self.limitChildren = limitChildren
+            self.countChildren = countChildren
+            self.fetchPageForCommentId = fetchPageForCommentId
+            self.includeConfig = includeConfig
+            self.countAll = countAll
+            self.includei10n = includei10n
+            self.locale = locale
+            self.modules = modules
+            self.isCrawler = isCrawler
+            self.includeNotificationCount = includeNotificationCount
+            self.asTree = asTree
+            self.maxTreeDepth = maxTreeDepth
+            self.useFullTranslationIds = useFullTranslationIds
+            self.parentId = parentId
+            self.searchText = searchText
+            self.hashTags = hashTags
+            self.userId = userId
+            self.customConfigStr = customConfigStr
+            self.afterCommentId = afterCommentId
+            self.beforeCommentId = beforeCommentId
+        }
     }
 
     /**
@@ -779,8 +944,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetCommentsResponseWithPresencePublicComment
      */
-    open class func getCommentsPublic(tenantId: String, urlId: String, page: Int? = nil, direction: SortDirections? = nil, sso: String? = nil, skip: Int? = nil, skipChildren: Int? = nil, limit: Int? = nil, limitChildren: Int? = nil, countChildren: Bool? = nil, fetchPageForCommentId: String? = nil, includeConfig: Bool? = nil, countAll: Bool? = nil, includei10n: Bool? = nil, locale: String? = nil, modules: String? = nil, isCrawler: Bool? = nil, includeNotificationCount: Bool? = nil, asTree: Bool? = nil, maxTreeDepth: Int? = nil, useFullTranslationIds: Bool? = nil, parentId: String? = nil, searchText: String? = nil, hashTags: [String]? = nil, userId: String? = nil, customConfigStr: String? = nil, afterCommentId: String? = nil, beforeCommentId: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetCommentsResponseWithPresencePublicComment {
-        return try await getCommentsPublicWithRequestBuilder(tenantId: tenantId, urlId: urlId, page: page, direction: direction, sso: sso, skip: skip, skipChildren: skipChildren, limit: limit, limitChildren: limitChildren, countChildren: countChildren, fetchPageForCommentId: fetchPageForCommentId, includeConfig: includeConfig, countAll: countAll, includei10n: includei10n, locale: locale, modules: modules, isCrawler: isCrawler, includeNotificationCount: includeNotificationCount, asTree: asTree, maxTreeDepth: maxTreeDepth, useFullTranslationIds: useFullTranslationIds, parentId: parentId, searchText: searchText, hashTags: hashTags, userId: userId, customConfigStr: customConfigStr, afterCommentId: afterCommentId, beforeCommentId: beforeCommentId, apiConfiguration: apiConfiguration).execute().body
+    open class func getCommentsPublic(tenantId: String, urlId: String, options: GetCommentsPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetCommentsResponseWithPresencePublicComment {
+        return try await getCommentsPublicWithRequestBuilder(tenantId: tenantId, urlId: urlId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -817,7 +982,33 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetCommentsResponseWithPresencePublicComment> 
      */
-    open class func getCommentsPublicWithRequestBuilder(tenantId: String, urlId: String, page: Int? = nil, direction: SortDirections? = nil, sso: String? = nil, skip: Int? = nil, skipChildren: Int? = nil, limit: Int? = nil, limitChildren: Int? = nil, countChildren: Bool? = nil, fetchPageForCommentId: String? = nil, includeConfig: Bool? = nil, countAll: Bool? = nil, includei10n: Bool? = nil, locale: String? = nil, modules: String? = nil, isCrawler: Bool? = nil, includeNotificationCount: Bool? = nil, asTree: Bool? = nil, maxTreeDepth: Int? = nil, useFullTranslationIds: Bool? = nil, parentId: String? = nil, searchText: String? = nil, hashTags: [String]? = nil, userId: String? = nil, customConfigStr: String? = nil, afterCommentId: String? = nil, beforeCommentId: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetCommentsResponseWithPresencePublicComment> {
+    open class func getCommentsPublicWithRequestBuilder(tenantId: String, urlId: String, options: GetCommentsPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetCommentsResponseWithPresencePublicComment> {
+        let page = options.page
+        let direction = options.direction
+        let sso = options.sso
+        let skip = options.skip
+        let skipChildren = options.skipChildren
+        let limit = options.limit
+        let limitChildren = options.limitChildren
+        let countChildren = options.countChildren
+        let fetchPageForCommentId = options.fetchPageForCommentId
+        let includeConfig = options.includeConfig
+        let countAll = options.countAll
+        let includei10n = options.includei10n
+        let locale = options.locale
+        let modules = options.modules
+        let isCrawler = options.isCrawler
+        let includeNotificationCount = options.includeNotificationCount
+        let asTree = options.asTree
+        let maxTreeDepth = options.maxTreeDepth
+        let useFullTranslationIds = options.useFullTranslationIds
+        let parentId = options.parentId
+        let searchText = options.searchText
+        let hashTags = options.hashTags
+        let userId = options.userId
+        let customConfigStr = options.customConfigStr
+        let afterCommentId = options.afterCommentId
+        let beforeCommentId = options.beforeCommentId
         var localVariablePath = "/comments/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -919,6 +1110,25 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getFeedPostsPublic. */
+    public struct GetFeedPostsPublicOptions: Sendable {
+        public var afterId: String?
+        public var limit: Int?
+        public var tags: [String]?
+        public var sso: String?
+        public var isCrawler: Bool?
+        public var includeUserInfo: Bool?
+
+        public init(afterId: String? = nil, limit: Int? = nil, tags: [String]? = nil, sso: String? = nil, isCrawler: Bool? = nil, includeUserInfo: Bool? = nil) {
+            self.afterId = afterId
+            self.limit = limit
+            self.tags = tags
+            self.sso = sso
+            self.isCrawler = isCrawler
+            self.includeUserInfo = includeUserInfo
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -931,8 +1141,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: PublicFeedPostsResponse
      */
-    open class func getFeedPostsPublic(tenantId: String, afterId: String? = nil, limit: Int? = nil, tags: [String]? = nil, sso: String? = nil, isCrawler: Bool? = nil, includeUserInfo: Bool? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PublicFeedPostsResponse {
-        return try await getFeedPostsPublicWithRequestBuilder(tenantId: tenantId, afterId: afterId, limit: limit, tags: tags, sso: sso, isCrawler: isCrawler, includeUserInfo: includeUserInfo, apiConfiguration: apiConfiguration).execute().body
+    open class func getFeedPostsPublic(tenantId: String, options: GetFeedPostsPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PublicFeedPostsResponse {
+        return try await getFeedPostsPublicWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -948,7 +1158,13 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<PublicFeedPostsResponse> 
      */
-    open class func getFeedPostsPublicWithRequestBuilder(tenantId: String, afterId: String? = nil, limit: Int? = nil, tags: [String]? = nil, sso: String? = nil, isCrawler: Bool? = nil, includeUserInfo: Bool? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PublicFeedPostsResponse> {
+    open class func getFeedPostsPublicWithRequestBuilder(tenantId: String, options: GetFeedPostsPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PublicFeedPostsResponse> {
+        let afterId = options.afterId
+        let limit = options.limit
+        let tags = options.tags
+        let sso = options.sso
+        let isCrawler = options.isCrawler
+        let includeUserInfo = options.includeUserInfo
         var localVariablePath = "/feed-posts/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1064,6 +1280,19 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getGifsSearch. */
+    public struct GetGifsSearchOptions: Sendable {
+        public var locale: String?
+        public var rating: String?
+        public var page: Double?
+
+        public init(locale: String? = nil, rating: String? = nil, page: Double? = nil) {
+            self.locale = locale
+            self.rating = rating
+            self.page = page
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -1074,8 +1303,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetGifsSearchResponse
      */
-    open class func getGifsSearch(tenantId: String, search: String, locale: String? = nil, rating: String? = nil, page: Double? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetGifsSearchResponse {
-        return try await getGifsSearchWithRequestBuilder(tenantId: tenantId, search: search, locale: locale, rating: rating, page: page, apiConfiguration: apiConfiguration).execute().body
+    open class func getGifsSearch(tenantId: String, search: String, options: GetGifsSearchOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetGifsSearchResponse {
+        return try await getGifsSearchWithRequestBuilder(tenantId: tenantId, search: search, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -1088,7 +1317,10 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetGifsSearchResponse> 
      */
-    open class func getGifsSearchWithRequestBuilder(tenantId: String, search: String, locale: String? = nil, rating: String? = nil, page: Double? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetGifsSearchResponse> {
+    open class func getGifsSearchWithRequestBuilder(tenantId: String, search: String, options: GetGifsSearchOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetGifsSearchResponse> {
+        let locale = options.locale
+        let rating = options.rating
+        let page = options.page
         var localVariablePath = "/gifs/search/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1115,6 +1347,19 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getGifsTrending. */
+    public struct GetGifsTrendingOptions: Sendable {
+        public var locale: String?
+        public var rating: String?
+        public var page: Double?
+
+        public init(locale: String? = nil, rating: String? = nil, page: Double? = nil) {
+            self.locale = locale
+            self.rating = rating
+            self.page = page
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -1124,8 +1369,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetGifsTrendingResponse
      */
-    open class func getGifsTrending(tenantId: String, locale: String? = nil, rating: String? = nil, page: Double? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetGifsTrendingResponse {
-        return try await getGifsTrendingWithRequestBuilder(tenantId: tenantId, locale: locale, rating: rating, page: page, apiConfiguration: apiConfiguration).execute().body
+    open class func getGifsTrending(tenantId: String, options: GetGifsTrendingOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetGifsTrendingResponse {
+        return try await getGifsTrendingWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -1137,7 +1382,10 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetGifsTrendingResponse> 
      */
-    open class func getGifsTrendingWithRequestBuilder(tenantId: String, locale: String? = nil, rating: String? = nil, page: Double? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetGifsTrendingResponse> {
+    open class func getGifsTrendingWithRequestBuilder(tenantId: String, options: GetGifsTrendingOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetGifsTrendingResponse> {
+        let locale = options.locale
+        let rating = options.rating
+        let page = options.page
         var localVariablePath = "/gifs/trending/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1215,6 +1463,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getOfflineUsers. */
+    public struct GetOfflineUsersOptions: Sendable {
+        public var afterName: String?
+        public var afterUserId: String?
+
+        public init(afterName: String? = nil, afterUserId: String? = nil) {
+            self.afterName = afterName
+            self.afterUserId = afterUserId
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -1224,8 +1483,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: PageUsersOfflineResponse
      */
-    open class func getOfflineUsers(tenantId: String, urlId: String, afterName: String? = nil, afterUserId: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PageUsersOfflineResponse {
-        return try await getOfflineUsersWithRequestBuilder(tenantId: tenantId, urlId: urlId, afterName: afterName, afterUserId: afterUserId, apiConfiguration: apiConfiguration).execute().body
+    open class func getOfflineUsers(tenantId: String, urlId: String, options: GetOfflineUsersOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PageUsersOfflineResponse {
+        return try await getOfflineUsersWithRequestBuilder(tenantId: tenantId, urlId: urlId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -1238,7 +1497,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<PageUsersOfflineResponse> 
      */
-    open class func getOfflineUsersWithRequestBuilder(tenantId: String, urlId: String, afterName: String? = nil, afterUserId: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PageUsersOfflineResponse> {
+    open class func getOfflineUsersWithRequestBuilder(tenantId: String, urlId: String, options: GetOfflineUsersOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PageUsersOfflineResponse> {
+        let afterName = options.afterName
+        let afterUserId = options.afterUserId
         var localVariablePath = "/pages/{tenantId}/users/offline"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1264,6 +1525,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getOnlineUsers. */
+    public struct GetOnlineUsersOptions: Sendable {
+        public var afterName: String?
+        public var afterUserId: String?
+
+        public init(afterName: String? = nil, afterUserId: String? = nil) {
+            self.afterName = afterName
+            self.afterUserId = afterUserId
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -1273,8 +1545,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: PageUsersOnlineResponse
      */
-    open class func getOnlineUsers(tenantId: String, urlId: String, afterName: String? = nil, afterUserId: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PageUsersOnlineResponse {
-        return try await getOnlineUsersWithRequestBuilder(tenantId: tenantId, urlId: urlId, afterName: afterName, afterUserId: afterUserId, apiConfiguration: apiConfiguration).execute().body
+    open class func getOnlineUsers(tenantId: String, urlId: String, options: GetOnlineUsersOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PageUsersOnlineResponse {
+        return try await getOnlineUsersWithRequestBuilder(tenantId: tenantId, urlId: urlId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -1287,7 +1559,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<PageUsersOnlineResponse> 
      */
-    open class func getOnlineUsersWithRequestBuilder(tenantId: String, urlId: String, afterName: String? = nil, afterUserId: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PageUsersOnlineResponse> {
+    open class func getOnlineUsersWithRequestBuilder(tenantId: String, urlId: String, options: GetOnlineUsersOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PageUsersOnlineResponse> {
+        let afterName = options.afterName
+        let afterUserId = options.afterUserId
         var localVariablePath = "/pages/{tenantId}/users/online"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1313,6 +1587,23 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getPagesPublic. */
+    public struct GetPagesPublicOptions: Sendable {
+        public var cursor: String?
+        public var limit: Int?
+        public var q: String?
+        public var sortBy: PagesSortBy?
+        public var hasComments: Bool?
+
+        public init(cursor: String? = nil, limit: Int? = nil, q: String? = nil, sortBy: PagesSortBy? = nil, hasComments: Bool? = nil) {
+            self.cursor = cursor
+            self.limit = limit
+            self.q = q
+            self.sortBy = sortBy
+            self.hasComments = hasComments
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -1324,8 +1615,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetPublicPagesResponse
      */
-    open class func getPagesPublic(tenantId: String, cursor: String? = nil, limit: Int? = nil, q: String? = nil, sortBy: PagesSortBy? = nil, hasComments: Bool? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetPublicPagesResponse {
-        return try await getPagesPublicWithRequestBuilder(tenantId: tenantId, cursor: cursor, limit: limit, q: q, sortBy: sortBy, hasComments: hasComments, apiConfiguration: apiConfiguration).execute().body
+    open class func getPagesPublic(tenantId: String, options: GetPagesPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetPublicPagesResponse {
+        return try await getPagesPublicWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -1340,7 +1631,12 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetPublicPagesResponse> 
      */
-    open class func getPagesPublicWithRequestBuilder(tenantId: String, cursor: String? = nil, limit: Int? = nil, q: String? = nil, sortBy: PagesSortBy? = nil, hasComments: Bool? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetPublicPagesResponse> {
+    open class func getPagesPublicWithRequestBuilder(tenantId: String, options: GetPagesPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetPublicPagesResponse> {
+        let cursor = options.cursor
+        let limit = options.limit
+        let q = options.q
+        let sortBy = options.sortBy
+        let hasComments = options.hasComments
         var localVariablePath = "/pages/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1368,6 +1664,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getTranslations. */
+    public struct GetTranslationsOptions: Sendable {
+        public var locale: String?
+        public var useFullTranslationIds: Bool?
+
+        public init(locale: String? = nil, useFullTranslationIds: Bool? = nil) {
+            self.locale = locale
+            self.useFullTranslationIds = useFullTranslationIds
+        }
+    }
+
     /**
 
      - parameter namespace: (path)  
@@ -1377,8 +1684,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetTranslationsResponse
      */
-    open class func getTranslations(namespace: String, component: String, locale: String? = nil, useFullTranslationIds: Bool? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetTranslationsResponse {
-        return try await getTranslationsWithRequestBuilder(namespace: namespace, component: component, locale: locale, useFullTranslationIds: useFullTranslationIds, apiConfiguration: apiConfiguration).execute().body
+    open class func getTranslations(namespace: String, component: String, options: GetTranslationsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetTranslationsResponse {
+        return try await getTranslationsWithRequestBuilder(namespace: namespace, component: component, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -1390,7 +1697,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetTranslationsResponse> 
      */
-    open class func getTranslationsWithRequestBuilder(namespace: String, component: String, locale: String? = nil, useFullTranslationIds: Bool? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetTranslationsResponse> {
+    open class func getTranslationsWithRequestBuilder(namespace: String, component: String, options: GetTranslationsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetTranslationsResponse> {
+        let locale = options.locale
+        let useFullTranslationIds = options.useFullTranslationIds
         var localVariablePath = "/translations/{namespace}/{component}"
         let namespacePreEscape = "\(APIHelper.mapValueToPathItem(namespace))"
         let namespacePostEscape = namespacePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1458,6 +1767,35 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getUserNotifications. */
+    public struct GetUserNotificationsOptions: Sendable {
+        public var urlId: String?
+        public var pageSize: Int?
+        public var afterId: String?
+        public var includeContext: Bool?
+        public var afterCreatedAt: Int64?
+        public var unreadOnly: Bool?
+        public var dmOnly: Bool?
+        public var noDm: Bool?
+        public var includeTranslations: Bool?
+        public var includeTenantNotifications: Bool?
+        public var sso: String?
+
+        public init(urlId: String? = nil, pageSize: Int? = nil, afterId: String? = nil, includeContext: Bool? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, includeTranslations: Bool? = nil, includeTenantNotifications: Bool? = nil, sso: String? = nil) {
+            self.urlId = urlId
+            self.pageSize = pageSize
+            self.afterId = afterId
+            self.includeContext = includeContext
+            self.afterCreatedAt = afterCreatedAt
+            self.unreadOnly = unreadOnly
+            self.dmOnly = dmOnly
+            self.noDm = noDm
+            self.includeTranslations = includeTranslations
+            self.includeTenantNotifications = includeTenantNotifications
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (query)  
@@ -1475,8 +1813,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetMyNotificationsResponse
      */
-    open class func getUserNotifications(tenantId: String, urlId: String? = nil, pageSize: Int? = nil, afterId: String? = nil, includeContext: Bool? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, includeTranslations: Bool? = nil, includeTenantNotifications: Bool? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetMyNotificationsResponse {
-        return try await getUserNotificationsWithRequestBuilder(tenantId: tenantId, urlId: urlId, pageSize: pageSize, afterId: afterId, includeContext: includeContext, afterCreatedAt: afterCreatedAt, unreadOnly: unreadOnly, dmOnly: dmOnly, noDm: noDm, includeTranslations: includeTranslations, includeTenantNotifications: includeTenantNotifications, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func getUserNotifications(tenantId: String, options: GetUserNotificationsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetMyNotificationsResponse {
+        return try await getUserNotificationsWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -1496,7 +1834,18 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetMyNotificationsResponse> 
      */
-    open class func getUserNotificationsWithRequestBuilder(tenantId: String, urlId: String? = nil, pageSize: Int? = nil, afterId: String? = nil, includeContext: Bool? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, includeTranslations: Bool? = nil, includeTenantNotifications: Bool? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetMyNotificationsResponse> {
+    open class func getUserNotificationsWithRequestBuilder(tenantId: String, options: GetUserNotificationsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetMyNotificationsResponse> {
+        let urlId = options.urlId
+        let pageSize = options.pageSize
+        let afterId = options.afterId
+        let includeContext = options.includeContext
+        let afterCreatedAt = options.afterCreatedAt
+        let unreadOnly = options.unreadOnly
+        let dmOnly = options.dmOnly
+        let noDm = options.noDm
+        let includeTranslations = options.includeTranslations
+        let includeTenantNotifications = options.includeTenantNotifications
+        let sso = options.sso
         let localVariablePath = "/user-notifications"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -1571,6 +1920,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getUserReactsPublic. */
+    public struct GetUserReactsPublicOptions: Sendable {
+        public var postIds: [String]?
+        public var sso: String?
+
+        public init(postIds: [String]? = nil, sso: String? = nil) {
+            self.postIds = postIds
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -1579,8 +1939,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: UserReactsResponse
      */
-    open class func getUserReactsPublic(tenantId: String, postIds: [String]? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> UserReactsResponse {
-        return try await getUserReactsPublicWithRequestBuilder(tenantId: tenantId, postIds: postIds, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func getUserReactsPublic(tenantId: String, options: GetUserReactsPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> UserReactsResponse {
+        return try await getUserReactsPublicWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -1591,7 +1951,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<UserReactsResponse> 
      */
-    open class func getUserReactsPublicWithRequestBuilder(tenantId: String, postIds: [String]? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<UserReactsResponse> {
+    open class func getUserReactsPublicWithRequestBuilder(tenantId: String, options: GetUserReactsPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<UserReactsResponse> {
+        let postIds = options.postIds
+        let sso = options.sso
         var localVariablePath = "/feed-posts/{tenantId}/user-reacts"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1920,6 +2282,19 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for reactFeedPostPublic. */
+    public struct ReactFeedPostPublicOptions: Sendable {
+        public var isUndo: Bool?
+        public var broadcastId: String?
+        public var sso: String?
+
+        public init(isUndo: Bool? = nil, broadcastId: String? = nil, sso: String? = nil) {
+            self.isUndo = isUndo
+            self.broadcastId = broadcastId
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -1931,8 +2306,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ReactFeedPostResponse
      */
-    open class func reactFeedPostPublic(tenantId: String, postId: String, reactBodyParams: ReactBodyParams, isUndo: Bool? = nil, broadcastId: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ReactFeedPostResponse {
-        return try await reactFeedPostPublicWithRequestBuilder(tenantId: tenantId, postId: postId, reactBodyParams: reactBodyParams, isUndo: isUndo, broadcastId: broadcastId, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func reactFeedPostPublic(tenantId: String, postId: String, reactBodyParams: ReactBodyParams, options: ReactFeedPostPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ReactFeedPostResponse {
+        return try await reactFeedPostPublicWithRequestBuilder(tenantId: tenantId, postId: postId, reactBodyParams: reactBodyParams, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -1946,7 +2321,10 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ReactFeedPostResponse> 
      */
-    open class func reactFeedPostPublicWithRequestBuilder(tenantId: String, postId: String, reactBodyParams: ReactBodyParams, isUndo: Bool? = nil, broadcastId: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ReactFeedPostResponse> {
+    open class func reactFeedPostPublicWithRequestBuilder(tenantId: String, postId: String, reactBodyParams: ReactBodyParams, options: ReactFeedPostPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ReactFeedPostResponse> {
+        let isUndo = options.isUndo
+        let broadcastId = options.broadcastId
+        let sso = options.sso
         var localVariablePath = "/feed-posts/{tenantId}/react/{postId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2015,6 +2393,25 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for resetUserNotifications. */
+    public struct ResetUserNotificationsOptions: Sendable {
+        public var afterId: String?
+        public var afterCreatedAt: Int64?
+        public var unreadOnly: Bool?
+        public var dmOnly: Bool?
+        public var noDm: Bool?
+        public var sso: String?
+
+        public init(afterId: String? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, sso: String? = nil) {
+            self.afterId = afterId
+            self.afterCreatedAt = afterCreatedAt
+            self.unreadOnly = unreadOnly
+            self.dmOnly = dmOnly
+            self.noDm = noDm
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (query)  
@@ -2027,8 +2424,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ResetUserNotificationsResponse
      */
-    open class func resetUserNotifications(tenantId: String, afterId: String? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ResetUserNotificationsResponse {
-        return try await resetUserNotificationsWithRequestBuilder(tenantId: tenantId, afterId: afterId, afterCreatedAt: afterCreatedAt, unreadOnly: unreadOnly, dmOnly: dmOnly, noDm: noDm, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func resetUserNotifications(tenantId: String, options: ResetUserNotificationsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ResetUserNotificationsResponse {
+        return try await resetUserNotificationsWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -2043,7 +2440,13 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ResetUserNotificationsResponse> 
      */
-    open class func resetUserNotificationsWithRequestBuilder(tenantId: String, afterId: String? = nil, afterCreatedAt: Int64? = nil, unreadOnly: Bool? = nil, dmOnly: Bool? = nil, noDm: Bool? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ResetUserNotificationsResponse> {
+    open class func resetUserNotificationsWithRequestBuilder(tenantId: String, options: ResetUserNotificationsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ResetUserNotificationsResponse> {
+        let afterId = options.afterId
+        let afterCreatedAt = options.afterCreatedAt
+        let unreadOnly = options.unreadOnly
+        let dmOnly = options.dmOnly
+        let noDm = options.noDm
+        let sso = options.sso
         let localVariablePath = "/user-notifications/reset"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -2078,6 +2481,21 @@ open class PublicAPI {
         case site = "site"
     }
 
+    /** Optional parameters for searchUsers. */
+    public struct SearchUsersOptions: Sendable {
+        public var usernameStartsWith: String?
+        public var mentionGroupIds: [String]?
+        public var sso: String?
+        public var searchSection: SearchSection_searchUsers?
+
+        public init(usernameStartsWith: String? = nil, mentionGroupIds: [String]? = nil, sso: String? = nil, searchSection: SearchSection_searchUsers? = nil) {
+            self.usernameStartsWith = usernameStartsWith
+            self.mentionGroupIds = mentionGroupIds
+            self.sso = sso
+            self.searchSection = searchSection
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -2089,8 +2507,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SearchUsersResult
      */
-    open class func searchUsers(tenantId: String, urlId: String, usernameStartsWith: String? = nil, mentionGroupIds: [String]? = nil, sso: String? = nil, searchSection: SearchSection_searchUsers? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SearchUsersResult {
-        return try await searchUsersWithRequestBuilder(tenantId: tenantId, urlId: urlId, usernameStartsWith: usernameStartsWith, mentionGroupIds: mentionGroupIds, sso: sso, searchSection: searchSection, apiConfiguration: apiConfiguration).execute().body
+    open class func searchUsers(tenantId: String, urlId: String, options: SearchUsersOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SearchUsersResult {
+        return try await searchUsersWithRequestBuilder(tenantId: tenantId, urlId: urlId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -2104,7 +2522,11 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<SearchUsersResult> 
      */
-    open class func searchUsersWithRequestBuilder(tenantId: String, urlId: String, usernameStartsWith: String? = nil, mentionGroupIds: [String]? = nil, sso: String? = nil, searchSection: SearchSection_searchUsers? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SearchUsersResult> {
+    open class func searchUsersWithRequestBuilder(tenantId: String, urlId: String, options: SearchUsersOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SearchUsersResult> {
+        let usernameStartsWith = options.usernameStartsWith
+        let mentionGroupIds = options.mentionGroupIds
+        let sso = options.sso
+        let searchSection = options.searchSection
         var localVariablePath = "/user-search/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2132,6 +2554,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for setCommentText. */
+    public struct SetCommentTextOptions: Sendable {
+        public var editKey: String?
+        public var sso: String?
+
+        public init(editKey: String? = nil, sso: String? = nil) {
+            self.editKey = editKey
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -2143,8 +2576,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: PublicAPISetCommentTextResponse
      */
-    open class func setCommentText(tenantId: String, commentId: String, broadcastId: String, commentTextUpdateRequest: CommentTextUpdateRequest, editKey: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PublicAPISetCommentTextResponse {
-        return try await setCommentTextWithRequestBuilder(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, commentTextUpdateRequest: commentTextUpdateRequest, editKey: editKey, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func setCommentText(tenantId: String, commentId: String, broadcastId: String, commentTextUpdateRequest: CommentTextUpdateRequest, options: SetCommentTextOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PublicAPISetCommentTextResponse {
+        return try await setCommentTextWithRequestBuilder(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, commentTextUpdateRequest: commentTextUpdateRequest, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -2158,7 +2591,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<PublicAPISetCommentTextResponse> 
      */
-    open class func setCommentTextWithRequestBuilder(tenantId: String, commentId: String, broadcastId: String, commentTextUpdateRequest: CommentTextUpdateRequest, editKey: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PublicAPISetCommentTextResponse> {
+    open class func setCommentTextWithRequestBuilder(tenantId: String, commentId: String, broadcastId: String, commentTextUpdateRequest: CommentTextUpdateRequest, options: SetCommentTextOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PublicAPISetCommentTextResponse> {
+        let editKey = options.editKey
+        let sso = options.sso
         var localVariablePath = "/comments/{tenantId}/{commentId}/update-text"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2334,6 +2769,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for updateFeedPostPublic. */
+    public struct UpdateFeedPostPublicOptions: Sendable {
+        public var broadcastId: String?
+        public var sso: String?
+
+        public init(broadcastId: String? = nil, sso: String? = nil) {
+            self.broadcastId = broadcastId
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -2344,8 +2790,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: CreateFeedPostResponse
      */
-    open class func updateFeedPostPublic(tenantId: String, postId: String, updateFeedPostParams: UpdateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateFeedPostResponse {
-        return try await updateFeedPostPublicWithRequestBuilder(tenantId: tenantId, postId: postId, updateFeedPostParams: updateFeedPostParams, broadcastId: broadcastId, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func updateFeedPostPublic(tenantId: String, postId: String, updateFeedPostParams: UpdateFeedPostParams, options: UpdateFeedPostPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateFeedPostResponse {
+        return try await updateFeedPostPublicWithRequestBuilder(tenantId: tenantId, postId: postId, updateFeedPostParams: updateFeedPostParams, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -2358,7 +2804,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<CreateFeedPostResponse> 
      */
-    open class func updateFeedPostPublicWithRequestBuilder(tenantId: String, postId: String, updateFeedPostParams: UpdateFeedPostParams, broadcastId: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateFeedPostResponse> {
+    open class func updateFeedPostPublicWithRequestBuilder(tenantId: String, postId: String, updateFeedPostParams: UpdateFeedPostParams, options: UpdateFeedPostPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateFeedPostResponse> {
+        let broadcastId = options.broadcastId
+        let sso = options.sso
         var localVariablePath = "/feed-posts/{tenantId}/{postId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2569,6 +3017,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for uploadImage. */
+    public struct UploadImageOptions: Sendable {
+        public var sizePreset: SizePreset?
+        public var urlId: String?
+
+        public init(sizePreset: SizePreset? = nil, urlId: String? = nil) {
+            self.sizePreset = sizePreset
+            self.urlId = urlId
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -2578,8 +3037,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: UploadImageResponse
      */
-    open class func uploadImage(tenantId: String, file: URL, sizePreset: SizePreset? = nil, urlId: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> UploadImageResponse {
-        return try await uploadImageWithRequestBuilder(tenantId: tenantId, file: file, sizePreset: sizePreset, urlId: urlId, apiConfiguration: apiConfiguration).execute().body
+    open class func uploadImage(tenantId: String, file: URL, options: UploadImageOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> UploadImageResponse {
+        return try await uploadImageWithRequestBuilder(tenantId: tenantId, file: file, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -2592,7 +3051,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<UploadImageResponse> 
      */
-    open class func uploadImageWithRequestBuilder(tenantId: String, file: URL, sizePreset: SizePreset? = nil, urlId: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<UploadImageResponse> {
+    open class func uploadImageWithRequestBuilder(tenantId: String, file: URL, options: UploadImageOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<UploadImageResponse> {
+        let sizePreset = options.sizePreset
+        let urlId = options.urlId
         var localVariablePath = "/upload-image/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2622,6 +3083,17 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for voteComment. */
+    public struct VoteCommentOptions: Sendable {
+        public var sessionId: String?
+        public var sso: String?
+
+        public init(sessionId: String? = nil, sso: String? = nil) {
+            self.sessionId = sessionId
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
@@ -2634,8 +3106,8 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: VoteResponse
      */
-    open class func voteComment(tenantId: String, commentId: String, urlId: String, broadcastId: String, voteBodyParams: VoteBodyParams, sessionId: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> VoteResponse {
-        return try await voteCommentWithRequestBuilder(tenantId: tenantId, commentId: commentId, urlId: urlId, broadcastId: broadcastId, voteBodyParams: voteBodyParams, sessionId: sessionId, sso: sso, apiConfiguration: apiConfiguration).execute().body
+    open class func voteComment(tenantId: String, commentId: String, urlId: String, broadcastId: String, voteBodyParams: VoteBodyParams, options: VoteCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> VoteResponse {
+        return try await voteCommentWithRequestBuilder(tenantId: tenantId, commentId: commentId, urlId: urlId, broadcastId: broadcastId, voteBodyParams: voteBodyParams, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -2650,7 +3122,9 @@ open class PublicAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<VoteResponse> 
      */
-    open class func voteCommentWithRequestBuilder(tenantId: String, commentId: String, urlId: String, broadcastId: String, voteBodyParams: VoteBodyParams, sessionId: String? = nil, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<VoteResponse> {
+    open class func voteCommentWithRequestBuilder(tenantId: String, commentId: String, urlId: String, broadcastId: String, voteBodyParams: VoteBodyParams, options: VoteCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<VoteResponse> {
+        let sessionId = options.sessionId
+        let sso = options.sso
         var localVariablePath = "/comments/{tenantId}/{commentId}/vote"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

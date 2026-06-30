@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 # **addHashTag**
 ```swift
-    open class func addHashTag(tenantId: String? = nil, createHashTagBody: CreateHashTagBody? = nil, completion: @escaping (_ data: CreateHashTagResponse?, _ error: Error?) -> Void)
+    open class func addHashTag(tenantId: String, createHashTagBody: CreateHashTagBody? = nil, completion: @escaping (_ data: CreateHashTagResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
-let tenantId = "tenantId_example" // String |  (optional)
+let tenantId = "tenantId_example" // String | 
 let createHashTagBody = CreateHashTagBody(tenantId: "tenantId_example", tag: "tag_example", url: "url_example") // CreateHashTagBody |  (optional)
 
 DefaultAPI.addHashTag(tenantId: tenantId, createHashTagBody: createHashTagBody) { (response, error) in
@@ -200,7 +200,7 @@ DefaultAPI.addHashTag(tenantId: tenantId, createHashTagBody: createHashTagBody) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **String** |  | [optional] 
+ **tenantId** | **String** |  | 
  **createHashTagBody** | [**CreateHashTagBody**](CreateHashTagBody.md) |  | [optional] 
 
 ### Return type
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 # **addHashTagsBulk**
 ```swift
-    open class func addHashTagsBulk(tenantId: String? = nil, bulkCreateHashTagsBody: BulkCreateHashTagsBody? = nil, completion: @escaping (_ data: BulkCreateHashTagsResponse?, _ error: Error?) -> Void)
+    open class func addHashTagsBulk(tenantId: String, bulkCreateHashTagsBody: BulkCreateHashTagsBody? = nil, completion: @escaping (_ data: BulkCreateHashTagsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
-let tenantId = "tenantId_example" // String |  (optional)
+let tenantId = "tenantId_example" // String | 
 let bulkCreateHashTagsBody = BulkCreateHashTagsBody(tenantId: "tenantId_example", tags: [BulkCreateHashTagsBody_tags_inner(url: "url_example", tag: "tag_example")]) // BulkCreateHashTagsBody |  (optional)
 
 DefaultAPI.addHashTagsBulk(tenantId: tenantId, bulkCreateHashTagsBody: bulkCreateHashTagsBody) { (response, error) in
@@ -249,7 +249,7 @@ DefaultAPI.addHashTagsBulk(tenantId: tenantId, bulkCreateHashTagsBody: bulkCreat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenantId** | **String** |  | [optional] 
+ **tenantId** | **String** |  | 
  **bulkCreateHashTagsBody** | [**BulkCreateHashTagsBody**](BulkCreateHashTagsBody.md) |  | [optional] 
 
 ### Return type
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 # **aggregate**
 ```swift
-    open class func aggregate(tenantId: String, aggregationRequest: AggregationRequest, parentTenantId: String? = nil, includeStats: Bool? = nil, completion: @escaping (_ data: AggregateResponse?, _ error: Error?) -> Void)
+    open class func aggregate(tenantId: String, aggregationRequest: AggregationRequest, options: AggregateOptions = .init(), completion: @escaping (_ data: AggregateResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -384,7 +384,7 @@ let aggregationRequest = AggregationRequest(query: [QueryPredicate(key: "key_exa
 let parentTenantId = "parentTenantId_example" // String |  (optional)
 let includeStats = true // Bool |  (optional)
 
-DefaultAPI.aggregate(tenantId: tenantId, aggregationRequest: aggregationRequest, parentTenantId: parentTenantId, includeStats: includeStats) { (response, error) in
+DefaultAPI.aggregate(tenantId: tenantId, aggregationRequest: aggregationRequest, options: DefaultAPI.AggregateOptions(parentTenantId: parentTenantId, includeStats: includeStats)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -422,7 +422,7 @@ Name | Type | Description  | Notes
 
 # **aggregateQuestionResults**
 ```swift
-    open class func aggregateQuestionResults(tenantId: String, questionId: String? = nil, questionIds: [String]? = nil, urlId: String? = nil, timeBucket: AggregateTimeBucket? = nil, startDate: Date? = nil, forceRecalculate: Bool? = nil, completion: @escaping (_ data: AggregateQuestionResultsResponse?, _ error: Error?) -> Void)
+    open class func aggregateQuestionResults(tenantId: String, options: AggregateQuestionResultsOptions = .init(), completion: @escaping (_ data: AggregateQuestionResultsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -440,7 +440,7 @@ let timeBucket = AggregateTimeBucket() // AggregateTimeBucket |  (optional)
 let startDate = Date() // Date |  (optional)
 let forceRecalculate = true // Bool |  (optional)
 
-DefaultAPI.aggregateQuestionResults(tenantId: tenantId, questionId: questionId, questionIds: questionIds, urlId: urlId, timeBucket: timeBucket, startDate: startDate, forceRecalculate: forceRecalculate) { (response, error) in
+DefaultAPI.aggregateQuestionResults(tenantId: tenantId, options: DefaultAPI.AggregateQuestionResultsOptions(questionId: questionId, questionIds: questionIds, urlId: urlId, timeBucket: timeBucket, startDate: startDate, forceRecalculate: forceRecalculate)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -481,7 +481,7 @@ Name | Type | Description  | Notes
 
 # **blockUserFromComment**
 ```swift
-    open class func blockUserFromComment(tenantId: String, id: String, blockFromCommentParams: BlockFromCommentParams, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: BlockSuccess?, _ error: Error?) -> Void)
+    open class func blockUserFromComment(tenantId: String, id: String, blockFromCommentParams: BlockFromCommentParams, options: BlockUserFromCommentOptions = .init(), completion: @escaping (_ data: BlockSuccess?, _ error: Error?) -> Void)
 ```
 
 
@@ -497,7 +497,7 @@ let blockFromCommentParams = BlockFromCommentParams(commentIdsToCheck: ["comment
 let userId = "userId_example" // String |  (optional)
 let anonUserId = "anonUserId_example" // String |  (optional)
 
-DefaultAPI.blockUserFromComment(tenantId: tenantId, id: id, blockFromCommentParams: blockFromCommentParams, userId: userId, anonUserId: anonUserId) { (response, error) in
+DefaultAPI.blockUserFromComment(tenantId: tenantId, id: id, blockFromCommentParams: blockFromCommentParams, options: DefaultAPI.BlockUserFromCommentOptions(userId: userId, anonUserId: anonUserId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -640,7 +640,7 @@ Name | Type | Description  | Notes
 
 # **combineCommentsWithQuestionResults**
 ```swift
-    open class func combineCommentsWithQuestionResults(tenantId: String, questionId: String? = nil, questionIds: [String]? = nil, urlId: String? = nil, startDate: Date? = nil, forceRecalculate: Bool? = nil, minValue: Double? = nil, maxValue: Double? = nil, limit: Double? = nil, completion: @escaping (_ data: CombineQuestionResultsWithCommentsResponse?, _ error: Error?) -> Void)
+    open class func combineCommentsWithQuestionResults(tenantId: String, options: CombineCommentsWithQuestionResultsOptions = .init(), completion: @escaping (_ data: CombineQuestionResultsWithCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -660,7 +660,7 @@ let minValue = 987 // Double |  (optional)
 let maxValue = 987 // Double |  (optional)
 let limit = 987 // Double |  (optional)
 
-DefaultAPI.combineCommentsWithQuestionResults(tenantId: tenantId, questionId: questionId, questionIds: questionIds, urlId: urlId, startDate: startDate, forceRecalculate: forceRecalculate, minValue: minValue, maxValue: maxValue, limit: limit) { (response, error) in
+DefaultAPI.combineCommentsWithQuestionResults(tenantId: tenantId, options: DefaultAPI.CombineCommentsWithQuestionResultsOptions(questionId: questionId, questionIds: questionIds, urlId: urlId, startDate: startDate, forceRecalculate: forceRecalculate, minValue: minValue, maxValue: maxValue, limit: limit)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -752,7 +752,7 @@ Name | Type | Description  | Notes
 
 # **createFeedPost**
 ```swift
-    open class func createFeedPost(tenantId: String, createFeedPostParams: CreateFeedPostParams, broadcastId: String? = nil, isLive: Bool? = nil, doSpamCheck: Bool? = nil, skipDupCheck: Bool? = nil, completion: @escaping (_ data: CreateFeedPostsResponse?, _ error: Error?) -> Void)
+    open class func createFeedPost(tenantId: String, createFeedPostParams: CreateFeedPostParams, options: CreateFeedPostOptions = .init(), completion: @escaping (_ data: CreateFeedPostsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -769,7 +769,7 @@ let isLive = true // Bool |  (optional)
 let doSpamCheck = true // Bool |  (optional)
 let skipDupCheck = true // Bool |  (optional)
 
-DefaultAPI.createFeedPost(tenantId: tenantId, createFeedPostParams: createFeedPostParams, broadcastId: broadcastId, isLive: isLive, doSpamCheck: doSpamCheck, skipDupCheck: skipDupCheck) { (response, error) in
+DefaultAPI.createFeedPost(tenantId: tenantId, createFeedPostParams: createFeedPostParams, options: DefaultAPI.CreateFeedPostOptions(broadcastId: broadcastId, isLive: isLive, doSpamCheck: doSpamCheck, skipDupCheck: skipDupCheck)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1252,7 +1252,7 @@ Name | Type | Description  | Notes
 
 # **createVote**
 ```swift
-    open class func createVote(tenantId: String, commentId: String, direction: Direction_createVote, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
+    open class func createVote(tenantId: String, commentId: String, direction: Direction_createVote, options: CreateVoteOptions = .init(), completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1268,7 +1268,7 @@ let direction = "direction_example" // String |
 let userId = "userId_example" // String |  (optional)
 let anonUserId = "anonUserId_example" // String |  (optional)
 
-DefaultAPI.createVote(tenantId: tenantId, commentId: commentId, direction: direction, userId: userId, anonUserId: anonUserId) { (response, error) in
+DefaultAPI.createVote(tenantId: tenantId, commentId: commentId, direction: direction, options: DefaultAPI.CreateVoteOptions(userId: userId, anonUserId: anonUserId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1307,7 +1307,7 @@ Name | Type | Description  | Notes
 
 # **deleteComment**
 ```swift
-    open class func deleteComment(tenantId: String, id: String, contextUserId: String? = nil, isLive: Bool? = nil, completion: @escaping (_ data: DeleteCommentResult?, _ error: Error?) -> Void)
+    open class func deleteComment(tenantId: String, id: String, options: DeleteCommentOptions = .init(), completion: @escaping (_ data: DeleteCommentResult?, _ error: Error?) -> Void)
 ```
 
 
@@ -1322,7 +1322,7 @@ let id = "id_example" // String |
 let contextUserId = "contextUserId_example" // String |  (optional)
 let isLive = true // Bool |  (optional)
 
-DefaultAPI.deleteComment(tenantId: tenantId, id: id, contextUserId: contextUserId, isLive: isLive) { (response, error) in
+DefaultAPI.deleteComment(tenantId: tenantId, id: id, options: DefaultAPI.DeleteCommentOptions(contextUserId: contextUserId, isLive: isLive)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1509,7 +1509,7 @@ Name | Type | Description  | Notes
 
 # **deleteHashTag**
 ```swift
-    open class func deleteHashTag(tag: String, tenantId: String? = nil, deleteHashTagRequestBody: DeleteHashTagRequestBody? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deleteHashTag(tenantId: String, tag: String, deleteHashTagRequestBody: DeleteHashTagRequestBody? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1519,11 +1519,11 @@ Name | Type | Description  | Notes
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let tag = "tag_example" // String | 
-let tenantId = "tenantId_example" // String |  (optional)
 let deleteHashTagRequestBody = DeleteHashTagRequestBody(tenantId: "tenantId_example") // DeleteHashTagRequestBody |  (optional)
 
-DefaultAPI.deleteHashTag(tag: tag, tenantId: tenantId, deleteHashTagRequestBody: deleteHashTagRequestBody) { (response, error) in
+DefaultAPI.deleteHashTag(tenantId: tenantId, tag: tag, deleteHashTagRequestBody: deleteHashTagRequestBody) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1539,8 +1539,8 @@ DefaultAPI.deleteHashTag(tag: tag, tenantId: tenantId, deleteHashTagRequestBody:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **tag** | **String** |  | 
- **tenantId** | **String** |  | [optional] 
  **deleteHashTagRequestBody** | [**DeleteHashTagRequestBody**](DeleteHashTagRequestBody.md) |  | [optional] 
 
 ### Return type
@@ -1856,7 +1856,7 @@ Name | Type | Description  | Notes
 
 # **deleteSSOUser**
 ```swift
-    open class func deleteSSOUser(tenantId: String, id: String, deleteComments: Bool? = nil, commentDeleteMode: String? = nil, completion: @escaping (_ data: DeleteSSOUserAPIResponse?, _ error: Error?) -> Void)
+    open class func deleteSSOUser(tenantId: String, id: String, options: DeleteSSOUserOptions = .init(), completion: @escaping (_ data: DeleteSSOUserAPIResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1871,7 +1871,7 @@ let id = "id_example" // String |
 let deleteComments = true // Bool |  (optional)
 let commentDeleteMode = "commentDeleteMode_example" // String |  (optional)
 
-DefaultAPI.deleteSSOUser(tenantId: tenantId, id: id, deleteComments: deleteComments, commentDeleteMode: commentDeleteMode) { (response, error) in
+DefaultAPI.deleteSSOUser(tenantId: tenantId, id: id, options: DefaultAPI.DeleteSSOUserOptions(deleteComments: deleteComments, commentDeleteMode: commentDeleteMode)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2060,7 +2060,7 @@ Name | Type | Description  | Notes
 
 # **deleteTenantUser**
 ```swift
-    open class func deleteTenantUser(tenantId: String, id: String, deleteComments: String? = nil, commentDeleteMode: String? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func deleteTenantUser(tenantId: String, id: String, options: DeleteTenantUserOptions = .init(), completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2075,7 +2075,7 @@ let id = "id_example" // String |
 let deleteComments = "deleteComments_example" // String |  (optional)
 let commentDeleteMode = "commentDeleteMode_example" // String |  (optional)
 
-DefaultAPI.deleteTenantUser(tenantId: tenantId, id: id, deleteComments: deleteComments, commentDeleteMode: commentDeleteMode) { (response, error) in
+DefaultAPI.deleteTenantUser(tenantId: tenantId, id: id, options: DefaultAPI.DeleteTenantUserOptions(deleteComments: deleteComments, commentDeleteMode: commentDeleteMode)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2213,7 +2213,7 @@ Name | Type | Description  | Notes
 
 # **flagComment**
 ```swift
-    open class func flagComment(tenantId: String, id: String, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: FlagCommentResponse?, _ error: Error?) -> Void)
+    open class func flagComment(tenantId: String, id: String, options: FlagCommentOptions = .init(), completion: @escaping (_ data: FlagCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2228,7 +2228,7 @@ let id = "id_example" // String |
 let userId = "userId_example" // String |  (optional)
 let anonUserId = "anonUserId_example" // String |  (optional)
 
-DefaultAPI.flagComment(tenantId: tenantId, id: id, userId: userId, anonUserId: anonUserId) { (response, error) in
+DefaultAPI.flagComment(tenantId: tenantId, id: id, options: DefaultAPI.FlagCommentOptions(userId: userId, anonUserId: anonUserId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2266,7 +2266,7 @@ Name | Type | Description  | Notes
 
 # **getAuditLogs**
 ```swift
-    open class func getAuditLogs(tenantId: String, limit: Double? = nil, skip: Double? = nil, order: SORTDIR? = nil, after: Double? = nil, before: Double? = nil, completion: @escaping (_ data: GetAuditLogsResponse?, _ error: Error?) -> Void)
+    open class func getAuditLogs(tenantId: String, options: GetAuditLogsOptions = .init(), completion: @escaping (_ data: GetAuditLogsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2283,7 +2283,7 @@ let order = SORT_DIR() // SORTDIR |  (optional)
 let after = 987 // Double |  (optional)
 let before = 987 // Double |  (optional)
 
-DefaultAPI.getAuditLogs(tenantId: tenantId, limit: limit, skip: skip, order: order, after: after, before: before) { (response, error) in
+DefaultAPI.getAuditLogs(tenantId: tenantId, options: DefaultAPI.GetAuditLogsOptions(limit: limit, skip: skip, order: order, after: after, before: before)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2421,7 +2421,7 @@ Name | Type | Description  | Notes
 
 # **getComments**
 ```swift
-    open class func getComments(tenantId: String, page: Int? = nil, limit: Int? = nil, skip: Int? = nil, asTree: Bool? = nil, skipChildren: Int? = nil, limitChildren: Int? = nil, maxTreeDepth: Int? = nil, urlId: String? = nil, userId: String? = nil, anonUserId: String? = nil, contextUserId: String? = nil, hashTag: String? = nil, parentId: String? = nil, direction: SortDirections? = nil, fromDate: Int64? = nil, toDate: Int64? = nil, completion: @escaping (_ data: APIGetCommentsResponse?, _ error: Error?) -> Void)
+    open class func getComments(tenantId: String, options: GetCommentsOptions = .init(), completion: @escaping (_ data: APIGetCommentsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2449,7 +2449,7 @@ let direction = SortDirections() // SortDirections |  (optional)
 let fromDate = 987 // Int64 |  (optional)
 let toDate = 987 // Int64 |  (optional)
 
-DefaultAPI.getComments(tenantId: tenantId, page: page, limit: limit, skip: skip, asTree: asTree, skipChildren: skipChildren, limitChildren: limitChildren, maxTreeDepth: maxTreeDepth, urlId: urlId, userId: userId, anonUserId: anonUserId, contextUserId: contextUserId, hashTag: hashTag, parentId: parentId, direction: direction, fromDate: fromDate, toDate: toDate) { (response, error) in
+DefaultAPI.getComments(tenantId: tenantId, options: DefaultAPI.GetCommentsOptions(page: page, limit: limit, skip: skip, asTree: asTree, skipChildren: skipChildren, limitChildren: limitChildren, maxTreeDepth: maxTreeDepth, urlId: urlId, userId: userId, anonUserId: anonUserId, contextUserId: contextUserId, hashTag: hashTag, parentId: parentId, direction: direction, fromDate: fromDate, toDate: toDate)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2792,7 +2792,7 @@ Name | Type | Description  | Notes
 
 # **getFeedPosts**
 ```swift
-    open class func getFeedPosts(tenantId: String, afterId: String? = nil, limit: Int? = nil, tags: [String]? = nil, completion: @escaping (_ data: GetFeedPostsResponse?, _ error: Error?) -> Void)
+    open class func getFeedPosts(tenantId: String, options: GetFeedPostsOptions = .init(), completion: @escaping (_ data: GetFeedPostsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2809,7 +2809,7 @@ let afterId = "afterId_example" // String |  (optional)
 let limit = 987 // Int |  (optional)
 let tags = ["inner_example"] // [String] |  (optional)
 
-DefaultAPI.getFeedPosts(tenantId: tenantId, afterId: afterId, limit: limit, tags: tags) { (response, error) in
+DefaultAPI.getFeedPosts(tenantId: tenantId, options: DefaultAPI.GetFeedPostsOptions(afterId: afterId, limit: limit, tags: tags)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2994,7 +2994,7 @@ Name | Type | Description  | Notes
 
 # **getNotificationCount**
 ```swift
-    open class func getNotificationCount(tenantId: String, userId: String? = nil, urlId: String? = nil, fromCommentId: String? = nil, viewed: Bool? = nil, type: String? = nil, completion: @escaping (_ data: GetNotificationCountResponse?, _ error: Error?) -> Void)
+    open class func getNotificationCount(tenantId: String, options: GetNotificationCountOptions = .init(), completion: @escaping (_ data: GetNotificationCountResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -3011,7 +3011,7 @@ let fromCommentId = "fromCommentId_example" // String |  (optional)
 let viewed = true // Bool |  (optional)
 let type = "type_example" // String |  (optional)
 
-DefaultAPI.getNotificationCount(tenantId: tenantId, userId: userId, urlId: urlId, fromCommentId: fromCommentId, viewed: viewed, type: type) { (response, error) in
+DefaultAPI.getNotificationCount(tenantId: tenantId, options: DefaultAPI.GetNotificationCountOptions(userId: userId, urlId: urlId, fromCommentId: fromCommentId, viewed: viewed, type: type)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -3051,7 +3051,7 @@ Name | Type | Description  | Notes
 
 # **getNotifications**
 ```swift
-    open class func getNotifications(tenantId: String, userId: String? = nil, urlId: String? = nil, fromCommentId: String? = nil, viewed: Bool? = nil, type: String? = nil, skip: Double? = nil, completion: @escaping (_ data: GetNotificationsResponse?, _ error: Error?) -> Void)
+    open class func getNotifications(tenantId: String, options: GetNotificationsOptions = .init(), completion: @escaping (_ data: GetNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -3069,7 +3069,7 @@ let viewed = true // Bool |  (optional)
 let type = "type_example" // String |  (optional)
 let skip = 987 // Double |  (optional)
 
-DefaultAPI.getNotifications(tenantId: tenantId, userId: userId, urlId: urlId, fromCommentId: fromCommentId, viewed: viewed, type: type, skip: skip) { (response, error) in
+DefaultAPI.getNotifications(tenantId: tenantId, options: DefaultAPI.GetNotificationsOptions(userId: userId, urlId: urlId, fromCommentId: fromCommentId, viewed: viewed, type: type, skip: skip)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -3206,7 +3206,7 @@ Name | Type | Description  | Notes
 
 # **getPendingWebhookEventCount**
 ```swift
-    open class func getPendingWebhookEventCount(tenantId: String, commentId: String? = nil, externalId: String? = nil, eventType: String? = nil, type: String? = nil, domain: String? = nil, attemptCountGT: Double? = nil, completion: @escaping (_ data: GetPendingWebhookEventCountResponse?, _ error: Error?) -> Void)
+    open class func getPendingWebhookEventCount(tenantId: String, options: GetPendingWebhookEventCountOptions = .init(), completion: @escaping (_ data: GetPendingWebhookEventCountResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -3224,7 +3224,7 @@ let type = "type_example" // String |  (optional)
 let domain = "domain_example" // String |  (optional)
 let attemptCountGT = 987 // Double |  (optional)
 
-DefaultAPI.getPendingWebhookEventCount(tenantId: tenantId, commentId: commentId, externalId: externalId, eventType: eventType, type: type, domain: domain, attemptCountGT: attemptCountGT) { (response, error) in
+DefaultAPI.getPendingWebhookEventCount(tenantId: tenantId, options: DefaultAPI.GetPendingWebhookEventCountOptions(commentId: commentId, externalId: externalId, eventType: eventType, type: type, domain: domain, attemptCountGT: attemptCountGT)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -3265,7 +3265,7 @@ Name | Type | Description  | Notes
 
 # **getPendingWebhookEvents**
 ```swift
-    open class func getPendingWebhookEvents(tenantId: String, commentId: String? = nil, externalId: String? = nil, eventType: String? = nil, type: String? = nil, domain: String? = nil, attemptCountGT: Double? = nil, skip: Double? = nil, completion: @escaping (_ data: GetPendingWebhookEventsResponse?, _ error: Error?) -> Void)
+    open class func getPendingWebhookEvents(tenantId: String, options: GetPendingWebhookEventsOptions = .init(), completion: @escaping (_ data: GetPendingWebhookEventsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -3284,7 +3284,7 @@ let domain = "domain_example" // String |  (optional)
 let attemptCountGT = 987 // Double |  (optional)
 let skip = 987 // Double |  (optional)
 
-DefaultAPI.getPendingWebhookEvents(tenantId: tenantId, commentId: commentId, externalId: externalId, eventType: eventType, type: type, domain: domain, attemptCountGT: attemptCountGT, skip: skip) { (response, error) in
+DefaultAPI.getPendingWebhookEvents(tenantId: tenantId, options: DefaultAPI.GetPendingWebhookEventsOptions(commentId: commentId, externalId: externalId, eventType: eventType, type: type, domain: domain, attemptCountGT: attemptCountGT, skip: skip)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -3473,7 +3473,7 @@ Name | Type | Description  | Notes
 
 # **getQuestionResults**
 ```swift
-    open class func getQuestionResults(tenantId: String, urlId: String? = nil, userId: String? = nil, startDate: String? = nil, questionId: String? = nil, questionIds: String? = nil, skip: Double? = nil, completion: @escaping (_ data: GetQuestionResultsResponse?, _ error: Error?) -> Void)
+    open class func getQuestionResults(tenantId: String, options: GetQuestionResultsOptions = .init(), completion: @escaping (_ data: GetQuestionResultsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -3491,7 +3491,7 @@ let questionId = "questionId_example" // String |  (optional)
 let questionIds = "questionIds_example" // String |  (optional)
 let skip = 987 // Double |  (optional)
 
-DefaultAPI.getQuestionResults(tenantId: tenantId, urlId: urlId, userId: userId, startDate: startDate, questionId: questionId, questionIds: questionIds, skip: skip) { (response, error) in
+DefaultAPI.getQuestionResults(tenantId: tenantId, options: DefaultAPI.GetQuestionResultsOptions(urlId: urlId, userId: userId, startDate: startDate, questionId: questionId, questionIds: questionIds, skip: skip)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -3777,7 +3777,7 @@ Name | Type | Description  | Notes
 
 # **getTenantDailyUsages**
 ```swift
-    open class func getTenantDailyUsages(tenantId: String, yearNumber: Double? = nil, monthNumber: Double? = nil, dayNumber: Double? = nil, skip: Double? = nil, completion: @escaping (_ data: GetTenantDailyUsagesResponse?, _ error: Error?) -> Void)
+    open class func getTenantDailyUsages(tenantId: String, options: GetTenantDailyUsagesOptions = .init(), completion: @escaping (_ data: GetTenantDailyUsagesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -3793,7 +3793,7 @@ let monthNumber = 987 // Double |  (optional)
 let dayNumber = 987 // Double |  (optional)
 let skip = 987 // Double |  (optional)
 
-DefaultAPI.getTenantDailyUsages(tenantId: tenantId, yearNumber: yearNumber, monthNumber: monthNumber, dayNumber: dayNumber, skip: skip) { (response, error) in
+DefaultAPI.getTenantDailyUsages(tenantId: tenantId, options: DefaultAPI.GetTenantDailyUsagesOptions(yearNumber: yearNumber, monthNumber: monthNumber, dayNumber: dayNumber, skip: skip)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -4028,7 +4028,7 @@ Name | Type | Description  | Notes
 
 # **getTenants**
 ```swift
-    open class func getTenants(tenantId: String, meta: String? = nil, skip: Double? = nil, completion: @escaping (_ data: GetTenantsResponse?, _ error: Error?) -> Void)
+    open class func getTenants(tenantId: String, options: GetTenantsOptions = .init(), completion: @escaping (_ data: GetTenantsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4042,7 +4042,7 @@ let tenantId = "tenantId_example" // String |
 let meta = "meta_example" // String |  (optional)
 let skip = 987 // Double |  (optional)
 
-DefaultAPI.getTenants(tenantId: tenantId, meta: meta, skip: skip) { (response, error) in
+DefaultAPI.getTenants(tenantId: tenantId, options: DefaultAPI.GetTenantsOptions(meta: meta, skip: skip)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -4130,7 +4130,7 @@ Name | Type | Description  | Notes
 
 # **getTickets**
 ```swift
-    open class func getTickets(tenantId: String, userId: String? = nil, state: Double? = nil, skip: Double? = nil, limit: Double? = nil, completion: @escaping (_ data: GetTicketsResponse?, _ error: Error?) -> Void)
+    open class func getTickets(tenantId: String, options: GetTicketsOptions = .init(), completion: @escaping (_ data: GetTicketsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4146,7 +4146,7 @@ let state = 987 // Double |  (optional)
 let skip = 987 // Double |  (optional)
 let limit = 987 // Double |  (optional)
 
-DefaultAPI.getTickets(tenantId: tenantId, userId: userId, state: state, skip: skip, limit: limit) { (response, error) in
+DefaultAPI.getTickets(tenantId: tenantId, options: DefaultAPI.GetTicketsOptions(userId: userId, state: state, skip: skip, limit: limit)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -4381,7 +4381,7 @@ Name | Type | Description  | Notes
 
 # **getUserBadgeProgressList**
 ```swift
-    open class func getUserBadgeProgressList(tenantId: String, userId: String? = nil, limit: Double? = nil, skip: Double? = nil, completion: @escaping (_ data: APIGetUserBadgeProgressListResponse?, _ error: Error?) -> Void)
+    open class func getUserBadgeProgressList(tenantId: String, options: GetUserBadgeProgressListOptions = .init(), completion: @escaping (_ data: APIGetUserBadgeProgressListResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4396,7 +4396,7 @@ let userId = "userId_example" // String |  (optional)
 let limit = 987 // Double |  (optional)
 let skip = 987 // Double |  (optional)
 
-DefaultAPI.getUserBadgeProgressList(tenantId: tenantId, userId: userId, limit: limit, skip: skip) { (response, error) in
+DefaultAPI.getUserBadgeProgressList(tenantId: tenantId, options: DefaultAPI.GetUserBadgeProgressListOptions(userId: userId, limit: limit, skip: skip)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -4434,7 +4434,7 @@ Name | Type | Description  | Notes
 
 # **getUserBadges**
 ```swift
-    open class func getUserBadges(tenantId: String, userId: String? = nil, badgeId: String? = nil, type: Double? = nil, displayedOnComments: Bool? = nil, limit: Double? = nil, skip: Double? = nil, completion: @escaping (_ data: APIGetUserBadgesResponse?, _ error: Error?) -> Void)
+    open class func getUserBadges(tenantId: String, options: GetUserBadgesOptions = .init(), completion: @escaping (_ data: APIGetUserBadgesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4452,7 +4452,7 @@ let displayedOnComments = true // Bool |  (optional)
 let limit = 987 // Double |  (optional)
 let skip = 987 // Double |  (optional)
 
-DefaultAPI.getUserBadges(tenantId: tenantId, userId: userId, badgeId: badgeId, type: type, displayedOnComments: displayedOnComments, limit: limit, skip: skip) { (response, error) in
+DefaultAPI.getUserBadges(tenantId: tenantId, options: DefaultAPI.GetUserBadgesOptions(userId: userId, badgeId: badgeId, type: type, displayedOnComments: displayedOnComments, limit: limit, skip: skip)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -4542,7 +4542,7 @@ Name | Type | Description  | Notes
 
 # **getVotesForUser**
 ```swift
-    open class func getVotesForUser(tenantId: String, urlId: String, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: GetVotesForUserResponse?, _ error: Error?) -> Void)
+    open class func getVotesForUser(tenantId: String, urlId: String, options: GetVotesForUserOptions = .init(), completion: @escaping (_ data: GetVotesForUserResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4557,7 +4557,7 @@ let urlId = "urlId_example" // String |
 let userId = "userId_example" // String |  (optional)
 let anonUserId = "anonUserId_example" // String |  (optional)
 
-DefaultAPI.getVotesForUser(tenantId: tenantId, urlId: urlId, userId: userId, anonUserId: anonUserId) { (response, error) in
+DefaultAPI.getVotesForUser(tenantId: tenantId, urlId: urlId, options: DefaultAPI.GetVotesForUserOptions(userId: userId, anonUserId: anonUserId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -4646,7 +4646,7 @@ Name | Type | Description  | Notes
 
 # **patchHashTag**
 ```swift
-    open class func patchHashTag(tag: String, tenantId: String? = nil, updateHashTagBody: UpdateHashTagBody? = nil, completion: @escaping (_ data: UpdateHashTagResponse?, _ error: Error?) -> Void)
+    open class func patchHashTag(tenantId: String, tag: String, updateHashTagBody: UpdateHashTagBody? = nil, completion: @escaping (_ data: UpdateHashTagResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -4656,11 +4656,11 @@ Name | Type | Description  | Notes
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
+let tenantId = "tenantId_example" // String | 
 let tag = "tag_example" // String | 
-let tenantId = "tenantId_example" // String |  (optional)
 let updateHashTagBody = UpdateHashTagBody(tenantId: "tenantId_example", url: "url_example", tag: "tag_example") // UpdateHashTagBody |  (optional)
 
-DefaultAPI.patchHashTag(tag: tag, tenantId: tenantId, updateHashTagBody: updateHashTagBody) { (response, error) in
+DefaultAPI.patchHashTag(tenantId: tenantId, tag: tag, updateHashTagBody: updateHashTagBody) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -4676,8 +4676,8 @@ DefaultAPI.patchHashTag(tag: tag, tenantId: tenantId, updateHashTagBody: updateH
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
  **tag** | **String** |  | 
- **tenantId** | **String** |  | [optional] 
  **updateHashTagBody** | [**UpdateHashTagBody**](UpdateHashTagBody.md) |  | [optional] 
 
 ### Return type
@@ -5060,7 +5060,7 @@ Name | Type | Description  | Notes
 
 # **saveComment**
 ```swift
-    open class func saveComment(tenantId: String, createCommentParams: CreateCommentParams, isLive: Bool? = nil, doSpamCheck: Bool? = nil, sendEmails: Bool? = nil, populateNotifications: Bool? = nil, completion: @escaping (_ data: APISaveCommentResponse?, _ error: Error?) -> Void)
+    open class func saveComment(tenantId: String, createCommentParams: CreateCommentParams, options: SaveCommentOptions = .init(), completion: @escaping (_ data: APISaveCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5077,7 +5077,7 @@ let doSpamCheck = true // Bool |  (optional)
 let sendEmails = true // Bool |  (optional)
 let populateNotifications = true // Bool |  (optional)
 
-DefaultAPI.saveComment(tenantId: tenantId, createCommentParams: createCommentParams, isLive: isLive, doSpamCheck: doSpamCheck, sendEmails: sendEmails, populateNotifications: populateNotifications) { (response, error) in
+DefaultAPI.saveComment(tenantId: tenantId, createCommentParams: createCommentParams, options: DefaultAPI.SaveCommentOptions(isLive: isLive, doSpamCheck: doSpamCheck, sendEmails: sendEmails, populateNotifications: populateNotifications)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -5117,7 +5117,7 @@ Name | Type | Description  | Notes
 
 # **saveCommentsBulk**
 ```swift
-    open class func saveCommentsBulk(tenantId: String, createCommentParams: [CreateCommentParams], isLive: Bool? = nil, doSpamCheck: Bool? = nil, sendEmails: Bool? = nil, populateNotifications: Bool? = nil, completion: @escaping (_ data: [SaveCommentsBulkResponse]?, _ error: Error?) -> Void)
+    open class func saveCommentsBulk(tenantId: String, createCommentParams: [CreateCommentParams], options: SaveCommentsBulkOptions = .init(), completion: @escaping (_ data: [SaveCommentsBulkResponse]?, _ error: Error?) -> Void)
 ```
 
 
@@ -5134,7 +5134,7 @@ let doSpamCheck = true // Bool |  (optional)
 let sendEmails = true // Bool |  (optional)
 let populateNotifications = true // Bool |  (optional)
 
-DefaultAPI.saveCommentsBulk(tenantId: tenantId, createCommentParams: createCommentParams, isLive: isLive, doSpamCheck: doSpamCheck, sendEmails: sendEmails, populateNotifications: populateNotifications) { (response, error) in
+DefaultAPI.saveCommentsBulk(tenantId: tenantId, createCommentParams: createCommentParams, options: DefaultAPI.SaveCommentsBulkOptions(isLive: isLive, doSpamCheck: doSpamCheck, sendEmails: sendEmails, populateNotifications: populateNotifications)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -5276,7 +5276,7 @@ Name | Type | Description  | Notes
 
 # **unBlockUserFromComment**
 ```swift
-    open class func unBlockUserFromComment(tenantId: String, id: String, unBlockFromCommentParams: UnBlockFromCommentParams, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: UnblockSuccess?, _ error: Error?) -> Void)
+    open class func unBlockUserFromComment(tenantId: String, id: String, unBlockFromCommentParams: UnBlockFromCommentParams, options: UnBlockUserFromCommentOptions = .init(), completion: @escaping (_ data: UnblockSuccess?, _ error: Error?) -> Void)
 ```
 
 
@@ -5292,7 +5292,7 @@ let unBlockFromCommentParams = UnBlockFromCommentParams(commentIdsToCheck: ["com
 let userId = "userId_example" // String |  (optional)
 let anonUserId = "anonUserId_example" // String |  (optional)
 
-DefaultAPI.unBlockUserFromComment(tenantId: tenantId, id: id, unBlockFromCommentParams: unBlockFromCommentParams, userId: userId, anonUserId: anonUserId) { (response, error) in
+DefaultAPI.unBlockUserFromComment(tenantId: tenantId, id: id, unBlockFromCommentParams: unBlockFromCommentParams, options: DefaultAPI.UnBlockUserFromCommentOptions(userId: userId, anonUserId: anonUserId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -5331,7 +5331,7 @@ Name | Type | Description  | Notes
 
 # **unFlagComment**
 ```swift
-    open class func unFlagComment(tenantId: String, id: String, userId: String? = nil, anonUserId: String? = nil, completion: @escaping (_ data: FlagCommentResponse?, _ error: Error?) -> Void)
+    open class func unFlagComment(tenantId: String, id: String, options: UnFlagCommentOptions = .init(), completion: @escaping (_ data: FlagCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5346,7 +5346,7 @@ let id = "id_example" // String |
 let userId = "userId_example" // String |  (optional)
 let anonUserId = "anonUserId_example" // String |  (optional)
 
-DefaultAPI.unFlagComment(tenantId: tenantId, id: id, userId: userId, anonUserId: anonUserId) { (response, error) in
+DefaultAPI.unFlagComment(tenantId: tenantId, id: id, options: DefaultAPI.UnFlagCommentOptions(userId: userId, anonUserId: anonUserId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -5384,7 +5384,7 @@ Name | Type | Description  | Notes
 
 # **updateComment**
 ```swift
-    open class func updateComment(tenantId: String, id: String, updatableCommentParams: UpdatableCommentParams, contextUserId: String? = nil, doSpamCheck: Bool? = nil, isLive: Bool? = nil, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+    open class func updateComment(tenantId: String, id: String, updatableCommentParams: UpdatableCommentParams, options: UpdateCommentOptions = .init(), completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -5401,7 +5401,7 @@ let contextUserId = "contextUserId_example" // String |  (optional)
 let doSpamCheck = true // Bool |  (optional)
 let isLive = true // Bool |  (optional)
 
-DefaultAPI.updateComment(tenantId: tenantId, id: id, updatableCommentParams: updatableCommentParams, contextUserId: contextUserId, doSpamCheck: doSpamCheck, isLive: isLive) { (response, error) in
+DefaultAPI.updateComment(tenantId: tenantId, id: id, updatableCommentParams: updatableCommentParams, options: DefaultAPI.UpdateCommentOptions(contextUserId: contextUserId, doSpamCheck: doSpamCheck, isLive: isLive)) { (response, error) in
     guard error == nil else {
         print(error)
         return

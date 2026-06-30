@@ -32,6 +32,14 @@ else
     exit 1
 fi
 
+# Re-apply hand-patched infrastructure files that the generator overwrites. The
+# `rm -rf ./client` + regen above wipes .openapi-generator-ignore and the files it
+# protects, so restore them from git here. This keeps the presence-tracking cookie patch
+# in URLSessionImplementations.swift (ephemeral config, cookies disabled) from being
+# silently reverted on every regen. See client/.openapi-generator-ignore.
+echo "Restoring hand-patched infrastructure files..."
+git checkout -- ./client/.openapi-generator-ignore ./client/FastCommentsSwift/Infrastructure/URLSessionImplementations.swift
+
 # Remove files that prevent Swift Package from including client directory
 echo "Cleaning up generated files..."
 rm -f ./client/.gitignore

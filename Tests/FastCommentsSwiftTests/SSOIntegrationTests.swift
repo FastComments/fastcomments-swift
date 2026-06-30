@@ -54,7 +54,7 @@ final class SSOIntegrationTests: XCTestCase {
             urlId: testUrlId,
             broadcastId: "swift-test-\(timestamp)",
             commentData: commentData,
-            sso: token
+            options: .init(sso: token)
         )
 
         XCTAssertEqual(createResponse.status, .success, "Create comment should succeed")
@@ -71,7 +71,7 @@ final class SSOIntegrationTests: XCTestCase {
         let getResponse = try await PublicAPI.getCommentsPublic(
             tenantId: tenantId,
             urlId: testUrlId,
-            sso: token
+            options: .init(sso: token)
         )
 
         XCTAssertEqual(getResponse.status, "success", "Get comments should succeed")
@@ -124,7 +124,7 @@ final class SSOIntegrationTests: XCTestCase {
             urlId: testUrlId,
             broadcastId: "swift-opts-\(timestamp)",
             commentData: commentData,
-            sso: token
+            options: .init(sso: token)
         )
 
         XCTAssertEqual(createResponse.status, .success, "Create comment with optional SSO fields should succeed")
@@ -140,7 +140,7 @@ final class SSOIntegrationTests: XCTestCase {
         let getResponse = try await PublicAPI.getCommentsPublic(
             tenantId: tenantId,
             urlId: testUrlId,
-            sso: token
+            options: .init(sso: token)
         )
 
         XCTAssertEqual(getResponse.status, "success")
@@ -191,7 +191,7 @@ final class SSOIntegrationTests: XCTestCase {
             urlId: testUrlId,
             broadcastId: "swift-simple-\(timestamp)",
             commentData: commentData,
-            sso: token
+            options: .init(sso: token)
         )
 
         XCTAssertEqual(createResponse.status, .success, "Create comment with simple SSO should succeed")
@@ -208,7 +208,7 @@ final class SSOIntegrationTests: XCTestCase {
         let getResponse = try await PublicAPI.getCommentsPublic(
             tenantId: tenantId,
             urlId: testUrlId,
-            sso: token
+            options: .init(sso: token)
         )
 
         XCTAssertEqual(getResponse.status, "success", "Get comments with simple SSO should succeed")
