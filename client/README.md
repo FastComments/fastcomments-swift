@@ -140,49 +140,49 @@ Class | Method | HTTP request | Description
 *DefaultAPI* | [**updateTenantPackage**](docs/DefaultAPI.md#updatetenantpackage) | **PATCH** /api/v1/tenant-packages/{id} | 
 *DefaultAPI* | [**updateTenantUser**](docs/DefaultAPI.md#updatetenantuser) | **PATCH** /api/v1/tenant-users/{id} | 
 *DefaultAPI* | [**updateUserBadge**](docs/DefaultAPI.md#updateuserbadge) | **PUT** /api/v1/user-badges/{id} | 
-*ModerationAPI* | [**deleteModerationVote**](docs/ModerationAPI.md#deletemoderationvote) | **DELETE** /auth/my-account/moderate-comments/vote/{commentId}/{voteId} | 
-*ModerationAPI* | [**getApiComments**](docs/ModerationAPI.md#getapicomments) | **GET** /auth/my-account/moderate-comments/api/comments | 
-*ModerationAPI* | [**getApiExportStatus**](docs/ModerationAPI.md#getapiexportstatus) | **GET** /auth/my-account/moderate-comments/api/export/status | 
-*ModerationAPI* | [**getApiIds**](docs/ModerationAPI.md#getapiids) | **GET** /auth/my-account/moderate-comments/api/ids | 
-*ModerationAPI* | [**getBanUsersFromComment**](docs/ModerationAPI.md#getbanusersfromcomment) | **GET** /auth/my-account/moderate-comments/ban-users/from-comment/{commentId} | 
-*ModerationAPI* | [**getCommentBanStatus**](docs/ModerationAPI.md#getcommentbanstatus) | **GET** /auth/my-account/moderate-comments/get-comment-ban-status/{commentId} | 
-*ModerationAPI* | [**getCommentChildren**](docs/ModerationAPI.md#getcommentchildren) | **GET** /auth/my-account/moderate-comments/comment-children/{commentId} | 
-*ModerationAPI* | [**getCount**](docs/ModerationAPI.md#getcount) | **GET** /auth/my-account/moderate-comments/count | 
-*ModerationAPI* | [**getCounts**](docs/ModerationAPI.md#getcounts) | **GET** /auth/my-account/moderate-comments/banned-users/counts | 
-*ModerationAPI* | [**getLogs**](docs/ModerationAPI.md#getlogs) | **GET** /auth/my-account/moderate-comments/logs/{commentId} | 
-*ModerationAPI* | [**getManualBadges**](docs/ModerationAPI.md#getmanualbadges) | **GET** /auth/my-account/moderate-comments/get-manual-badges | 
-*ModerationAPI* | [**getManualBadgesForUser**](docs/ModerationAPI.md#getmanualbadgesforuser) | **GET** /auth/my-account/moderate-comments/get-manual-badges-for-user | 
-*ModerationAPI* | [**getModerationComment**](docs/ModerationAPI.md#getmoderationcomment) | **GET** /auth/my-account/moderate-comments/comment/{commentId} | 
-*ModerationAPI* | [**getModerationCommentText**](docs/ModerationAPI.md#getmoderationcommenttext) | **GET** /auth/my-account/moderate-comments/get-comment-text/{commentId} | 
-*ModerationAPI* | [**getPreBanSummary**](docs/ModerationAPI.md#getprebansummary) | **GET** /auth/my-account/moderate-comments/pre-ban-summary/{commentId} | 
-*ModerationAPI* | [**getSearchCommentsSummary**](docs/ModerationAPI.md#getsearchcommentssummary) | **GET** /auth/my-account/moderate-comments/search/comments/summary | 
-*ModerationAPI* | [**getSearchPages**](docs/ModerationAPI.md#getsearchpages) | **GET** /auth/my-account/moderate-comments/search/pages | 
-*ModerationAPI* | [**getSearchSites**](docs/ModerationAPI.md#getsearchsites) | **GET** /auth/my-account/moderate-comments/search/sites | 
-*ModerationAPI* | [**getSearchSuggest**](docs/ModerationAPI.md#getsearchsuggest) | **GET** /auth/my-account/moderate-comments/search/suggest | 
-*ModerationAPI* | [**getSearchUsers**](docs/ModerationAPI.md#getsearchusers) | **GET** /auth/my-account/moderate-comments/search/users | 
-*ModerationAPI* | [**getTrustFactor**](docs/ModerationAPI.md#gettrustfactor) | **GET** /auth/my-account/moderate-comments/get-trust-factor | 
-*ModerationAPI* | [**getUserBanPreference**](docs/ModerationAPI.md#getuserbanpreference) | **GET** /auth/my-account/moderate-comments/user-ban-preference | 
-*ModerationAPI* | [**getUserInternalProfile**](docs/ModerationAPI.md#getuserinternalprofile) | **GET** /auth/my-account/moderate-comments/get-user-internal-profile | 
-*ModerationAPI* | [**postAdjustCommentVotes**](docs/ModerationAPI.md#postadjustcommentvotes) | **POST** /auth/my-account/moderate-comments/adjust-comment-votes/{commentId} | 
-*ModerationAPI* | [**postApiExport**](docs/ModerationAPI.md#postapiexport) | **POST** /auth/my-account/moderate-comments/api/export | 
-*ModerationAPI* | [**postBanUserFromComment**](docs/ModerationAPI.md#postbanuserfromcomment) | **POST** /auth/my-account/moderate-comments/ban-user/from-comment/{commentId} | 
-*ModerationAPI* | [**postBanUserUndo**](docs/ModerationAPI.md#postbanuserundo) | **POST** /auth/my-account/moderate-comments/ban-user/undo | 
-*ModerationAPI* | [**postBulkPreBanSummary**](docs/ModerationAPI.md#postbulkprebansummary) | **POST** /auth/my-account/moderate-comments/bulk-pre-ban-summary | 
-*ModerationAPI* | [**postCommentsByIds**](docs/ModerationAPI.md#postcommentsbyids) | **POST** /auth/my-account/moderate-comments/comments-by-ids | 
-*ModerationAPI* | [**postFlagComment**](docs/ModerationAPI.md#postflagcomment) | **POST** /auth/my-account/moderate-comments/flag-comment/{commentId} | 
-*ModerationAPI* | [**postRemoveComment**](docs/ModerationAPI.md#postremovecomment) | **POST** /auth/my-account/moderate-comments/remove-comment/{commentId} | 
-*ModerationAPI* | [**postRestoreDeletedComment**](docs/ModerationAPI.md#postrestoredeletedcomment) | **POST** /auth/my-account/moderate-comments/restore-deleted-comment/{commentId} | 
-*ModerationAPI* | [**postSetCommentApprovalStatus**](docs/ModerationAPI.md#postsetcommentapprovalstatus) | **POST** /auth/my-account/moderate-comments/set-comment-approval-status/{commentId} | 
-*ModerationAPI* | [**postSetCommentReviewStatus**](docs/ModerationAPI.md#postsetcommentreviewstatus) | **POST** /auth/my-account/moderate-comments/set-comment-review-status/{commentId} | 
-*ModerationAPI* | [**postSetCommentSpamStatus**](docs/ModerationAPI.md#postsetcommentspamstatus) | **POST** /auth/my-account/moderate-comments/set-comment-spam-status/{commentId} | 
-*ModerationAPI* | [**postSetCommentText**](docs/ModerationAPI.md#postsetcommenttext) | **POST** /auth/my-account/moderate-comments/set-comment-text/{commentId} | 
-*ModerationAPI* | [**postUnFlagComment**](docs/ModerationAPI.md#postunflagcomment) | **POST** /auth/my-account/moderate-comments/un-flag-comment/{commentId} | 
-*ModerationAPI* | [**postVote**](docs/ModerationAPI.md#postvote) | **POST** /auth/my-account/moderate-comments/vote/{commentId} | 
-*ModerationAPI* | [**putAwardBadge**](docs/ModerationAPI.md#putawardbadge) | **PUT** /auth/my-account/moderate-comments/award-badge | 
-*ModerationAPI* | [**putCloseThread**](docs/ModerationAPI.md#putclosethread) | **PUT** /auth/my-account/moderate-comments/close-thread | 
-*ModerationAPI* | [**putRemoveBadge**](docs/ModerationAPI.md#putremovebadge) | **PUT** /auth/my-account/moderate-comments/remove-badge | 
-*ModerationAPI* | [**putReopenThread**](docs/ModerationAPI.md#putreopenthread) | **PUT** /auth/my-account/moderate-comments/reopen-thread | 
-*ModerationAPI* | [**setTrustFactor**](docs/ModerationAPI.md#settrustfactor) | **PUT** /auth/my-account/moderate-comments/set-trust-factor | 
+*ModerationAPI* | [**deleteModerationVote**](docs/ModerationAPI.md#deletemoderationvote) | **DELETE** /auth/my-account/moderate-comments/mod_api/vote/{commentId}/{voteId} | 
+*ModerationAPI* | [**getApiComments**](docs/ModerationAPI.md#getapicomments) | **GET** /auth/my-account/moderate-comments/mod_api/api/comments | 
+*ModerationAPI* | [**getApiExportStatus**](docs/ModerationAPI.md#getapiexportstatus) | **GET** /auth/my-account/moderate-comments/mod_api/api/export/status | 
+*ModerationAPI* | [**getApiIds**](docs/ModerationAPI.md#getapiids) | **GET** /auth/my-account/moderate-comments/mod_api/api/ids | 
+*ModerationAPI* | [**getBanUsersFromComment**](docs/ModerationAPI.md#getbanusersfromcomment) | **GET** /auth/my-account/moderate-comments/mod_api/ban-users/from-comment/{commentId} | 
+*ModerationAPI* | [**getCommentBanStatus**](docs/ModerationAPI.md#getcommentbanstatus) | **GET** /auth/my-account/moderate-comments/mod_api/get-comment-ban-status/{commentId} | 
+*ModerationAPI* | [**getCommentChildren**](docs/ModerationAPI.md#getcommentchildren) | **GET** /auth/my-account/moderate-comments/mod_api/comment-children/{commentId} | 
+*ModerationAPI* | [**getCount**](docs/ModerationAPI.md#getcount) | **GET** /auth/my-account/moderate-comments/mod_api/count | 
+*ModerationAPI* | [**getCounts**](docs/ModerationAPI.md#getcounts) | **GET** /auth/my-account/moderate-comments/banned-users/mod_api/counts | 
+*ModerationAPI* | [**getLogs**](docs/ModerationAPI.md#getlogs) | **GET** /auth/my-account/moderate-comments/mod_api/logs/{commentId} | 
+*ModerationAPI* | [**getManualBadges**](docs/ModerationAPI.md#getmanualbadges) | **GET** /auth/my-account/moderate-comments/mod_api/get-manual-badges | 
+*ModerationAPI* | [**getManualBadgesForUser**](docs/ModerationAPI.md#getmanualbadgesforuser) | **GET** /auth/my-account/moderate-comments/mod_api/get-manual-badges-for-user | 
+*ModerationAPI* | [**getModerationComment**](docs/ModerationAPI.md#getmoderationcomment) | **GET** /auth/my-account/moderate-comments/mod_api/comment/{commentId} | 
+*ModerationAPI* | [**getModerationCommentText**](docs/ModerationAPI.md#getmoderationcommenttext) | **GET** /auth/my-account/moderate-comments/mod_api/get-comment-text/{commentId} | 
+*ModerationAPI* | [**getPreBanSummary**](docs/ModerationAPI.md#getprebansummary) | **GET** /auth/my-account/moderate-comments/mod_api/pre-ban-summary/{commentId} | 
+*ModerationAPI* | [**getSearchCommentsSummary**](docs/ModerationAPI.md#getsearchcommentssummary) | **GET** /auth/my-account/moderate-comments/mod_api/search/comments/summary | 
+*ModerationAPI* | [**getSearchPages**](docs/ModerationAPI.md#getsearchpages) | **GET** /auth/my-account/moderate-comments/mod_api/search/pages | 
+*ModerationAPI* | [**getSearchSites**](docs/ModerationAPI.md#getsearchsites) | **GET** /auth/my-account/moderate-comments/mod_api/search/sites | 
+*ModerationAPI* | [**getSearchSuggest**](docs/ModerationAPI.md#getsearchsuggest) | **GET** /auth/my-account/moderate-comments/mod_api/search/suggest | 
+*ModerationAPI* | [**getSearchUsers**](docs/ModerationAPI.md#getsearchusers) | **GET** /auth/my-account/moderate-comments/mod_api/search/users | 
+*ModerationAPI* | [**getTrustFactor**](docs/ModerationAPI.md#gettrustfactor) | **GET** /auth/my-account/moderate-comments/mod_api/get-trust-factor | 
+*ModerationAPI* | [**getUserBanPreference**](docs/ModerationAPI.md#getuserbanpreference) | **GET** /auth/my-account/moderate-comments/mod_api/user-ban-preference | 
+*ModerationAPI* | [**getUserInternalProfile**](docs/ModerationAPI.md#getuserinternalprofile) | **GET** /auth/my-account/moderate-comments/mod_api/get-user-internal-profile | 
+*ModerationAPI* | [**postAdjustCommentVotes**](docs/ModerationAPI.md#postadjustcommentvotes) | **POST** /auth/my-account/moderate-comments/mod_api/adjust-comment-votes/{commentId} | 
+*ModerationAPI* | [**postApiExport**](docs/ModerationAPI.md#postapiexport) | **POST** /auth/my-account/moderate-comments/mod_api/api/export | 
+*ModerationAPI* | [**postBanUserFromComment**](docs/ModerationAPI.md#postbanuserfromcomment) | **POST** /auth/my-account/moderate-comments/mod_api/ban-user/from-comment/{commentId} | 
+*ModerationAPI* | [**postBanUserUndo**](docs/ModerationAPI.md#postbanuserundo) | **POST** /auth/my-account/moderate-comments/mod_api/ban-user/undo | 
+*ModerationAPI* | [**postBulkPreBanSummary**](docs/ModerationAPI.md#postbulkprebansummary) | **POST** /auth/my-account/moderate-comments/mod_api/bulk-pre-ban-summary | 
+*ModerationAPI* | [**postCommentsByIds**](docs/ModerationAPI.md#postcommentsbyids) | **POST** /auth/my-account/moderate-comments/mod_api/comments-by-ids | 
+*ModerationAPI* | [**postFlagComment**](docs/ModerationAPI.md#postflagcomment) | **POST** /auth/my-account/moderate-comments/mod_api/flag-comment/{commentId} | 
+*ModerationAPI* | [**postRemoveComment**](docs/ModerationAPI.md#postremovecomment) | **POST** /auth/my-account/moderate-comments/mod_api/remove-comment/{commentId} | 
+*ModerationAPI* | [**postRestoreDeletedComment**](docs/ModerationAPI.md#postrestoredeletedcomment) | **POST** /auth/my-account/moderate-comments/mod_api/restore-deleted-comment/{commentId} | 
+*ModerationAPI* | [**postSetCommentApprovalStatus**](docs/ModerationAPI.md#postsetcommentapprovalstatus) | **POST** /auth/my-account/moderate-comments/mod_api/set-comment-approval-status/{commentId} | 
+*ModerationAPI* | [**postSetCommentReviewStatus**](docs/ModerationAPI.md#postsetcommentreviewstatus) | **POST** /auth/my-account/moderate-comments/mod_api/set-comment-review-status/{commentId} | 
+*ModerationAPI* | [**postSetCommentSpamStatus**](docs/ModerationAPI.md#postsetcommentspamstatus) | **POST** /auth/my-account/moderate-comments/mod_api/set-comment-spam-status/{commentId} | 
+*ModerationAPI* | [**postSetCommentText**](docs/ModerationAPI.md#postsetcommenttext) | **POST** /auth/my-account/moderate-comments/mod_api/set-comment-text/{commentId} | 
+*ModerationAPI* | [**postUnFlagComment**](docs/ModerationAPI.md#postunflagcomment) | **POST** /auth/my-account/moderate-comments/mod_api/un-flag-comment/{commentId} | 
+*ModerationAPI* | [**postVote**](docs/ModerationAPI.md#postvote) | **POST** /auth/my-account/moderate-comments/mod_api/vote/{commentId} | 
+*ModerationAPI* | [**putAwardBadge**](docs/ModerationAPI.md#putawardbadge) | **PUT** /auth/my-account/moderate-comments/mod_api/award-badge | 
+*ModerationAPI* | [**putCloseThread**](docs/ModerationAPI.md#putclosethread) | **PUT** /auth/my-account/moderate-comments/mod_api/close-thread | 
+*ModerationAPI* | [**putRemoveBadge**](docs/ModerationAPI.md#putremovebadge) | **PUT** /auth/my-account/moderate-comments/mod_api/remove-badge | 
+*ModerationAPI* | [**putReopenThread**](docs/ModerationAPI.md#putreopenthread) | **PUT** /auth/my-account/moderate-comments/mod_api/reopen-thread | 
+*ModerationAPI* | [**setTrustFactor**](docs/ModerationAPI.md#settrustfactor) | **PUT** /auth/my-account/moderate-comments/mod_api/set-trust-factor | 
 *PublicAPI* | [**blockFromCommentPublic**](docs/PublicAPI.md#blockfromcommentpublic) | **POST** /block-from-comment/{commentId} | 
 *PublicAPI* | [**checkedCommentsForBlocked**](docs/PublicAPI.md#checkedcommentsforblocked) | **GET** /check-blocked-comments | 
 *PublicAPI* | [**createCommentPublic**](docs/PublicAPI.md#createcommentpublic) | **POST** /comments/{tenantId} | 
@@ -498,7 +498,7 @@ Class | Method | HTTP request | Description
  - [PatchPageAPIResponse](docs/PatchPageAPIResponse.md)
  - [PatchSSOUserAPIResponse](docs/PatchSSOUserAPIResponse.md)
  - [PendingCommentToSyncOutbound](docs/PendingCommentToSyncOutbound.md)
- - [PostRemoveCommentResponse](docs/PostRemoveCommentResponse.md)
+ - [PostRemoveCommentApiResponse](docs/PostRemoveCommentApiResponse.md)
  - [PreBanSummary](docs/PreBanSummary.md)
  - [PubSubComment](docs/PubSubComment.md)
  - [PubSubCommentBase](docs/PubSubCommentBase.md)

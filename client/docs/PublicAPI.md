@@ -164,7 +164,7 @@ No authorization required
 
 # **createCommentPublic**
 ```swift
-    open class func createCommentPublic(tenantId: String, urlId: String, broadcastId: String, commentData: CommentData, options: ApiCreateCommentPublicOptions = .init(), completion: @escaping (_ data: SaveCommentsResponseWithPresence?, _ error: Error?) -> Void)
+    open class func createCommentPublic(tenantId: String, urlId: String, broadcastId: String, commentData: CommentData, options: CreateCommentPublicOptions = .init(), completion: @escaping (_ data: SaveCommentsResponseWithPresence?, _ error: Error?) -> Void)
 ```
 
 
@@ -181,7 +181,7 @@ let commentData = CommentData(date: 123, localDateString: "localDateString_examp
 let sessionId = "sessionId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.createCommentPublic(tenantId: tenantId, urlId: urlId, broadcastId: broadcastId, commentData: commentData, options: PublicAPI.ApiCreateCommentPublicOptions(sessionId: sessionId, sso: sso)) { (response, error) in
+PublicAPI.createCommentPublic(tenantId: tenantId, urlId: urlId, broadcastId: broadcastId, commentData: commentData, options: PublicAPI.CreateCommentPublicOptions(sessionId: sessionId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -221,7 +221,7 @@ No authorization required
 
 # **createFeedPostPublic**
 ```swift
-    open class func createFeedPostPublic(tenantId: String, createFeedPostParams: CreateFeedPostParams, options: ApiCreateFeedPostPublicOptions = .init(), completion: @escaping (_ data: CreateFeedPostResponse?, _ error: Error?) -> Void)
+    open class func createFeedPostPublic(tenantId: String, createFeedPostParams: CreateFeedPostParams, options: CreateFeedPostPublicOptions = .init(), completion: @escaping (_ data: CreateFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -236,7 +236,7 @@ let createFeedPostParams = CreateFeedPostParams(title: "title_example", contentH
 let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.createFeedPostPublic(tenantId: tenantId, createFeedPostParams: createFeedPostParams, options: PublicAPI.ApiCreateFeedPostPublicOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
+PublicAPI.createFeedPostPublic(tenantId: tenantId, createFeedPostParams: createFeedPostParams, options: PublicAPI.CreateFeedPostPublicOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -378,7 +378,7 @@ No authorization required
 
 # **deleteCommentPublic**
 ```swift
-    open class func deleteCommentPublic(tenantId: String, commentId: String, broadcastId: String, options: ApiDeleteCommentPublicOptions = .init(), completion: @escaping (_ data: PublicAPIDeleteCommentResponse?, _ error: Error?) -> Void)
+    open class func deleteCommentPublic(tenantId: String, commentId: String, broadcastId: String, options: DeleteCommentPublicOptions = .init(), completion: @escaping (_ data: PublicAPIDeleteCommentResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -394,7 +394,7 @@ let broadcastId = "broadcastId_example" // String |
 let editKey = "editKey_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.deleteCommentPublic(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, options: PublicAPI.ApiDeleteCommentPublicOptions(editKey: editKey, sso: sso)) { (response, error) in
+PublicAPI.deleteCommentPublic(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, options: PublicAPI.DeleteCommentPublicOptions(editKey: editKey, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -433,7 +433,7 @@ No authorization required
 
 # **deleteCommentVote**
 ```swift
-    open class func deleteCommentVote(tenantId: String, commentId: String, voteId: String, urlId: String, broadcastId: String, options: ApiDeleteCommentVoteOptions = .init(), completion: @escaping (_ data: VoteDeleteResponse?, _ error: Error?) -> Void)
+    open class func deleteCommentVote(tenantId: String, commentId: String, voteId: String, urlId: String, broadcastId: String, options: DeleteCommentVoteOptions = .init(), completion: @escaping (_ data: VoteDeleteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -451,7 +451,7 @@ let broadcastId = "broadcastId_example" // String |
 let editKey = "editKey_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.deleteCommentVote(tenantId: tenantId, commentId: commentId, voteId: voteId, urlId: urlId, broadcastId: broadcastId, options: PublicAPI.ApiDeleteCommentVoteOptions(editKey: editKey, sso: sso)) { (response, error) in
+PublicAPI.deleteCommentVote(tenantId: tenantId, commentId: commentId, voteId: voteId, urlId: urlId, broadcastId: broadcastId, options: PublicAPI.DeleteCommentVoteOptions(editKey: editKey, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -492,7 +492,7 @@ No authorization required
 
 # **deleteFeedPostPublic**
 ```swift
-    open class func deleteFeedPostPublic(tenantId: String, postId: String, options: ApiDeleteFeedPostPublicOptions = .init(), completion: @escaping (_ data: DeleteFeedPostPublicResponse?, _ error: Error?) -> Void)
+    open class func deleteFeedPostPublic(tenantId: String, postId: String, options: DeleteFeedPostPublicOptions = .init(), completion: @escaping (_ data: DeleteFeedPostPublicResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -507,7 +507,7 @@ let postId = "postId_example" // String |
 let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.deleteFeedPostPublic(tenantId: tenantId, postId: postId, options: PublicAPI.ApiDeleteFeedPostPublicOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
+PublicAPI.deleteFeedPostPublic(tenantId: tenantId, postId: postId, options: PublicAPI.DeleteFeedPostPublicOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -698,7 +698,7 @@ No authorization required
 
 # **getCommentText**
 ```swift
-    open class func getCommentText(tenantId: String, commentId: String, options: ApiGetCommentTextOptions = .init(), completion: @escaping (_ data: PublicAPIGetCommentTextResponse?, _ error: Error?) -> Void)
+    open class func getCommentText(tenantId: String, commentId: String, options: GetCommentTextOptions = .init(), completion: @escaping (_ data: PublicAPIGetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -713,7 +713,7 @@ let commentId = "commentId_example" // String |
 let editKey = "editKey_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getCommentText(tenantId: tenantId, commentId: commentId, options: PublicAPI.ApiGetCommentTextOptions(editKey: editKey, sso: sso)) { (response, error) in
+PublicAPI.getCommentText(tenantId: tenantId, commentId: commentId, options: PublicAPI.GetCommentTextOptions(editKey: editKey, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -804,7 +804,7 @@ No authorization required
 
 # **getCommentsForUser**
 ```swift
-    open class func getCommentsForUser(options: ApiGetCommentsForUserOptions = .init(), completion: @escaping (_ data: GetCommentsForUserResponse?, _ error: Error?) -> Void)
+    open class func getCommentsForUser(options: GetCommentsForUserOptions = .init(), completion: @escaping (_ data: GetCommentsForUserResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -822,7 +822,7 @@ let includei10n = true // Bool |  (optional)
 let locale = "locale_example" // String |  (optional)
 let isCrawler = true // Bool |  (optional)
 
-PublicAPI.getCommentsForUser(options: PublicAPI.ApiGetCommentsForUserOptions(userId: userId, direction: direction, repliesToUserId: repliesToUserId, page: page, includei10n: includei10n, locale: locale, isCrawler: isCrawler)) { (response, error) in
+PublicAPI.getCommentsForUser(options: PublicAPI.GetCommentsForUserOptions(userId: userId, direction: direction, repliesToUserId: repliesToUserId, page: page, includei10n: includei10n, locale: locale, isCrawler: isCrawler)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -863,7 +863,7 @@ No authorization required
 
 # **getCommentsPublic**
 ```swift
-    open class func getCommentsPublic(tenantId: String, urlId: String, options: ApiGetCommentsPublicOptions = .init(), completion: @escaping (_ data: GetCommentsResponseWithPresencePublicComment?, _ error: Error?) -> Void)
+    open class func getCommentsPublic(tenantId: String, urlId: String, options: GetCommentsPublicOptions = .init(), completion: @escaping (_ data: GetCommentsResponseWithPresencePublicComment?, _ error: Error?) -> Void)
 ```
 
 
@@ -904,7 +904,7 @@ let customConfigStr = "customConfigStr_example" // String |  (optional)
 let afterCommentId = "afterCommentId_example" // String |  (optional)
 let beforeCommentId = "beforeCommentId_example" // String |  (optional)
 
-PublicAPI.getCommentsPublic(tenantId: tenantId, urlId: urlId, options: PublicAPI.ApiGetCommentsPublicOptions(page: page, direction: direction, sso: sso, skip: skip, skipChildren: skipChildren, limit: limit, limitChildren: limitChildren, countChildren: countChildren, fetchPageForCommentId: fetchPageForCommentId, includeConfig: includeConfig, countAll: countAll, includei10n: includei10n, locale: locale, modules: modules, isCrawler: isCrawler, includeNotificationCount: includeNotificationCount, asTree: asTree, maxTreeDepth: maxTreeDepth, useFullTranslationIds: useFullTranslationIds, parentId: parentId, searchText: searchText, hashTags: hashTags, userId: userId, customConfigStr: customConfigStr, afterCommentId: afterCommentId, beforeCommentId: beforeCommentId)) { (response, error) in
+PublicAPI.getCommentsPublic(tenantId: tenantId, urlId: urlId, options: PublicAPI.GetCommentsPublicOptions(page: page, direction: direction, sso: sso, skip: skip, skipChildren: skipChildren, limit: limit, limitChildren: limitChildren, countChildren: countChildren, fetchPageForCommentId: fetchPageForCommentId, includeConfig: includeConfig, countAll: countAll, includei10n: includei10n, locale: locale, modules: modules, isCrawler: isCrawler, includeNotificationCount: includeNotificationCount, asTree: asTree, maxTreeDepth: maxTreeDepth, useFullTranslationIds: useFullTranslationIds, parentId: parentId, searchText: searchText, hashTags: hashTags, userId: userId, customConfigStr: customConfigStr, afterCommentId: afterCommentId, beforeCommentId: beforeCommentId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1023,7 +1023,7 @@ No authorization required
 
 # **getFeedPostsPublic**
 ```swift
-    open class func getFeedPostsPublic(tenantId: String, options: ApiGetFeedPostsPublicOptions = .init(), completion: @escaping (_ data: PublicFeedPostsResponse?, _ error: Error?) -> Void)
+    open class func getFeedPostsPublic(tenantId: String, options: GetFeedPostsPublicOptions = .init(), completion: @escaping (_ data: PublicFeedPostsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1043,7 +1043,7 @@ let sso = "sso_example" // String |  (optional)
 let isCrawler = true // Bool |  (optional)
 let includeUserInfo = true // Bool |  (optional)
 
-PublicAPI.getFeedPostsPublic(tenantId: tenantId, options: PublicAPI.ApiGetFeedPostsPublicOptions(afterId: afterId, limit: limit, tags: tags, sso: sso, isCrawler: isCrawler, includeUserInfo: includeUserInfo)) { (response, error) in
+PublicAPI.getFeedPostsPublic(tenantId: tenantId, options: PublicAPI.GetFeedPostsPublicOptions(afterId: afterId, limit: limit, tags: tags, sso: sso, isCrawler: isCrawler, includeUserInfo: includeUserInfo)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1184,7 +1184,7 @@ No authorization required
 
 # **getGifsSearch**
 ```swift
-    open class func getGifsSearch(tenantId: String, search: String, options: ApiGetGifsSearchOptions = .init(), completion: @escaping (_ data: GetGifsSearchResponse?, _ error: Error?) -> Void)
+    open class func getGifsSearch(tenantId: String, search: String, options: GetGifsSearchOptions = .init(), completion: @escaping (_ data: GetGifsSearchResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1200,7 +1200,7 @@ let locale = "locale_example" // String |  (optional)
 let rating = "rating_example" // String |  (optional)
 let page = 987 // Double |  (optional)
 
-PublicAPI.getGifsSearch(tenantId: tenantId, search: search, options: PublicAPI.ApiGetGifsSearchOptions(locale: locale, rating: rating, page: page)) { (response, error) in
+PublicAPI.getGifsSearch(tenantId: tenantId, search: search, options: PublicAPI.GetGifsSearchOptions(locale: locale, rating: rating, page: page)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1239,7 +1239,7 @@ No authorization required
 
 # **getGifsTrending**
 ```swift
-    open class func getGifsTrending(tenantId: String, options: ApiGetGifsTrendingOptions = .init(), completion: @escaping (_ data: GetGifsTrendingResponse?, _ error: Error?) -> Void)
+    open class func getGifsTrending(tenantId: String, options: GetGifsTrendingOptions = .init(), completion: @escaping (_ data: GetGifsTrendingResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1254,7 +1254,7 @@ let locale = "locale_example" // String |  (optional)
 let rating = "rating_example" // String |  (optional)
 let page = 987 // Double |  (optional)
 
-PublicAPI.getGifsTrending(tenantId: tenantId, options: PublicAPI.ApiGetGifsTrendingOptions(locale: locale, rating: rating, page: page)) { (response, error) in
+PublicAPI.getGifsTrending(tenantId: tenantId, options: PublicAPI.GetGifsTrendingOptions(locale: locale, rating: rating, page: page)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1349,7 +1349,7 @@ No authorization required
 
 # **getOfflineUsers**
 ```swift
-    open class func getOfflineUsers(tenantId: String, urlId: String, options: ApiGetOfflineUsersOptions = .init(), completion: @escaping (_ data: PageUsersOfflineResponse?, _ error: Error?) -> Void)
+    open class func getOfflineUsers(tenantId: String, urlId: String, options: GetOfflineUsersOptions = .init(), completion: @escaping (_ data: PageUsersOfflineResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1366,7 +1366,7 @@ let urlId = "urlId_example" // String | Page URL identifier (cleaned server-side
 let afterName = "afterName_example" // String | Cursor: pass nextAfterName from the previous response. (optional)
 let afterUserId = "afterUserId_example" // String | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries. (optional)
 
-PublicAPI.getOfflineUsers(tenantId: tenantId, urlId: urlId, options: PublicAPI.ApiGetOfflineUsersOptions(afterName: afterName, afterUserId: afterUserId)) { (response, error) in
+PublicAPI.getOfflineUsers(tenantId: tenantId, urlId: urlId, options: PublicAPI.GetOfflineUsersOptions(afterName: afterName, afterUserId: afterUserId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1404,7 +1404,7 @@ No authorization required
 
 # **getOnlineUsers**
 ```swift
-    open class func getOnlineUsers(tenantId: String, urlId: String, options: ApiGetOnlineUsersOptions = .init(), completion: @escaping (_ data: PageUsersOnlineResponse?, _ error: Error?) -> Void)
+    open class func getOnlineUsers(tenantId: String, urlId: String, options: GetOnlineUsersOptions = .init(), completion: @escaping (_ data: PageUsersOnlineResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1421,7 +1421,7 @@ let urlId = "urlId_example" // String | Page URL identifier (cleaned server-side
 let afterName = "afterName_example" // String | Cursor: pass nextAfterName from the previous response. (optional)
 let afterUserId = "afterUserId_example" // String | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries. (optional)
 
-PublicAPI.getOnlineUsers(tenantId: tenantId, urlId: urlId, options: PublicAPI.ApiGetOnlineUsersOptions(afterName: afterName, afterUserId: afterUserId)) { (response, error) in
+PublicAPI.getOnlineUsers(tenantId: tenantId, urlId: urlId, options: PublicAPI.GetOnlineUsersOptions(afterName: afterName, afterUserId: afterUserId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1459,7 +1459,7 @@ No authorization required
 
 # **getPagesPublic**
 ```swift
-    open class func getPagesPublic(tenantId: String, options: ApiGetPagesPublicOptions = .init(), completion: @escaping (_ data: GetPublicPagesResponse?, _ error: Error?) -> Void)
+    open class func getPagesPublic(tenantId: String, options: GetPagesPublicOptions = .init(), completion: @escaping (_ data: GetPublicPagesResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1478,7 +1478,7 @@ let q = "q_example" // String | Optional case-insensitive title prefix filter. (
 let sortBy = PagesSortBy() // PagesSortBy | Sort order. `updatedAt` (default, newest first), `commentCount` (most comments first), or `title` (alphabetical). (optional)
 let hasComments = true // Bool | If true, only return pages with at least one comment. (optional)
 
-PublicAPI.getPagesPublic(tenantId: tenantId, options: PublicAPI.ApiGetPagesPublicOptions(cursor: cursor, limit: limit, q: q, sortBy: sortBy, hasComments: hasComments)) { (response, error) in
+PublicAPI.getPagesPublic(tenantId: tenantId, options: PublicAPI.GetPagesPublicOptions(cursor: cursor, limit: limit, q: q, sortBy: sortBy, hasComments: hasComments)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1518,7 +1518,7 @@ No authorization required
 
 # **getTranslations**
 ```swift
-    open class func getTranslations(namespace: String, component: String, options: ApiGetTranslationsOptions = .init(), completion: @escaping (_ data: GetTranslationsResponse?, _ error: Error?) -> Void)
+    open class func getTranslations(namespace: String, component: String, options: GetTranslationsOptions = .init(), completion: @escaping (_ data: GetTranslationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1533,7 +1533,7 @@ let component = "component_example" // String |
 let locale = "locale_example" // String |  (optional)
 let useFullTranslationIds = true // Bool |  (optional)
 
-PublicAPI.getTranslations(namespace: namespace, component: component, options: PublicAPI.ApiGetTranslationsOptions(locale: locale, useFullTranslationIds: useFullTranslationIds)) { (response, error) in
+PublicAPI.getTranslations(namespace: namespace, component: component, options: PublicAPI.GetTranslationsOptions(locale: locale, useFullTranslationIds: useFullTranslationIds)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1620,7 +1620,7 @@ No authorization required
 
 # **getUserNotifications**
 ```swift
-    open class func getUserNotifications(tenantId: String, options: ApiGetUserNotificationsOptions = .init(), completion: @escaping (_ data: GetMyNotificationsResponse?, _ error: Error?) -> Void)
+    open class func getUserNotifications(tenantId: String, options: GetUserNotificationsOptions = .init(), completion: @escaping (_ data: GetMyNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1643,7 +1643,7 @@ let includeTranslations = true // Bool |  (optional)
 let includeTenantNotifications = true // Bool |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getUserNotifications(tenantId: tenantId, options: PublicAPI.ApiGetUserNotificationsOptions(urlId: urlId, pageSize: pageSize, afterId: afterId, includeContext: includeContext, afterCreatedAt: afterCreatedAt, unreadOnly: unreadOnly, dmOnly: dmOnly, noDm: noDm, includeTranslations: includeTranslations, includeTenantNotifications: includeTenantNotifications, sso: sso)) { (response, error) in
+PublicAPI.getUserNotifications(tenantId: tenantId, options: PublicAPI.GetUserNotificationsOptions(urlId: urlId, pageSize: pageSize, afterId: afterId, includeContext: includeContext, afterCreatedAt: afterCreatedAt, unreadOnly: unreadOnly, dmOnly: dmOnly, noDm: noDm, includeTranslations: includeTranslations, includeTenantNotifications: includeTenantNotifications, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1740,7 +1740,7 @@ No authorization required
 
 # **getUserReactsPublic**
 ```swift
-    open class func getUserReactsPublic(tenantId: String, options: ApiGetUserReactsPublicOptions = .init(), completion: @escaping (_ data: UserReactsResponse?, _ error: Error?) -> Void)
+    open class func getUserReactsPublic(tenantId: String, options: GetUserReactsPublicOptions = .init(), completion: @escaping (_ data: UserReactsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1754,7 +1754,7 @@ let tenantId = "tenantId_example" // String |
 let postIds = ["inner_example"] // [String] |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getUserReactsPublic(tenantId: tenantId, options: PublicAPI.ApiGetUserReactsPublicOptions(postIds: postIds, sso: sso)) { (response, error) in
+PublicAPI.getUserReactsPublic(tenantId: tenantId, options: PublicAPI.GetUserReactsPublicOptions(postIds: postIds, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2140,7 +2140,7 @@ No authorization required
 
 # **reactFeedPostPublic**
 ```swift
-    open class func reactFeedPostPublic(tenantId: String, postId: String, reactBodyParams: ReactBodyParams, options: ApiReactFeedPostPublicOptions = .init(), completion: @escaping (_ data: ReactFeedPostResponse?, _ error: Error?) -> Void)
+    open class func reactFeedPostPublic(tenantId: String, postId: String, reactBodyParams: ReactBodyParams, options: ReactFeedPostPublicOptions = .init(), completion: @escaping (_ data: ReactFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2157,7 +2157,7 @@ let isUndo = true // Bool |  (optional)
 let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.reactFeedPostPublic(tenantId: tenantId, postId: postId, reactBodyParams: reactBodyParams, options: PublicAPI.ApiReactFeedPostPublicOptions(isUndo: isUndo, broadcastId: broadcastId, sso: sso)) { (response, error) in
+PublicAPI.reactFeedPostPublic(tenantId: tenantId, postId: postId, reactBodyParams: reactBodyParams, options: PublicAPI.ReactFeedPostPublicOptions(isUndo: isUndo, broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2246,7 +2246,7 @@ No authorization required
 
 # **resetUserNotifications**
 ```swift
-    open class func resetUserNotifications(tenantId: String, options: ApiResetUserNotificationsOptions = .init(), completion: @escaping (_ data: ResetUserNotificationsResponse?, _ error: Error?) -> Void)
+    open class func resetUserNotifications(tenantId: String, options: ResetUserNotificationsOptions = .init(), completion: @escaping (_ data: ResetUserNotificationsResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2264,7 +2264,7 @@ let dmOnly = true // Bool |  (optional)
 let noDm = true // Bool |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.resetUserNotifications(tenantId: tenantId, options: PublicAPI.ApiResetUserNotificationsOptions(afterId: afterId, afterCreatedAt: afterCreatedAt, unreadOnly: unreadOnly, dmOnly: dmOnly, noDm: noDm, sso: sso)) { (response, error) in
+PublicAPI.resetUserNotifications(tenantId: tenantId, options: PublicAPI.ResetUserNotificationsOptions(afterId: afterId, afterCreatedAt: afterCreatedAt, unreadOnly: unreadOnly, dmOnly: dmOnly, noDm: noDm, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2305,7 +2305,7 @@ No authorization required
 
 # **searchUsers**
 ```swift
-    open class func searchUsers(tenantId: String, urlId: String, options: ApiSearchUsersOptions = .init(), completion: @escaping (_ data: SearchUsersResult?, _ error: Error?) -> Void)
+    open class func searchUsers(tenantId: String, urlId: String, options: SearchUsersOptions = .init(), completion: @escaping (_ data: SearchUsersResult?, _ error: Error?) -> Void)
 ```
 
 
@@ -2322,7 +2322,7 @@ let mentionGroupIds = ["inner_example"] // [String] |  (optional)
 let sso = "sso_example" // String |  (optional)
 let searchSection = "searchSection_example" // String |  (optional)
 
-PublicAPI.searchUsers(tenantId: tenantId, urlId: urlId, options: PublicAPI.ApiSearchUsersOptions(usernameStartsWith: usernameStartsWith, mentionGroupIds: mentionGroupIds, sso: sso, searchSection: searchSection)) { (response, error) in
+PublicAPI.searchUsers(tenantId: tenantId, urlId: urlId, options: PublicAPI.SearchUsersOptions(usernameStartsWith: usernameStartsWith, mentionGroupIds: mentionGroupIds, sso: sso, searchSection: searchSection)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2362,7 +2362,7 @@ No authorization required
 
 # **setCommentText**
 ```swift
-    open class func setCommentText(tenantId: String, commentId: String, broadcastId: String, commentTextUpdateRequest: CommentTextUpdateRequest, options: ApiSetCommentTextOptions = .init(), completion: @escaping (_ data: PublicAPISetCommentTextResponse?, _ error: Error?) -> Void)
+    open class func setCommentText(tenantId: String, commentId: String, broadcastId: String, commentTextUpdateRequest: CommentTextUpdateRequest, options: SetCommentTextOptions = .init(), completion: @escaping (_ data: PublicAPISetCommentTextResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2379,7 +2379,7 @@ let commentTextUpdateRequest = CommentTextUpdateRequest(comment: "comment_exampl
 let editKey = "editKey_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.setCommentText(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, commentTextUpdateRequest: commentTextUpdateRequest, options: PublicAPI.ApiSetCommentTextOptions(editKey: editKey, sso: sso)) { (response, error) in
+PublicAPI.setCommentText(tenantId: tenantId, commentId: commentId, broadcastId: broadcastId, commentTextUpdateRequest: commentTextUpdateRequest, options: PublicAPI.SetCommentTextOptions(editKey: editKey, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2578,7 +2578,7 @@ No authorization required
 
 # **updateFeedPostPublic**
 ```swift
-    open class func updateFeedPostPublic(tenantId: String, postId: String, updateFeedPostParams: UpdateFeedPostParams, options: ApiUpdateFeedPostPublicOptions = .init(), completion: @escaping (_ data: CreateFeedPostResponse?, _ error: Error?) -> Void)
+    open class func updateFeedPostPublic(tenantId: String, postId: String, updateFeedPostParams: UpdateFeedPostParams, options: UpdateFeedPostPublicOptions = .init(), completion: @escaping (_ data: CreateFeedPostResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2594,7 +2594,7 @@ let updateFeedPostParams = UpdateFeedPostParams(title: "title_example", contentH
 let broadcastId = "broadcastId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.updateFeedPostPublic(tenantId: tenantId, postId: postId, updateFeedPostParams: updateFeedPostParams, options: PublicAPI.ApiUpdateFeedPostPublicOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
+PublicAPI.updateFeedPostPublic(tenantId: tenantId, postId: postId, updateFeedPostParams: updateFeedPostParams, options: PublicAPI.UpdateFeedPostPublicOptions(broadcastId: broadcastId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2802,7 +2802,7 @@ No authorization required
 
 # **uploadImage**
 ```swift
-    open class func uploadImage(tenantId: String, file: URL, options: ApiUploadImageOptions = .init(), completion: @escaping (_ data: UploadImageResponse?, _ error: Error?) -> Void)
+    open class func uploadImage(tenantId: String, file: URL, options: UploadImageOptions = .init(), completion: @escaping (_ data: UploadImageResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2819,7 +2819,7 @@ let file = URL(string: "https://example.com")! // URL |
 let sizePreset = SizePreset() // SizePreset | Size preset: \"Default\" (1000x1000px) or \"CrossPlatform\" (creates sizes for popular devices) (optional)
 let urlId = "urlId_example" // String | Page id that upload is happening from, to configure (optional)
 
-PublicAPI.uploadImage(tenantId: tenantId, file: file, options: PublicAPI.ApiUploadImageOptions(sizePreset: sizePreset, urlId: urlId)) { (response, error) in
+PublicAPI.uploadImage(tenantId: tenantId, file: file, options: PublicAPI.UploadImageOptions(sizePreset: sizePreset, urlId: urlId)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2857,7 +2857,7 @@ No authorization required
 
 # **voteComment**
 ```swift
-    open class func voteComment(tenantId: String, commentId: String, urlId: String, broadcastId: String, voteBodyParams: VoteBodyParams, options: ApiVoteCommentOptions = .init(), completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
+    open class func voteComment(tenantId: String, commentId: String, urlId: String, broadcastId: String, voteBodyParams: VoteBodyParams, options: VoteCommentOptions = .init(), completion: @escaping (_ data: VoteResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -2875,7 +2875,7 @@ let voteBodyParams = VoteBodyParams(commenterEmail: "commenterEmail_example", co
 let sessionId = "sessionId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
 
-PublicAPI.voteComment(tenantId: tenantId, commentId: commentId, urlId: urlId, broadcastId: broadcastId, voteBodyParams: voteBodyParams, options: PublicAPI.ApiVoteCommentOptions(sessionId: sessionId, sso: sso)) { (response, error) in
+PublicAPI.voteComment(tenantId: tenantId, commentId: commentId, urlId: urlId, broadcastId: broadcastId, voteBodyParams: voteBodyParams, options: PublicAPI.VoteCommentOptions(sessionId: sessionId, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return

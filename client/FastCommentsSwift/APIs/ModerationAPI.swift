@@ -10,13 +10,11 @@ import Foundation
 open class ModerationAPI {
 
     /** Optional parameters for deleteModerationVote. */
-    public struct ApiDeleteModerationVoteOptions: Sendable {
-        public var tenantId: String?
+    public struct DeleteModerationVoteOptions: Sendable {
         public var broadcastId: String?
         public var sso: String?
 
-        public init(tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
+        public init(broadcastId: String? = nil, sso: String? = nil) {
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -24,33 +22,32 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter voteId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: VoteDeleteResponse
      */
-    open class func deleteModerationVote(commentId: String, voteId: String, options: ApiDeleteModerationVoteOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> VoteDeleteResponse {
-        return try await deleteModerationVoteWithRequestBuilder(commentId: commentId, voteId: voteId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func deleteModerationVote(tenantId: String, commentId: String, voteId: String, options: DeleteModerationVoteOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> VoteDeleteResponse {
+        return try await deleteModerationVoteWithRequestBuilder(tenantId: tenantId, commentId: commentId, voteId: voteId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - DELETE /auth/my-account/moderate-comments/vote/{commentId}/{voteId}
+     - DELETE /auth/my-account/moderate-comments/mod_api/vote/{commentId}/{voteId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter voteId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<VoteDeleteResponse> 
      */
-    open class func deleteModerationVoteWithRequestBuilder(commentId: String, voteId: String, options: ApiDeleteModerationVoteOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<VoteDeleteResponse> {
-        let tenantId = options.tenantId
+    open class func deleteModerationVoteWithRequestBuilder(tenantId: String, commentId: String, voteId: String, options: DeleteModerationVoteOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<VoteDeleteResponse> {
         let broadcastId = options.broadcastId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/vote/{commentId}/{voteId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/vote/{commentId}/{voteId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -62,7 +59,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -79,7 +76,7 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getApiComments. */
-    public struct ApiGetApiCommentsOptions: Sendable {
+    public struct GetApiCommentsOptions: Sendable {
         public var page: Double?
         public var count: Double?
         public var textSearch: String?
@@ -88,10 +85,9 @@ open class ModerationAPI {
         public var searchFilters: String?
         public var sorts: String?
         public var demo: Bool?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(page: Double? = nil, count: Double? = nil, textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, sorts: String? = nil, demo: Bool? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(page: Double? = nil, count: Double? = nil, textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, sorts: String? = nil, demo: Bool? = nil, sso: String? = nil) {
             self.page = page
             self.count = count
             self.textSearch = textSearch
@@ -100,13 +96,13 @@ open class ModerationAPI {
             self.searchFilters = searchFilters
             self.sorts = sorts
             self.demo = demo
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter page: (query)  (optional)
      - parameter count: (query)  (optional)
      - parameter textSearch: (query)  (optional)
@@ -115,17 +111,17 @@ open class ModerationAPI {
      - parameter searchFilters: (query)  (optional)
      - parameter sorts: (query)  (optional)
      - parameter demo: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationAPIGetCommentsResponse
      */
-    open class func getApiComments(options: ApiGetApiCommentsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPIGetCommentsResponse {
-        return try await getApiCommentsWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getApiComments(tenantId: String, options: GetApiCommentsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPIGetCommentsResponse {
+        return try await getApiCommentsWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/api/comments
+     - GET /auth/my-account/moderate-comments/mod_api/api/comments
+     - parameter tenantId: (query)  
      - parameter page: (query)  (optional)
      - parameter count: (query)  (optional)
      - parameter textSearch: (query)  (optional)
@@ -134,12 +130,11 @@ open class ModerationAPI {
      - parameter searchFilters: (query)  (optional)
      - parameter sorts: (query)  (optional)
      - parameter demo: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationAPIGetCommentsResponse> 
      */
-    open class func getApiCommentsWithRequestBuilder(options: ApiGetApiCommentsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPIGetCommentsResponse> {
+    open class func getApiCommentsWithRequestBuilder(tenantId: String, options: GetApiCommentsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPIGetCommentsResponse> {
         let page = options.page
         let count = options.count
         let textSearch = options.textSearch
@@ -148,14 +143,14 @@ open class ModerationAPI {
         let searchFilters = options.searchFilters
         let sorts = options.sorts
         let demo = options.demo
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/api/comments"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/api/comments"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "page": (wrappedValue: page?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "count": (wrappedValue: count?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "text-search": (wrappedValue: textSearch?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -164,7 +159,6 @@ open class ModerationAPI {
             "searchFilters": (wrappedValue: searchFilters?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sorts": (wrappedValue: sorts?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "demo": (wrappedValue: demo?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -180,50 +174,47 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getApiExportStatus. */
-    public struct ApiGetApiExportStatusOptions: Sendable {
+    public struct GetApiExportStatusOptions: Sendable {
         public var batchJobId: String?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(batchJobId: String? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(batchJobId: String? = nil, sso: String? = nil) {
             self.batchJobId = batchJobId
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter batchJobId: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationExportStatusResponse
      */
-    open class func getApiExportStatus(options: ApiGetApiExportStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationExportStatusResponse {
-        return try await getApiExportStatusWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getApiExportStatus(tenantId: String, options: GetApiExportStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationExportStatusResponse {
+        return try await getApiExportStatusWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/api/export/status
+     - GET /auth/my-account/moderate-comments/mod_api/api/export/status
+     - parameter tenantId: (query)  
      - parameter batchJobId: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationExportStatusResponse> 
      */
-    open class func getApiExportStatusWithRequestBuilder(options: ApiGetApiExportStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationExportStatusResponse> {
+    open class func getApiExportStatusWithRequestBuilder(tenantId: String, options: GetApiExportStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationExportStatusResponse> {
         let batchJobId = options.batchJobId
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/api/export/status"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/api/export/status"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "batchJobId": (wrappedValue: batchJobId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -239,80 +230,77 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getApiIds. */
-    public struct ApiGetApiIdsOptions: Sendable {
+    public struct GetApiIdsOptions: Sendable {
         public var textSearch: String?
         public var byIPFromComment: String?
         public var filters: String?
         public var searchFilters: String?
         public var afterId: String?
         public var demo: Bool?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, afterId: String? = nil, demo: Bool? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, afterId: String? = nil, demo: Bool? = nil, sso: String? = nil) {
             self.textSearch = textSearch
             self.byIPFromComment = byIPFromComment
             self.filters = filters
             self.searchFilters = searchFilters
             self.afterId = afterId
             self.demo = demo
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter textSearch: (query)  (optional)
      - parameter byIPFromComment: (query)  (optional)
      - parameter filters: (query)  (optional)
      - parameter searchFilters: (query)  (optional)
      - parameter afterId: (query)  (optional)
      - parameter demo: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationAPIGetCommentIdsResponse
      */
-    open class func getApiIds(options: ApiGetApiIdsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPIGetCommentIdsResponse {
-        return try await getApiIdsWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getApiIds(tenantId: String, options: GetApiIdsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPIGetCommentIdsResponse {
+        return try await getApiIdsWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/api/ids
+     - GET /auth/my-account/moderate-comments/mod_api/api/ids
+     - parameter tenantId: (query)  
      - parameter textSearch: (query)  (optional)
      - parameter byIPFromComment: (query)  (optional)
      - parameter filters: (query)  (optional)
      - parameter searchFilters: (query)  (optional)
      - parameter afterId: (query)  (optional)
      - parameter demo: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationAPIGetCommentIdsResponse> 
      */
-    open class func getApiIdsWithRequestBuilder(options: ApiGetApiIdsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPIGetCommentIdsResponse> {
+    open class func getApiIdsWithRequestBuilder(tenantId: String, options: GetApiIdsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPIGetCommentIdsResponse> {
         let textSearch = options.textSearch
         let byIPFromComment = options.byIPFromComment
         let filters = options.filters
         let searchFilters = options.searchFilters
         let afterId = options.afterId
         let demo = options.demo
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/api/ids"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/api/ids"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "text-search": (wrappedValue: textSearch?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "byIPFromComment": (wrappedValue: byIPFromComment?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "filters": (wrappedValue: filters?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "searchFilters": (wrappedValue: searchFilters?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "afterId": (wrappedValue: afterId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "demo": (wrappedValue: demo?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -327,41 +315,28 @@ open class ModerationAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
-    /** Optional parameters for getBanUsersFromComment. */
-    public struct ApiGetBanUsersFromCommentOptions: Sendable {
-        public var tenantId: String?
-        public var sso: String?
-
-        public init(tenantId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
-            self.sso = sso
-        }
-    }
-
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetBannedUsersFromCommentResponse
      */
-    open class func getBanUsersFromComment(commentId: String, options: ApiGetBanUsersFromCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetBannedUsersFromCommentResponse {
-        return try await getBanUsersFromCommentWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getBanUsersFromComment(tenantId: String, commentId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetBannedUsersFromCommentResponse {
+        return try await getBanUsersFromCommentWithRequestBuilder(tenantId: tenantId, commentId: commentId, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/ban-users/from-comment/{commentId}
+     - GET /auth/my-account/moderate-comments/mod_api/ban-users/from-comment/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetBannedUsersFromCommentResponse> 
      */
-    open class func getBanUsersFromCommentWithRequestBuilder(commentId: String, options: ApiGetBanUsersFromCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetBannedUsersFromCommentResponse> {
-        let tenantId = options.tenantId
-        let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/ban-users/from-comment/{commentId}"
+    open class func getBanUsersFromCommentWithRequestBuilder(tenantId: String, commentId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetBannedUsersFromCommentResponse> {
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/ban-users/from-comment/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -370,7 +345,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -385,41 +360,28 @@ open class ModerationAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
-    /** Optional parameters for getCommentBanStatus. */
-    public struct ApiGetCommentBanStatusOptions: Sendable {
-        public var tenantId: String?
-        public var sso: String?
-
-        public init(tenantId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
-            self.sso = sso
-        }
-    }
-
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetCommentBanStatusResponse
      */
-    open class func getCommentBanStatus(commentId: String, options: ApiGetCommentBanStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetCommentBanStatusResponse {
-        return try await getCommentBanStatusWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getCommentBanStatus(tenantId: String, commentId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetCommentBanStatusResponse {
+        return try await getCommentBanStatusWithRequestBuilder(tenantId: tenantId, commentId: commentId, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/get-comment-ban-status/{commentId}
+     - GET /auth/my-account/moderate-comments/mod_api/get-comment-ban-status/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetCommentBanStatusResponse> 
      */
-    open class func getCommentBanStatusWithRequestBuilder(commentId: String, options: ApiGetCommentBanStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetCommentBanStatusResponse> {
-        let tenantId = options.tenantId
-        let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/get-comment-ban-status/{commentId}"
+    open class func getCommentBanStatusWithRequestBuilder(tenantId: String, commentId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetCommentBanStatusResponse> {
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/get-comment-ban-status/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -428,7 +390,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -443,41 +405,28 @@ open class ModerationAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
-    /** Optional parameters for getCommentChildren. */
-    public struct ApiGetCommentChildrenOptions: Sendable {
-        public var tenantId: String?
-        public var sso: String?
-
-        public init(tenantId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
-            self.sso = sso
-        }
-    }
-
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationAPIChildCommentsResponse
      */
-    open class func getCommentChildren(commentId: String, options: ApiGetCommentChildrenOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPIChildCommentsResponse {
-        return try await getCommentChildrenWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getCommentChildren(tenantId: String, commentId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPIChildCommentsResponse {
+        return try await getCommentChildrenWithRequestBuilder(tenantId: tenantId, commentId: commentId, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/comment-children/{commentId}
+     - GET /auth/my-account/moderate-comments/mod_api/comment-children/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationAPIChildCommentsResponse> 
      */
-    open class func getCommentChildrenWithRequestBuilder(commentId: String, options: ApiGetCommentChildrenOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPIChildCommentsResponse> {
-        let tenantId = options.tenantId
-        let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/comment-children/{commentId}"
+    open class func getCommentChildrenWithRequestBuilder(tenantId: String, commentId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPIChildCommentsResponse> {
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/comment-children/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -486,7 +435,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -502,74 +451,71 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getCount. */
-    public struct ApiGetCountOptions: Sendable {
+    public struct GetCountOptions: Sendable {
         public var textSearch: String?
         public var byIPFromComment: String?
         public var filter: String?
         public var searchFilters: String?
         public var demo: Bool?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(textSearch: String? = nil, byIPFromComment: String? = nil, filter: String? = nil, searchFilters: String? = nil, demo: Bool? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(textSearch: String? = nil, byIPFromComment: String? = nil, filter: String? = nil, searchFilters: String? = nil, demo: Bool? = nil, sso: String? = nil) {
             self.textSearch = textSearch
             self.byIPFromComment = byIPFromComment
             self.filter = filter
             self.searchFilters = searchFilters
             self.demo = demo
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter textSearch: (query)  (optional)
      - parameter byIPFromComment: (query)  (optional)
      - parameter filter: (query)  (optional)
      - parameter searchFilters: (query)  (optional)
      - parameter demo: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationAPICountCommentsResponse
      */
-    open class func getCount(options: ApiGetCountOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPICountCommentsResponse {
-        return try await getCountWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getCount(tenantId: String, options: GetCountOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPICountCommentsResponse {
+        return try await getCountWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/count
+     - GET /auth/my-account/moderate-comments/mod_api/count
+     - parameter tenantId: (query)  
      - parameter textSearch: (query)  (optional)
      - parameter byIPFromComment: (query)  (optional)
      - parameter filter: (query)  (optional)
      - parameter searchFilters: (query)  (optional)
      - parameter demo: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationAPICountCommentsResponse> 
      */
-    open class func getCountWithRequestBuilder(options: ApiGetCountOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPICountCommentsResponse> {
+    open class func getCountWithRequestBuilder(tenantId: String, options: GetCountOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPICountCommentsResponse> {
         let textSearch = options.textSearch
         let byIPFromComment = options.byIPFromComment
         let filter = options.filter
         let searchFilters = options.searchFilters
         let demo = options.demo
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/count"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/count"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "text-search": (wrappedValue: textSearch?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "byIPFromComment": (wrappedValue: byIPFromComment?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "filter": (wrappedValue: filter?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "searchFilters": (wrappedValue: searchFilters?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "demo": (wrappedValue: demo?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -584,45 +530,32 @@ open class ModerationAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
-    /** Optional parameters for getCounts. */
-    public struct ApiGetCountsOptions: Sendable {
-        public var tenantId: String?
-        public var sso: String?
-
-        public init(tenantId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
-            self.sso = sso
-        }
-    }
-
     /**
 
-     - parameter tenantId: (query)  (optional)
+     - parameter tenantId: (query)  
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetBannedUsersCountResponse
      */
-    open class func getCounts(options: ApiGetCountsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetBannedUsersCountResponse {
-        return try await getCountsWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getCounts(tenantId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetBannedUsersCountResponse {
+        return try await getCountsWithRequestBuilder(tenantId: tenantId, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/banned-users/counts
-     - parameter tenantId: (query)  (optional)
+     - GET /auth/my-account/moderate-comments/banned-users/mod_api/counts
+     - parameter tenantId: (query)  
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetBannedUsersCountResponse> 
      */
-    open class func getCountsWithRequestBuilder(options: ApiGetCountsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetBannedUsersCountResponse> {
-        let tenantId = options.tenantId
-        let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/banned-users/counts"
+    open class func getCountsWithRequestBuilder(tenantId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetBannedUsersCountResponse> {
+        let localVariablePath = "/auth/my-account/moderate-comments/banned-users/mod_api/counts"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -637,41 +570,28 @@ open class ModerationAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
-    /** Optional parameters for getLogs. */
-    public struct ApiGetLogsOptions: Sendable {
-        public var tenantId: String?
-        public var sso: String?
-
-        public init(tenantId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
-            self.sso = sso
-        }
-    }
-
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationAPIGetLogsResponse
      */
-    open class func getLogs(commentId: String, options: ApiGetLogsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPIGetLogsResponse {
-        return try await getLogsWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getLogs(tenantId: String, commentId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPIGetLogsResponse {
+        return try await getLogsWithRequestBuilder(tenantId: tenantId, commentId: commentId, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/logs/{commentId}
+     - GET /auth/my-account/moderate-comments/mod_api/logs/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationAPIGetLogsResponse> 
      */
-    open class func getLogsWithRequestBuilder(commentId: String, options: ApiGetLogsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPIGetLogsResponse> {
-        let tenantId = options.tenantId
-        let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/logs/{commentId}"
+    open class func getLogsWithRequestBuilder(tenantId: String, commentId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPIGetLogsResponse> {
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/logs/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -680,7 +600,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -695,45 +615,32 @@ open class ModerationAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
-    /** Optional parameters for getManualBadges. */
-    public struct ApiGetManualBadgesOptions: Sendable {
-        public var tenantId: String?
-        public var sso: String?
-
-        public init(tenantId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
-            self.sso = sso
-        }
-    }
-
     /**
 
-     - parameter tenantId: (query)  (optional)
+     - parameter tenantId: (query)  
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetTenantManualBadgesResponse
      */
-    open class func getManualBadges(options: ApiGetManualBadgesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetTenantManualBadgesResponse {
-        return try await getManualBadgesWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getManualBadges(tenantId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetTenantManualBadgesResponse {
+        return try await getManualBadgesWithRequestBuilder(tenantId: tenantId, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/get-manual-badges
-     - parameter tenantId: (query)  (optional)
+     - GET /auth/my-account/moderate-comments/mod_api/get-manual-badges
+     - parameter tenantId: (query)  
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetTenantManualBadgesResponse> 
      */
-    open class func getManualBadgesWithRequestBuilder(options: ApiGetManualBadgesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetTenantManualBadgesResponse> {
-        let tenantId = options.tenantId
-        let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/get-manual-badges"
+    open class func getManualBadgesWithRequestBuilder(tenantId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetTenantManualBadgesResponse> {
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/get-manual-badges"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -749,56 +656,53 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getManualBadgesForUser. */
-    public struct ApiGetManualBadgesForUserOptions: Sendable {
+    public struct GetManualBadgesForUserOptions: Sendable {
         public var badgesUserId: String?
         public var commentId: String?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(badgesUserId: String? = nil, commentId: String? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(badgesUserId: String? = nil, commentId: String? = nil, sso: String? = nil) {
             self.badgesUserId = badgesUserId
             self.commentId = commentId
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter badgesUserId: (query)  (optional)
      - parameter commentId: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetUserManualBadgesResponse
      */
-    open class func getManualBadgesForUser(options: ApiGetManualBadgesForUserOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetUserManualBadgesResponse {
-        return try await getManualBadgesForUserWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getManualBadgesForUser(tenantId: String, options: GetManualBadgesForUserOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetUserManualBadgesResponse {
+        return try await getManualBadgesForUserWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/get-manual-badges-for-user
+     - GET /auth/my-account/moderate-comments/mod_api/get-manual-badges-for-user
+     - parameter tenantId: (query)  
      - parameter badgesUserId: (query)  (optional)
      - parameter commentId: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetUserManualBadgesResponse> 
      */
-    open class func getManualBadgesForUserWithRequestBuilder(options: ApiGetManualBadgesForUserOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetUserManualBadgesResponse> {
+    open class func getManualBadgesForUserWithRequestBuilder(tenantId: String, options: GetManualBadgesForUserOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetUserManualBadgesResponse> {
         let badgesUserId = options.badgesUserId
         let commentId = options.commentId
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/get-manual-badges-for-user"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/get-manual-badges-for-user"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "badgesUserId": (wrappedValue: badgesUserId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "commentId": (wrappedValue: commentId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -814,50 +718,47 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getModerationComment. */
-    public struct ApiGetModerationCommentOptions: Sendable {
+    public struct GetModerationCommentOptions: Sendable {
         public var includeEmail: Bool?
         public var includeIP: Bool?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(includeEmail: Bool? = nil, includeIP: Bool? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(includeEmail: Bool? = nil, includeIP: Bool? = nil, sso: String? = nil) {
             self.includeEmail = includeEmail
             self.includeIP = includeIP
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter includeEmail: (query)  (optional)
      - parameter includeIP: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationAPICommentResponse
      */
-    open class func getModerationComment(commentId: String, options: ApiGetModerationCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPICommentResponse {
-        return try await getModerationCommentWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getModerationComment(tenantId: String, commentId: String, options: GetModerationCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPICommentResponse {
+        return try await getModerationCommentWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/comment/{commentId}
+     - GET /auth/my-account/moderate-comments/mod_api/comment/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter includeEmail: (query)  (optional)
      - parameter includeIP: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationAPICommentResponse> 
      */
-    open class func getModerationCommentWithRequestBuilder(commentId: String, options: ApiGetModerationCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPICommentResponse> {
+    open class func getModerationCommentWithRequestBuilder(tenantId: String, commentId: String, options: GetModerationCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPICommentResponse> {
         let includeEmail = options.includeEmail
         let includeIP = options.includeIP
-        let tenantId = options.tenantId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/comment/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/comment/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -866,9 +767,9 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "includeEmail": (wrappedValue: includeEmail?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "includeIP": (wrappedValue: includeIP?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -883,41 +784,28 @@ open class ModerationAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
-    /** Optional parameters for getModerationCommentText. */
-    public struct ApiGetModerationCommentTextOptions: Sendable {
-        public var tenantId: String?
-        public var sso: String?
-
-        public init(tenantId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
-            self.sso = sso
-        }
-    }
-
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetCommentTextResponse
      */
-    open class func getModerationCommentText(commentId: String, options: ApiGetModerationCommentTextOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetCommentTextResponse {
-        return try await getModerationCommentTextWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getModerationCommentText(tenantId: String, commentId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetCommentTextResponse {
+        return try await getModerationCommentTextWithRequestBuilder(tenantId: tenantId, commentId: commentId, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/get-comment-text/{commentId}
+     - GET /auth/my-account/moderate-comments/mod_api/get-comment-text/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetCommentTextResponse> 
      */
-    open class func getModerationCommentTextWithRequestBuilder(commentId: String, options: ApiGetModerationCommentTextOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetCommentTextResponse> {
-        let tenantId = options.tenantId
-        let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/get-comment-text/{commentId}"
+    open class func getModerationCommentTextWithRequestBuilder(tenantId: String, commentId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetCommentTextResponse> {
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/get-comment-text/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -926,7 +814,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -942,55 +830,52 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getPreBanSummary. */
-    public struct ApiGetPreBanSummaryOptions: Sendable {
+    public struct GetPreBanSummaryOptions: Sendable {
         public var includeByUserIdAndEmail: Bool?
         public var includeByIP: Bool?
         public var includeByEmailDomain: Bool?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(includeByUserIdAndEmail: Bool? = nil, includeByIP: Bool? = nil, includeByEmailDomain: Bool? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(includeByUserIdAndEmail: Bool? = nil, includeByIP: Bool? = nil, includeByEmailDomain: Bool? = nil, sso: String? = nil) {
             self.includeByUserIdAndEmail = includeByUserIdAndEmail
             self.includeByIP = includeByIP
             self.includeByEmailDomain = includeByEmailDomain
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter includeByUserIdAndEmail: (query)  (optional)
      - parameter includeByIP: (query)  (optional)
      - parameter includeByEmailDomain: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: PreBanSummary
      */
-    open class func getPreBanSummary(commentId: String, options: ApiGetPreBanSummaryOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PreBanSummary {
-        return try await getPreBanSummaryWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getPreBanSummary(tenantId: String, commentId: String, options: GetPreBanSummaryOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PreBanSummary {
+        return try await getPreBanSummaryWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/pre-ban-summary/{commentId}
+     - GET /auth/my-account/moderate-comments/mod_api/pre-ban-summary/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter includeByUserIdAndEmail: (query)  (optional)
      - parameter includeByIP: (query)  (optional)
      - parameter includeByEmailDomain: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<PreBanSummary> 
      */
-    open class func getPreBanSummaryWithRequestBuilder(commentId: String, options: ApiGetPreBanSummaryOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PreBanSummary> {
+    open class func getPreBanSummaryWithRequestBuilder(tenantId: String, commentId: String, options: GetPreBanSummaryOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PreBanSummary> {
         let includeByUserIdAndEmail = options.includeByUserIdAndEmail
         let includeByIP = options.includeByIP
         let includeByEmailDomain = options.includeByEmailDomain
-        let tenantId = options.tenantId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/pre-ban-summary/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/pre-ban-summary/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -999,10 +884,10 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "includeByUserIdAndEmail": (wrappedValue: includeByUserIdAndEmail?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "includeByIP": (wrappedValue: includeByIP?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "includeByEmailDomain": (wrappedValue: includeByEmailDomain?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1018,62 +903,59 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getSearchCommentsSummary. */
-    public struct ApiGetSearchCommentsSummaryOptions: Sendable {
+    public struct GetSearchCommentsSummaryOptions: Sendable {
         public var value: String?
         public var filters: String?
         public var searchFilters: String?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(value: String? = nil, filters: String? = nil, searchFilters: String? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(value: String? = nil, filters: String? = nil, searchFilters: String? = nil, sso: String? = nil) {
             self.value = value
             self.filters = filters
             self.searchFilters = searchFilters
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter value: (query)  (optional)
      - parameter filters: (query)  (optional)
      - parameter searchFilters: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationCommentSearchResponse
      */
-    open class func getSearchCommentsSummary(options: ApiGetSearchCommentsSummaryOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationCommentSearchResponse {
-        return try await getSearchCommentsSummaryWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getSearchCommentsSummary(tenantId: String, options: GetSearchCommentsSummaryOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationCommentSearchResponse {
+        return try await getSearchCommentsSummaryWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/search/comments/summary
+     - GET /auth/my-account/moderate-comments/mod_api/search/comments/summary
+     - parameter tenantId: (query)  
      - parameter value: (query)  (optional)
      - parameter filters: (query)  (optional)
      - parameter searchFilters: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationCommentSearchResponse> 
      */
-    open class func getSearchCommentsSummaryWithRequestBuilder(options: ApiGetSearchCommentsSummaryOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationCommentSearchResponse> {
+    open class func getSearchCommentsSummaryWithRequestBuilder(tenantId: String, options: GetSearchCommentsSummaryOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationCommentSearchResponse> {
         let value = options.value
         let filters = options.filters
         let searchFilters = options.searchFilters
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/search/comments/summary"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/search/comments/summary"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "value": (wrappedValue: value?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "filters": (wrappedValue: filters?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "searchFilters": (wrappedValue: searchFilters?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1089,50 +971,47 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getSearchPages. */
-    public struct ApiGetSearchPagesOptions: Sendable {
+    public struct GetSearchPagesOptions: Sendable {
         public var value: String?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(value: String? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(value: String? = nil, sso: String? = nil) {
             self.value = value
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter value: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationPageSearchResponse
      */
-    open class func getSearchPages(options: ApiGetSearchPagesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationPageSearchResponse {
-        return try await getSearchPagesWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getSearchPages(tenantId: String, options: GetSearchPagesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationPageSearchResponse {
+        return try await getSearchPagesWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/search/pages
+     - GET /auth/my-account/moderate-comments/mod_api/search/pages
+     - parameter tenantId: (query)  
      - parameter value: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationPageSearchResponse> 
      */
-    open class func getSearchPagesWithRequestBuilder(options: ApiGetSearchPagesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationPageSearchResponse> {
+    open class func getSearchPagesWithRequestBuilder(tenantId: String, options: GetSearchPagesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationPageSearchResponse> {
         let value = options.value
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/search/pages"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/search/pages"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "value": (wrappedValue: value?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1148,50 +1027,47 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getSearchSites. */
-    public struct ApiGetSearchSitesOptions: Sendable {
+    public struct GetSearchSitesOptions: Sendable {
         public var value: String?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(value: String? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(value: String? = nil, sso: String? = nil) {
             self.value = value
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter value: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationSiteSearchResponse
      */
-    open class func getSearchSites(options: ApiGetSearchSitesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationSiteSearchResponse {
-        return try await getSearchSitesWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getSearchSites(tenantId: String, options: GetSearchSitesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationSiteSearchResponse {
+        return try await getSearchSitesWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/search/sites
+     - GET /auth/my-account/moderate-comments/mod_api/search/sites
+     - parameter tenantId: (query)  
      - parameter value: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationSiteSearchResponse> 
      */
-    open class func getSearchSitesWithRequestBuilder(options: ApiGetSearchSitesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationSiteSearchResponse> {
+    open class func getSearchSitesWithRequestBuilder(tenantId: String, options: GetSearchSitesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationSiteSearchResponse> {
         let value = options.value
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/search/sites"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/search/sites"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "value": (wrappedValue: value?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1207,50 +1083,47 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getSearchSuggest. */
-    public struct ApiGetSearchSuggestOptions: Sendable {
+    public struct GetSearchSuggestOptions: Sendable {
         public var textSearch: String?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(textSearch: String? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(textSearch: String? = nil, sso: String? = nil) {
             self.textSearch = textSearch
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter textSearch: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationSuggestResponse
      */
-    open class func getSearchSuggest(options: ApiGetSearchSuggestOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationSuggestResponse {
-        return try await getSearchSuggestWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getSearchSuggest(tenantId: String, options: GetSearchSuggestOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationSuggestResponse {
+        return try await getSearchSuggestWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/search/suggest
+     - GET /auth/my-account/moderate-comments/mod_api/search/suggest
+     - parameter tenantId: (query)  
      - parameter textSearch: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationSuggestResponse> 
      */
-    open class func getSearchSuggestWithRequestBuilder(options: ApiGetSearchSuggestOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationSuggestResponse> {
+    open class func getSearchSuggestWithRequestBuilder(tenantId: String, options: GetSearchSuggestOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationSuggestResponse> {
         let textSearch = options.textSearch
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/search/suggest"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/search/suggest"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "text-search": (wrappedValue: textSearch?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1266,50 +1139,47 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getSearchUsers. */
-    public struct ApiGetSearchUsersOptions: Sendable {
+    public struct GetSearchUsersOptions: Sendable {
         public var value: String?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(value: String? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(value: String? = nil, sso: String? = nil) {
             self.value = value
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter value: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationUserSearchResponse
      */
-    open class func getSearchUsers(options: ApiGetSearchUsersOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationUserSearchResponse {
-        return try await getSearchUsersWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getSearchUsers(tenantId: String, options: GetSearchUsersOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationUserSearchResponse {
+        return try await getSearchUsersWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/search/users
+     - GET /auth/my-account/moderate-comments/mod_api/search/users
+     - parameter tenantId: (query)  
      - parameter value: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationUserSearchResponse> 
      */
-    open class func getSearchUsersWithRequestBuilder(options: ApiGetSearchUsersOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationUserSearchResponse> {
+    open class func getSearchUsersWithRequestBuilder(tenantId: String, options: GetSearchUsersOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationUserSearchResponse> {
         let value = options.value
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/search/users"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/search/users"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "value": (wrappedValue: value?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1325,50 +1195,47 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getTrustFactor. */
-    public struct ApiGetTrustFactorOptions: Sendable {
+    public struct GetTrustFactorOptions: Sendable {
         public var userId: String?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(userId: String? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(userId: String? = nil, sso: String? = nil) {
             self.userId = userId
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter userId: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetUserTrustFactorResponse
      */
-    open class func getTrustFactor(options: ApiGetTrustFactorOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetUserTrustFactorResponse {
-        return try await getTrustFactorWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getTrustFactor(tenantId: String, options: GetTrustFactorOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetUserTrustFactorResponse {
+        return try await getTrustFactorWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/get-trust-factor
+     - GET /auth/my-account/moderate-comments/mod_api/get-trust-factor
+     - parameter tenantId: (query)  
      - parameter userId: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetUserTrustFactorResponse> 
      */
-    open class func getTrustFactorWithRequestBuilder(options: ApiGetTrustFactorOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetUserTrustFactorResponse> {
+    open class func getTrustFactorWithRequestBuilder(tenantId: String, options: GetTrustFactorOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetUserTrustFactorResponse> {
         let userId = options.userId
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/get-trust-factor"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/get-trust-factor"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "userId": (wrappedValue: userId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1383,45 +1250,32 @@ open class ModerationAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
-    /** Optional parameters for getUserBanPreference. */
-    public struct ApiGetUserBanPreferenceOptions: Sendable {
-        public var tenantId: String?
-        public var sso: String?
-
-        public init(tenantId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
-            self.sso = sso
-        }
-    }
-
     /**
 
-     - parameter tenantId: (query)  (optional)
+     - parameter tenantId: (query)  
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: APIModerateGetUserBanPreferencesResponse
      */
-    open class func getUserBanPreference(options: ApiGetUserBanPreferenceOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIModerateGetUserBanPreferencesResponse {
-        return try await getUserBanPreferenceWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getUserBanPreference(tenantId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIModerateGetUserBanPreferencesResponse {
+        return try await getUserBanPreferenceWithRequestBuilder(tenantId: tenantId, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/user-ban-preference
-     - parameter tenantId: (query)  (optional)
+     - GET /auth/my-account/moderate-comments/mod_api/user-ban-preference
+     - parameter tenantId: (query)  
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<APIModerateGetUserBanPreferencesResponse> 
      */
-    open class func getUserBanPreferenceWithRequestBuilder(options: ApiGetUserBanPreferenceOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIModerateGetUserBanPreferencesResponse> {
-        let tenantId = options.tenantId
-        let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/user-ban-preference"
+    open class func getUserBanPreferenceWithRequestBuilder(tenantId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIModerateGetUserBanPreferencesResponse> {
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/user-ban-preference"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1437,50 +1291,47 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for getUserInternalProfile. */
-    public struct ApiGetUserInternalProfileOptions: Sendable {
+    public struct GetUserInternalProfileOptions: Sendable {
         public var commentId: String?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(commentId: String? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(commentId: String? = nil, sso: String? = nil) {
             self.commentId = commentId
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetUserInternalProfileResponse
      */
-    open class func getUserInternalProfile(options: ApiGetUserInternalProfileOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetUserInternalProfileResponse {
-        return try await getUserInternalProfileWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func getUserInternalProfile(tenantId: String, options: GetUserInternalProfileOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetUserInternalProfileResponse {
+        return try await getUserInternalProfileWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - GET /auth/my-account/moderate-comments/get-user-internal-profile
+     - GET /auth/my-account/moderate-comments/mod_api/get-user-internal-profile
+     - parameter tenantId: (query)  
      - parameter commentId: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetUserInternalProfileResponse> 
      */
-    open class func getUserInternalProfileWithRequestBuilder(options: ApiGetUserInternalProfileOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetUserInternalProfileResponse> {
+    open class func getUserInternalProfileWithRequestBuilder(tenantId: String, options: GetUserInternalProfileOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetUserInternalProfileResponse> {
         let commentId = options.commentId
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/get-user-internal-profile"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/get-user-internal-profile"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "commentId": (wrappedValue: commentId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1496,13 +1347,11 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for postAdjustCommentVotes. */
-    public struct ApiPostAdjustCommentVotesOptions: Sendable {
-        public var tenantId: String?
+    public struct PostAdjustCommentVotesOptions: Sendable {
         public var broadcastId: String?
         public var sso: String?
 
-        public init(tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
+        public init(broadcastId: String? = nil, sso: String? = nil) {
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -1510,33 +1359,32 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter adjustCommentVotesParams: (body)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: AdjustVotesResponse
      */
-    open class func postAdjustCommentVotes(commentId: String, adjustCommentVotesParams: AdjustCommentVotesParams, options: ApiPostAdjustCommentVotesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> AdjustVotesResponse {
-        return try await postAdjustCommentVotesWithRequestBuilder(commentId: commentId, adjustCommentVotesParams: adjustCommentVotesParams, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postAdjustCommentVotes(tenantId: String, commentId: String, adjustCommentVotesParams: AdjustCommentVotesParams, options: PostAdjustCommentVotesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> AdjustVotesResponse {
+        return try await postAdjustCommentVotesWithRequestBuilder(tenantId: tenantId, commentId: commentId, adjustCommentVotesParams: adjustCommentVotesParams, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/adjust-comment-votes/{commentId}
+     - POST /auth/my-account/moderate-comments/mod_api/adjust-comment-votes/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter adjustCommentVotesParams: (body)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<AdjustVotesResponse> 
      */
-    open class func postAdjustCommentVotesWithRequestBuilder(commentId: String, adjustCommentVotesParams: AdjustCommentVotesParams, options: ApiPostAdjustCommentVotesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<AdjustVotesResponse> {
-        let tenantId = options.tenantId
+    open class func postAdjustCommentVotesWithRequestBuilder(tenantId: String, commentId: String, adjustCommentVotesParams: AdjustCommentVotesParams, options: PostAdjustCommentVotesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<AdjustVotesResponse> {
         let broadcastId = options.broadcastId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/adjust-comment-votes/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/adjust-comment-votes/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -1545,7 +1393,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -1562,74 +1410,71 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for postApiExport. */
-    public struct ApiPostApiExportOptions: Sendable {
+    public struct PostApiExportOptions: Sendable {
         public var textSearch: String?
         public var byIPFromComment: String?
         public var filters: String?
         public var searchFilters: String?
         public var sorts: String?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, sorts: String? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(textSearch: String? = nil, byIPFromComment: String? = nil, filters: String? = nil, searchFilters: String? = nil, sorts: String? = nil, sso: String? = nil) {
             self.textSearch = textSearch
             self.byIPFromComment = byIPFromComment
             self.filters = filters
             self.searchFilters = searchFilters
             self.sorts = sorts
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter textSearch: (query)  (optional)
      - parameter byIPFromComment: (query)  (optional)
      - parameter filters: (query)  (optional)
      - parameter searchFilters: (query)  (optional)
      - parameter sorts: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationExportResponse
      */
-    open class func postApiExport(options: ApiPostApiExportOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationExportResponse {
-        return try await postApiExportWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postApiExport(tenantId: String, options: PostApiExportOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationExportResponse {
+        return try await postApiExportWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/api/export
+     - POST /auth/my-account/moderate-comments/mod_api/api/export
+     - parameter tenantId: (query)  
      - parameter textSearch: (query)  (optional)
      - parameter byIPFromComment: (query)  (optional)
      - parameter filters: (query)  (optional)
      - parameter searchFilters: (query)  (optional)
      - parameter sorts: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationExportResponse> 
      */
-    open class func postApiExportWithRequestBuilder(options: ApiPostApiExportOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationExportResponse> {
+    open class func postApiExportWithRequestBuilder(tenantId: String, options: PostApiExportOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationExportResponse> {
         let textSearch = options.textSearch
         let byIPFromComment = options.byIPFromComment
         let filters = options.filters
         let searchFilters = options.searchFilters
         let sorts = options.sorts
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/api/export"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/api/export"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "text-search": (wrappedValue: textSearch?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "byIPFromComment": (wrappedValue: byIPFromComment?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "filters": (wrappedValue: filters?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "searchFilters": (wrappedValue: searchFilters?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sorts": (wrappedValue: sorts?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1645,7 +1490,7 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for postBanUserFromComment. */
-    public struct ApiPostBanUserFromCommentOptions: Sendable {
+    public struct PostBanUserFromCommentOptions: Sendable {
         public var banEmail: Bool?
         public var banEmailDomain: Bool?
         public var banIP: Bool?
@@ -1654,10 +1499,9 @@ open class ModerationAPI {
         public var isShadowBan: Bool?
         public var updateId: String?
         public var banReason: String?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(banEmail: Bool? = nil, banEmailDomain: Bool? = nil, banIP: Bool? = nil, deleteAllUsersComments: Bool? = nil, bannedUntil: String? = nil, isShadowBan: Bool? = nil, updateId: String? = nil, banReason: String? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(banEmail: Bool? = nil, banEmailDomain: Bool? = nil, banIP: Bool? = nil, deleteAllUsersComments: Bool? = nil, bannedUntil: String? = nil, isShadowBan: Bool? = nil, updateId: String? = nil, banReason: String? = nil, sso: String? = nil) {
             self.banEmail = banEmail
             self.banEmailDomain = banEmailDomain
             self.banIP = banIP
@@ -1666,13 +1510,13 @@ open class ModerationAPI {
             self.isShadowBan = isShadowBan
             self.updateId = updateId
             self.banReason = banReason
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter banEmail: (query)  (optional)
      - parameter banEmailDomain: (query)  (optional)
@@ -1682,17 +1526,17 @@ open class ModerationAPI {
      - parameter isShadowBan: (query)  (optional)
      - parameter updateId: (query)  (optional)
      - parameter banReason: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: BanUserFromCommentResult
      */
-    open class func postBanUserFromComment(commentId: String, options: ApiPostBanUserFromCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> BanUserFromCommentResult {
-        return try await postBanUserFromCommentWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postBanUserFromComment(tenantId: String, commentId: String, options: PostBanUserFromCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> BanUserFromCommentResult {
+        return try await postBanUserFromCommentWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/ban-user/from-comment/{commentId}
+     - POST /auth/my-account/moderate-comments/mod_api/ban-user/from-comment/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter banEmail: (query)  (optional)
      - parameter banEmailDomain: (query)  (optional)
@@ -1702,12 +1546,11 @@ open class ModerationAPI {
      - parameter isShadowBan: (query)  (optional)
      - parameter updateId: (query)  (optional)
      - parameter banReason: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<BanUserFromCommentResult> 
      */
-    open class func postBanUserFromCommentWithRequestBuilder(commentId: String, options: ApiPostBanUserFromCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<BanUserFromCommentResult> {
+    open class func postBanUserFromCommentWithRequestBuilder(tenantId: String, commentId: String, options: PostBanUserFromCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<BanUserFromCommentResult> {
         let banEmail = options.banEmail
         let banEmailDomain = options.banEmailDomain
         let banIP = options.banIP
@@ -1716,9 +1559,8 @@ open class ModerationAPI {
         let isShadowBan = options.isShadowBan
         let updateId = options.updateId
         let banReason = options.banReason
-        let tenantId = options.tenantId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/ban-user/from-comment/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/ban-user/from-comment/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -1727,6 +1569,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "banEmail": (wrappedValue: banEmail?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "banEmailDomain": (wrappedValue: banEmailDomain?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "banIP": (wrappedValue: banIP?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -1735,7 +1578,6 @@ open class ModerationAPI {
             "isShadowBan": (wrappedValue: isShadowBan?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "updateId": (wrappedValue: updateId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "banReason": (wrappedValue: banReason?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1750,47 +1592,34 @@ open class ModerationAPI {
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
-    /** Optional parameters for postBanUserUndo. */
-    public struct ApiPostBanUserUndoOptions: Sendable {
-        public var tenantId: String?
-        public var sso: String?
-
-        public init(tenantId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
-            self.sso = sso
-        }
-    }
-
     /**
 
+     - parameter tenantId: (query)  
      - parameter banUserUndoParams: (body)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: APIEmptyResponse
      */
-    open class func postBanUserUndo(banUserUndoParams: BanUserUndoParams, options: ApiPostBanUserUndoOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
-        return try await postBanUserUndoWithRequestBuilder(banUserUndoParams: banUserUndoParams, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postBanUserUndo(tenantId: String, banUserUndoParams: BanUserUndoParams, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
+        return try await postBanUserUndoWithRequestBuilder(tenantId: tenantId, banUserUndoParams: banUserUndoParams, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/ban-user/undo
+     - POST /auth/my-account/moderate-comments/mod_api/ban-user/undo
+     - parameter tenantId: (query)  
      - parameter banUserUndoParams: (body)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<APIEmptyResponse> 
      */
-    open class func postBanUserUndoWithRequestBuilder(banUserUndoParams: BanUserUndoParams, options: ApiPostBanUserUndoOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
-        let tenantId = options.tenantId
-        let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/ban-user/undo"
+    open class func postBanUserUndoWithRequestBuilder(tenantId: String, banUserUndoParams: BanUserUndoParams, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/ban-user/undo"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: banUserUndoParams, codableHelper: apiConfiguration.codableHelper)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1806,64 +1635,61 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for postBulkPreBanSummary. */
-    public struct ApiPostBulkPreBanSummaryOptions: Sendable {
+    public struct PostBulkPreBanSummaryOptions: Sendable {
         public var includeByUserIdAndEmail: Bool?
         public var includeByIP: Bool?
         public var includeByEmailDomain: Bool?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(includeByUserIdAndEmail: Bool? = nil, includeByIP: Bool? = nil, includeByEmailDomain: Bool? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(includeByUserIdAndEmail: Bool? = nil, includeByIP: Bool? = nil, includeByEmailDomain: Bool? = nil, sso: String? = nil) {
             self.includeByUserIdAndEmail = includeByUserIdAndEmail
             self.includeByIP = includeByIP
             self.includeByEmailDomain = includeByEmailDomain
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter bulkPreBanParams: (body)  
      - parameter includeByUserIdAndEmail: (query)  (optional)
      - parameter includeByIP: (query)  (optional)
      - parameter includeByEmailDomain: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: BulkPreBanSummary
      */
-    open class func postBulkPreBanSummary(bulkPreBanParams: BulkPreBanParams, options: ApiPostBulkPreBanSummaryOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> BulkPreBanSummary {
-        return try await postBulkPreBanSummaryWithRequestBuilder(bulkPreBanParams: bulkPreBanParams, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postBulkPreBanSummary(tenantId: String, bulkPreBanParams: BulkPreBanParams, options: PostBulkPreBanSummaryOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> BulkPreBanSummary {
+        return try await postBulkPreBanSummaryWithRequestBuilder(tenantId: tenantId, bulkPreBanParams: bulkPreBanParams, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/bulk-pre-ban-summary
+     - POST /auth/my-account/moderate-comments/mod_api/bulk-pre-ban-summary
+     - parameter tenantId: (query)  
      - parameter bulkPreBanParams: (body)  
      - parameter includeByUserIdAndEmail: (query)  (optional)
      - parameter includeByIP: (query)  (optional)
      - parameter includeByEmailDomain: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<BulkPreBanSummary> 
      */
-    open class func postBulkPreBanSummaryWithRequestBuilder(bulkPreBanParams: BulkPreBanParams, options: ApiPostBulkPreBanSummaryOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<BulkPreBanSummary> {
+    open class func postBulkPreBanSummaryWithRequestBuilder(tenantId: String, bulkPreBanParams: BulkPreBanParams, options: PostBulkPreBanSummaryOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<BulkPreBanSummary> {
         let includeByUserIdAndEmail = options.includeByUserIdAndEmail
         let includeByIP = options.includeByIP
         let includeByEmailDomain = options.includeByEmailDomain
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/bulk-pre-ban-summary"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/bulk-pre-ban-summary"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: bulkPreBanParams, codableHelper: apiConfiguration.codableHelper)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "includeByUserIdAndEmail": (wrappedValue: includeByUserIdAndEmail?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "includeByIP": (wrappedValue: includeByIP?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "includeByEmailDomain": (wrappedValue: includeByEmailDomain?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1878,47 +1704,34 @@ open class ModerationAPI {
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
-    /** Optional parameters for postCommentsByIds. */
-    public struct ApiPostCommentsByIdsOptions: Sendable {
-        public var tenantId: String?
-        public var sso: String?
-
-        public init(tenantId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
-            self.sso = sso
-        }
-    }
-
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentsByIdsParams: (body)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: ModerationAPIChildCommentsResponse
      */
-    open class func postCommentsByIds(commentsByIdsParams: CommentsByIdsParams, options: ApiPostCommentsByIdsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPIChildCommentsResponse {
-        return try await postCommentsByIdsWithRequestBuilder(commentsByIdsParams: commentsByIdsParams, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postCommentsByIds(tenantId: String, commentsByIdsParams: CommentsByIdsParams, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> ModerationAPIChildCommentsResponse {
+        return try await postCommentsByIdsWithRequestBuilder(tenantId: tenantId, commentsByIdsParams: commentsByIdsParams, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/comments-by-ids
+     - POST /auth/my-account/moderate-comments/mod_api/comments-by-ids
+     - parameter tenantId: (query)  
      - parameter commentsByIdsParams: (body)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ModerationAPIChildCommentsResponse> 
      */
-    open class func postCommentsByIdsWithRequestBuilder(commentsByIdsParams: CommentsByIdsParams, options: ApiPostCommentsByIdsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPIChildCommentsResponse> {
-        let tenantId = options.tenantId
-        let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/comments-by-ids"
+    open class func postCommentsByIdsWithRequestBuilder(tenantId: String, commentsByIdsParams: CommentsByIdsParams, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<ModerationAPIChildCommentsResponse> {
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/comments-by-ids"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: commentsByIdsParams, codableHelper: apiConfiguration.codableHelper)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -1934,13 +1747,11 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for postFlagComment. */
-    public struct ApiPostFlagCommentOptions: Sendable {
-        public var tenantId: String?
+    public struct PostFlagCommentOptions: Sendable {
         public var broadcastId: String?
         public var sso: String?
 
-        public init(tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
+        public init(broadcastId: String? = nil, sso: String? = nil) {
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -1948,31 +1759,30 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: APIEmptyResponse
      */
-    open class func postFlagComment(commentId: String, options: ApiPostFlagCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
-        return try await postFlagCommentWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postFlagComment(tenantId: String, commentId: String, options: PostFlagCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
+        return try await postFlagCommentWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/flag-comment/{commentId}
+     - POST /auth/my-account/moderate-comments/mod_api/flag-comment/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<APIEmptyResponse> 
      */
-    open class func postFlagCommentWithRequestBuilder(commentId: String, options: ApiPostFlagCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
-        let tenantId = options.tenantId
+    open class func postFlagCommentWithRequestBuilder(tenantId: String, commentId: String, options: PostFlagCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
         let broadcastId = options.broadcastId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/flag-comment/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/flag-comment/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -1981,7 +1791,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -1998,13 +1808,11 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for postRemoveComment. */
-    public struct ApiPostRemoveCommentOptions: Sendable {
-        public var tenantId: String?
+    public struct PostRemoveCommentOptions: Sendable {
         public var broadcastId: String?
         public var sso: String?
 
-        public init(tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
+        public init(broadcastId: String? = nil, sso: String? = nil) {
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -2012,31 +1820,30 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: PostRemoveCommentResponse
+     - returns: PostRemoveCommentApiResponse
      */
-    open class func postRemoveComment(commentId: String, options: ApiPostRemoveCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PostRemoveCommentResponse {
-        return try await postRemoveCommentWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postRemoveComment(tenantId: String, commentId: String, options: PostRemoveCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> PostRemoveCommentApiResponse {
+        return try await postRemoveCommentWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/remove-comment/{commentId}
+     - POST /auth/my-account/moderate-comments/mod_api/remove-comment/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<PostRemoveCommentResponse> 
+     - returns: RequestBuilder<PostRemoveCommentApiResponse> 
      */
-    open class func postRemoveCommentWithRequestBuilder(commentId: String, options: ApiPostRemoveCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PostRemoveCommentResponse> {
-        let tenantId = options.tenantId
+    open class func postRemoveCommentWithRequestBuilder(tenantId: String, commentId: String, options: PostRemoveCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<PostRemoveCommentApiResponse> {
         let broadcastId = options.broadcastId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/remove-comment/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/remove-comment/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -2045,7 +1852,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -2056,19 +1863,17 @@ open class ModerationAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<PostRemoveCommentResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<PostRemoveCommentApiResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
     /** Optional parameters for postRestoreDeletedComment. */
-    public struct ApiPostRestoreDeletedCommentOptions: Sendable {
-        public var tenantId: String?
+    public struct PostRestoreDeletedCommentOptions: Sendable {
         public var broadcastId: String?
         public var sso: String?
 
-        public init(tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
+        public init(broadcastId: String? = nil, sso: String? = nil) {
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -2076,31 +1881,30 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: APIEmptyResponse
      */
-    open class func postRestoreDeletedComment(commentId: String, options: ApiPostRestoreDeletedCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
-        return try await postRestoreDeletedCommentWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postRestoreDeletedComment(tenantId: String, commentId: String, options: PostRestoreDeletedCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
+        return try await postRestoreDeletedCommentWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/restore-deleted-comment/{commentId}
+     - POST /auth/my-account/moderate-comments/mod_api/restore-deleted-comment/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<APIEmptyResponse> 
      */
-    open class func postRestoreDeletedCommentWithRequestBuilder(commentId: String, options: ApiPostRestoreDeletedCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
-        let tenantId = options.tenantId
+    open class func postRestoreDeletedCommentWithRequestBuilder(tenantId: String, commentId: String, options: PostRestoreDeletedCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
         let broadcastId = options.broadcastId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/restore-deleted-comment/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/restore-deleted-comment/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -2109,7 +1913,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -2126,15 +1930,13 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for postSetCommentApprovalStatus. */
-    public struct ApiPostSetCommentApprovalStatusOptions: Sendable {
+    public struct PostSetCommentApprovalStatusOptions: Sendable {
         public var approved: Bool?
-        public var tenantId: String?
         public var broadcastId: String?
         public var sso: String?
 
-        public init(approved: Bool? = nil, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
+        public init(approved: Bool? = nil, broadcastId: String? = nil, sso: String? = nil) {
             self.approved = approved
-            self.tenantId = tenantId
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -2142,34 +1944,33 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter approved: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SetCommentApprovedResponse
      */
-    open class func postSetCommentApprovalStatus(commentId: String, options: ApiPostSetCommentApprovalStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SetCommentApprovedResponse {
-        return try await postSetCommentApprovalStatusWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postSetCommentApprovalStatus(tenantId: String, commentId: String, options: PostSetCommentApprovalStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SetCommentApprovedResponse {
+        return try await postSetCommentApprovalStatusWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/set-comment-approval-status/{commentId}
+     - POST /auth/my-account/moderate-comments/mod_api/set-comment-approval-status/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter approved: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<SetCommentApprovedResponse> 
      */
-    open class func postSetCommentApprovalStatusWithRequestBuilder(commentId: String, options: ApiPostSetCommentApprovalStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SetCommentApprovedResponse> {
+    open class func postSetCommentApprovalStatusWithRequestBuilder(tenantId: String, commentId: String, options: PostSetCommentApprovalStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SetCommentApprovedResponse> {
         let approved = options.approved
-        let tenantId = options.tenantId
         let broadcastId = options.broadcastId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/set-comment-approval-status/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/set-comment-approval-status/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -2178,8 +1979,8 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "approved": (wrappedValue: approved?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -2196,15 +1997,13 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for postSetCommentReviewStatus. */
-    public struct ApiPostSetCommentReviewStatusOptions: Sendable {
+    public struct PostSetCommentReviewStatusOptions: Sendable {
         public var reviewed: Bool?
-        public var tenantId: String?
         public var broadcastId: String?
         public var sso: String?
 
-        public init(reviewed: Bool? = nil, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
+        public init(reviewed: Bool? = nil, broadcastId: String? = nil, sso: String? = nil) {
             self.reviewed = reviewed
-            self.tenantId = tenantId
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -2212,34 +2011,33 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter reviewed: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: APIEmptyResponse
      */
-    open class func postSetCommentReviewStatus(commentId: String, options: ApiPostSetCommentReviewStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
-        return try await postSetCommentReviewStatusWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postSetCommentReviewStatus(tenantId: String, commentId: String, options: PostSetCommentReviewStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
+        return try await postSetCommentReviewStatusWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/set-comment-review-status/{commentId}
+     - POST /auth/my-account/moderate-comments/mod_api/set-comment-review-status/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter reviewed: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<APIEmptyResponse> 
      */
-    open class func postSetCommentReviewStatusWithRequestBuilder(commentId: String, options: ApiPostSetCommentReviewStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
+    open class func postSetCommentReviewStatusWithRequestBuilder(tenantId: String, commentId: String, options: PostSetCommentReviewStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
         let reviewed = options.reviewed
-        let tenantId = options.tenantId
         let broadcastId = options.broadcastId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/set-comment-review-status/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/set-comment-review-status/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -2248,8 +2046,8 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "reviewed": (wrappedValue: reviewed?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -2266,17 +2064,15 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for postSetCommentSpamStatus. */
-    public struct ApiPostSetCommentSpamStatusOptions: Sendable {
+    public struct PostSetCommentSpamStatusOptions: Sendable {
         public var spam: Bool?
         public var permNotSpam: Bool?
-        public var tenantId: String?
         public var broadcastId: String?
         public var sso: String?
 
-        public init(spam: Bool? = nil, permNotSpam: Bool? = nil, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
+        public init(spam: Bool? = nil, permNotSpam: Bool? = nil, broadcastId: String? = nil, sso: String? = nil) {
             self.spam = spam
             self.permNotSpam = permNotSpam
-            self.tenantId = tenantId
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -2284,37 +2080,36 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter spam: (query)  (optional)
      - parameter permNotSpam: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: APIEmptyResponse
      */
-    open class func postSetCommentSpamStatus(commentId: String, options: ApiPostSetCommentSpamStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
-        return try await postSetCommentSpamStatusWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postSetCommentSpamStatus(tenantId: String, commentId: String, options: PostSetCommentSpamStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
+        return try await postSetCommentSpamStatusWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/set-comment-spam-status/{commentId}
+     - POST /auth/my-account/moderate-comments/mod_api/set-comment-spam-status/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter spam: (query)  (optional)
      - parameter permNotSpam: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<APIEmptyResponse> 
      */
-    open class func postSetCommentSpamStatusWithRequestBuilder(commentId: String, options: ApiPostSetCommentSpamStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
+    open class func postSetCommentSpamStatusWithRequestBuilder(tenantId: String, commentId: String, options: PostSetCommentSpamStatusOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
         let spam = options.spam
         let permNotSpam = options.permNotSpam
-        let tenantId = options.tenantId
         let broadcastId = options.broadcastId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/set-comment-spam-status/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/set-comment-spam-status/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -2323,9 +2118,9 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "spam": (wrappedValue: spam?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "permNotSpam": (wrappedValue: permNotSpam?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -2342,13 +2137,11 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for postSetCommentText. */
-    public struct ApiPostSetCommentTextOptions: Sendable {
-        public var tenantId: String?
+    public struct PostSetCommentTextOptions: Sendable {
         public var broadcastId: String?
         public var sso: String?
 
-        public init(tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
+        public init(broadcastId: String? = nil, sso: String? = nil) {
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -2356,33 +2149,32 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter setCommentTextParams: (body)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SetCommentTextResponse
      */
-    open class func postSetCommentText(commentId: String, setCommentTextParams: SetCommentTextParams, options: ApiPostSetCommentTextOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SetCommentTextResponse {
-        return try await postSetCommentTextWithRequestBuilder(commentId: commentId, setCommentTextParams: setCommentTextParams, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postSetCommentText(tenantId: String, commentId: String, setCommentTextParams: SetCommentTextParams, options: PostSetCommentTextOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SetCommentTextResponse {
+        return try await postSetCommentTextWithRequestBuilder(tenantId: tenantId, commentId: commentId, setCommentTextParams: setCommentTextParams, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/set-comment-text/{commentId}
+     - POST /auth/my-account/moderate-comments/mod_api/set-comment-text/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter setCommentTextParams: (body)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<SetCommentTextResponse> 
      */
-    open class func postSetCommentTextWithRequestBuilder(commentId: String, setCommentTextParams: SetCommentTextParams, options: ApiPostSetCommentTextOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SetCommentTextResponse> {
-        let tenantId = options.tenantId
+    open class func postSetCommentTextWithRequestBuilder(tenantId: String, commentId: String, setCommentTextParams: SetCommentTextParams, options: PostSetCommentTextOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SetCommentTextResponse> {
         let broadcastId = options.broadcastId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/set-comment-text/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/set-comment-text/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -2391,7 +2183,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -2408,13 +2200,11 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for postUnFlagComment. */
-    public struct ApiPostUnFlagCommentOptions: Sendable {
-        public var tenantId: String?
+    public struct PostUnFlagCommentOptions: Sendable {
         public var broadcastId: String?
         public var sso: String?
 
-        public init(tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
+        public init(broadcastId: String? = nil, sso: String? = nil) {
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -2422,31 +2212,30 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: APIEmptyResponse
      */
-    open class func postUnFlagComment(commentId: String, options: ApiPostUnFlagCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
-        return try await postUnFlagCommentWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postUnFlagComment(tenantId: String, commentId: String, options: PostUnFlagCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
+        return try await postUnFlagCommentWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/un-flag-comment/{commentId}
+     - POST /auth/my-account/moderate-comments/mod_api/un-flag-comment/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<APIEmptyResponse> 
      */
-    open class func postUnFlagCommentWithRequestBuilder(commentId: String, options: ApiPostUnFlagCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
-        let tenantId = options.tenantId
+    open class func postUnFlagCommentWithRequestBuilder(tenantId: String, commentId: String, options: PostUnFlagCommentOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
         let broadcastId = options.broadcastId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/un-flag-comment/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/un-flag-comment/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -2455,7 +2244,7 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -2472,15 +2261,13 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for postVote. */
-    public struct ApiPostVoteOptions: Sendable {
+    public struct PostVoteOptions: Sendable {
         public var direction: String?
-        public var tenantId: String?
         public var broadcastId: String?
         public var sso: String?
 
-        public init(direction: String? = nil, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
+        public init(direction: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
             self.direction = direction
-            self.tenantId = tenantId
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -2488,34 +2275,33 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter direction: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: VoteResponse
      */
-    open class func postVote(commentId: String, options: ApiPostVoteOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> VoteResponse {
-        return try await postVoteWithRequestBuilder(commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func postVote(tenantId: String, commentId: String, options: PostVoteOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> VoteResponse {
+        return try await postVoteWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - POST /auth/my-account/moderate-comments/vote/{commentId}
+     - POST /auth/my-account/moderate-comments/mod_api/vote/{commentId}
+     - parameter tenantId: (query)  
      - parameter commentId: (path)  
      - parameter direction: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<VoteResponse> 
      */
-    open class func postVoteWithRequestBuilder(commentId: String, options: ApiPostVoteOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<VoteResponse> {
+    open class func postVoteWithRequestBuilder(tenantId: String, commentId: String, options: PostVoteOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<VoteResponse> {
         let direction = options.direction
-        let tenantId = options.tenantId
         let broadcastId = options.broadcastId
         let sso = options.sso
-        var localVariablePath = "/auth/my-account/moderate-comments/vote/{commentId}"
+        var localVariablePath = "/auth/my-account/moderate-comments/mod_api/vote/{commentId}"
         let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
         let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
@@ -2524,8 +2310,8 @@ open class ModerationAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "direction": (wrappedValue: direction?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -2542,17 +2328,15 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for putAwardBadge. */
-    public struct ApiPutAwardBadgeOptions: Sendable {
+    public struct PutAwardBadgeOptions: Sendable {
         public var userId: String?
         public var commentId: String?
-        public var tenantId: String?
         public var broadcastId: String?
         public var sso: String?
 
-        public init(userId: String? = nil, commentId: String? = nil, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
+        public init(userId: String? = nil, commentId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
             self.userId = userId
             self.commentId = commentId
-            self.tenantId = tenantId
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -2560,46 +2344,45 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter badgeId: (query)  
      - parameter userId: (query)  (optional)
      - parameter commentId: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: AwardUserBadgeResponse
      */
-    open class func putAwardBadge(badgeId: String, options: ApiPutAwardBadgeOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> AwardUserBadgeResponse {
-        return try await putAwardBadgeWithRequestBuilder(badgeId: badgeId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func putAwardBadge(tenantId: String, badgeId: String, options: PutAwardBadgeOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> AwardUserBadgeResponse {
+        return try await putAwardBadgeWithRequestBuilder(tenantId: tenantId, badgeId: badgeId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - PUT /auth/my-account/moderate-comments/award-badge
+     - PUT /auth/my-account/moderate-comments/mod_api/award-badge
+     - parameter tenantId: (query)  
      - parameter badgeId: (query)  
      - parameter userId: (query)  (optional)
      - parameter commentId: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<AwardUserBadgeResponse> 
      */
-    open class func putAwardBadgeWithRequestBuilder(badgeId: String, options: ApiPutAwardBadgeOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<AwardUserBadgeResponse> {
+    open class func putAwardBadgeWithRequestBuilder(tenantId: String, badgeId: String, options: PutAwardBadgeOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<AwardUserBadgeResponse> {
         let userId = options.userId
         let commentId = options.commentId
-        let tenantId = options.tenantId
         let broadcastId = options.broadcastId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/award-badge"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/award-badge"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "badgeId": (wrappedValue: badgeId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "userId": (wrappedValue: userId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "commentId": (wrappedValue: commentId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -2615,48 +2398,35 @@ open class ModerationAPI {
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
-    /** Optional parameters for putCloseThread. */
-    public struct ApiPutCloseThreadOptions: Sendable {
-        public var tenantId: String?
-        public var sso: String?
-
-        public init(tenantId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
-            self.sso = sso
-        }
-    }
-
     /**
 
+     - parameter tenantId: (query)  
      - parameter urlId: (query)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: APIEmptyResponse
      */
-    open class func putCloseThread(urlId: String, options: ApiPutCloseThreadOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
-        return try await putCloseThreadWithRequestBuilder(urlId: urlId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func putCloseThread(tenantId: String, urlId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
+        return try await putCloseThreadWithRequestBuilder(tenantId: tenantId, urlId: urlId, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - PUT /auth/my-account/moderate-comments/close-thread
+     - PUT /auth/my-account/moderate-comments/mod_api/close-thread
+     - parameter tenantId: (query)  
      - parameter urlId: (query)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<APIEmptyResponse> 
      */
-    open class func putCloseThreadWithRequestBuilder(urlId: String, options: ApiPutCloseThreadOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
-        let tenantId = options.tenantId
-        let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/close-thread"
+    open class func putCloseThreadWithRequestBuilder(tenantId: String, urlId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/close-thread"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -2672,17 +2442,15 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for putRemoveBadge. */
-    public struct ApiPutRemoveBadgeOptions: Sendable {
+    public struct PutRemoveBadgeOptions: Sendable {
         public var userId: String?
         public var commentId: String?
-        public var tenantId: String?
         public var broadcastId: String?
         public var sso: String?
 
-        public init(userId: String? = nil, commentId: String? = nil, tenantId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
+        public init(userId: String? = nil, commentId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
             self.userId = userId
             self.commentId = commentId
-            self.tenantId = tenantId
             self.broadcastId = broadcastId
             self.sso = sso
         }
@@ -2690,46 +2458,45 @@ open class ModerationAPI {
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter badgeId: (query)  
      - parameter userId: (query)  (optional)
      - parameter commentId: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RemoveUserBadgeResponse
      */
-    open class func putRemoveBadge(badgeId: String, options: ApiPutRemoveBadgeOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> RemoveUserBadgeResponse {
-        return try await putRemoveBadgeWithRequestBuilder(badgeId: badgeId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func putRemoveBadge(tenantId: String, badgeId: String, options: PutRemoveBadgeOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> RemoveUserBadgeResponse {
+        return try await putRemoveBadgeWithRequestBuilder(tenantId: tenantId, badgeId: badgeId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - PUT /auth/my-account/moderate-comments/remove-badge
+     - PUT /auth/my-account/moderate-comments/mod_api/remove-badge
+     - parameter tenantId: (query)  
      - parameter badgeId: (query)  
      - parameter userId: (query)  (optional)
      - parameter commentId: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter broadcastId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<RemoveUserBadgeResponse> 
      */
-    open class func putRemoveBadgeWithRequestBuilder(badgeId: String, options: ApiPutRemoveBadgeOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<RemoveUserBadgeResponse> {
+    open class func putRemoveBadgeWithRequestBuilder(tenantId: String, badgeId: String, options: PutRemoveBadgeOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<RemoveUserBadgeResponse> {
         let userId = options.userId
         let commentId = options.commentId
-        let tenantId = options.tenantId
         let broadcastId = options.broadcastId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/remove-badge"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/remove-badge"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "badgeId": (wrappedValue: badgeId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "userId": (wrappedValue: userId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "commentId": (wrappedValue: commentId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -2745,48 +2512,35 @@ open class ModerationAPI {
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
-    /** Optional parameters for putReopenThread. */
-    public struct ApiPutReopenThreadOptions: Sendable {
-        public var tenantId: String?
-        public var sso: String?
-
-        public init(tenantId: String? = nil, sso: String? = nil) {
-            self.tenantId = tenantId
-            self.sso = sso
-        }
-    }
-
     /**
 
+     - parameter tenantId: (query)  
      - parameter urlId: (query)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: APIEmptyResponse
      */
-    open class func putReopenThread(urlId: String, options: ApiPutReopenThreadOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
-        return try await putReopenThreadWithRequestBuilder(urlId: urlId, options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func putReopenThread(tenantId: String, urlId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
+        return try await putReopenThreadWithRequestBuilder(tenantId: tenantId, urlId: urlId, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - PUT /auth/my-account/moderate-comments/reopen-thread
+     - PUT /auth/my-account/moderate-comments/mod_api/reopen-thread
+     - parameter tenantId: (query)  
      - parameter urlId: (query)  
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<APIEmptyResponse> 
      */
-    open class func putReopenThreadWithRequestBuilder(urlId: String, options: ApiPutReopenThreadOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
-        let tenantId = options.tenantId
-        let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/reopen-thread"
+    open class func putReopenThreadWithRequestBuilder(tenantId: String, urlId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/reopen-thread"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
@@ -2802,56 +2556,53 @@ open class ModerationAPI {
     }
 
     /** Optional parameters for setTrustFactor. */
-    public struct ApiSetTrustFactorOptions: Sendable {
+    public struct SetTrustFactorOptions: Sendable {
         public var userId: String?
         public var trustFactor: String?
-        public var tenantId: String?
         public var sso: String?
 
-        public init(userId: String? = nil, trustFactor: String? = nil, tenantId: String? = nil, sso: String? = nil) {
+        public init(userId: String? = nil, trustFactor: String? = nil, sso: String? = nil) {
             self.userId = userId
             self.trustFactor = trustFactor
-            self.tenantId = tenantId
             self.sso = sso
         }
     }
 
     /**
 
+     - parameter tenantId: (query)  
      - parameter userId: (query)  (optional)
      - parameter trustFactor: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SetUserTrustFactorResponse
      */
-    open class func setTrustFactor(options: ApiSetTrustFactorOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SetUserTrustFactorResponse {
-        return try await setTrustFactorWithRequestBuilder(options: options, apiConfiguration: apiConfiguration).execute().body
+    open class func setTrustFactor(tenantId: String, options: SetTrustFactorOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SetUserTrustFactorResponse {
+        return try await setTrustFactorWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
-     - PUT /auth/my-account/moderate-comments/set-trust-factor
+     - PUT /auth/my-account/moderate-comments/mod_api/set-trust-factor
+     - parameter tenantId: (query)  
      - parameter userId: (query)  (optional)
      - parameter trustFactor: (query)  (optional)
-     - parameter tenantId: (query)  (optional)
      - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<SetUserTrustFactorResponse> 
      */
-    open class func setTrustFactorWithRequestBuilder(options: ApiSetTrustFactorOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SetUserTrustFactorResponse> {
+    open class func setTrustFactorWithRequestBuilder(tenantId: String, options: SetTrustFactorOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SetUserTrustFactorResponse> {
         let userId = options.userId
         let trustFactor = options.trustFactor
-        let tenantId = options.tenantId
         let sso = options.sso
-        let localVariablePath = "/auth/my-account/moderate-comments/set-trust-factor"
+        let localVariablePath = "/auth/my-account/moderate-comments/mod_api/set-trust-factor"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "userId": (wrappedValue: userId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "trustFactor": (wrappedValue: trustFactor?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-            "tenantId": (wrappedValue: tenantId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 

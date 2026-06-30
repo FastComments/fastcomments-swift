@@ -278,7 +278,7 @@ FastCommentsSwift/Models/PatchDomainConfigResponse.swift
 FastCommentsSwift/Models/PatchPageAPIResponse.swift
 FastCommentsSwift/Models/PatchSSOUserAPIResponse.swift
 FastCommentsSwift/Models/PendingCommentToSyncOutbound.swift
-FastCommentsSwift/Models/PostRemoveCommentResponse.swift
+FastCommentsSwift/Models/PostRemoveCommentApiResponse.swift
 FastCommentsSwift/Models/PreBanSummary.swift
 FastCommentsSwift/Models/PubSubComment.swift
 FastCommentsSwift/Models/PubSubCommentBase.swift
@@ -642,7 +642,7 @@ docs/PatchDomainConfigResponse.md
 docs/PatchPageAPIResponse.md
 docs/PatchSSOUserAPIResponse.md
 docs/PendingCommentToSyncOutbound.md
-docs/PostRemoveCommentResponse.md
+docs/PostRemoveCommentApiResponse.md
 docs/PreBanSummary.md
 docs/PubSubComment.md
 docs/PubSubCommentBase.md
