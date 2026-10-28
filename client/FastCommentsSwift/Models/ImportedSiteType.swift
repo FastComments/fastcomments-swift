@@ -10,4 +10,5 @@ import Foundation
 public enum ImportedSiteType: Int, Sendable, Codable, CaseIterable {
     case _0 = 0
     case _1 = 1
+    case _2 = 2
 }

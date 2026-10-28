@@ -34,12 +34,13 @@ public struct APITenant: Sendable, Codable, Hashable {
     public var sendProfaneToSpam: Bool?
     public var hasFlexPricing: Bool?
     public var hasAuditing: Bool?
+    public var hasDebranding: Bool?
     public var flexLastBilledAmount: Double?
     public var deAnonIpAddr: Double?
     /** Construct a type with a set of properties K of type T */
     public var meta: [String: String]?
 
-    public init(id: String, name: String, email: String? = nil, signUpDate: Double, packageId: String, paymentFrequency: Double, billingInfoValid: Bool, billingHandledExternally: Bool? = nil, createdBy: String, isSetup: Bool, domainConfiguration: [APIDomainConfiguration], billingInfo: BillingInfo? = nil, stripeCustomerId: String? = nil, stripeSubscriptionId: String? = nil, stripePlanId: String? = nil, enableProfanityFilter: Bool, enableSpamFilter: Bool, lastBillingIssueReminderDate: Date? = nil, removeUnverifiedComments: Bool? = nil, unverifiedCommentsTTLms: Double? = nil, commentsRequireApproval: Bool? = nil, autoApproveCommentOnVerification: Bool? = nil, sendProfaneToSpam: Bool? = nil, hasFlexPricing: Bool? = nil, hasAuditing: Bool? = nil, flexLastBilledAmount: Double? = nil, deAnonIpAddr: Double? = nil, meta: [String: String]? = nil) {
+    public init(id: String, name: String, email: String? = nil, signUpDate: Double, packageId: String, paymentFrequency: Double, billingInfoValid: Bool, billingHandledExternally: Bool? = nil, createdBy: String, isSetup: Bool, domainConfiguration: [APIDomainConfiguration], billingInfo: BillingInfo? = nil, stripeCustomerId: String? = nil, stripeSubscriptionId: String? = nil, stripePlanId: String? = nil, enableProfanityFilter: Bool, enableSpamFilter: Bool, lastBillingIssueReminderDate: Date? = nil, removeUnverifiedComments: Bool? = nil, unverifiedCommentsTTLms: Double? = nil, commentsRequireApproval: Bool? = nil, autoApproveCommentOnVerification: Bool? = nil, sendProfaneToSpam: Bool? = nil, hasFlexPricing: Bool? = nil, hasAuditing: Bool? = nil, hasDebranding: Bool? = nil, flexLastBilledAmount: Double? = nil, deAnonIpAddr: Double? = nil, meta: [String: String]? = nil) {
         self.id = id
         self.name = name
         self.email = email
@@ -65,6 +66,7 @@ public struct APITenant: Sendable, Codable, Hashable {
         self.sendProfaneToSpam = sendProfaneToSpam
         self.hasFlexPricing = hasFlexPricing
         self.hasAuditing = hasAuditing
+        self.hasDebranding = hasDebranding
         self.flexLastBilledAmount = flexLastBilledAmount
         self.deAnonIpAddr = deAnonIpAddr
         self.meta = meta
@@ -96,6 +98,7 @@ public struct APITenant: Sendable, Codable, Hashable {
         case sendProfaneToSpam
         case hasFlexPricing
         case hasAuditing
+        case hasDebranding
         case flexLastBilledAmount
         case deAnonIpAddr
         case meta
@@ -130,6 +133,7 @@ public struct APITenant: Sendable, Codable, Hashable {
         try container.encodeIfPresent(sendProfaneToSpam, forKey: .sendProfaneToSpam)
         try container.encodeIfPresent(hasFlexPricing, forKey: .hasFlexPricing)
         try container.encodeIfPresent(hasAuditing, forKey: .hasAuditing)
+        try container.encodeIfPresent(hasDebranding, forKey: .hasDebranding)
         try container.encodeIfPresent(flexLastBilledAmount, forKey: .flexLastBilledAmount)
         try container.encodeIfPresent(deAnonIpAddr, forKey: .deAnonIpAddr)
         try container.encodeIfPresent(meta, forKey: .meta)

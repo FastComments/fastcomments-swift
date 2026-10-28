@@ -16,7 +16,6 @@ public struct UpdateTenantBody: Sendable, Codable, Hashable {
     public var paymentFrequency: Double?
     public var billingInfoValid: Bool?
     public var billingHandledExternally: Bool?
-    public var createdBy: String?
     public var isSetup: Bool?
     public var domainConfiguration: [APIDomainConfiguration]?
     public var billingInfo: BillingInfo?
@@ -35,7 +34,7 @@ public struct UpdateTenantBody: Sendable, Codable, Hashable {
     public var meta: [String: String]?
     public var managedByTenantId: String?
 
-    public init(name: String? = nil, email: String? = nil, signUpDate: Double? = nil, packageId: String? = nil, paymentFrequency: Double? = nil, billingInfoValid: Bool? = nil, billingHandledExternally: Bool? = nil, createdBy: String? = nil, isSetup: Bool? = nil, domainConfiguration: [APIDomainConfiguration]? = nil, billingInfo: BillingInfo? = nil, stripeCustomerId: String? = nil, stripeSubscriptionId: String? = nil, stripePlanId: String? = nil, enableProfanityFilter: Bool? = nil, enableSpamFilter: Bool? = nil, removeUnverifiedComments: Bool? = nil, unverifiedCommentsTTLms: Double? = nil, commentsRequireApproval: Bool? = nil, autoApproveCommentOnVerification: Bool? = nil, sendProfaneToSpam: Bool? = nil, deAnonIpAddr: Double? = nil, meta: [String: String]? = nil, managedByTenantId: String? = nil) {
+    public init(name: String? = nil, email: String? = nil, signUpDate: Double? = nil, packageId: String? = nil, paymentFrequency: Double? = nil, billingInfoValid: Bool? = nil, billingHandledExternally: Bool? = nil, isSetup: Bool? = nil, domainConfiguration: [APIDomainConfiguration]? = nil, billingInfo: BillingInfo? = nil, stripeCustomerId: String? = nil, stripeSubscriptionId: String? = nil, stripePlanId: String? = nil, enableProfanityFilter: Bool? = nil, enableSpamFilter: Bool? = nil, removeUnverifiedComments: Bool? = nil, unverifiedCommentsTTLms: Double? = nil, commentsRequireApproval: Bool? = nil, autoApproveCommentOnVerification: Bool? = nil, sendProfaneToSpam: Bool? = nil, deAnonIpAddr: Double? = nil, meta: [String: String]? = nil, managedByTenantId: String? = nil) {
         self.name = name
         self.email = email
         self.signUpDate = signUpDate
@@ -43,7 +42,6 @@ public struct UpdateTenantBody: Sendable, Codable, Hashable {
         self.paymentFrequency = paymentFrequency
         self.billingInfoValid = billingInfoValid
         self.billingHandledExternally = billingHandledExternally
-        self.createdBy = createdBy
         self.isSetup = isSetup
         self.domainConfiguration = domainConfiguration
         self.billingInfo = billingInfo
@@ -70,7 +68,6 @@ public struct UpdateTenantBody: Sendable, Codable, Hashable {
         case paymentFrequency
         case billingInfoValid
         case billingHandledExternally
-        case createdBy
         case isSetup
         case domainConfiguration
         case billingInfo
@@ -100,7 +97,6 @@ public struct UpdateTenantBody: Sendable, Codable, Hashable {
         try container.encodeIfPresent(paymentFrequency, forKey: .paymentFrequency)
         try container.encodeIfPresent(billingInfoValid, forKey: .billingInfoValid)
         try container.encodeIfPresent(billingHandledExternally, forKey: .billingHandledExternally)
-        try container.encodeIfPresent(createdBy, forKey: .createdBy)
         try container.encodeIfPresent(isSetup, forKey: .isSetup)
         try container.encodeIfPresent(domainConfiguration, forKey: .domainConfiguration)
         try container.encodeIfPresent(billingInfo, forKey: .billingInfo)

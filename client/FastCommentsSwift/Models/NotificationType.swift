@@ -21,4 +21,6 @@ public enum NotificationType: Int, Sendable, Codable, CaseIterable {
     case _82 = 82
     case _9 = 9
     case _10 = 10
+    case _11 = 11
+    case _12 = 12
 }

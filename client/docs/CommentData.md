@@ -26,7 +26,8 @@ Name | Type | Description | Notes
 **fromOfflineRestore** | **Bool** |  | [optional] 
 **autoplayDelayMS** | **Int64** |  | [optional] 
 **feedbackIds** | **[String]** |  | [optional] 
-**questionValues** | [String: GifSearchResponseImagesInnerInner] | Construct a type with a set of properties K of type T | [optional] 
+**questionValues** | [String: RecordStringStringOrNumberOrNumberArrayValue] | Construct a type with a set of properties K of type T | [optional] 
+**poll** | [**CommentPollInput**](CommentPollInput.md) |  | [optional] 
 **tos** | **Bool** |  | [optional] 
 **botId** | **String** |  | [optional] 
 

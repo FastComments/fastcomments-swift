@@ -9,18 +9,22 @@ import Foundation
 
 public struct GetV2PageReacts: Sendable, Codable, Hashable {
 
+    /** One entry per react, most recent first. Present when includeUserInfo is passed. Capped at 100 reacts. */
+    public var users: [PageCustomReactUser]?
     public var reactedIds: [String]?
     /** Construct a type with a set of properties K of type T */
     public var counts: [String: Double]?
     public var status: APIStatus
 
-    public init(reactedIds: [String]? = nil, counts: [String: Double]? = nil, status: APIStatus) {
+    public init(users: [PageCustomReactUser]? = nil, reactedIds: [String]? = nil, counts: [String: Double]? = nil, status: APIStatus) {
+        self.users = users
         self.reactedIds = reactedIds
         self.counts = counts
         self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case users
         case reactedIds
         case counts
         case status
@@ -30,6 +34,7 @@ public struct GetV2PageReacts: Sendable, Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(users, forKey: .users)
         try container.encodeIfPresent(reactedIds, forKey: .reactedIds)
         try container.encodeIfPresent(counts, forKey: .counts)
         try container.encode(status, forKey: .status)

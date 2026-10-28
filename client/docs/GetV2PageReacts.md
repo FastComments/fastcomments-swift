@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**users** | [PageCustomReactUser] | One entry per react, most recent first. Present when includeUserInfo is passed. Capped at 100 reacts. | [optional] 
 **reactedIds** | **[String]** |  | [optional] 
 **counts** | **[String: Double]** | Construct a type with a set of properties K of type T | [optional] 
 **status** | [**APIStatus**](APIStatus.md) |  | 

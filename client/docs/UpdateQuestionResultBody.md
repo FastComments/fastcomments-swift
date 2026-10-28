@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **anonUserId** | **String** |  | [optional] 
 **userId** | **String** |  | [optional] 
 **value** | **Double** |  | [optional] 
+**values** | **[Double]** | Selected option indexes for multi-choice questions. | [optional] 
 **commentId** | **String** |  | [optional] 
 **questionId** | **String** |  | [optional] 
 **meta** | [MetaItem] |  | [optional] 

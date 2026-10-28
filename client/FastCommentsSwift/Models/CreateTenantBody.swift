@@ -17,7 +17,6 @@ public struct CreateTenantBody: Sendable, Codable, Hashable {
     public var paymentFrequency: Double?
     public var billingInfoValid: Bool?
     public var billingHandledExternally: Bool?
-    public var createdBy: String?
     public var isSetup: Bool?
     public var billingInfo: BillingInfo?
     public var stripeCustomerId: String?
@@ -34,7 +33,7 @@ public struct CreateTenantBody: Sendable, Codable, Hashable {
     /** Construct a type with a set of properties K of type T */
     public var meta: [String: String]?
 
-    public init(name: String, domainConfiguration: [APIDomainConfiguration], email: String? = nil, signUpDate: Double? = nil, packageId: String? = nil, paymentFrequency: Double? = nil, billingInfoValid: Bool? = nil, billingHandledExternally: Bool? = nil, createdBy: String? = nil, isSetup: Bool? = nil, billingInfo: BillingInfo? = nil, stripeCustomerId: String? = nil, stripeSubscriptionId: String? = nil, stripePlanId: String? = nil, enableProfanityFilter: Bool? = nil, enableSpamFilter: Bool? = nil, removeUnverifiedComments: Bool? = nil, unverifiedCommentsTTLms: Double? = nil, commentsRequireApproval: Bool? = nil, autoApproveCommentOnVerification: Bool? = nil, sendProfaneToSpam: Bool? = nil, deAnonIpAddr: Double? = nil, meta: [String: String]? = nil) {
+    public init(name: String, domainConfiguration: [APIDomainConfiguration], email: String? = nil, signUpDate: Double? = nil, packageId: String? = nil, paymentFrequency: Double? = nil, billingInfoValid: Bool? = nil, billingHandledExternally: Bool? = nil, isSetup: Bool? = nil, billingInfo: BillingInfo? = nil, stripeCustomerId: String? = nil, stripeSubscriptionId: String? = nil, stripePlanId: String? = nil, enableProfanityFilter: Bool? = nil, enableSpamFilter: Bool? = nil, removeUnverifiedComments: Bool? = nil, unverifiedCommentsTTLms: Double? = nil, commentsRequireApproval: Bool? = nil, autoApproveCommentOnVerification: Bool? = nil, sendProfaneToSpam: Bool? = nil, deAnonIpAddr: Double? = nil, meta: [String: String]? = nil) {
         self.name = name
         self.domainConfiguration = domainConfiguration
         self.email = email
@@ -43,7 +42,6 @@ public struct CreateTenantBody: Sendable, Codable, Hashable {
         self.paymentFrequency = paymentFrequency
         self.billingInfoValid = billingInfoValid
         self.billingHandledExternally = billingHandledExternally
-        self.createdBy = createdBy
         self.isSetup = isSetup
         self.billingInfo = billingInfo
         self.stripeCustomerId = stripeCustomerId
@@ -69,7 +67,6 @@ public struct CreateTenantBody: Sendable, Codable, Hashable {
         case paymentFrequency
         case billingInfoValid
         case billingHandledExternally
-        case createdBy
         case isSetup
         case billingInfo
         case stripeCustomerId
@@ -98,7 +95,6 @@ public struct CreateTenantBody: Sendable, Codable, Hashable {
         try container.encodeIfPresent(paymentFrequency, forKey: .paymentFrequency)
         try container.encodeIfPresent(billingInfoValid, forKey: .billingInfoValid)
         try container.encodeIfPresent(billingHandledExternally, forKey: .billingHandledExternally)
-        try container.encodeIfPresent(createdBy, forKey: .createdBy)
         try container.encodeIfPresent(isSetup, forKey: .isSetup)
         try container.encodeIfPresent(billingInfo, forKey: .billingInfo)
         try container.encodeIfPresent(stripeCustomerId, forKey: .stripeCustomerId)

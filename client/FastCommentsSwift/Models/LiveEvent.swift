@@ -19,6 +19,8 @@ public struct LiveEvent: Sendable, Codable, Hashable {
     public var vote: PubSubVote?
     public var comment: PubSubComment?
     public var feedPost: FeedPost?
+    public var commentId: String?
+    public var poll: PickCommentPollOptionsOrTotalVotesOrClosesAt?
     public var extraInfo: LiveEventExtraInfo?
     public var config: JSONValue?
     public var isClosed: Bool?
@@ -27,7 +29,7 @@ public struct LiveEvent: Sendable, Codable, Hashable {
     public var sc: Int?
     public var changes: [String: Int]?
 
-    public init(type: LiveEventType, timestamp: Int64? = nil, ts: Int64? = nil, broadcastId: String? = nil, userId: String? = nil, badges: [CommentUserBadgeInfo]? = nil, notification: UserNotification? = nil, vote: PubSubVote? = nil, comment: PubSubComment? = nil, feedPost: FeedPost? = nil, extraInfo: LiveEventExtraInfo? = nil, config: JSONValue? = nil, isClosed: Bool? = nil, uj: [String]? = nil, ul: [String]? = nil, sc: Int? = nil, changes: [String: Int]? = nil) {
+    public init(type: LiveEventType, timestamp: Int64? = nil, ts: Int64? = nil, broadcastId: String? = nil, userId: String? = nil, badges: [CommentUserBadgeInfo]? = nil, notification: UserNotification? = nil, vote: PubSubVote? = nil, comment: PubSubComment? = nil, feedPost: FeedPost? = nil, commentId: String? = nil, poll: PickCommentPollOptionsOrTotalVotesOrClosesAt? = nil, extraInfo: LiveEventExtraInfo? = nil, config: JSONValue? = nil, isClosed: Bool? = nil, uj: [String]? = nil, ul: [String]? = nil, sc: Int? = nil, changes: [String: Int]? = nil) {
         self.type = type
         self.timestamp = timestamp
         self.ts = ts
@@ -38,6 +40,8 @@ public struct LiveEvent: Sendable, Codable, Hashable {
         self.vote = vote
         self.comment = comment
         self.feedPost = feedPost
+        self.commentId = commentId
+        self.poll = poll
         self.extraInfo = extraInfo
         self.config = config
         self.isClosed = isClosed
@@ -58,6 +62,8 @@ public struct LiveEvent: Sendable, Codable, Hashable {
         case vote
         case comment
         case feedPost
+        case commentId
+        case poll
         case extraInfo
         case config
         case isClosed
@@ -81,6 +87,8 @@ public struct LiveEvent: Sendable, Codable, Hashable {
         try container.encodeIfPresent(vote, forKey: .vote)
         try container.encodeIfPresent(comment, forKey: .comment)
         try container.encodeIfPresent(feedPost, forKey: .feedPost)
+        try container.encodeIfPresent(commentId, forKey: .commentId)
+        try container.encodeIfPresent(poll, forKey: .poll)
         try container.encodeIfPresent(extraInfo, forKey: .extraInfo)
         try container.encodeIfPresent(config, forKey: .config)
         try container.encodeIfPresent(isClosed, forKey: .isClosed)

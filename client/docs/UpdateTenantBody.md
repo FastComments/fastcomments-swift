@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **paymentFrequency** | **Double** |  | [optional] 
 **billingInfoValid** | **Bool** |  | [optional] 
 **billingHandledExternally** | **Bool** |  | [optional] 
-**createdBy** | **String** |  | [optional] 
 **isSetup** | **Bool** |  | [optional] 
 **domainConfiguration** | [APIDomainConfiguration] |  | [optional] 
 **billingInfo** | [**BillingInfo**](BillingInfo.md) |  | [optional] 

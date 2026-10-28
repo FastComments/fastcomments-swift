@@ -622,6 +622,41 @@ open class DefaultAPI {
 
     /**
 
+     - parameter createAgentTenantBody: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: CreateAgentTenantResponse
+     */
+    open class func createAgentTenant(createAgentTenantBody: CreateAgentTenantBody, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateAgentTenantResponse {
+        return try await createAgentTenantWithRequestBuilder(createAgentTenantBody: createAgentTenantBody, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - POST /api/v1/agent-tenants
+     - Creates a new trial account for an AI agent without a human signup. No API key is needed to call this.  The response contains the tenant id, an API key that works immediately against the REST API and the MCP server, and a claim URL. Give the claim URL to the human you are working for: opening it while logged in to FastComments attaches the account to them. Unclaimed accounts, and their keys, are deleted 72 hours after creation. Until claimed, the account has the standard trial limits.
+     - parameter createAgentTenantBody: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<CreateAgentTenantResponse> 
+     */
+    open class func createAgentTenantWithRequestBuilder(createAgentTenantBody: CreateAgentTenantBody, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateAgentTenantResponse> {
+        let localVariablePath = "/api/v1/agent-tenants"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createAgentTenantBody, codableHelper: apiConfiguration.codableHelper)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CreateAgentTenantResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
      - parameter tenantId: (query)  
      - parameter createEmailTemplateBody: (body)  
      - parameter apiConfiguration: The configuration for the http request.
@@ -773,6 +808,49 @@ open class DefaultAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<CreateModeratorResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter createPollVoteBody: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: CreatePollVoteResponse
+     */
+    open class func createPollVote(tenantId: String, createPollVoteBody: CreatePollVoteBody, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreatePollVoteResponse {
+        return try await createPollVoteWithRequestBuilder(tenantId: tenantId, createPollVoteBody: createPollVoteBody, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - POST /api/v1/poll-votes
+     - Record a vote on a poll, or move an existing one to a different option. A voter has at most one vote per poll, so calling this again for the same voter moves their vote rather than adding one.  This obeys the site's poll settings: if voting is set to logged-in users only, a vote with just an anonUserId is rejected, and anonymous votes are rate limited per IP per poll.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter createPollVoteBody: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<CreatePollVoteResponse> 
+     */
+    open class func createPollVoteWithRequestBuilder(tenantId: String, createPollVoteBody: CreatePollVoteBody, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreatePollVoteResponse> {
+        let localVariablePath = "/api/v1/poll-votes"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createPollVoteBody, codableHelper: apiConfiguration.codableHelper)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CreatePollVoteResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -1185,6 +1263,49 @@ open class DefaultAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<VoteResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter createWebhookParams: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: CreateWebhookResponse
+     */
+    open class func createWebhook(tenantId: String, createWebhookParams: CreateWebhookParams, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateWebhookResponse {
+        return try await createWebhookWithRequestBuilder(tenantId: tenantId, createWebhookParams: createWebhookParams, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - POST /api/v1/webhooks
+     - Subscribes a URL to a comment event (REST hook subscribe). Subscribing the same URL to the same event and domain again returns the existing subscription. Deliveries are HMAC signed, see the webhooks guide; the legacy `token` header is never sent to API subscriptions.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter createWebhookParams: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<CreateWebhookResponse> 
+     */
+    open class func createWebhookWithRequestBuilder(tenantId: String, createWebhookParams: CreateWebhookParams, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateWebhookResponse> {
+        let localVariablePath = "/api/v1/webhooks"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createWebhookParams, codableHelper: apiConfiguration.codableHelper)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CreateWebhookResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -1619,6 +1740,98 @@ open class DefaultAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<APIEmptyResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter commentId: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: APIEmptyResponse
+     */
+    open class func deletePoll(tenantId: String, commentId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
+        return try await deletePollWithRequestBuilder(tenantId: tenantId, commentId: commentId, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - DELETE /api/v1/polls/{commentId}
+     - Remove a poll from its comment, along with every vote cast on it. The comment itself is left alone.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter commentId: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<APIEmptyResponse> 
+     */
+    open class func deletePollWithRequestBuilder(tenantId: String, commentId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
+        var localVariablePath = "/api/v1/polls/{commentId}"
+        let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
+        let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<APIEmptyResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: DeletePollVoteResponse
+     */
+    open class func deletePollVote(tenantId: String, id: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> DeletePollVoteResponse {
+        return try await deletePollVoteWithRequestBuilder(tenantId: tenantId, id: id, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - DELETE /api/v1/poll-votes/{id}
+     - Retract a vote. The option it was cast on gives its tally back.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<DeletePollVoteResponse> 
+     */
+    open class func deletePollVoteWithRequestBuilder(tenantId: String, id: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<DeletePollVoteResponse> {
+        var localVariablePath = "/api/v1/poll-votes/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<DeletePollVoteResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -2075,6 +2288,52 @@ open class DefaultAPI {
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: APIEmptyResponse
+     */
+    open class func deleteWebhook(tenantId: String, id: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> APIEmptyResponse {
+        return try await deleteWebhookWithRequestBuilder(tenantId: tenantId, id: id, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - DELETE /api/v1/webhooks/{id}
+     - Unsubscribes (REST hook unsubscribe). Only subscriptions created through this API can be deleted here; dashboard-managed webhooks are edited in the dashboard.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<APIEmptyResponse> 
+     */
+    open class func deleteWebhookWithRequestBuilder(tenantId: String, id: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<APIEmptyResponse> {
+        var localVariablePath = "/api/v1/webhooks/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<APIEmptyResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
     /** Optional parameters for flagComment. */
     public struct FlagCommentOptions: Sendable {
         public var userId: String?
@@ -2141,29 +2400,50 @@ open class DefaultAPI {
 
     /** Optional parameters for getAuditLogs. */
     public struct GetAuditLogsOptions: Sendable {
-        public var limit: Double?
-        public var skip: Double?
+        public var limit: Int?
+        public var skip: Int?
         public var order: SORTDIR?
-        public var after: Double?
-        public var before: Double?
+        public var after: Int64?
+        public var before: Int64?
+        public var username: String?
+        public var ip: String?
+        public var crudType: String?
+        public var resourceName: String?
+        public var targetId: String?
+        public var target: String?
+        public var includeManagedTenants: Bool?
 
-        public init(limit: Double? = nil, skip: Double? = nil, order: SORTDIR? = nil, after: Double? = nil, before: Double? = nil) {
+        public init(limit: Int? = nil, skip: Int? = nil, order: SORTDIR? = nil, after: Int64? = nil, before: Int64? = nil, username: String? = nil, ip: String? = nil, crudType: String? = nil, resourceName: String? = nil, targetId: String? = nil, target: String? = nil, includeManagedTenants: Bool? = nil) {
             self.limit = limit
             self.skip = skip
             self.order = order
             self.after = after
             self.before = before
+            self.username = username
+            self.ip = ip
+            self.crudType = crudType
+            self.resourceName = resourceName
+            self.targetId = targetId
+            self.target = target
+            self.includeManagedTenants = includeManagedTenants
         }
     }
 
     /**
 
-     - parameter tenantId: (query)  
-     - parameter limit: (query)  (optional)
-     - parameter skip: (query)  (optional)
-     - parameter order: (query)  (optional)
+     - parameter tenantId: (query) The tenant to read audit logs for. 
+     - parameter limit: (query) How many logs to return. Max 10000, defaults to 1000. (optional)
+     - parameter skip: (query) How many logs to skip, for paging. (optional)
+     - parameter order: (query) Sort direction on the event time. Defaults to DESC (newest first). (optional)
      - parameter after: (query)  (optional)
      - parameter before: (query)  (optional)
+     - parameter username: (query) Only return events performed by this username. (optional)
+     - parameter ip: (query) Only return events from this IP address. (optional)
+     - parameter crudType: (query) Only return events of this type: c, r, u, d, or login. (optional)
+     - parameter resourceName: (query) Only return events for this resource, e.g. User or Moderator. (optional)
+     - parameter targetId: (query) Only return events whose affected object has this id. (optional)
+     - parameter target: (query) Case-insensitive substring match on the affected object&#39;s label, e.g. a username or email. (optional)
+     - parameter includeManagedTenants: (query) Also return events from tenants this tenant manages. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetAuditLogsResponse
      */
@@ -2176,12 +2456,19 @@ open class DefaultAPI {
      - API Key:
        - type: apiKey x-api-key (HEADER)
        - name: api_key
-     - parameter tenantId: (query)  
-     - parameter limit: (query)  (optional)
-     - parameter skip: (query)  (optional)
-     - parameter order: (query)  (optional)
+     - parameter tenantId: (query) The tenant to read audit logs for. 
+     - parameter limit: (query) How many logs to return. Max 10000, defaults to 1000. (optional)
+     - parameter skip: (query) How many logs to skip, for paging. (optional)
+     - parameter order: (query) Sort direction on the event time. Defaults to DESC (newest first). (optional)
      - parameter after: (query)  (optional)
      - parameter before: (query)  (optional)
+     - parameter username: (query) Only return events performed by this username. (optional)
+     - parameter ip: (query) Only return events from this IP address. (optional)
+     - parameter crudType: (query) Only return events of this type: c, r, u, d, or login. (optional)
+     - parameter resourceName: (query) Only return events for this resource, e.g. User or Moderator. (optional)
+     - parameter targetId: (query) Only return events whose affected object has this id. (optional)
+     - parameter target: (query) Case-insensitive substring match on the affected object&#39;s label, e.g. a username or email. (optional)
+     - parameter includeManagedTenants: (query) Also return events from tenants this tenant manages. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetAuditLogsResponse> 
      */
@@ -2191,6 +2478,13 @@ open class DefaultAPI {
         let order = options.order
         let after = options.after
         let before = options.before
+        let username = options.username
+        let ip = options.ip
+        let crudType = options.crudType
+        let resourceName = options.resourceName
+        let targetId = options.targetId
+        let target = options.target
+        let includeManagedTenants = options.includeManagedTenants
         let localVariablePath = "/api/v1/audit-logs"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -2203,6 +2497,13 @@ open class DefaultAPI {
             "order": (wrappedValue: order?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "after": (wrappedValue: after?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "before": (wrappedValue: before?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "username": (wrappedValue: username?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "ip": (wrappedValue: ip?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "crudType": (wrappedValue: crudType?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "resourceName": (wrappedValue: resourceName?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "targetId": (wrappedValue: targetId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "target": (wrappedValue: target?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "includeManagedTenants": (wrappedValue: includeManagedTenants?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
@@ -2212,6 +2513,118 @@ open class DefaultAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<GetAuditLogsResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetBatchJobAPIResponse
+     */
+    open class func getBatchJob(tenantId: String, id: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetBatchJobAPIResponse {
+        return try await getBatchJobWithRequestBuilder(tenantId: tenantId, id: id, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /api/v1/batch-jobs/{id}
+     - Status, progress and, once done, the result of one batch job.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetBatchJobAPIResponse> 
+     */
+    open class func getBatchJobWithRequestBuilder(tenantId: String, id: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetBatchJobAPIResponse> {
+        var localVariablePath = "/api/v1/batch-jobs/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetBatchJobAPIResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /** Optional parameters for getBatchJobs. */
+    public struct GetBatchJobsOptions: Sendable {
+        public var type: String?
+        public var status: String?
+        public var skip: Int?
+
+        public init(type: String? = nil, status: String? = nil, skip: Int? = nil) {
+            self.type = type
+            self.status = status
+            self.skip = skip
+        }
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter type: (query) Only jobs of this type, for example migrate-pages. (optional)
+     - parameter status: (query) Only jobs in this status: requested, running, success or failed. (optional)
+     - parameter skip: (query) How many jobs to skip, for paging. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetBatchJobsAPIResponse
+     */
+    open class func getBatchJobs(tenantId: String, options: GetBatchJobsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetBatchJobsAPIResponse {
+        return try await getBatchJobsWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /api/v1/batch-jobs
+     - The tenant's batch jobs (imports, exports, page migrations...), newest first.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter type: (query) Only jobs of this type, for example migrate-pages. (optional)
+     - parameter status: (query) Only jobs in this status: requested, running, success or failed. (optional)
+     - parameter skip: (query) How many jobs to skip, for paging. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetBatchJobsAPIResponse> 
+     */
+    open class func getBatchJobsWithRequestBuilder(tenantId: String, options: GetBatchJobsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetBatchJobsAPIResponse> {
+        let type = options.type
+        let status = options.status
+        let skip = options.skip
+        let localVariablePath = "/api/v1/batch-jobs"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "type": (wrappedValue: type?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "status": (wrappedValue: status?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "skip": (wrappedValue: skip?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetBatchJobsAPIResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -2822,6 +3235,47 @@ open class DefaultAPI {
     /**
 
      - parameter tenantId: (query)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetMeResponse
+     */
+    open class func getMe(tenantId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetMeResponse {
+        return try await getMeWithRequestBuilder(tenantId: tenantId, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /api/v1/me
+     - Identifies the credential in use: the tenant it belongs to and, for OAuth tokens, the user who authorized it. Integrations use this to test a connection and label it.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetMeResponse> 
+     */
+    open class func getMeWithRequestBuilder(tenantId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetMeResponse> {
+        let localVariablePath = "/api/v1/me"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetMeResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
      - parameter id: (path)  
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetModeratorResponse
@@ -3113,6 +3567,100 @@ open class DefaultAPI {
     /**
 
      - parameter tenantId: (query)  
+     - parameter urlId: (query)  
+     - parameter includeUserInfo: (query) \&quot;public\&quot; omits users with private profiles, \&quot;include-private\&quot; includes them. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetPageLikesAPIResponse
+     */
+    open class func getPageLikes(tenantId: String, urlId: String, includeUserInfo: PageReactIncludeUserInfo? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetPageLikesAPIResponse {
+        return try await getPageLikesWithRequestBuilder(tenantId: tenantId, urlId: urlId, includeUserInfo: includeUserInfo, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /api/v1/pages/likes
+     - Like count for a page, optionally with the users who liked it.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter urlId: (query)  
+     - parameter includeUserInfo: (query) \&quot;public\&quot; omits users with private profiles, \&quot;include-private\&quot; includes them. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetPageLikesAPIResponse> 
+     */
+    open class func getPageLikesWithRequestBuilder(tenantId: String, urlId: String, includeUserInfo: PageReactIncludeUserInfo? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetPageLikesAPIResponse> {
+        let localVariablePath = "/api/v1/pages/likes"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "includeUserInfo": (wrappedValue: includeUserInfo?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetPageLikesAPIResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter urlId: (query)  
+     - parameter includeUserInfo: (query) \&quot;public\&quot; omits users with private profiles, \&quot;include-private\&quot; includes them. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetPageReactsAPIResponse
+     */
+    open class func getPageReacts(tenantId: String, urlId: String, includeUserInfo: PageReactIncludeUserInfo? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetPageReactsAPIResponse {
+        return try await getPageReactsWithRequestBuilder(tenantId: tenantId, urlId: urlId, includeUserInfo: includeUserInfo, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /api/v1/pages/reacts
+     - Custom react counts for a page, optionally with the users who reacted.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter urlId: (query)  
+     - parameter includeUserInfo: (query) \&quot;public\&quot; omits users with private profiles, \&quot;include-private\&quot; includes them. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetPageReactsAPIResponse> 
+     */
+    open class func getPageReactsWithRequestBuilder(tenantId: String, urlId: String, includeUserInfo: PageReactIncludeUserInfo? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetPageReactsAPIResponse> {
+        let localVariablePath = "/api/v1/pages/reacts"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "includeUserInfo": (wrappedValue: includeUserInfo?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetPageReactsAPIResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetPagesAPIResponse
      */
@@ -3318,6 +3866,165 @@ open class DefaultAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<GetPendingWebhookEventsResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter commentId: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetPollResponse
+     */
+    open class func getPoll(tenantId: String, commentId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetPollResponse {
+        return try await getPollWithRequestBuilder(tenantId: tenantId, commentId: commentId, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /api/v1/polls/{commentId}
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter commentId: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetPollResponse> 
+     */
+    open class func getPollWithRequestBuilder(tenantId: String, commentId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetPollResponse> {
+        var localVariablePath = "/api/v1/polls/{commentId}"
+        let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
+        let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetPollResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetPollVoteResponse
+     */
+    open class func getPollVote(tenantId: String, id: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetPollVoteResponse {
+        return try await getPollVoteWithRequestBuilder(tenantId: tenantId, id: id, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /api/v1/poll-votes/{id}
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetPollVoteResponse> 
+     */
+    open class func getPollVoteWithRequestBuilder(tenantId: String, id: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetPollVoteResponse> {
+        var localVariablePath = "/api/v1/poll-votes/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetPollVoteResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /** Optional parameters for getPollVotes. */
+    public struct GetPollVotesOptions: Sendable {
+        public var voterId: String?
+        public var optionId: String?
+        public var skip: Int?
+
+        public init(voterId: String? = nil, optionId: String? = nil, skip: Int? = nil) {
+            self.voterId = voterId
+            self.optionId = optionId
+            self.skip = skip
+        }
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter commentId: (query)  
+     - parameter voterId: (query)  (optional)
+     - parameter optionId: (query)  (optional)
+     - parameter skip: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetPollVotesResponse
+     */
+    open class func getPollVotes(tenantId: String, commentId: String, options: GetPollVotesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetPollVotesResponse {
+        return try await getPollVotesWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /api/v1/poll-votes
+     - The individual votes behind one poll's tallies, oldest first.  A poll belongs to a comment, so votes are always read one poll at a time - commentId is required. That keeps every query on the indexes the collection already has.  Obeys the poll's privacy: an anonymous poll's votes cannot be read (poll-anonymous), here or by id.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter commentId: (query)  
+     - parameter voterId: (query)  (optional)
+     - parameter optionId: (query)  (optional)
+     - parameter skip: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetPollVotesResponse> 
+     */
+    open class func getPollVotesWithRequestBuilder(tenantId: String, commentId: String, options: GetPollVotesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetPollVotesResponse> {
+        let voterId = options.voterId
+        let optionId = options.optionId
+        let skip = options.skip
+        let localVariablePath = "/api/v1/poll-votes"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "commentId": (wrappedValue: commentId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "voterId": (wrappedValue: voterId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "optionId": (wrappedValue: optionId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "skip": (wrappedValue: skip?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetPollVotesResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -4617,6 +5324,181 @@ open class DefaultAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getWebhookSamplePayloads. */
+    public struct GetWebhookSamplePayloadsOptions: Sendable {
+        public var event: WebhookEventName?
+        public var limit: Double?
+
+        public init(event: WebhookEventName? = nil, limit: Double? = nil) {
+            self.event = event
+            self.limit = limit
+        }
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter event: (query)  (optional)
+     - parameter limit: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetWebhookSamplePayloadsResponse
+     */
+    open class func getWebhookSamplePayloads(tenantId: String, options: GetWebhookSamplePayloadsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetWebhookSamplePayloadsResponse {
+        return try await getWebhookSamplePayloadsWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /api/v1/webhooks/sample-payloads
+     - Recent comments in exactly the shape webhook deliveries use, for building integrations (for example Zapier sample data). Every event delivers the same comment object, so `event` only has to be valid.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter event: (query)  (optional)
+     - parameter limit: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetWebhookSamplePayloadsResponse> 
+     */
+    open class func getWebhookSamplePayloadsWithRequestBuilder(tenantId: String, options: GetWebhookSamplePayloadsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetWebhookSamplePayloadsResponse> {
+        let event = options.event
+        let limit = options.limit
+        let localVariablePath = "/api/v1/webhooks/sample-payloads"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "event": (wrappedValue: event?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "limit": (wrappedValue: limit?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetWebhookSamplePayloadsResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /** Optional parameters for getWebhooks. */
+    public struct GetWebhooksOptions: Sendable {
+        public var event: WebhookEventName?
+        public var domain: String?
+        public var source: WebhookSource?
+        public var skip: Double?
+
+        public init(event: WebhookEventName? = nil, domain: String? = nil, source: WebhookSource? = nil, skip: Double? = nil) {
+            self.event = event
+            self.domain = domain
+            self.source = source
+            self.skip = skip
+        }
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter event: (query)  (optional)
+     - parameter domain: (query)  (optional)
+     - parameter source: (query)  (optional)
+     - parameter skip: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetWebhooksResponse
+     */
+    open class func getWebhooks(tenantId: String, options: GetWebhooksOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetWebhooksResponse {
+        return try await getWebhooksWithRequestBuilder(tenantId: tenantId, options: options, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /api/v1/webhooks
+     - Lists the webhooks configured for the tenant, both dashboard-managed rows and API subscriptions.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter event: (query)  (optional)
+     - parameter domain: (query)  (optional)
+     - parameter source: (query)  (optional)
+     - parameter skip: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetWebhooksResponse> 
+     */
+    open class func getWebhooksWithRequestBuilder(tenantId: String, options: GetWebhooksOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetWebhooksResponse> {
+        let event = options.event
+        let domain = options.domain
+        let source = options.source
+        let skip = options.skip
+        let localVariablePath = "/api/v1/webhooks"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "event": (wrappedValue: event?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "domain": (wrappedValue: domain?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "source": (wrappedValue: source?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "skip": (wrappedValue: skip?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetWebhooksResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter migrateAPIPagesData: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: QueuePageMigrationJobAPIResponse
+     */
+    open class func migratePages(tenantId: String, migrateAPIPagesData: MigrateAPIPagesData, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> QueuePageMigrationJobAPIResponse {
+        return try await migratePagesWithRequestBuilder(tenantId: tenantId, migrateAPIPagesData: migrateAPIPagesData, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - POST /api/v1/pages/migrations
+     - Queues a batch job that moves comments, pages and related records from one urlId or domain to another. \"urlId\" migrations only match the exact urlId. \"domain\" migrations find/replace the value inside every urlId and url. Poll GET /api/v1/batch-jobs/{batchJobId}: once it is done it carries per-migration results and an undoId.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter migrateAPIPagesData: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<QueuePageMigrationJobAPIResponse> 
+     */
+    open class func migratePagesWithRequestBuilder(tenantId: String, migrateAPIPagesData: MigrateAPIPagesData, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<QueuePageMigrationJobAPIResponse> {
+        let localVariablePath = "/api/v1/pages/migrations"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: migrateAPIPagesData, codableHelper: apiConfiguration.codableHelper)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<QueuePageMigrationJobAPIResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
     /**
 
      - parameter tenantId: (query)  
@@ -4761,6 +5643,54 @@ open class DefaultAPI {
     /**
 
      - parameter tenantId: (query)  
+     - parameter commentId: (path)  
+     - parameter commentPollPatch: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: SavePollResponse
+     */
+    open class func patchPoll(tenantId: String, commentId: String, commentPollPatch: CommentPollPatch, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SavePollResponse {
+        return try await patchPollWithRequestBuilder(tenantId: tenantId, commentId: commentId, commentPollPatch: commentPollPatch, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - PATCH /api/v1/polls/{commentId}
+     - Edit a poll in place, keeping its tallies: change the question, relabel an option, close or reopen it, or change who may see the voters. Options are addressed by id - to add, remove or reorder them, PUT the full list.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter commentId: (path)  
+     - parameter commentPollPatch: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<SavePollResponse> 
+     */
+    open class func patchPollWithRequestBuilder(tenantId: String, commentId: String, commentPollPatch: CommentPollPatch, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SavePollResponse> {
+        var localVariablePath = "/api/v1/polls/{commentId}"
+        let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
+        let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: commentPollPatch, codableHelper: apiConfiguration.codableHelper)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SavePollResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
      - parameter id: (path)  
      - parameter updateAPISSOUserData: (body)  
      - parameter updateComments: (query)  (optional)
@@ -4851,6 +5781,57 @@ open class DefaultAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<PutDomainConfigResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter commentId: (path)  
+     - parameter commentPollPutInput: (body)  
+     - parameter replaceVotes: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: SavePollResponse
+     */
+    open class func putPoll(tenantId: String, commentId: String, commentPollPutInput: CommentPollPutInput, replaceVotes: Bool? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> SavePollResponse {
+        return try await putPollWithRequestBuilder(tenantId: tenantId, commentId: commentId, commentPollPutInput: commentPollPutInput, replaceVotes: replaceVotes, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - PUT /api/v1/polls/{commentId}
+     - Attach a poll to a comment, or set the full state of the poll it already has.  Options are matched by id: an option sent with the id of an existing option keeps its votes (and takes the new label and position), an option sent without an id is added, and existing options left out of the list are removed along with the votes cast on them.  Keeping no existing option ids on a poll that has votes deletes all of them, so that needs replaceVotes=true.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter commentId: (path)  
+     - parameter commentPollPutInput: (body)  
+     - parameter replaceVotes: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<SavePollResponse> 
+     */
+    open class func putPollWithRequestBuilder(tenantId: String, commentId: String, commentPollPutInput: CommentPollPutInput, replaceVotes: Bool? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SavePollResponse> {
+        var localVariablePath = "/api/v1/polls/{commentId}"
+        let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
+        let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: commentPollPutInput, codableHelper: apiConfiguration.codableHelper)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "replaceVotes": (wrappedValue: replaceVotes?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SavePollResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -5415,6 +6396,52 @@ open class DefaultAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<FlagCommentResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter tenantId: (query)  
+     - parameter undoId: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: QueuePageMigrationJobAPIResponse
+     */
+    open class func undoPageMigrations(tenantId: String, undoId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> QueuePageMigrationJobAPIResponse {
+        return try await undoPageMigrationsWithRequestBuilder(tenantId: tenantId, undoId: undoId, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - POST /api/v1/pages/migrations/{undoId}/undo
+     - Queues a batch job that reverses every migration from one migrate-pages job, newest first. Available for 90 days. Records changed since the migration are left alone, so a later edit is never overwritten. Poll GET /api/v1/batch-jobs/{batchJobId} for the restored/skipped counts.
+     - API Key:
+       - type: apiKey x-api-key (HEADER)
+       - name: api_key
+     - parameter tenantId: (query)  
+     - parameter undoId: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<QueuePageMigrationJobAPIResponse> 
+     */
+    open class func undoPageMigrationsWithRequestBuilder(tenantId: String, undoId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<QueuePageMigrationJobAPIResponse> {
+        var localVariablePath = "/api/v1/pages/migrations/{undoId}/undo"
+        let undoIdPreEscape = "\(APIHelper.mapValueToPathItem(undoId))"
+        let undoIdPostEscape = undoIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{undoId}", with: undoIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "tenantId": (wrappedValue: tenantId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<QueuePageMigrationJobAPIResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }

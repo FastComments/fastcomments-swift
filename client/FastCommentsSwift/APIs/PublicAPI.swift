@@ -103,10 +103,12 @@ open class PublicAPI {
     public struct CreateCommentPublicOptions: Sendable {
         public var sessionId: String?
         public var sso: String?
+        public var locale: String?
 
-        public init(sessionId: String? = nil, sso: String? = nil) {
+        public init(sessionId: String? = nil, sso: String? = nil, locale: String? = nil) {
             self.sessionId = sessionId
             self.sso = sso
+            self.locale = locale
         }
     }
 
@@ -118,6 +120,7 @@ open class PublicAPI {
      - parameter commentData: (body)  
      - parameter sessionId: (query)  (optional)
      - parameter sso: (query)  (optional)
+     - parameter locale: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: SaveCommentsResponseWithPresence
      */
@@ -133,12 +136,14 @@ open class PublicAPI {
      - parameter commentData: (body)  
      - parameter sessionId: (query)  (optional)
      - parameter sso: (query)  (optional)
+     - parameter locale: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<SaveCommentsResponseWithPresence> 
      */
     open class func createCommentPublicWithRequestBuilder(tenantId: String, urlId: String, broadcastId: String, commentData: CommentData, options: CreateCommentPublicOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<SaveCommentsResponseWithPresence> {
         let sessionId = options.sessionId
         let sso = options.sso
+        let locale = options.locale
         var localVariablePath = "/comments/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -152,6 +157,7 @@ open class PublicAPI {
             "broadcastId": (wrappedValue: broadcastId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sessionId": (wrappedValue: sessionId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "locale": (wrappedValue: locale?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
@@ -225,16 +231,28 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for createV1PageReact. */
+    public struct CreateV1PageReactOptions: Sendable {
+        public var title: String?
+        public var sso: String?
+
+        public init(title: String? = nil, sso: String? = nil) {
+            self.title = title
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
      - parameter title: (query)  (optional)
+     - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: CreateV1PageReact
      */
-    open class func createV1PageReact(tenantId: String, urlId: String, title: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateV1PageReact {
-        return try await createV1PageReactWithRequestBuilder(tenantId: tenantId, urlId: urlId, title: title, apiConfiguration: apiConfiguration).execute().body
+    open class func createV1PageReact(tenantId: String, urlId: String, options: CreateV1PageReactOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateV1PageReact {
+        return try await createV1PageReactWithRequestBuilder(tenantId: tenantId, urlId: urlId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -242,10 +260,13 @@ open class PublicAPI {
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
      - parameter title: (query)  (optional)
+     - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<CreateV1PageReact> 
      */
-    open class func createV1PageReactWithRequestBuilder(tenantId: String, urlId: String, title: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateV1PageReact> {
+    open class func createV1PageReactWithRequestBuilder(tenantId: String, urlId: String, options: CreateV1PageReactOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateV1PageReact> {
+        let title = options.title
+        let sso = options.sso
         var localVariablePath = "/page-reacts/v1/likes/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -257,6 +278,7 @@ open class PublicAPI {
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "title": (wrappedValue: title?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
@@ -270,17 +292,29 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for createV2PageReact. */
+    public struct CreateV2PageReactOptions: Sendable {
+        public var title: String?
+        public var sso: String?
+
+        public init(title: String? = nil, sso: String? = nil) {
+            self.title = title
+            self.sso = sso
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
      - parameter id: (query)  
      - parameter title: (query)  (optional)
+     - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: CreateV1PageReact
      */
-    open class func createV2PageReact(tenantId: String, urlId: String, id: String, title: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateV1PageReact {
-        return try await createV2PageReactWithRequestBuilder(tenantId: tenantId, urlId: urlId, id: id, title: title, apiConfiguration: apiConfiguration).execute().body
+    open class func createV2PageReact(tenantId: String, urlId: String, id: String, options: CreateV2PageReactOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateV1PageReact {
+        return try await createV2PageReactWithRequestBuilder(tenantId: tenantId, urlId: urlId, id: id, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -289,10 +323,13 @@ open class PublicAPI {
      - parameter urlId: (query)  
      - parameter id: (query)  
      - parameter title: (query)  (optional)
+     - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<CreateV1PageReact> 
      */
-    open class func createV2PageReactWithRequestBuilder(tenantId: String, urlId: String, id: String, title: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateV1PageReact> {
+    open class func createV2PageReactWithRequestBuilder(tenantId: String, urlId: String, id: String, options: CreateV2PageReactOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateV1PageReact> {
+        let title = options.title
+        let sso = options.sso
         var localVariablePath = "/page-reacts/v2/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -305,6 +342,7 @@ open class PublicAPI {
             "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "id": (wrappedValue: id.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "title": (wrappedValue: title?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
@@ -525,21 +563,23 @@ open class PublicAPI {
 
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
+     - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: CreateV1PageReact
      */
-    open class func deleteV1PageReact(tenantId: String, urlId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateV1PageReact {
-        return try await deleteV1PageReactWithRequestBuilder(tenantId: tenantId, urlId: urlId, apiConfiguration: apiConfiguration).execute().body
+    open class func deleteV1PageReact(tenantId: String, urlId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateV1PageReact {
+        return try await deleteV1PageReactWithRequestBuilder(tenantId: tenantId, urlId: urlId, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - DELETE /page-reacts/v1/likes/{tenantId}
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
+     - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<CreateV1PageReact> 
      */
-    open class func deleteV1PageReactWithRequestBuilder(tenantId: String, urlId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateV1PageReact> {
+    open class func deleteV1PageReactWithRequestBuilder(tenantId: String, urlId: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateV1PageReact> {
         var localVariablePath = "/page-reacts/v1/likes/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -550,6 +590,7 @@ open class PublicAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
@@ -568,11 +609,12 @@ open class PublicAPI {
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
      - parameter id: (query)  
+     - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: CreateV1PageReact
      */
-    open class func deleteV2PageReact(tenantId: String, urlId: String, id: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateV1PageReact {
-        return try await deleteV2PageReactWithRequestBuilder(tenantId: tenantId, urlId: urlId, id: id, apiConfiguration: apiConfiguration).execute().body
+    open class func deleteV2PageReact(tenantId: String, urlId: String, id: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CreateV1PageReact {
+        return try await deleteV2PageReactWithRequestBuilder(tenantId: tenantId, urlId: urlId, id: id, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -580,10 +622,11 @@ open class PublicAPI {
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
      - parameter id: (query)  
+     - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<CreateV1PageReact> 
      */
-    open class func deleteV2PageReactWithRequestBuilder(tenantId: String, urlId: String, id: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateV1PageReact> {
+    open class func deleteV2PageReactWithRequestBuilder(tenantId: String, urlId: String, id: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CreateV1PageReact> {
         var localVariablePath = "/page-reacts/v2/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -595,6 +638,7 @@ open class PublicAPI {
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "id": (wrappedValue: id.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
@@ -880,8 +924,10 @@ open class PublicAPI {
         public var customConfigStr: String?
         public var afterCommentId: String?
         public var beforeCommentId: String?
+        public var questionId: String?
+        public var questionValue: Int?
 
-        public init(page: Int? = nil, direction: SortDirections? = nil, sso: String? = nil, skip: Int? = nil, skipChildren: Int? = nil, limit: Int? = nil, limitChildren: Int? = nil, countChildren: Bool? = nil, fetchPageForCommentId: String? = nil, includeConfig: Bool? = nil, countAll: Bool? = nil, includei10n: Bool? = nil, locale: String? = nil, modules: String? = nil, isCrawler: Bool? = nil, includeNotificationCount: Bool? = nil, asTree: Bool? = nil, maxTreeDepth: Int? = nil, useFullTranslationIds: Bool? = nil, parentId: String? = nil, searchText: String? = nil, hashTags: [String]? = nil, userId: String? = nil, customConfigStr: String? = nil, afterCommentId: String? = nil, beforeCommentId: String? = nil) {
+        public init(page: Int? = nil, direction: SortDirections? = nil, sso: String? = nil, skip: Int? = nil, skipChildren: Int? = nil, limit: Int? = nil, limitChildren: Int? = nil, countChildren: Bool? = nil, fetchPageForCommentId: String? = nil, includeConfig: Bool? = nil, countAll: Bool? = nil, includei10n: Bool? = nil, locale: String? = nil, modules: String? = nil, isCrawler: Bool? = nil, includeNotificationCount: Bool? = nil, asTree: Bool? = nil, maxTreeDepth: Int? = nil, useFullTranslationIds: Bool? = nil, parentId: String? = nil, searchText: String? = nil, hashTags: [String]? = nil, userId: String? = nil, customConfigStr: String? = nil, afterCommentId: String? = nil, beforeCommentId: String? = nil, questionId: String? = nil, questionValue: Int? = nil) {
             self.page = page
             self.direction = direction
             self.sso = sso
@@ -908,6 +954,8 @@ open class PublicAPI {
             self.customConfigStr = customConfigStr
             self.afterCommentId = afterCommentId
             self.beforeCommentId = beforeCommentId
+            self.questionId = questionId
+            self.questionValue = questionValue
         }
     }
 
@@ -941,6 +989,8 @@ open class PublicAPI {
      - parameter customConfigStr: (query)  (optional)
      - parameter afterCommentId: (query)  (optional)
      - parameter beforeCommentId: (query)  (optional)
+     - parameter questionId: (query)  (optional)
+     - parameter questionValue: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetCommentsResponseWithPresencePublicComment
      */
@@ -979,6 +1029,8 @@ open class PublicAPI {
      - parameter customConfigStr: (query)  (optional)
      - parameter afterCommentId: (query)  (optional)
      - parameter beforeCommentId: (query)  (optional)
+     - parameter questionId: (query)  (optional)
+     - parameter questionValue: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetCommentsResponseWithPresencePublicComment> 
      */
@@ -1009,6 +1061,8 @@ open class PublicAPI {
         let customConfigStr = options.customConfigStr
         let afterCommentId = options.afterCommentId
         let beforeCommentId = options.beforeCommentId
+        let questionId = options.questionId
+        let questionValue = options.questionValue
         var localVariablePath = "/comments/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1045,6 +1099,8 @@ open class PublicAPI {
             "customConfigStr": (wrappedValue: customConfigStr?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "afterCommentId": (wrappedValue: afterCommentId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "beforeCommentId": (wrappedValue: beforeCommentId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "questionId": (wrappedValue: questionId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "questionValue": (wrappedValue: questionValue?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
@@ -2021,25 +2077,42 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getV1PageLikes. */
+    public struct GetV1PageLikesOptions: Sendable {
+        public var sso: String?
+        public var includeUserInfo: PageReactIncludeUserInfo?
+
+        public init(sso: String? = nil, includeUserInfo: PageReactIncludeUserInfo? = nil) {
+            self.sso = sso
+            self.includeUserInfo = includeUserInfo
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
+     - parameter sso: (query)  (optional)
+     - parameter includeUserInfo: (query) When set, returns the users who liked the page (avatars and usernames). Only \&quot;public\&quot; is accepted, which omits private profiles. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetV1PageLikes
      */
-    open class func getV1PageLikes(tenantId: String, urlId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetV1PageLikes {
-        return try await getV1PageLikesWithRequestBuilder(tenantId: tenantId, urlId: urlId, apiConfiguration: apiConfiguration).execute().body
+    open class func getV1PageLikes(tenantId: String, urlId: String, options: GetV1PageLikesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetV1PageLikes {
+        return try await getV1PageLikesWithRequestBuilder(tenantId: tenantId, urlId: urlId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - GET /page-reacts/v1/likes/{tenantId}
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
+     - parameter sso: (query)  (optional)
+     - parameter includeUserInfo: (query) When set, returns the users who liked the page (avatars and usernames). Only \&quot;public\&quot; is accepted, which omits private profiles. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetV1PageLikes> 
      */
-    open class func getV1PageLikesWithRequestBuilder(tenantId: String, urlId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetV1PageLikes> {
+    open class func getV1PageLikesWithRequestBuilder(tenantId: String, urlId: String, options: GetV1PageLikesOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetV1PageLikes> {
+        let sso = options.sso
+        let includeUserInfo = options.includeUserInfo
         var localVariablePath = "/page-reacts/v1/likes/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2050,6 +2123,8 @@ open class PublicAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "includeUserInfo": (wrappedValue: includeUserInfo?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
@@ -2068,11 +2143,12 @@ open class PublicAPI {
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
      - parameter id: (query)  
+     - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetV2PageReactUsersResponse
      */
-    open class func getV2PageReactUsers(tenantId: String, urlId: String, id: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetV2PageReactUsersResponse {
-        return try await getV2PageReactUsersWithRequestBuilder(tenantId: tenantId, urlId: urlId, id: id, apiConfiguration: apiConfiguration).execute().body
+    open class func getV2PageReactUsers(tenantId: String, urlId: String, id: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetV2PageReactUsersResponse {
+        return try await getV2PageReactUsersWithRequestBuilder(tenantId: tenantId, urlId: urlId, id: id, sso: sso, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -2080,10 +2156,11 @@ open class PublicAPI {
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
      - parameter id: (query)  
+     - parameter sso: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetV2PageReactUsersResponse> 
      */
-    open class func getV2PageReactUsersWithRequestBuilder(tenantId: String, urlId: String, id: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetV2PageReactUsersResponse> {
+    open class func getV2PageReactUsersWithRequestBuilder(tenantId: String, urlId: String, id: String, sso: String? = nil, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetV2PageReactUsersResponse> {
         var localVariablePath = "/page-reacts/v2/{tenantId}/list"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2095,6 +2172,7 @@ open class PublicAPI {
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "id": (wrappedValue: id.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
@@ -2108,25 +2186,42 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getV2PageReacts. */
+    public struct GetV2PageReactsOptions: Sendable {
+        public var sso: String?
+        public var includeUserInfo: PageReactIncludeUserInfo?
+
+        public init(sso: String? = nil, includeUserInfo: PageReactIncludeUserInfo? = nil) {
+            self.sso = sso
+            self.includeUserInfo = includeUserInfo
+        }
+    }
+
     /**
 
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
+     - parameter sso: (query)  (optional)
+     - parameter includeUserInfo: (query) When set, returns the users for each react id (avatars and usernames). Only \&quot;public\&quot; is accepted, which omits private profiles. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: GetV2PageReacts
      */
-    open class func getV2PageReacts(tenantId: String, urlId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetV2PageReacts {
-        return try await getV2PageReactsWithRequestBuilder(tenantId: tenantId, urlId: urlId, apiConfiguration: apiConfiguration).execute().body
+    open class func getV2PageReacts(tenantId: String, urlId: String, options: GetV2PageReactsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetV2PageReacts {
+        return try await getV2PageReactsWithRequestBuilder(tenantId: tenantId, urlId: urlId, options: options, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - GET /page-reacts/v2/{tenantId}
      - parameter tenantId: (path)  
      - parameter urlId: (query)  
+     - parameter sso: (query)  (optional)
+     - parameter includeUserInfo: (query) When set, returns the users for each react id (avatars and usernames). Only \&quot;public\&quot; is accepted, which omits private profiles. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetV2PageReacts> 
      */
-    open class func getV2PageReactsWithRequestBuilder(tenantId: String, urlId: String, apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetV2PageReacts> {
+    open class func getV2PageReactsWithRequestBuilder(tenantId: String, urlId: String, options: GetV2PageReactsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetV2PageReacts> {
+        let sso = options.sso
+        let includeUserInfo = options.includeUserInfo
         var localVariablePath = "/page-reacts/v2/{tenantId}"
         let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
         let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2137,6 +2232,8 @@ open class PublicAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "includeUserInfo": (wrappedValue: includeUserInfo?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
@@ -2618,6 +2715,70 @@ open class PublicAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<PublicAPISetCommentTextResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /** Optional parameters for translateComments. */
+    public struct TranslateCommentsOptions: Sendable {
+        public var sso: String?
+        public var locale: String?
+
+        public init(sso: String? = nil, locale: String? = nil) {
+            self.sso = sso
+            self.locale = locale
+        }
+    }
+
+    /**
+
+     - parameter tenantId: (path)  
+     - parameter urlId: (query)  
+     - parameter commentTranslationsRequest: (body)  
+     - parameter sso: (query)  (optional)
+     - parameter locale: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: CommentTranslationsResponse
+     */
+    open class func translateComments(tenantId: String, urlId: String, commentTranslationsRequest: CommentTranslationsRequest, options: TranslateCommentsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> CommentTranslationsResponse {
+        return try await translateCommentsWithRequestBuilder(tenantId: tenantId, urlId: urlId, commentTranslationsRequest: commentTranslationsRequest, options: options, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - POST /comments/{tenantId}/translations
+     - Translates the given comments into the widget locale. Only available when the matching widget customization rule has Comment Translation set to Automatic or Manual.
+     - parameter tenantId: (path)  
+     - parameter urlId: (query)  
+     - parameter commentTranslationsRequest: (body)  
+     - parameter sso: (query)  (optional)
+     - parameter locale: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<CommentTranslationsResponse> 
+     */
+    open class func translateCommentsWithRequestBuilder(tenantId: String, urlId: String, commentTranslationsRequest: CommentTranslationsRequest, options: TranslateCommentsOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<CommentTranslationsResponse> {
+        let sso = options.sso
+        let locale = options.locale
+        var localVariablePath = "/comments/{tenantId}/translations"
+        let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
+        let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: commentTranslationsRequest, codableHelper: apiConfiguration.codableHelper)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "urlId": (wrappedValue: urlId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "locale": (wrappedValue: locale?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CommentTranslationsResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }

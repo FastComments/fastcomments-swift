@@ -59,6 +59,7 @@ Name | Type | Description | Notes
 **flexSSOAdminUnit** | **Double** |  | [optional] 
 **flexSSOModeratorCostCents** | **Double** |  | [optional] 
 **flexSSOModeratorUnit** | **Double** |  | [optional] 
+**flexFreeModerators** | **Double** |  | [optional] 
 **isSSOBillingMonthlyActiveUsers** | **Bool** |  | [optional] 
 **hasAIAgents** | **Bool** |  | [optional] 
 **maxAIAgents** | **Double** |  | [optional] 

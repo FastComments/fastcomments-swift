@@ -12,6 +12,7 @@ public struct UpdateQuestionConfigBody: Sendable, Codable, Hashable {
     public var name: String?
     public var question: String?
     public var helpText: String?
+    /** One of nps, slider, star, thumbs, choice, multi, emoji, scale. */
     public var type: String?
     public var numStars: Double?
     public var min: Double?
@@ -22,9 +23,12 @@ public struct UpdateQuestionConfigBody: Sendable, Codable, Hashable {
     public var customOptions: [QuestionConfigCustomOptionsInner]?
     public var subQuestionIds: [String]?
     public var alwaysShowSubQuestions: Bool?
+    public var subQuestionConditions: [SubQuestionCondition]?
+    public var commentBoxCondition: QuestionCondition?
+    public var commentBoxPrompt: String?
     public var reportingOrder: Double?
 
-    public init(name: String? = nil, question: String? = nil, helpText: String? = nil, type: String? = nil, numStars: Double? = nil, min: Double? = nil, max: Double? = nil, defaultValue: Double? = nil, labelNegative: String? = nil, labelPositive: String? = nil, customOptions: [QuestionConfigCustomOptionsInner]? = nil, subQuestionIds: [String]? = nil, alwaysShowSubQuestions: Bool? = nil, reportingOrder: Double? = nil) {
+    public init(name: String? = nil, question: String? = nil, helpText: String? = nil, type: String? = nil, numStars: Double? = nil, min: Double? = nil, max: Double? = nil, defaultValue: Double? = nil, labelNegative: String? = nil, labelPositive: String? = nil, customOptions: [QuestionConfigCustomOptionsInner]? = nil, subQuestionIds: [String]? = nil, alwaysShowSubQuestions: Bool? = nil, subQuestionConditions: [SubQuestionCondition]? = nil, commentBoxCondition: QuestionCondition? = nil, commentBoxPrompt: String? = nil, reportingOrder: Double? = nil) {
         self.name = name
         self.question = question
         self.helpText = helpText
@@ -38,6 +42,9 @@ public struct UpdateQuestionConfigBody: Sendable, Codable, Hashable {
         self.customOptions = customOptions
         self.subQuestionIds = subQuestionIds
         self.alwaysShowSubQuestions = alwaysShowSubQuestions
+        self.subQuestionConditions = subQuestionConditions
+        self.commentBoxCondition = commentBoxCondition
+        self.commentBoxPrompt = commentBoxPrompt
         self.reportingOrder = reportingOrder
     }
 
@@ -55,6 +62,9 @@ public struct UpdateQuestionConfigBody: Sendable, Codable, Hashable {
         case customOptions
         case subQuestionIds
         case alwaysShowSubQuestions
+        case subQuestionConditions
+        case commentBoxCondition
+        case commentBoxPrompt
         case reportingOrder
     }
 
@@ -90,6 +100,9 @@ public struct UpdateQuestionConfigBody: Sendable, Codable, Hashable {
         try container.encodeIfPresent(customOptions, forKey: .customOptions)
         try container.encodeIfPresent(subQuestionIds, forKey: .subQuestionIds)
         try container.encodeIfPresent(alwaysShowSubQuestions, forKey: .alwaysShowSubQuestions)
+        try container.encodeIfPresent(subQuestionConditions, forKey: .subQuestionConditions)
+        try container.encodeIfPresent(commentBoxCondition, forKey: .commentBoxCondition)
+        try container.encodeIfPresent(commentBoxPrompt, forKey: .commentBoxPrompt)
         try container.encodeIfPresent(reportingOrder, forKey: .reportingOrder)
         var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
         try additionalPropertiesContainer.encodeMap(additionalProperties)
@@ -113,6 +126,9 @@ public struct UpdateQuestionConfigBody: Sendable, Codable, Hashable {
         customOptions = try container.decodeIfPresent([QuestionConfigCustomOptionsInner].self, forKey: .customOptions)
         subQuestionIds = try container.decodeIfPresent([String].self, forKey: .subQuestionIds)
         alwaysShowSubQuestions = try container.decodeIfPresent(Bool.self, forKey: .alwaysShowSubQuestions)
+        subQuestionConditions = try container.decodeIfPresent([SubQuestionCondition].self, forKey: .subQuestionConditions)
+        commentBoxCondition = try container.decodeIfPresent(QuestionCondition.self, forKey: .commentBoxCondition)
+        commentBoxPrompt = try container.decodeIfPresent(String.self, forKey: .commentBoxPrompt)
         reportingOrder = try container.decodeIfPresent(Double.self, forKey: .reportingOrder)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("name")
@@ -128,6 +144,9 @@ public struct UpdateQuestionConfigBody: Sendable, Codable, Hashable {
         nonAdditionalPropertyKeys.insert("customOptions")
         nonAdditionalPropertyKeys.insert("subQuestionIds")
         nonAdditionalPropertyKeys.insert("alwaysShowSubQuestions")
+        nonAdditionalPropertyKeys.insert("subQuestionConditions")
+        nonAdditionalPropertyKeys.insert("commentBoxCondition")
+        nonAdditionalPropertyKeys.insert("commentBoxPrompt")
         nonAdditionalPropertyKeys.insert("reportingOrder")
         let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
         additionalProperties = try additionalPropertiesContainer.decodeMap(JSONValue.self, excludedKeys: nonAdditionalPropertyKeys)

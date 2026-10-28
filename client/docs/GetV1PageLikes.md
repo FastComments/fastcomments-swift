@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**users** | [PageReactUser] | Most recent first. Present when includeUserInfo is passed. Capped at 100 reacts. | [optional] 
 **urlIdWS** | **String** |  | 
 **didLike** | **Bool** |  | 
 **commentCount** | **Int** |  | 

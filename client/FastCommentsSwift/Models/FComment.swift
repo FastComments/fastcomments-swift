@@ -51,6 +51,9 @@ public struct FComment: Sendable, Codable, Hashable {
     public var hasCode: Bool?
     public var approved: Bool
     public var locale: String?
+    public var detectedLanguage: String?
+    /** Construct a type with a set of properties K of type T */
+    public var translations: [String: CommentTranslation]?
     public var isDeleted: Bool?
     public var isDeletedUser: Bool?
     public var isBannedUser: Bool?
@@ -75,6 +78,7 @@ public struct FComment: Sendable, Codable, Hashable {
     public var autoplayJobId: String?
     public var autoplayDelayMS: Int64?
     public var feedbackIds: [String]?
+    public var poll: CommentPoll?
     public var logs: [CommentLogEntry]?
     public var groupIds: [String]?
     public var viewCount: Int64?
@@ -83,7 +87,7 @@ public struct FComment: Sendable, Codable, Hashable {
     public var tosAcceptedAt: Date?
     public var botId: String?
 
-    public init(id: String, tenantId: String, urlId: String, urlIdRaw: String? = nil, url: String, pageTitle: String? = nil, userId: String? = nil, anonUserId: String? = nil, commenterEmail: String? = nil, commenterName: String, commenterLink: String? = nil, comment: String, commentHTML: String, parentId: String? = nil, date: Date?, localDateString: String? = nil, localDateHours: Int? = nil, votes: Int? = nil, votesUp: Int? = nil, votesDown: Int? = nil, expireAt: Date? = nil, verified: Bool, verifiedDate: Date? = nil, verificationId: String? = nil, notificationSentForParent: Bool? = nil, notificationSentForParentTenant: Bool? = nil, reviewed: Bool? = nil, imported: Bool? = nil, externalId: String? = nil, externalParentId: String? = nil, avatarSrc: String? = nil, isSpam: Bool? = nil, permNotSpam: Bool? = nil, aiDeterminedSpam: Bool? = nil, hasImages: Bool? = nil, pageNumber: Int? = nil, pageNumberOF: Int? = nil, pageNumberNF: Int? = nil, hasLinks: Bool? = nil, hasCode: Bool? = nil, approved: Bool, locale: String?, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isBannedUser: Bool? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, flagCount: Int? = nil, rating: Double? = nil, displayLabel: String? = nil, fromProductId: Int? = nil, meta: FCommentMeta? = nil, ipHash: String? = nil, mentions: [CommentUserMentionInfo]? = nil, hashTags: [CommentUserHashTagInfo]? = nil, badges: [CommentUserBadgeInfo]? = nil, domain: String? = nil, veteranBadgeProcessed: String? = nil, moderationGroupIds: [String]? = nil, didProcessBadges: Bool? = nil, fromOfflineRestore: Bool? = nil, autoplayJobId: String? = nil, autoplayDelayMS: Int64? = nil, feedbackIds: [String]? = nil, logs: [CommentLogEntry]? = nil, groupIds: [String]? = nil, viewCount: Int64? = nil, requiresVerification: Bool? = nil, editKey: String? = nil, tosAcceptedAt: Date? = nil, botId: String? = nil) {
+    public init(id: String, tenantId: String, urlId: String, urlIdRaw: String? = nil, url: String, pageTitle: String? = nil, userId: String? = nil, anonUserId: String? = nil, commenterEmail: String? = nil, commenterName: String, commenterLink: String? = nil, comment: String, commentHTML: String, parentId: String? = nil, date: Date?, localDateString: String? = nil, localDateHours: Int? = nil, votes: Int? = nil, votesUp: Int? = nil, votesDown: Int? = nil, expireAt: Date? = nil, verified: Bool, verifiedDate: Date? = nil, verificationId: String? = nil, notificationSentForParent: Bool? = nil, notificationSentForParentTenant: Bool? = nil, reviewed: Bool? = nil, imported: Bool? = nil, externalId: String? = nil, externalParentId: String? = nil, avatarSrc: String? = nil, isSpam: Bool? = nil, permNotSpam: Bool? = nil, aiDeterminedSpam: Bool? = nil, hasImages: Bool? = nil, pageNumber: Int? = nil, pageNumberOF: Int? = nil, pageNumberNF: Int? = nil, hasLinks: Bool? = nil, hasCode: Bool? = nil, approved: Bool, locale: String?, detectedLanguage: String? = nil, translations: [String: CommentTranslation]? = nil, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isBannedUser: Bool? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, flagCount: Int? = nil, rating: Double? = nil, displayLabel: String? = nil, fromProductId: Int? = nil, meta: FCommentMeta? = nil, ipHash: String? = nil, mentions: [CommentUserMentionInfo]? = nil, hashTags: [CommentUserHashTagInfo]? = nil, badges: [CommentUserBadgeInfo]? = nil, domain: String? = nil, veteranBadgeProcessed: String? = nil, moderationGroupIds: [String]? = nil, didProcessBadges: Bool? = nil, fromOfflineRestore: Bool? = nil, autoplayJobId: String? = nil, autoplayDelayMS: Int64? = nil, feedbackIds: [String]? = nil, poll: CommentPoll? = nil, logs: [CommentLogEntry]? = nil, groupIds: [String]? = nil, viewCount: Int64? = nil, requiresVerification: Bool? = nil, editKey: String? = nil, tosAcceptedAt: Date? = nil, botId: String? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.urlId = urlId
@@ -126,6 +130,8 @@ public struct FComment: Sendable, Codable, Hashable {
         self.hasCode = hasCode
         self.approved = approved
         self.locale = locale
+        self.detectedLanguage = detectedLanguage
+        self.translations = translations
         self.isDeleted = isDeleted
         self.isDeletedUser = isDeletedUser
         self.isBannedUser = isBannedUser
@@ -150,6 +156,7 @@ public struct FComment: Sendable, Codable, Hashable {
         self.autoplayJobId = autoplayJobId
         self.autoplayDelayMS = autoplayDelayMS
         self.feedbackIds = feedbackIds
+        self.poll = poll
         self.logs = logs
         self.groupIds = groupIds
         self.viewCount = viewCount
@@ -202,6 +209,8 @@ public struct FComment: Sendable, Codable, Hashable {
         case hasCode
         case approved
         case locale
+        case detectedLanguage
+        case translations
         case isDeleted
         case isDeletedUser
         case isBannedUser
@@ -226,6 +235,7 @@ public struct FComment: Sendable, Codable, Hashable {
         case autoplayJobId
         case autoplayDelayMS
         case feedbackIds
+        case poll
         case logs
         case groupIds
         case viewCount
@@ -281,6 +291,8 @@ public struct FComment: Sendable, Codable, Hashable {
         try container.encodeIfPresent(hasCode, forKey: .hasCode)
         try container.encode(approved, forKey: .approved)
         try container.encode(locale, forKey: .locale)
+        try container.encodeIfPresent(detectedLanguage, forKey: .detectedLanguage)
+        try container.encodeIfPresent(translations, forKey: .translations)
         try container.encodeIfPresent(isDeleted, forKey: .isDeleted)
         try container.encodeIfPresent(isDeletedUser, forKey: .isDeletedUser)
         try container.encodeIfPresent(isBannedUser, forKey: .isBannedUser)
@@ -305,6 +317,7 @@ public struct FComment: Sendable, Codable, Hashable {
         try container.encodeIfPresent(autoplayJobId, forKey: .autoplayJobId)
         try container.encodeIfPresent(autoplayDelayMS, forKey: .autoplayDelayMS)
         try container.encodeIfPresent(feedbackIds, forKey: .feedbackIds)
+        try container.encodeIfPresent(poll, forKey: .poll)
         try container.encodeIfPresent(logs, forKey: .logs)
         try container.encodeIfPresent(groupIds, forKey: .groupIds)
         try container.encodeIfPresent(viewCount, forKey: .viewCount)

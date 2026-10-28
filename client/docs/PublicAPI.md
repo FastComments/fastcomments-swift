@@ -47,6 +47,7 @@ Method | HTTP request | Description
 [**resetUserNotifications**](PublicAPI.md#resetusernotifications) | **POST** /user-notifications/reset | 
 [**searchUsers**](PublicAPI.md#searchusers) | **GET** /user-search/{tenantId} | 
 [**setCommentText**](PublicAPI.md#setcommenttext) | **POST** /comments/{tenantId}/{commentId}/update-text | 
+[**translateComments**](PublicAPI.md#translatecomments) | **POST** /comments/{tenantId}/translations | 
 [**unBlockCommentPublic**](PublicAPI.md#unblockcommentpublic) | **DELETE** /block-from-comment/{commentId} | 
 [**unLockComment**](PublicAPI.md#unlockcomment) | **POST** /comments/{tenantId}/{commentId}/unlock | 
 [**unPinComment**](PublicAPI.md#unpincomment) | **POST** /comments/{tenantId}/{commentId}/unpin | 
@@ -177,11 +178,12 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
 let broadcastId = "broadcastId_example" // String | 
-let commentData = CommentData(date: 123, localDateString: "localDateString_example", localDateHours: 123, commenterName: "commenterName_example", commenterEmail: "commenterEmail_example", commenterLink: "commenterLink_example", comment: "comment_example", productId: 123, userId: "userId_example", avatarSrc: "avatarSrc_example", parentId: "parentId_example", mentions: [CommentUserMentionInfo(id: "id_example", tag: "tag_example", rawTag: "rawTag_example", type: "type_example", sent: false)], hashTags: [CommentUserHashTagInfo(id: "id_example", tag: "tag_example", url: "url_example", retain: false)], pageTitle: "pageTitle_example", isFromMyAccountPage: false, url: "url_example", urlId: "urlId_example", meta: 123, moderationGroupIds: ["moderationGroupIds_example"], rating: 123, fromOfflineRestore: false, autoplayDelayMS: 123, feedbackIds: ["feedbackIds_example"], questionValues: "TODO", tos: false, botId: "botId_example") // CommentData | 
+let commentData = CommentData(date: 123, localDateString: "localDateString_example", localDateHours: 123, commenterName: "commenterName_example", commenterEmail: "commenterEmail_example", commenterLink: "commenterLink_example", comment: "comment_example", productId: 123, userId: "userId_example", avatarSrc: "avatarSrc_example", parentId: "parentId_example", mentions: [CommentUserMentionInfo(id: "id_example", tag: "tag_example", rawTag: "rawTag_example", type: "type_example", sent: false)], hashTags: [CommentUserHashTagInfo(id: "id_example", tag: "tag_example", url: "url_example", retain: false)], pageTitle: "pageTitle_example", isFromMyAccountPage: false, url: "url_example", urlId: "urlId_example", meta: 123, moderationGroupIds: ["moderationGroupIds_example"], rating: 123, fromOfflineRestore: false, autoplayDelayMS: 123, feedbackIds: ["feedbackIds_example"], questionValues: "TODO", poll: CommentPollInput(question: "question_example", options: ["options_example"], closesAt: "closesAt_example", privacy: 123, requireVoteToSeeResults: false), tos: false, botId: "botId_example") // CommentData | 
 let sessionId = "sessionId_example" // String |  (optional)
 let sso = "sso_example" // String |  (optional)
+let locale = "locale_example" // String |  (optional)
 
-PublicAPI.createCommentPublic(tenantId: tenantId, urlId: urlId, broadcastId: broadcastId, commentData: commentData, options: PublicAPI.CreateCommentPublicOptions(sessionId: sessionId, sso: sso)) { (response, error) in
+PublicAPI.createCommentPublic(tenantId: tenantId, urlId: urlId, broadcastId: broadcastId, commentData: commentData, options: PublicAPI.CreateCommentPublicOptions(sessionId: sessionId, sso: sso, locale: locale)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -203,6 +205,7 @@ Name | Type | Description  | Notes
  **commentData** | [**CommentData**](CommentData.md) |  | 
  **sessionId** | **String** |  | [optional] 
  **sso** | **String** |  | [optional] 
+ **locale** | **String** |  | [optional] 
 
 ### Return type
 
@@ -274,7 +277,7 @@ No authorization required
 
 # **createV1PageReact**
 ```swift
-    open class func createV1PageReact(tenantId: String, urlId: String, title: String? = nil, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+    open class func createV1PageReact(tenantId: String, urlId: String, options: CreateV1PageReactOptions = .init(), completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -287,8 +290,9 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
 let title = "title_example" // String |  (optional)
+let sso = "sso_example" // String |  (optional)
 
-PublicAPI.createV1PageReact(tenantId: tenantId, urlId: urlId, title: title) { (response, error) in
+PublicAPI.createV1PageReact(tenantId: tenantId, urlId: urlId, options: PublicAPI.CreateV1PageReactOptions(title: title, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -307,6 +311,7 @@ Name | Type | Description  | Notes
  **tenantId** | **String** |  | 
  **urlId** | **String** |  | 
  **title** | **String** |  | [optional] 
+ **sso** | **String** |  | [optional] 
 
 ### Return type
 
@@ -325,7 +330,7 @@ No authorization required
 
 # **createV2PageReact**
 ```swift
-    open class func createV2PageReact(tenantId: String, urlId: String, id: String, title: String? = nil, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+    open class func createV2PageReact(tenantId: String, urlId: String, id: String, options: CreateV2PageReactOptions = .init(), completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -339,8 +344,9 @@ let tenantId = "tenantId_example" // String |
 let urlId = "urlId_example" // String | 
 let id = "id_example" // String | 
 let title = "title_example" // String |  (optional)
+let sso = "sso_example" // String |  (optional)
 
-PublicAPI.createV2PageReact(tenantId: tenantId, urlId: urlId, id: id, title: title) { (response, error) in
+PublicAPI.createV2PageReact(tenantId: tenantId, urlId: urlId, id: id, options: PublicAPI.CreateV2PageReactOptions(title: title, sso: sso)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -360,6 +366,7 @@ Name | Type | Description  | Notes
  **urlId** | **String** |  | 
  **id** | **String** |  | 
  **title** | **String** |  | [optional] 
+ **sso** | **String** |  | [optional] 
 
 ### Return type
 
@@ -545,7 +552,7 @@ No authorization required
 
 # **deleteV1PageReact**
 ```swift
-    open class func deleteV1PageReact(tenantId: String, urlId: String, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+    open class func deleteV1PageReact(tenantId: String, urlId: String, sso: String? = nil, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -557,8 +564,9 @@ import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
+let sso = "sso_example" // String |  (optional)
 
-PublicAPI.deleteV1PageReact(tenantId: tenantId, urlId: urlId) { (response, error) in
+PublicAPI.deleteV1PageReact(tenantId: tenantId, urlId: urlId, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -576,6 +584,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **String** |  | 
  **urlId** | **String** |  | 
+ **sso** | **String** |  | [optional] 
 
 ### Return type
 
@@ -594,7 +603,7 @@ No authorization required
 
 # **deleteV2PageReact**
 ```swift
-    open class func deleteV2PageReact(tenantId: String, urlId: String, id: String, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
+    open class func deleteV2PageReact(tenantId: String, urlId: String, id: String, sso: String? = nil, completion: @escaping (_ data: CreateV1PageReact?, _ error: Error?) -> Void)
 ```
 
 
@@ -607,8 +616,9 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
 let id = "id_example" // String | 
+let sso = "sso_example" // String |  (optional)
 
-PublicAPI.deleteV2PageReact(tenantId: tenantId, urlId: urlId, id: id) { (response, error) in
+PublicAPI.deleteV2PageReact(tenantId: tenantId, urlId: urlId, id: id, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -627,6 +637,7 @@ Name | Type | Description  | Notes
  **tenantId** | **String** |  | 
  **urlId** | **String** |  | 
  **id** | **String** |  | 
+ **sso** | **String** |  | [optional] 
 
 ### Return type
 
@@ -903,8 +914,10 @@ let userId = "userId_example" // String |  (optional)
 let customConfigStr = "customConfigStr_example" // String |  (optional)
 let afterCommentId = "afterCommentId_example" // String |  (optional)
 let beforeCommentId = "beforeCommentId_example" // String |  (optional)
+let questionId = "questionId_example" // String |  (optional)
+let questionValue = 987 // Int |  (optional)
 
-PublicAPI.getCommentsPublic(tenantId: tenantId, urlId: urlId, options: PublicAPI.GetCommentsPublicOptions(page: page, direction: direction, sso: sso, skip: skip, skipChildren: skipChildren, limit: limit, limitChildren: limitChildren, countChildren: countChildren, fetchPageForCommentId: fetchPageForCommentId, includeConfig: includeConfig, countAll: countAll, includei10n: includei10n, locale: locale, modules: modules, isCrawler: isCrawler, includeNotificationCount: includeNotificationCount, asTree: asTree, maxTreeDepth: maxTreeDepth, useFullTranslationIds: useFullTranslationIds, parentId: parentId, searchText: searchText, hashTags: hashTags, userId: userId, customConfigStr: customConfigStr, afterCommentId: afterCommentId, beforeCommentId: beforeCommentId)) { (response, error) in
+PublicAPI.getCommentsPublic(tenantId: tenantId, urlId: urlId, options: PublicAPI.GetCommentsPublicOptions(page: page, direction: direction, sso: sso, skip: skip, skipChildren: skipChildren, limit: limit, limitChildren: limitChildren, countChildren: countChildren, fetchPageForCommentId: fetchPageForCommentId, includeConfig: includeConfig, countAll: countAll, includei10n: includei10n, locale: locale, modules: modules, isCrawler: isCrawler, includeNotificationCount: includeNotificationCount, asTree: asTree, maxTreeDepth: maxTreeDepth, useFullTranslationIds: useFullTranslationIds, parentId: parentId, searchText: searchText, hashTags: hashTags, userId: userId, customConfigStr: customConfigStr, afterCommentId: afterCommentId, beforeCommentId: beforeCommentId, questionId: questionId, questionValue: questionValue)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -948,6 +961,8 @@ Name | Type | Description  | Notes
  **customConfigStr** | **String** |  | [optional] 
  **afterCommentId** | **String** |  | [optional] 
  **beforeCommentId** | **String** |  | [optional] 
+ **questionId** | **String** |  | [optional] 
+ **questionValue** | **Int** |  | [optional] 
 
 ### Return type
 
@@ -1842,7 +1857,7 @@ No authorization required
 
 # **getV1PageLikes**
 ```swift
-    open class func getV1PageLikes(tenantId: String, urlId: String, completion: @escaping (_ data: GetV1PageLikes?, _ error: Error?) -> Void)
+    open class func getV1PageLikes(tenantId: String, urlId: String, options: GetV1PageLikesOptions = .init(), completion: @escaping (_ data: GetV1PageLikes?, _ error: Error?) -> Void)
 ```
 
 
@@ -1854,8 +1869,10 @@ import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
+let sso = "sso_example" // String |  (optional)
+let includeUserInfo = PageReactIncludeUserInfo() // PageReactIncludeUserInfo | When set, returns the users who liked the page (avatars and usernames). Only \"public\" is accepted, which omits private profiles. (optional)
 
-PublicAPI.getV1PageLikes(tenantId: tenantId, urlId: urlId) { (response, error) in
+PublicAPI.getV1PageLikes(tenantId: tenantId, urlId: urlId, options: PublicAPI.GetV1PageLikesOptions(sso: sso, includeUserInfo: includeUserInfo)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1873,6 +1890,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **String** |  | 
  **urlId** | **String** |  | 
+ **sso** | **String** |  | [optional] 
+ **includeUserInfo** | [**PageReactIncludeUserInfo**](.md) | When set, returns the users who liked the page (avatars and usernames). Only \&quot;public\&quot; is accepted, which omits private profiles. | [optional] 
 
 ### Return type
 
@@ -1891,7 +1910,7 @@ No authorization required
 
 # **getV2PageReactUsers**
 ```swift
-    open class func getV2PageReactUsers(tenantId: String, urlId: String, id: String, completion: @escaping (_ data: GetV2PageReactUsersResponse?, _ error: Error?) -> Void)
+    open class func getV2PageReactUsers(tenantId: String, urlId: String, id: String, sso: String? = nil, completion: @escaping (_ data: GetV2PageReactUsersResponse?, _ error: Error?) -> Void)
 ```
 
 
@@ -1904,8 +1923,9 @@ import FastCommentsSwift
 let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
 let id = "id_example" // String | 
+let sso = "sso_example" // String |  (optional)
 
-PublicAPI.getV2PageReactUsers(tenantId: tenantId, urlId: urlId, id: id) { (response, error) in
+PublicAPI.getV2PageReactUsers(tenantId: tenantId, urlId: urlId, id: id, sso: sso) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1924,6 +1944,7 @@ Name | Type | Description  | Notes
  **tenantId** | **String** |  | 
  **urlId** | **String** |  | 
  **id** | **String** |  | 
+ **sso** | **String** |  | [optional] 
 
 ### Return type
 
@@ -1942,7 +1963,7 @@ No authorization required
 
 # **getV2PageReacts**
 ```swift
-    open class func getV2PageReacts(tenantId: String, urlId: String, completion: @escaping (_ data: GetV2PageReacts?, _ error: Error?) -> Void)
+    open class func getV2PageReacts(tenantId: String, urlId: String, options: GetV2PageReactsOptions = .init(), completion: @escaping (_ data: GetV2PageReacts?, _ error: Error?) -> Void)
 ```
 
 
@@ -1954,8 +1975,10 @@ import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
 let urlId = "urlId_example" // String | 
+let sso = "sso_example" // String |  (optional)
+let includeUserInfo = PageReactIncludeUserInfo() // PageReactIncludeUserInfo | When set, returns the users for each react id (avatars and usernames). Only \"public\" is accepted, which omits private profiles. (optional)
 
-PublicAPI.getV2PageReacts(tenantId: tenantId, urlId: urlId) { (response, error) in
+PublicAPI.getV2PageReacts(tenantId: tenantId, urlId: urlId, options: PublicAPI.GetV2PageReactsOptions(sso: sso, includeUserInfo: includeUserInfo)) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1973,6 +1996,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **String** |  | 
  **urlId** | **String** |  | 
+ **sso** | **String** |  | [optional] 
+ **includeUserInfo** | [**PageReactIncludeUserInfo**](.md) | When set, returns the users for each react id (avatars and usernames). Only \&quot;public\&quot; is accepted, which omits private profiles. | [optional] 
 
 ### Return type
 
@@ -2405,6 +2430,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PublicAPISetCommentTextResponse**](PublicAPISetCommentTextResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **translateComments**
+```swift
+    open class func translateComments(tenantId: String, urlId: String, commentTranslationsRequest: CommentTranslationsRequest, options: TranslateCommentsOptions = .init(), completion: @escaping (_ data: CommentTranslationsResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Translates the given comments into the widget locale. Only available when the matching widget customization rule has Comment Translation set to Automatic or Manual.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | 
+let commentTranslationsRequest = CommentTranslationsRequest(commentIds: ["commentIds_example"]) // CommentTranslationsRequest | 
+let sso = "sso_example" // String |  (optional)
+let locale = "locale_example" // String |  (optional)
+
+PublicAPI.translateComments(tenantId: tenantId, urlId: urlId, commentTranslationsRequest: commentTranslationsRequest, options: PublicAPI.TranslateCommentsOptions(sso: sso, locale: locale)) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **urlId** | **String** |  | 
+ **commentTranslationsRequest** | [**CommentTranslationsRequest**](CommentTranslationsRequest.md) |  | 
+ **sso** | **String** |  | [optional] 
+ **locale** | **String** |  | [optional] 
+
+### Return type
+
+[**CommentTranslationsResponse**](CommentTranslationsResponse.md)
 
 ### Authorization
 

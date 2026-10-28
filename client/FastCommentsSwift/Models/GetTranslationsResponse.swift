@@ -9,16 +9,20 @@ import Foundation
 
 public struct GetTranslationsResponse: Sendable, Codable, Hashable {
 
+    /** The locale the translations were resolved for. Clients use it to set text direction. */
+    public var locale: String
     /** Construct a type with a set of properties K of type T */
     public var translations: [String: String]
     public var status: APIStatus
 
-    public init(translations: [String: String], status: APIStatus) {
+    public init(locale: String, translations: [String: String], status: APIStatus) {
+        self.locale = locale
         self.translations = translations
         self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case locale
         case translations
         case status
     }
@@ -27,6 +31,7 @@ public struct GetTranslationsResponse: Sendable, Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(locale, forKey: .locale)
         try container.encode(translations, forKey: .translations)
         try container.encode(status, forKey: .status)
     }

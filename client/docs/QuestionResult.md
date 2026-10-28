@@ -9,7 +9,8 @@ Name | Type | Description | Notes
 **anonUserId** | **String** |  | 
 **userId** | **String** |  | 
 **createdAt** | **Date** |  | 
-**value** | **Int** |  | 
+**value** | **Int** | The answer. For multi-choice questions this is the number of selected options and the options are in values. | 
+**values** | **[Double]** | Selected option indexes, multi-choice questions only. | [optional] 
 **commentId** | **String** |  | [optional] 
 **questionId** | **String** |  | 
 **meta** | [MetaItem] |  | [optional] 

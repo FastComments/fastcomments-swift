@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **editKey** | **String** |  | [optional] 
 **approved** | **Bool** |  | [optional] 
 **isUnread** | **Bool** |  | [optional] 
+**myPollVotes** | **[String]** | Ids of the options the current viewer voted for on this comment&#39;s poll. Only set when polls are enabled and they have voted. | [optional] 
 **myVoteId** | **String** |  | [optional] 
 **isVotedDown** | **Bool** |  | [optional] 
 **isVotedUp** | **Bool** |  | [optional] 

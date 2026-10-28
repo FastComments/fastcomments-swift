@@ -10,16 +10,20 @@ import Foundation
 public struct CreateQuestionResultBody: Sendable, Codable, Hashable {
 
     public var urlId: String
-    public var value: Double
+    /** Required unless values is given. For multi-choice questions this is derived from values. */
+    public var value: Double?
+    /** Selected option indexes for multi-choice questions. */
+    public var values: [Double]?
     public var questionId: String
     public var anonUserId: String?
     public var userId: String?
     public var commentId: String?
     public var meta: [MetaItem]?
 
-    public init(urlId: String, value: Double, questionId: String, anonUserId: String? = nil, userId: String? = nil, commentId: String? = nil, meta: [MetaItem]? = nil) {
+    public init(urlId: String, value: Double? = nil, values: [Double]? = nil, questionId: String, anonUserId: String? = nil, userId: String? = nil, commentId: String? = nil, meta: [MetaItem]? = nil) {
         self.urlId = urlId
         self.value = value
+        self.values = values
         self.questionId = questionId
         self.anonUserId = anonUserId
         self.userId = userId
@@ -30,6 +34,7 @@ public struct CreateQuestionResultBody: Sendable, Codable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case urlId
         case value
+        case values
         case questionId
         case anonUserId
         case userId
@@ -57,7 +62,8 @@ public struct CreateQuestionResultBody: Sendable, Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(urlId, forKey: .urlId)
-        try container.encode(value, forKey: .value)
+        try container.encodeIfPresent(value, forKey: .value)
+        try container.encodeIfPresent(values, forKey: .values)
         try container.encode(questionId, forKey: .questionId)
         try container.encodeIfPresent(anonUserId, forKey: .anonUserId)
         try container.encodeIfPresent(userId, forKey: .userId)
@@ -73,7 +79,8 @@ public struct CreateQuestionResultBody: Sendable, Codable, Hashable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         urlId = try container.decode(String.self, forKey: .urlId)
-        value = try container.decode(Double.self, forKey: .value)
+        value = try container.decodeIfPresent(Double.self, forKey: .value)
+        values = try container.decodeIfPresent([Double].self, forKey: .values)
         questionId = try container.decode(String.self, forKey: .questionId)
         anonUserId = try container.decodeIfPresent(String.self, forKey: .anonUserId)
         userId = try container.decodeIfPresent(String.self, forKey: .userId)
@@ -82,6 +89,7 @@ public struct CreateQuestionResultBody: Sendable, Codable, Hashable {
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("urlId")
         nonAdditionalPropertyKeys.insert("value")
+        nonAdditionalPropertyKeys.insert("values")
         nonAdditionalPropertyKeys.insert("questionId")
         nonAdditionalPropertyKeys.insert("anonUserId")
         nonAdditionalPropertyKeys.insert("userId")

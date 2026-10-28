@@ -15,13 +15,16 @@ public struct QuestionResult: Sendable, Codable, Hashable {
     public var anonUserId: String
     public var userId: String
     public var createdAt: Date
+    /** The answer. For multi-choice questions this is the number of selected options and the options are in values. */
     public var value: Int
+    /** Selected option indexes, multi-choice questions only. */
+    public var values: [Double]?
     public var commentId: String?
     public var questionId: String
     public var meta: [MetaItem]?
     public var ipHash: String
 
-    public init(id: String, tenantId: String, urlId: String, anonUserId: String, userId: String, createdAt: Date, value: Int, commentId: String? = nil, questionId: String, meta: [MetaItem]? = nil, ipHash: String) {
+    public init(id: String, tenantId: String, urlId: String, anonUserId: String, userId: String, createdAt: Date, value: Int, values: [Double]? = nil, commentId: String? = nil, questionId: String, meta: [MetaItem]? = nil, ipHash: String) {
         self.id = id
         self.tenantId = tenantId
         self.urlId = urlId
@@ -29,6 +32,7 @@ public struct QuestionResult: Sendable, Codable, Hashable {
         self.userId = userId
         self.createdAt = createdAt
         self.value = value
+        self.values = values
         self.commentId = commentId
         self.questionId = questionId
         self.meta = meta
@@ -43,6 +47,7 @@ public struct QuestionResult: Sendable, Codable, Hashable {
         case userId
         case createdAt
         case value
+        case values
         case commentId
         case questionId
         case meta
@@ -60,6 +65,7 @@ public struct QuestionResult: Sendable, Codable, Hashable {
         try container.encode(userId, forKey: .userId)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(value, forKey: .value)
+        try container.encodeIfPresent(values, forKey: .values)
         try container.encodeIfPresent(commentId, forKey: .commentId)
         try container.encode(questionId, forKey: .questionId)
         try container.encodeIfPresent(meta, forKey: .meta)

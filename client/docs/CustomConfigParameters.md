@@ -9,10 +9,14 @@ Name | Type | Description | Notes
 **allowAnonFlag** | **Bool** |  | [optional] 
 **allowAnonVotes** | **Bool** |  | [optional] 
 **allowedLanguages** | **[String]** |  | [optional] 
+**autoGenerateUsername** | **Bool** | Serve each new visitor a unique generated username as the prefilled defaultUsername. | [optional] 
 **collapseReplies** | **Bool** |  | [optional] 
 **commentCountFormat** | **String** |  | [optional] 
 **commentHTMLRenderingMode** | [**CommentHTMLRenderingMode**](CommentHTMLRenderingMode.md) |  | [optional] 
+**commentsRequireApproval** | **Bool** | Hold every new or edited comment on this page or domain for moderation, like the tenant-wide setting but scoped. | [optional] 
 **commentThreadDeleteMode** | [**CommentThreadDeletionMode**](CommentThreadDeletionMode.md) |  | [optional] 
+**pollCreation** | [**PollCreationMode**](PollCreationMode.md) |  | [optional] 
+**pollVoting** | [**PollVotingMode**](PollVotingMode.md) |  | [optional] 
 **commenterNameFormat** | [**CommenterNameFormats**](CommenterNameFormats.md) |  | [optional] 
 **countAboveToggle** | **Int** |  | [optional] 
 **customCSS** | **String** |  | [optional] 
@@ -91,6 +95,7 @@ Name | Type | Description | Notes
 **ticketMaxFileSize** | **Int** |  | [optional] 
 **ticketAutoAssignUserIds** | **[String]** |  | [optional] 
 **tos** | [**TOSConfig**](TOSConfig.md) |  | [optional] 
+**commentTranslation** | [**CommentTranslationMode**](CommentTranslationMode.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
