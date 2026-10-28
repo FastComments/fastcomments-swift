@@ -13,15 +13,18 @@ public struct UpdateQuestionResultBody: Sendable, Codable, Hashable {
     public var anonUserId: String?
     public var userId: String?
     public var value: Double?
+    /** Selected option indexes for multi-choice questions. */
+    public var values: [Double]?
     public var commentId: String?
     public var questionId: String?
     public var meta: [MetaItem]?
 
-    public init(urlId: String? = nil, anonUserId: String? = nil, userId: String? = nil, value: Double? = nil, commentId: String? = nil, questionId: String? = nil, meta: [MetaItem]? = nil) {
+    public init(urlId: String? = nil, anonUserId: String? = nil, userId: String? = nil, value: Double? = nil, values: [Double]? = nil, commentId: String? = nil, questionId: String? = nil, meta: [MetaItem]? = nil) {
         self.urlId = urlId
         self.anonUserId = anonUserId
         self.userId = userId
         self.value = value
+        self.values = values
         self.commentId = commentId
         self.questionId = questionId
         self.meta = meta
@@ -32,6 +35,7 @@ public struct UpdateQuestionResultBody: Sendable, Codable, Hashable {
         case anonUserId
         case userId
         case value
+        case values
         case commentId
         case questionId
         case meta
@@ -60,6 +64,7 @@ public struct UpdateQuestionResultBody: Sendable, Codable, Hashable {
         try container.encodeIfPresent(anonUserId, forKey: .anonUserId)
         try container.encodeIfPresent(userId, forKey: .userId)
         try container.encodeIfPresent(value, forKey: .value)
+        try container.encodeIfPresent(values, forKey: .values)
         try container.encodeIfPresent(commentId, forKey: .commentId)
         try container.encodeIfPresent(questionId, forKey: .questionId)
         try container.encodeIfPresent(meta, forKey: .meta)
@@ -76,6 +81,7 @@ public struct UpdateQuestionResultBody: Sendable, Codable, Hashable {
         anonUserId = try container.decodeIfPresent(String.self, forKey: .anonUserId)
         userId = try container.decodeIfPresent(String.self, forKey: .userId)
         value = try container.decodeIfPresent(Double.self, forKey: .value)
+        values = try container.decodeIfPresent([Double].self, forKey: .values)
         commentId = try container.decodeIfPresent(String.self, forKey: .commentId)
         questionId = try container.decodeIfPresent(String.self, forKey: .questionId)
         meta = try container.decodeIfPresent([MetaItem].self, forKey: .meta)
@@ -84,6 +90,7 @@ public struct UpdateQuestionResultBody: Sendable, Codable, Hashable {
         nonAdditionalPropertyKeys.insert("anonUserId")
         nonAdditionalPropertyKeys.insert("userId")
         nonAdditionalPropertyKeys.insert("value")
+        nonAdditionalPropertyKeys.insert("values")
         nonAdditionalPropertyKeys.insert("commentId")
         nonAdditionalPropertyKeys.insert("questionId")
         nonAdditionalPropertyKeys.insert("meta")

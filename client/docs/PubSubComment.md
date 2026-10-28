@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **isSpam** | **Bool** |  | [optional] 
 **anonUserId** | **String** |  | [optional] 
 **feedbackIds** | **[String]** |  | [optional] 
+**poll** | [**CommentPoll**](CommentPoll.md) |  | [optional] 
 **flagCount** | **Int** |  | [optional] 
 **domain** | **String** |  | [optional] 
 **url** | **String** |  | 

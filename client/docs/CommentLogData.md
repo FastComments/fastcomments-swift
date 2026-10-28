@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **votesDownAfter** | **Double** |  | [optional] 
 **repeatAction** | [**RepeatCommentHandlingAction**](RepeatCommentHandlingAction.md) |  | [optional] 
 **reason** | [**RepeatCommentCheckIgnoredReason**](RepeatCommentCheckIgnoredReason.md) |  | [optional] 
+**skipReason** | **String** |  | [optional] 
 **otherData** | **JSONValue** |  | [optional] 
 **spamBefore** | **Bool** |  | [optional] 
 **spamAfter** | **Bool** |  | [optional] 
@@ -50,6 +51,9 @@ Name | Type | Description | Notes
 **invalidLocale** | **String** |  | [optional] 
 **detectedLocale** | **String** |  | [optional] 
 **detectedLanguage** | **String** |  | [optional] 
+**recipientUserId** | **String** |  | [optional] 
+**notifySkipReason** | [**NotificationSkipReason**](NotificationSkipReason.md) |  | [optional] 
+**emailQueued** | **Bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

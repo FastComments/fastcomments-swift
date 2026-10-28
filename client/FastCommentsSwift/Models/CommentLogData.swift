@@ -40,6 +40,7 @@ public struct CommentLogData: Sendable, Codable, Hashable {
     public var votesDownAfter: Double?
     public var repeatAction: RepeatCommentHandlingAction?
     public var reason: RepeatCommentCheckIgnoredReason?
+    public var skipReason: String?
     public var otherData: JSONValue?
     public var spamBefore: Bool?
     public var spamAfter: Bool?
@@ -59,8 +60,11 @@ public struct CommentLogData: Sendable, Codable, Hashable {
     public var invalidLocale: String?
     public var detectedLocale: String?
     public var detectedLanguage: String?
+    public var recipientUserId: String?
+    public var notifySkipReason: NotificationSkipReason?
+    public var emailQueued: Bool?
 
-    public init(clearContent: Bool? = nil, isDeletedUser: Bool? = nil, phrase: String? = nil, badWord: String? = nil, word: String? = nil, locale: String? = nil, tenantBadgeId: String? = nil, badgeId: String? = nil, wasLoggedIn: Bool? = nil, foundUser: Bool? = nil, verified: Bool? = nil, engine: String? = nil, engineResponse: String? = nil, engineTokens: Double? = nil, trustFactor: Double? = nil, source: String? = nil, rule: SpamRule? = nil, userId: String? = nil, subscribers: Double? = nil, notificationCount: Double? = nil, votesBefore: Double? = nil, votesUpBefore: Double? = nil, votesDownBefore: Double? = nil, votesAfter: Double? = nil, votesUpAfter: Double? = nil, votesDownAfter: Double? = nil, repeatAction: RepeatCommentHandlingAction? = nil, reason: RepeatCommentCheckIgnoredReason? = nil, otherData: JSONValue? = nil, spamBefore: Bool? = nil, spamAfter: Bool? = nil, permanentFlag: PermanentFlag? = nil, approvedBefore: Bool? = nil, approvedAfter: Bool? = nil, reviewedBefore: Bool? = nil, reviewedAfter: Bool? = nil, textBefore: String? = nil, textAfter: String? = nil, expireBefore: Date? = nil, expireAfter: Date? = nil, flagCountBefore: Double? = nil, trustFactorBefore: Double? = nil, trustFactorAfter: Double? = nil, referencedCommentId: String? = nil, invalidLocale: String? = nil, detectedLocale: String? = nil, detectedLanguage: String? = nil) {
+    public init(clearContent: Bool? = nil, isDeletedUser: Bool? = nil, phrase: String? = nil, badWord: String? = nil, word: String? = nil, locale: String? = nil, tenantBadgeId: String? = nil, badgeId: String? = nil, wasLoggedIn: Bool? = nil, foundUser: Bool? = nil, verified: Bool? = nil, engine: String? = nil, engineResponse: String? = nil, engineTokens: Double? = nil, trustFactor: Double? = nil, source: String? = nil, rule: SpamRule? = nil, userId: String? = nil, subscribers: Double? = nil, notificationCount: Double? = nil, votesBefore: Double? = nil, votesUpBefore: Double? = nil, votesDownBefore: Double? = nil, votesAfter: Double? = nil, votesUpAfter: Double? = nil, votesDownAfter: Double? = nil, repeatAction: RepeatCommentHandlingAction? = nil, reason: RepeatCommentCheckIgnoredReason? = nil, skipReason: String? = nil, otherData: JSONValue? = nil, spamBefore: Bool? = nil, spamAfter: Bool? = nil, permanentFlag: PermanentFlag? = nil, approvedBefore: Bool? = nil, approvedAfter: Bool? = nil, reviewedBefore: Bool? = nil, reviewedAfter: Bool? = nil, textBefore: String? = nil, textAfter: String? = nil, expireBefore: Date? = nil, expireAfter: Date? = nil, flagCountBefore: Double? = nil, trustFactorBefore: Double? = nil, trustFactorAfter: Double? = nil, referencedCommentId: String? = nil, invalidLocale: String? = nil, detectedLocale: String? = nil, detectedLanguage: String? = nil, recipientUserId: String? = nil, notifySkipReason: NotificationSkipReason? = nil, emailQueued: Bool? = nil) {
         self.clearContent = clearContent
         self.isDeletedUser = isDeletedUser
         self.phrase = phrase
@@ -89,6 +93,7 @@ public struct CommentLogData: Sendable, Codable, Hashable {
         self.votesDownAfter = votesDownAfter
         self.repeatAction = repeatAction
         self.reason = reason
+        self.skipReason = skipReason
         self.otherData = otherData
         self.spamBefore = spamBefore
         self.spamAfter = spamAfter
@@ -108,6 +113,9 @@ public struct CommentLogData: Sendable, Codable, Hashable {
         self.invalidLocale = invalidLocale
         self.detectedLocale = detectedLocale
         self.detectedLanguage = detectedLanguage
+        self.recipientUserId = recipientUserId
+        self.notifySkipReason = notifySkipReason
+        self.emailQueued = emailQueued
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -139,6 +147,7 @@ public struct CommentLogData: Sendable, Codable, Hashable {
         case votesDownAfter
         case repeatAction
         case reason
+        case skipReason
         case otherData
         case spamBefore
         case spamAfter
@@ -158,6 +167,9 @@ public struct CommentLogData: Sendable, Codable, Hashable {
         case invalidLocale
         case detectedLocale
         case detectedLanguage
+        case recipientUserId
+        case notifySkipReason
+        case emailQueued
     }
 
     // Encodable protocol methods
@@ -192,6 +204,7 @@ public struct CommentLogData: Sendable, Codable, Hashable {
         try container.encodeIfPresent(votesDownAfter, forKey: .votesDownAfter)
         try container.encodeIfPresent(repeatAction, forKey: .repeatAction)
         try container.encodeIfPresent(reason, forKey: .reason)
+        try container.encodeIfPresent(skipReason, forKey: .skipReason)
         try container.encodeIfPresent(otherData, forKey: .otherData)
         try container.encodeIfPresent(spamBefore, forKey: .spamBefore)
         try container.encodeIfPresent(spamAfter, forKey: .spamAfter)
@@ -211,6 +224,9 @@ public struct CommentLogData: Sendable, Codable, Hashable {
         try container.encodeIfPresent(invalidLocale, forKey: .invalidLocale)
         try container.encodeIfPresent(detectedLocale, forKey: .detectedLocale)
         try container.encodeIfPresent(detectedLanguage, forKey: .detectedLanguage)
+        try container.encodeIfPresent(recipientUserId, forKey: .recipientUserId)
+        try container.encodeIfPresent(notifySkipReason, forKey: .notifySkipReason)
+        try container.encodeIfPresent(emailQueued, forKey: .emailQueued)
     }
 }
 

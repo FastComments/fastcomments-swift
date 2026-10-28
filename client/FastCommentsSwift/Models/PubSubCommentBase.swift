@@ -38,6 +38,7 @@ public struct PubSubCommentBase: Sendable, Codable, Hashable {
     public var isSpam: Bool?
     public var anonUserId: String?
     public var feedbackIds: [String]?
+    public var poll: CommentPoll?
     public var flagCount: Int?
     public var domain: String?
     public var url: String
@@ -50,7 +51,7 @@ public struct PubSubCommentBase: Sendable, Codable, Hashable {
     public var isBannedUser: Bool?
     public var groupIds: [String]?
 
-    public init(id: String, tenantId: String, userId: String? = nil, urlId: String, commenterName: String, commenterLink: String? = nil, commentHTML: String, comment: String, parentId: String? = nil, votes: Int? = nil, votesUp: Int? = nil, votesDown: Int? = nil, verified: Bool, avatarSrc: String? = nil, hasImages: Bool? = nil, hasLinks: Bool? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, displayLabel: String? = nil, rating: Double? = nil, badges: [CommentUserBadgeInfo]? = nil, viewCount: Int64? = nil, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isSpam: Bool? = nil, anonUserId: String? = nil, feedbackIds: [String]? = nil, flagCount: Int? = nil, domain: String? = nil, url: String, pageTitle: String? = nil, expireAt: Date? = nil, reviewed: Bool? = nil, hasCode: Bool? = nil, approved: Bool, locale: String?, isBannedUser: Bool? = nil, groupIds: [String]? = nil) {
+    public init(id: String, tenantId: String, userId: String? = nil, urlId: String, commenterName: String, commenterLink: String? = nil, commentHTML: String, comment: String, parentId: String? = nil, votes: Int? = nil, votesUp: Int? = nil, votesDown: Int? = nil, verified: Bool, avatarSrc: String? = nil, hasImages: Bool? = nil, hasLinks: Bool? = nil, isByAdmin: Bool? = nil, isByModerator: Bool? = nil, isPinned: Bool? = nil, isLocked: Bool? = nil, displayLabel: String? = nil, rating: Double? = nil, badges: [CommentUserBadgeInfo]? = nil, viewCount: Int64? = nil, isDeleted: Bool? = nil, isDeletedUser: Bool? = nil, isSpam: Bool? = nil, anonUserId: String? = nil, feedbackIds: [String]? = nil, poll: CommentPoll? = nil, flagCount: Int? = nil, domain: String? = nil, url: String, pageTitle: String? = nil, expireAt: Date? = nil, reviewed: Bool? = nil, hasCode: Bool? = nil, approved: Bool, locale: String?, isBannedUser: Bool? = nil, groupIds: [String]? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.userId = userId
@@ -80,6 +81,7 @@ public struct PubSubCommentBase: Sendable, Codable, Hashable {
         self.isSpam = isSpam
         self.anonUserId = anonUserId
         self.feedbackIds = feedbackIds
+        self.poll = poll
         self.flagCount = flagCount
         self.domain = domain
         self.url = url
@@ -123,6 +125,7 @@ public struct PubSubCommentBase: Sendable, Codable, Hashable {
         case isSpam
         case anonUserId
         case feedbackIds
+        case poll
         case flagCount
         case domain
         case url
@@ -169,6 +172,7 @@ public struct PubSubCommentBase: Sendable, Codable, Hashable {
         try container.encodeIfPresent(isSpam, forKey: .isSpam)
         try container.encodeIfPresent(anonUserId, forKey: .anonUserId)
         try container.encodeIfPresent(feedbackIds, forKey: .feedbackIds)
+        try container.encodeIfPresent(poll, forKey: .poll)
         try container.encodeIfPresent(flagCount, forKey: .flagCount)
         try container.encodeIfPresent(domain, forKey: .domain)
         try container.encode(url, forKey: .url)

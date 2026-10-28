@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **sendProfaneToSpam** | **Bool** |  | [optional] 
 **hasFlexPricing** | **Bool** |  | [optional] 
 **hasAuditing** | **Bool** |  | [optional] 
+**hasDebranding** | **Bool** |  | [optional] 
 **flexLastBilledAmount** | **Double** |  | [optional] 
 **deAnonIpAddr** | **Double** |  | [optional] 
 **meta** | **[String: String]** | Construct a type with a set of properties K of type T | [optional] 

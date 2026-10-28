@@ -37,9 +37,11 @@ Class | Method | HTTP request | Description
 *DefaultAPI* | [**bulkAggregateQuestionResults**](docs/DefaultAPI.md#bulkaggregatequestionresults) | **POST** /api/v1/question-results-aggregation/bulk | 
 *DefaultAPI* | [**changeTicketState**](docs/DefaultAPI.md#changeticketstate) | **PATCH** /api/v1/tickets/{id}/state | 
 *DefaultAPI* | [**combineCommentsWithQuestionResults**](docs/DefaultAPI.md#combinecommentswithquestionresults) | **GET** /api/v1/question-results-aggregation/combine/comments | 
+*DefaultAPI* | [**createAgentTenant**](docs/DefaultAPI.md#createagenttenant) | **POST** /api/v1/agent-tenants | 
 *DefaultAPI* | [**createEmailTemplate**](docs/DefaultAPI.md#createemailtemplate) | **POST** /api/v1/email-templates | 
 *DefaultAPI* | [**createFeedPost**](docs/DefaultAPI.md#createfeedpost) | **POST** /api/v1/feed-posts | 
 *DefaultAPI* | [**createModerator**](docs/DefaultAPI.md#createmoderator) | **POST** /api/v1/moderators | 
+*DefaultAPI* | [**createPollVote**](docs/DefaultAPI.md#createpollvote) | **POST** /api/v1/poll-votes | 
 *DefaultAPI* | [**createQuestionConfig**](docs/DefaultAPI.md#createquestionconfig) | **POST** /api/v1/question-configs | 
 *DefaultAPI* | [**createQuestionResult**](docs/DefaultAPI.md#createquestionresult) | **POST** /api/v1/question-results | 
 *DefaultAPI* | [**createSubscription**](docs/DefaultAPI.md#createsubscription) | **POST** /api/v1/subscriptions | 
@@ -49,6 +51,7 @@ Class | Method | HTTP request | Description
 *DefaultAPI* | [**createTicket**](docs/DefaultAPI.md#createticket) | **POST** /api/v1/tickets | 
 *DefaultAPI* | [**createUserBadge**](docs/DefaultAPI.md#createuserbadge) | **POST** /api/v1/user-badges | 
 *DefaultAPI* | [**createVote**](docs/DefaultAPI.md#createvote) | **POST** /api/v1/votes | 
+*DefaultAPI* | [**createWebhook**](docs/DefaultAPI.md#createwebhook) | **POST** /api/v1/webhooks | 
 *DefaultAPI* | [**deleteComment**](docs/DefaultAPI.md#deletecomment) | **DELETE** /api/v1/comments/{id} | 
 *DefaultAPI* | [**deleteDomainConfig**](docs/DefaultAPI.md#deletedomainconfig) | **DELETE** /api/v1/domain-configs/{domain} | 
 *DefaultAPI* | [**deleteEmailTemplate**](docs/DefaultAPI.md#deleteemailtemplate) | **DELETE** /api/v1/email-templates/{id} | 
@@ -58,6 +61,8 @@ Class | Method | HTTP request | Description
 *DefaultAPI* | [**deleteNotificationCount**](docs/DefaultAPI.md#deletenotificationcount) | **DELETE** /api/v1/notification-count/{id} | 
 *DefaultAPI* | [**deletePage**](docs/DefaultAPI.md#deletepage) | **DELETE** /api/v1/pages/{id} | 
 *DefaultAPI* | [**deletePendingWebhookEvent**](docs/DefaultAPI.md#deletependingwebhookevent) | **DELETE** /api/v1/pending-webhook-events/{id} | 
+*DefaultAPI* | [**deletePoll**](docs/DefaultAPI.md#deletepoll) | **DELETE** /api/v1/polls/{commentId} | 
+*DefaultAPI* | [**deletePollVote**](docs/DefaultAPI.md#deletepollvote) | **DELETE** /api/v1/poll-votes/{id} | 
 *DefaultAPI* | [**deleteQuestionConfig**](docs/DefaultAPI.md#deletequestionconfig) | **DELETE** /api/v1/question-configs/{id} | 
 *DefaultAPI* | [**deleteQuestionResult**](docs/DefaultAPI.md#deletequestionresult) | **DELETE** /api/v1/question-results/{id} | 
 *DefaultAPI* | [**deleteSSOUser**](docs/DefaultAPI.md#deletessouser) | **DELETE** /api/v1/sso-users/{id} | 
@@ -67,8 +72,11 @@ Class | Method | HTTP request | Description
 *DefaultAPI* | [**deleteTenantUser**](docs/DefaultAPI.md#deletetenantuser) | **DELETE** /api/v1/tenant-users/{id} | 
 *DefaultAPI* | [**deleteUserBadge**](docs/DefaultAPI.md#deleteuserbadge) | **DELETE** /api/v1/user-badges/{id} | 
 *DefaultAPI* | [**deleteVote**](docs/DefaultAPI.md#deletevote) | **DELETE** /api/v1/votes/{id} | 
+*DefaultAPI* | [**deleteWebhook**](docs/DefaultAPI.md#deletewebhook) | **DELETE** /api/v1/webhooks/{id} | 
 *DefaultAPI* | [**flagComment**](docs/DefaultAPI.md#flagcomment) | **POST** /api/v1/comments/{id}/flag | 
 *DefaultAPI* | [**getAuditLogs**](docs/DefaultAPI.md#getauditlogs) | **GET** /api/v1/audit-logs | 
+*DefaultAPI* | [**getBatchJob**](docs/DefaultAPI.md#getbatchjob) | **GET** /api/v1/batch-jobs/{id} | 
+*DefaultAPI* | [**getBatchJobs**](docs/DefaultAPI.md#getbatchjobs) | **GET** /api/v1/batch-jobs | 
 *DefaultAPI* | [**getCachedNotificationCount**](docs/DefaultAPI.md#getcachednotificationcount) | **GET** /api/v1/notification-count/{id} | 
 *DefaultAPI* | [**getComment**](docs/DefaultAPI.md#getcomment) | **GET** /api/v1/comments/{id} | 
 *DefaultAPI* | [**getComments**](docs/DefaultAPI.md#getcomments) | **GET** /api/v1/comments | 
@@ -80,14 +88,20 @@ Class | Method | HTTP request | Description
 *DefaultAPI* | [**getEmailTemplates**](docs/DefaultAPI.md#getemailtemplates) | **GET** /api/v1/email-templates | 
 *DefaultAPI* | [**getFeedPosts**](docs/DefaultAPI.md#getfeedposts) | **GET** /api/v1/feed-posts | 
 *DefaultAPI* | [**getHashTags**](docs/DefaultAPI.md#gethashtags) | **GET** /api/v1/hash-tags | 
+*DefaultAPI* | [**getMe**](docs/DefaultAPI.md#getme) | **GET** /api/v1/me | 
 *DefaultAPI* | [**getModerator**](docs/DefaultAPI.md#getmoderator) | **GET** /api/v1/moderators/{id} | 
 *DefaultAPI* | [**getModerators**](docs/DefaultAPI.md#getmoderators) | **GET** /api/v1/moderators | 
 *DefaultAPI* | [**getNotificationCount**](docs/DefaultAPI.md#getnotificationcount) | **GET** /api/v1/notifications/count | 
 *DefaultAPI* | [**getNotifications**](docs/DefaultAPI.md#getnotifications) | **GET** /api/v1/notifications | 
 *DefaultAPI* | [**getPageByURLId**](docs/DefaultAPI.md#getpagebyurlid) | **GET** /api/v1/pages/by-url-id | 
+*DefaultAPI* | [**getPageLikes**](docs/DefaultAPI.md#getpagelikes) | **GET** /api/v1/pages/likes | 
+*DefaultAPI* | [**getPageReacts**](docs/DefaultAPI.md#getpagereacts) | **GET** /api/v1/pages/reacts | 
 *DefaultAPI* | [**getPages**](docs/DefaultAPI.md#getpages) | **GET** /api/v1/pages | 
 *DefaultAPI* | [**getPendingWebhookEventCount**](docs/DefaultAPI.md#getpendingwebhookeventcount) | **GET** /api/v1/pending-webhook-events/count | 
 *DefaultAPI* | [**getPendingWebhookEvents**](docs/DefaultAPI.md#getpendingwebhookevents) | **GET** /api/v1/pending-webhook-events | 
+*DefaultAPI* | [**getPoll**](docs/DefaultAPI.md#getpoll) | **GET** /api/v1/polls/{commentId} | 
+*DefaultAPI* | [**getPollVote**](docs/DefaultAPI.md#getpollvote) | **GET** /api/v1/poll-votes/{id} | 
+*DefaultAPI* | [**getPollVotes**](docs/DefaultAPI.md#getpollvotes) | **GET** /api/v1/poll-votes | 
 *DefaultAPI* | [**getQuestionConfig**](docs/DefaultAPI.md#getquestionconfig) | **GET** /api/v1/question-configs/{id} | 
 *DefaultAPI* | [**getQuestionConfigs**](docs/DefaultAPI.md#getquestionconfigs) | **GET** /api/v1/question-configs | 
 *DefaultAPI* | [**getQuestionResult**](docs/DefaultAPI.md#getquestionresult) | **GET** /api/v1/question-results/{id} | 
@@ -113,11 +127,16 @@ Class | Method | HTTP request | Description
 *DefaultAPI* | [**getUserBadges**](docs/DefaultAPI.md#getuserbadges) | **GET** /api/v1/user-badges | 
 *DefaultAPI* | [**getVotes**](docs/DefaultAPI.md#getvotes) | **GET** /api/v1/votes | 
 *DefaultAPI* | [**getVotesForUser**](docs/DefaultAPI.md#getvotesforuser) | **GET** /api/v1/votes/for-user | 
+*DefaultAPI* | [**getWebhookSamplePayloads**](docs/DefaultAPI.md#getwebhooksamplepayloads) | **GET** /api/v1/webhooks/sample-payloads | 
+*DefaultAPI* | [**getWebhooks**](docs/DefaultAPI.md#getwebhooks) | **GET** /api/v1/webhooks | 
+*DefaultAPI* | [**migratePages**](docs/DefaultAPI.md#migratepages) | **POST** /api/v1/pages/migrations | 
 *DefaultAPI* | [**patchDomainConfig**](docs/DefaultAPI.md#patchdomainconfig) | **PATCH** /api/v1/domain-configs/{domainToUpdate} | 
 *DefaultAPI* | [**patchHashTag**](docs/DefaultAPI.md#patchhashtag) | **PATCH** /api/v1/hash-tags/{tag} | 
 *DefaultAPI* | [**patchPage**](docs/DefaultAPI.md#patchpage) | **PATCH** /api/v1/pages/{id} | 
+*DefaultAPI* | [**patchPoll**](docs/DefaultAPI.md#patchpoll) | **PATCH** /api/v1/polls/{commentId} | 
 *DefaultAPI* | [**patchSSOUser**](docs/DefaultAPI.md#patchssouser) | **PATCH** /api/v1/sso-users/{id} | 
 *DefaultAPI* | [**putDomainConfig**](docs/DefaultAPI.md#putdomainconfig) | **PUT** /api/v1/domain-configs/{domainToUpdate} | 
+*DefaultAPI* | [**putPoll**](docs/DefaultAPI.md#putpoll) | **PUT** /api/v1/polls/{commentId} | 
 *DefaultAPI* | [**putSSOUser**](docs/DefaultAPI.md#putssouser) | **PUT** /api/v1/sso-users/{id} | 
 *DefaultAPI* | [**renderEmailTemplate**](docs/DefaultAPI.md#renderemailtemplate) | **POST** /api/v1/email-templates/render | 
 *DefaultAPI* | [**replaceTenantPackage**](docs/DefaultAPI.md#replacetenantpackage) | **PUT** /api/v1/tenant-packages/{id} | 
@@ -128,6 +147,7 @@ Class | Method | HTTP request | Description
 *DefaultAPI* | [**sendLoginLink**](docs/DefaultAPI.md#sendloginlink) | **POST** /api/v1/tenant-users/{id}/send-login-link | 
 *DefaultAPI* | [**unBlockUserFromComment**](docs/DefaultAPI.md#unblockuserfromcomment) | **POST** /api/v1/comments/{id}/un-block | 
 *DefaultAPI* | [**unFlagComment**](docs/DefaultAPI.md#unflagcomment) | **POST** /api/v1/comments/{id}/un-flag | 
+*DefaultAPI* | [**undoPageMigrations**](docs/DefaultAPI.md#undopagemigrations) | **POST** /api/v1/pages/migrations/{undoId}/undo | 
 *DefaultAPI* | [**updateComment**](docs/DefaultAPI.md#updatecomment) | **PATCH** /api/v1/comments/{id} | 
 *DefaultAPI* | [**updateEmailTemplate**](docs/DefaultAPI.md#updateemailtemplate) | **PATCH** /api/v1/email-templates/{id} | 
 *DefaultAPI* | [**updateFeedPost**](docs/DefaultAPI.md#updatefeedpost) | **PATCH** /api/v1/feed-posts/{id} | 
@@ -226,6 +246,7 @@ Class | Method | HTTP request | Description
 *PublicAPI* | [**resetUserNotifications**](docs/PublicAPI.md#resetusernotifications) | **POST** /user-notifications/reset | 
 *PublicAPI* | [**searchUsers**](docs/PublicAPI.md#searchusers) | **GET** /user-search/{tenantId} | 
 *PublicAPI* | [**setCommentText**](docs/PublicAPI.md#setcommenttext) | **POST** /comments/{tenantId}/{commentId}/update-text | 
+*PublicAPI* | [**translateComments**](docs/PublicAPI.md#translatecomments) | **POST** /comments/{tenantId}/translations | 
 *PublicAPI* | [**unBlockCommentPublic**](docs/PublicAPI.md#unblockcommentpublic) | **DELETE** /block-from-comment/{commentId} | 
 *PublicAPI* | [**unLockComment**](docs/PublicAPI.md#unlockcomment) | **POST** /comments/{tenantId}/{commentId}/unlock | 
 *PublicAPI* | [**unPinComment**](docs/PublicAPI.md#unpincomment) | **POST** /comments/{tenantId}/{commentId}/unpin | 
@@ -244,6 +265,8 @@ Class | Method | HTTP request | Description
  - [APIBanUserChangedValues](docs/APIBanUserChangedValues.md)
  - [APIBannedUser](docs/APIBannedUser.md)
  - [APIBannedUserWithMultiMatchInfo](docs/APIBannedUserWithMultiMatchInfo.md)
+ - [APIBatchJob](docs/APIBatchJob.md)
+ - [APIBatchJobPageMigrationResultsInner](docs/APIBatchJobPageMigrationResultsInner.md)
  - [APIComment](docs/APIComment.md)
  - [APICommentBase](docs/APICommentBase.md)
  - [APICommentBaseMeta](docs/APICommentBaseMeta.md)
@@ -320,10 +343,22 @@ Class | Method | HTTP request | Description
  - [CommentLogData](docs/CommentLogData.md)
  - [CommentLogEntry](docs/CommentLogEntry.md)
  - [CommentLogType](docs/CommentLogType.md)
+ - [CommentPoll](docs/CommentPoll.md)
+ - [CommentPollInput](docs/CommentPollInput.md)
+ - [CommentPollOption](docs/CommentPollOption.md)
+ - [CommentPollOptionInput](docs/CommentPollOptionInput.md)
+ - [CommentPollPatch](docs/CommentPollPatch.md)
+ - [CommentPollPatchOptionsInner](docs/CommentPollPatchOptionsInner.md)
+ - [CommentPollPutInput](docs/CommentPollPutInput.md)
  - [CommentQuestionResultsRenderingType](docs/CommentQuestionResultsRenderingType.md)
  - [CommentQuestionsRequired](docs/CommentQuestionsRequired.md)
  - [CommentTextUpdateRequest](docs/CommentTextUpdateRequest.md)
  - [CommentThreadDeletionMode](docs/CommentThreadDeletionMode.md)
+ - [CommentTranslation](docs/CommentTranslation.md)
+ - [CommentTranslationMode](docs/CommentTranslationMode.md)
+ - [CommentTranslationPublic](docs/CommentTranslationPublic.md)
+ - [CommentTranslationsRequest](docs/CommentTranslationsRequest.md)
+ - [CommentTranslationsResponse](docs/CommentTranslationsResponse.md)
  - [CommentUserBadgeInfo](docs/CommentUserBadgeInfo.md)
  - [CommentUserHashTagInfo](docs/CommentUserHashTagInfo.md)
  - [CommentUserMentionInfo](docs/CommentUserMentionInfo.md)
@@ -332,6 +367,8 @@ Class | Method | HTTP request | Description
  - [CreateAPIPageData](docs/CreateAPIPageData.md)
  - [CreateAPISSOUserData](docs/CreateAPISSOUserData.md)
  - [CreateAPIUserSubscriptionData](docs/CreateAPIUserSubscriptionData.md)
+ - [CreateAgentTenantBody](docs/CreateAgentTenantBody.md)
+ - [CreateAgentTenantResponse](docs/CreateAgentTenantResponse.md)
  - [CreateCommentParams](docs/CreateCommentParams.md)
  - [CreateEmailTemplateBody](docs/CreateEmailTemplateBody.md)
  - [CreateEmailTemplateResponse](docs/CreateEmailTemplateResponse.md)
@@ -342,6 +379,8 @@ Class | Method | HTTP request | Description
  - [CreateHashTagResponse](docs/CreateHashTagResponse.md)
  - [CreateModeratorBody](docs/CreateModeratorBody.md)
  - [CreateModeratorResponse](docs/CreateModeratorResponse.md)
+ - [CreatePollVoteBody](docs/CreatePollVoteBody.md)
+ - [CreatePollVoteResponse](docs/CreatePollVoteResponse.md)
  - [CreateQuestionConfigBody](docs/CreateQuestionConfigBody.md)
  - [CreateQuestionConfigResponse](docs/CreateQuestionConfigResponse.md)
  - [CreateQuestionResultBody](docs/CreateQuestionResultBody.md)
@@ -357,6 +396,8 @@ Class | Method | HTTP request | Description
  - [CreateTicketResponse](docs/CreateTicketResponse.md)
  - [CreateUserBadgeParams](docs/CreateUserBadgeParams.md)
  - [CreateV1PageReact](docs/CreateV1PageReact.md)
+ - [CreateWebhookParams](docs/CreateWebhookParams.md)
+ - [CreateWebhookResponse](docs/CreateWebhookResponse.md)
  - [CustomConfigParameters](docs/CustomConfigParameters.md)
  - [CustomEmailTemplate](docs/CustomEmailTemplate.md)
  - [DeleteCommentAction](docs/DeleteCommentAction.md)
@@ -365,6 +406,7 @@ Class | Method | HTTP request | Description
  - [DeleteFeedPostPublicResponse](docs/DeleteFeedPostPublicResponse.md)
  - [DeleteHashTagRequestBody](docs/DeleteHashTagRequestBody.md)
  - [DeletePageAPIResponse](docs/DeletePageAPIResponse.md)
+ - [DeletePollVoteResponse](docs/DeletePollVoteResponse.md)
  - [DeleteSSOUserAPIResponse](docs/DeleteSSOUserAPIResponse.md)
  - [DeleteSubscriptionAPIResponse](docs/DeleteSubscriptionAPIResponse.md)
  - [DeletedCommentResultComment](docs/DeletedCommentResultComment.md)
@@ -386,6 +428,8 @@ Class | Method | HTTP request | Description
  - [GetAuditLogsResponse](docs/GetAuditLogsResponse.md)
  - [GetBannedUsersCountResponse](docs/GetBannedUsersCountResponse.md)
  - [GetBannedUsersFromCommentResponse](docs/GetBannedUsersFromCommentResponse.md)
+ - [GetBatchJobAPIResponse](docs/GetBatchJobAPIResponse.md)
+ - [GetBatchJobsAPIResponse](docs/GetBatchJobsAPIResponse.md)
  - [GetCachedNotificationCountResponse](docs/GetCachedNotificationCountResponse.md)
  - [GetCommentBanStatusResponse](docs/GetCommentBanStatusResponse.md)
  - [GetCommentTextResponse](docs/GetCommentTextResponse.md)
@@ -406,15 +450,21 @@ Class | Method | HTTP request | Description
  - [GetGifsSearchResponse](docs/GetGifsSearchResponse.md)
  - [GetGifsTrendingResponse](docs/GetGifsTrendingResponse.md)
  - [GetHashTagsResponse](docs/GetHashTagsResponse.md)
+ - [GetMeResponse](docs/GetMeResponse.md)
  - [GetModeratorResponse](docs/GetModeratorResponse.md)
  - [GetModeratorsResponse](docs/GetModeratorsResponse.md)
  - [GetMyNotificationsResponse](docs/GetMyNotificationsResponse.md)
  - [GetNotificationCountResponse](docs/GetNotificationCountResponse.md)
  - [GetNotificationsResponse](docs/GetNotificationsResponse.md)
  - [GetPageByURLIdAPIResponse](docs/GetPageByURLIdAPIResponse.md)
+ - [GetPageLikesAPIResponse](docs/GetPageLikesAPIResponse.md)
+ - [GetPageReactsAPIResponse](docs/GetPageReactsAPIResponse.md)
  - [GetPagesAPIResponse](docs/GetPagesAPIResponse.md)
  - [GetPendingWebhookEventCountResponse](docs/GetPendingWebhookEventCountResponse.md)
  - [GetPendingWebhookEventsResponse](docs/GetPendingWebhookEventsResponse.md)
+ - [GetPollResponse](docs/GetPollResponse.md)
+ - [GetPollVoteResponse](docs/GetPollVoteResponse.md)
+ - [GetPollVotesResponse](docs/GetPollVotesResponse.md)
  - [GetPublicFeedPostsResponse](docs/GetPublicFeedPostsResponse.md)
  - [GetPublicPagesResponse](docs/GetPublicPagesResponse.md)
  - [GetQuestionConfigResponse](docs/GetQuestionConfigResponse.md)
@@ -448,6 +498,8 @@ Class | Method | HTTP request | Description
  - [GetV2PageReacts](docs/GetV2PageReacts.md)
  - [GetVotesForUserResponse](docs/GetVotesForUserResponse.md)
  - [GetVotesResponse](docs/GetVotesResponse.md)
+ - [GetWebhookSamplePayloadsResponse](docs/GetWebhookSamplePayloadsResponse.md)
+ - [GetWebhooksResponse](docs/GetWebhooksResponse.md)
  - [GifGetLargeResponse](docs/GifGetLargeResponse.md)
  - [GifRating](docs/GifRating.md)
  - [GifSearchInternalError](docs/GifSearchInternalError.md)
@@ -462,9 +514,11 @@ Class | Method | HTTP request | Description
  - [LiveEvent](docs/LiveEvent.md)
  - [LiveEventExtraInfo](docs/LiveEventExtraInfo.md)
  - [LiveEventType](docs/LiveEventType.md)
+ - [MeAuthType](docs/MeAuthType.md)
  - [MediaAsset](docs/MediaAsset.md)
  - [MentionAutoCompleteMode](docs/MentionAutoCompleteMode.md)
  - [MetaItem](docs/MetaItem.md)
+ - [MigrateAPIPagesData](docs/MigrateAPIPagesData.md)
  - [ModerationAPIChildCommentsResponse](docs/ModerationAPIChildCommentsResponse.md)
  - [ModerationAPIComment](docs/ModerationAPIComment.md)
  - [ModerationAPICommentLog](docs/ModerationAPICommentLog.md)
@@ -487,7 +541,17 @@ Class | Method | HTTP request | Description
  - [Moderator](docs/Moderator.md)
  - [NotificationAndCount](docs/NotificationAndCount.md)
  - [NotificationObjectType](docs/NotificationObjectType.md)
+ - [NotificationSkipReason](docs/NotificationSkipReason.md)
  - [NotificationType](docs/NotificationType.md)
+ - [OAuthScope](docs/OAuthScope.md)
+ - [PageCustomReactUser](docs/PageCustomReactUser.md)
+ - [PageMigration](docs/PageMigration.md)
+ - [PageMigrationFailure](docs/PageMigrationFailure.md)
+ - [PageMigrationSuccess](docs/PageMigrationSuccess.md)
+ - [PageMigrationType](docs/PageMigrationType.md)
+ - [PageMigrationUndoCounts](docs/PageMigrationUndoCounts.md)
+ - [PageReactIncludeUserInfo](docs/PageReactIncludeUserInfo.md)
+ - [PageReactUser](docs/PageReactUser.md)
  - [PageUserEntry](docs/PageUserEntry.md)
  - [PageUsersInfoResponse](docs/PageUsersInfoResponse.md)
  - [PageUsersOfflineResponse](docs/PageUsersOfflineResponse.md)
@@ -498,6 +562,10 @@ Class | Method | HTTP request | Description
  - [PatchPageAPIResponse](docs/PatchPageAPIResponse.md)
  - [PatchSSOUserAPIResponse](docs/PatchSSOUserAPIResponse.md)
  - [PendingCommentToSyncOutbound](docs/PendingCommentToSyncOutbound.md)
+ - [PickCommentPollOptionsOrTotalVotesOrClosesAt](docs/PickCommentPollOptionsOrTotalVotesOrClosesAt.md)
+ - [PollCreationMode](docs/PollCreationMode.md)
+ - [PollPrivacy](docs/PollPrivacy.md)
+ - [PollVotingMode](docs/PollVotingMode.md)
  - [PostRemoveCommentApiResponse](docs/PostRemoveCommentApiResponse.md)
  - [PreBanSummary](docs/PreBanSummary.md)
  - [PubSubComment](docs/PubSubComment.md)
@@ -511,11 +579,15 @@ Class | Method | HTTP request | Description
  - [PublicCommentBase](docs/PublicCommentBase.md)
  - [PublicFeedPostsResponse](docs/PublicFeedPostsResponse.md)
  - [PublicPage](docs/PublicPage.md)
+ - [PublicPollVote](docs/PublicPollVote.md)
  - [PublicVote](docs/PublicVote.md)
+ - [PublicWebhook](docs/PublicWebhook.md)
  - [PutDomainConfigResponse](docs/PutDomainConfigResponse.md)
  - [PutSSOUserAPIResponse](docs/PutSSOUserAPIResponse.md)
  - [QueryPredicate](docs/QueryPredicate.md)
  - [QueryPredicateValue](docs/QueryPredicateValue.md)
+ - [QuestionCondition](docs/QuestionCondition.md)
+ - [QuestionConditionOperator](docs/QuestionConditionOperator.md)
  - [QuestionConfig](docs/QuestionConfig.md)
  - [QuestionConfigCustomOptionsInner](docs/QuestionConfigCustomOptionsInner.md)
  - [QuestionDatum](docs/QuestionDatum.md)
@@ -524,9 +596,11 @@ Class | Method | HTTP request | Description
  - [QuestionResultAggregationOverall](docs/QuestionResultAggregationOverall.md)
  - [QuestionSubQuestionVisibility](docs/QuestionSubQuestionVisibility.md)
  - [QuestionWhenSave](docs/QuestionWhenSave.md)
+ - [QueuePageMigrationJobAPIResponse](docs/QueuePageMigrationJobAPIResponse.md)
  - [ReactBodyParams](docs/ReactBodyParams.md)
  - [ReactFeedPostResponse](docs/ReactFeedPostResponse.md)
  - [RecordStringBeforeStringOrNullAfterStringOrNullValue](docs/RecordStringBeforeStringOrNullAfterStringOrNullValue.md)
+ - [RecordStringStringOrNumberOrNumberArrayValue](docs/RecordStringStringOrNumberOrNumberArrayValue.md)
  - [RemoveCommentActionResponse](docs/RemoveCommentActionResponse.md)
  - [RemoveUserBadgeResponse](docs/RemoveUserBadgeResponse.md)
  - [RenderEmailTemplateBody](docs/RenderEmailTemplateBody.md)
@@ -542,6 +616,7 @@ Class | Method | HTTP request | Description
  - [SaveCommentResponseOptimized](docs/SaveCommentResponseOptimized.md)
  - [SaveCommentsBulkResponse](docs/SaveCommentsBulkResponse.md)
  - [SaveCommentsResponseWithPresence](docs/SaveCommentsResponseWithPresence.md)
+ - [SavePollResponse](docs/SavePollResponse.md)
  - [SearchUsersResponse](docs/SearchUsersResponse.md)
  - [SearchUsersResult](docs/SearchUsersResult.md)
  - [SearchUsersSectionedResponse](docs/SearchUsersSectionedResponse.md)
@@ -553,6 +628,7 @@ Class | Method | HTTP request | Description
  - [SizePreset](docs/SizePreset.md)
  - [SortDirections](docs/SortDirections.md)
  - [SpamRule](docs/SpamRule.md)
+ - [SubQuestionCondition](docs/SubQuestionCondition.md)
  - [TOSConfig](docs/TOSConfig.md)
  - [TenantBadge](docs/TenantBadge.md)
  - [TenantHashTag](docs/TenantHashTag.md)
@@ -599,6 +675,10 @@ Class | Method | HTTP request | Description
  - [VoteResponse](docs/VoteResponse.md)
  - [VoteResponseUser](docs/VoteResponseUser.md)
  - [VoteStyle](docs/VoteStyle.md)
+ - [WebhookComment](docs/WebhookComment.md)
+ - [WebhookEventName](docs/WebhookEventName.md)
+ - [WebhookHTTPMethod](docs/WebhookHTTPMethod.md)
+ - [WebhookSource](docs/WebhookSource.md)
 
 
 <a id="documentation-for-authorization"></a>

@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **paymentFrequency** | **Double** |  | [optional] 
 **billingInfoValid** | **Bool** |  | [optional] 
 **billingHandledExternally** | **Bool** |  | [optional] 
-**createdBy** | **String** |  | [optional] 
 **isSetup** | **Bool** |  | [optional] 
 **billingInfo** | [**BillingInfo**](BillingInfo.md) |  | [optional] 
 **stripeCustomerId** | **String** |  | [optional] 

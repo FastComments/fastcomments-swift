@@ -15,9 +15,11 @@ Method | HTTP request | Description
 [**bulkAggregateQuestionResults**](DefaultAPI.md#bulkaggregatequestionresults) | **POST** /api/v1/question-results-aggregation/bulk | 
 [**changeTicketState**](DefaultAPI.md#changeticketstate) | **PATCH** /api/v1/tickets/{id}/state | 
 [**combineCommentsWithQuestionResults**](DefaultAPI.md#combinecommentswithquestionresults) | **GET** /api/v1/question-results-aggregation/combine/comments | 
+[**createAgentTenant**](DefaultAPI.md#createagenttenant) | **POST** /api/v1/agent-tenants | 
 [**createEmailTemplate**](DefaultAPI.md#createemailtemplate) | **POST** /api/v1/email-templates | 
 [**createFeedPost**](DefaultAPI.md#createfeedpost) | **POST** /api/v1/feed-posts | 
 [**createModerator**](DefaultAPI.md#createmoderator) | **POST** /api/v1/moderators | 
+[**createPollVote**](DefaultAPI.md#createpollvote) | **POST** /api/v1/poll-votes | 
 [**createQuestionConfig**](DefaultAPI.md#createquestionconfig) | **POST** /api/v1/question-configs | 
 [**createQuestionResult**](DefaultAPI.md#createquestionresult) | **POST** /api/v1/question-results | 
 [**createSubscription**](DefaultAPI.md#createsubscription) | **POST** /api/v1/subscriptions | 
@@ -27,6 +29,7 @@ Method | HTTP request | Description
 [**createTicket**](DefaultAPI.md#createticket) | **POST** /api/v1/tickets | 
 [**createUserBadge**](DefaultAPI.md#createuserbadge) | **POST** /api/v1/user-badges | 
 [**createVote**](DefaultAPI.md#createvote) | **POST** /api/v1/votes | 
+[**createWebhook**](DefaultAPI.md#createwebhook) | **POST** /api/v1/webhooks | 
 [**deleteComment**](DefaultAPI.md#deletecomment) | **DELETE** /api/v1/comments/{id} | 
 [**deleteDomainConfig**](DefaultAPI.md#deletedomainconfig) | **DELETE** /api/v1/domain-configs/{domain} | 
 [**deleteEmailTemplate**](DefaultAPI.md#deleteemailtemplate) | **DELETE** /api/v1/email-templates/{id} | 
@@ -36,6 +39,8 @@ Method | HTTP request | Description
 [**deleteNotificationCount**](DefaultAPI.md#deletenotificationcount) | **DELETE** /api/v1/notification-count/{id} | 
 [**deletePage**](DefaultAPI.md#deletepage) | **DELETE** /api/v1/pages/{id} | 
 [**deletePendingWebhookEvent**](DefaultAPI.md#deletependingwebhookevent) | **DELETE** /api/v1/pending-webhook-events/{id} | 
+[**deletePoll**](DefaultAPI.md#deletepoll) | **DELETE** /api/v1/polls/{commentId} | 
+[**deletePollVote**](DefaultAPI.md#deletepollvote) | **DELETE** /api/v1/poll-votes/{id} | 
 [**deleteQuestionConfig**](DefaultAPI.md#deletequestionconfig) | **DELETE** /api/v1/question-configs/{id} | 
 [**deleteQuestionResult**](DefaultAPI.md#deletequestionresult) | **DELETE** /api/v1/question-results/{id} | 
 [**deleteSSOUser**](DefaultAPI.md#deletessouser) | **DELETE** /api/v1/sso-users/{id} | 
@@ -45,8 +50,11 @@ Method | HTTP request | Description
 [**deleteTenantUser**](DefaultAPI.md#deletetenantuser) | **DELETE** /api/v1/tenant-users/{id} | 
 [**deleteUserBadge**](DefaultAPI.md#deleteuserbadge) | **DELETE** /api/v1/user-badges/{id} | 
 [**deleteVote**](DefaultAPI.md#deletevote) | **DELETE** /api/v1/votes/{id} | 
+[**deleteWebhook**](DefaultAPI.md#deletewebhook) | **DELETE** /api/v1/webhooks/{id} | 
 [**flagComment**](DefaultAPI.md#flagcomment) | **POST** /api/v1/comments/{id}/flag | 
 [**getAuditLogs**](DefaultAPI.md#getauditlogs) | **GET** /api/v1/audit-logs | 
+[**getBatchJob**](DefaultAPI.md#getbatchjob) | **GET** /api/v1/batch-jobs/{id} | 
+[**getBatchJobs**](DefaultAPI.md#getbatchjobs) | **GET** /api/v1/batch-jobs | 
 [**getCachedNotificationCount**](DefaultAPI.md#getcachednotificationcount) | **GET** /api/v1/notification-count/{id} | 
 [**getComment**](DefaultAPI.md#getcomment) | **GET** /api/v1/comments/{id} | 
 [**getComments**](DefaultAPI.md#getcomments) | **GET** /api/v1/comments | 
@@ -58,14 +66,20 @@ Method | HTTP request | Description
 [**getEmailTemplates**](DefaultAPI.md#getemailtemplates) | **GET** /api/v1/email-templates | 
 [**getFeedPosts**](DefaultAPI.md#getfeedposts) | **GET** /api/v1/feed-posts | 
 [**getHashTags**](DefaultAPI.md#gethashtags) | **GET** /api/v1/hash-tags | 
+[**getMe**](DefaultAPI.md#getme) | **GET** /api/v1/me | 
 [**getModerator**](DefaultAPI.md#getmoderator) | **GET** /api/v1/moderators/{id} | 
 [**getModerators**](DefaultAPI.md#getmoderators) | **GET** /api/v1/moderators | 
 [**getNotificationCount**](DefaultAPI.md#getnotificationcount) | **GET** /api/v1/notifications/count | 
 [**getNotifications**](DefaultAPI.md#getnotifications) | **GET** /api/v1/notifications | 
 [**getPageByURLId**](DefaultAPI.md#getpagebyurlid) | **GET** /api/v1/pages/by-url-id | 
+[**getPageLikes**](DefaultAPI.md#getpagelikes) | **GET** /api/v1/pages/likes | 
+[**getPageReacts**](DefaultAPI.md#getpagereacts) | **GET** /api/v1/pages/reacts | 
 [**getPages**](DefaultAPI.md#getpages) | **GET** /api/v1/pages | 
 [**getPendingWebhookEventCount**](DefaultAPI.md#getpendingwebhookeventcount) | **GET** /api/v1/pending-webhook-events/count | 
 [**getPendingWebhookEvents**](DefaultAPI.md#getpendingwebhookevents) | **GET** /api/v1/pending-webhook-events | 
+[**getPoll**](DefaultAPI.md#getpoll) | **GET** /api/v1/polls/{commentId} | 
+[**getPollVote**](DefaultAPI.md#getpollvote) | **GET** /api/v1/poll-votes/{id} | 
+[**getPollVotes**](DefaultAPI.md#getpollvotes) | **GET** /api/v1/poll-votes | 
 [**getQuestionConfig**](DefaultAPI.md#getquestionconfig) | **GET** /api/v1/question-configs/{id} | 
 [**getQuestionConfigs**](DefaultAPI.md#getquestionconfigs) | **GET** /api/v1/question-configs | 
 [**getQuestionResult**](DefaultAPI.md#getquestionresult) | **GET** /api/v1/question-results/{id} | 
@@ -91,11 +105,16 @@ Method | HTTP request | Description
 [**getUserBadges**](DefaultAPI.md#getuserbadges) | **GET** /api/v1/user-badges | 
 [**getVotes**](DefaultAPI.md#getvotes) | **GET** /api/v1/votes | 
 [**getVotesForUser**](DefaultAPI.md#getvotesforuser) | **GET** /api/v1/votes/for-user | 
+[**getWebhookSamplePayloads**](DefaultAPI.md#getwebhooksamplepayloads) | **GET** /api/v1/webhooks/sample-payloads | 
+[**getWebhooks**](DefaultAPI.md#getwebhooks) | **GET** /api/v1/webhooks | 
+[**migratePages**](DefaultAPI.md#migratepages) | **POST** /api/v1/pages/migrations | 
 [**patchDomainConfig**](DefaultAPI.md#patchdomainconfig) | **PATCH** /api/v1/domain-configs/{domainToUpdate} | 
 [**patchHashTag**](DefaultAPI.md#patchhashtag) | **PATCH** /api/v1/hash-tags/{tag} | 
 [**patchPage**](DefaultAPI.md#patchpage) | **PATCH** /api/v1/pages/{id} | 
+[**patchPoll**](DefaultAPI.md#patchpoll) | **PATCH** /api/v1/polls/{commentId} | 
 [**patchSSOUser**](DefaultAPI.md#patchssouser) | **PATCH** /api/v1/sso-users/{id} | 
 [**putDomainConfig**](DefaultAPI.md#putdomainconfig) | **PUT** /api/v1/domain-configs/{domainToUpdate} | 
+[**putPoll**](DefaultAPI.md#putpoll) | **PUT** /api/v1/polls/{commentId} | 
 [**putSSOUser**](DefaultAPI.md#putssouser) | **PUT** /api/v1/sso-users/{id} | 
 [**renderEmailTemplate**](DefaultAPI.md#renderemailtemplate) | **POST** /api/v1/email-templates/render | 
 [**replaceTenantPackage**](DefaultAPI.md#replacetenantpackage) | **PUT** /api/v1/tenant-packages/{id} | 
@@ -106,6 +125,7 @@ Method | HTTP request | Description
 [**sendLoginLink**](DefaultAPI.md#sendloginlink) | **POST** /api/v1/tenant-users/{id}/send-login-link | 
 [**unBlockUserFromComment**](DefaultAPI.md#unblockuserfromcomment) | **POST** /api/v1/comments/{id}/un-block | 
 [**unFlagComment**](DefaultAPI.md#unflagcomment) | **POST** /api/v1/comments/{id}/un-flag | 
+[**undoPageMigrations**](DefaultAPI.md#undopagemigrations) | **POST** /api/v1/pages/migrations/{undoId}/undo | 
 [**updateComment**](DefaultAPI.md#updatecomment) | **PATCH** /api/v1/comments/{id} | 
 [**updateEmailTemplate**](DefaultAPI.md#updateemailtemplate) | **PATCH** /api/v1/email-templates/{id} | 
 [**updateFeedPost**](DefaultAPI.md#updatefeedpost) | **PATCH** /api/v1/feed-posts/{id} | 
@@ -701,6 +721,55 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **createAgentTenant**
+```swift
+    open class func createAgentTenant(createAgentTenantBody: CreateAgentTenantBody, completion: @escaping (_ data: CreateAgentTenantResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Creates a new trial account for an AI agent without a human signup. No API key is needed to call this.  The response contains the tenant id, an API key that works immediately against the REST API and the MCP server, and a claim URL. Give the claim URL to the human you are working for: opening it while logged in to FastComments attaches the account to them. Unclaimed accounts, and their keys, are deleted 72 hours after creation. Until claimed, the account has the standard trial limits.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let createAgentTenantBody = CreateAgentTenantBody(name: "name_example", domains: ["domains_example"], agent: "agent_example") // CreateAgentTenantBody | 
+
+DefaultAPI.createAgentTenant(createAgentTenantBody: createAgentTenantBody) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAgentTenantBody** | [**CreateAgentTenantBody**](CreateAgentTenantBody.md) |  | 
+
+### Return type
+
+[**CreateAgentTenantResponse**](CreateAgentTenantResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **createEmailTemplate**
 ```swift
     open class func createEmailTemplate(tenantId: String, createEmailTemplateBody: CreateEmailTemplateBody, completion: @escaping (_ data: CreateEmailTemplateResponse?, _ error: Error?) -> Void)
@@ -856,6 +925,57 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **createPollVote**
+```swift
+    open class func createPollVote(tenantId: String, createPollVoteBody: CreatePollVoteBody, completion: @escaping (_ data: CreatePollVoteResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Record a vote on a poll, or move an existing one to a different option. A voter has at most one vote per poll, so calling this again for the same voter moves their vote rather than adding one.  This obeys the site's poll settings: if voting is set to logged-in users only, a vote with just an anonUserId is rejected, and anonymous votes are rate limited per IP per poll.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let createPollVoteBody = CreatePollVoteBody(commentId: "commentId_example", optionId: "optionId_example", userId: "userId_example", anonUserId: "anonUserId_example", ip: "ip_example") // CreatePollVoteBody | 
+
+DefaultAPI.createPollVote(tenantId: tenantId, createPollVoteBody: createPollVoteBody) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **createPollVoteBody** | [**CreatePollVoteBody**](CreatePollVoteBody.md) |  | 
+
+### Return type
+
+[**CreatePollVoteResponse**](CreatePollVoteResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **createQuestionConfig**
 ```swift
     open class func createQuestionConfig(tenantId: String, createQuestionConfigBody: CreateQuestionConfigBody, completion: @escaping (_ data: CreateQuestionConfigResponse?, _ error: Error?) -> Void)
@@ -869,7 +989,7 @@ Name | Type | Description  | Notes
 import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
-let createQuestionConfigBody = CreateQuestionConfigBody(name: "name_example", question: "question_example", helpText: "helpText_example", type: "type_example", numStars: 123, min: 123, max: 123, defaultValue: 123, labelNegative: "labelNegative_example", labelPositive: "labelPositive_example", customOptions: [QuestionConfig_customOptions_inner(imageSrc: "imageSrc_example", name: "name_example")], subQuestionIds: ["subQuestionIds_example"], alwaysShowSubQuestions: false, reportingOrder: 123) // CreateQuestionConfigBody | 
+let createQuestionConfigBody = CreateQuestionConfigBody(name: "name_example", question: "question_example", helpText: "helpText_example", type: "type_example", numStars: 123, min: 123, max: 123, defaultValue: 123, labelNegative: "labelNegative_example", labelPositive: "labelPositive_example", customOptions: [QuestionConfig_customOptions_inner(imageSrc: "imageSrc_example", name: "name_example")], subQuestionIds: ["subQuestionIds_example"], alwaysShowSubQuestions: false, subQuestionConditions: [SubQuestionCondition(_operator: QuestionConditionOperator(), value: 123, subQuestionId: "subQuestionId_example")], commentBoxCondition: QuestionCondition(_operator: nil, value: 123), commentBoxPrompt: "commentBoxPrompt_example", reportingOrder: 123) // CreateQuestionConfigBody | 
 
 DefaultAPI.createQuestionConfig(tenantId: tenantId, createQuestionConfigBody: createQuestionConfigBody) { (response, error) in
     guard error == nil else {
@@ -918,7 +1038,7 @@ Name | Type | Description  | Notes
 import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
-let createQuestionResultBody = CreateQuestionResultBody(urlId: "urlId_example", value: 123, questionId: "questionId_example", anonUserId: "anonUserId_example", userId: "userId_example", commentId: "commentId_example", meta: [MetaItem(name: "name_example", values: ["values_example"])]) // CreateQuestionResultBody | 
+let createQuestionResultBody = CreateQuestionResultBody(urlId: "urlId_example", value: 123, values: [123], questionId: "questionId_example", anonUserId: "anonUserId_example", userId: "userId_example", commentId: "commentId_example", meta: [MetaItem(name: "name_example", values: ["values_example"])]) // CreateQuestionResultBody | 
 
 DefaultAPI.createQuestionResult(tenantId: tenantId, createQuestionResultBody: createQuestionResultBody) { (response, error) in
     guard error == nil else {
@@ -1016,7 +1136,7 @@ Name | Type | Description  | Notes
 import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
-let createTenantBody = CreateTenantBody(name: "name_example", domainConfiguration: [APIDomainConfiguration(id: "id_example", domain: "domain_example", emailFromName: "emailFromName_example", emailFromEmail: "emailFromEmail_example", emailHeaders: "TODO", wpSyncToken: "wpSyncToken_example", wpSynced: false, wpURL: "wpURL_example", createdAt: Date(), autoAddedDate: Date(), siteType: ImportedSiteType(), logoSrc: "logoSrc_example", logoSrc100px: "logoSrc100px_example", footerUnsubscribeURL: "footerUnsubscribeURL_example", disableUnsubscribeLinks: false)], email: "email_example", signUpDate: 123, packageId: "packageId_example", paymentFrequency: 123, billingInfoValid: false, billingHandledExternally: false, createdBy: "createdBy_example", isSetup: false, billingInfo: BillingInfo(name: "name_example", address: "address_example", city: "city_example", state: "state_example", zip: "zip_example", country: "country_example", currency: "currency_example", email: "email_example"), stripeCustomerId: "stripeCustomerId_example", stripeSubscriptionId: "stripeSubscriptionId_example", stripePlanId: "stripePlanId_example", enableProfanityFilter: false, enableSpamFilter: false, removeUnverifiedComments: false, unverifiedCommentsTTLms: 123, commentsRequireApproval: false, autoApproveCommentOnVerification: false, sendProfaneToSpam: false, deAnonIpAddr: 123, meta: "TODO") // CreateTenantBody | 
+let createTenantBody = CreateTenantBody(name: "name_example", domainConfiguration: [APIDomainConfiguration(id: "id_example", domain: "domain_example", emailFromName: "emailFromName_example", emailFromEmail: "emailFromEmail_example", emailHeaders: "TODO", wpSyncToken: "wpSyncToken_example", wpSynced: false, wpURL: "wpURL_example", createdAt: Date(), autoAddedDate: Date(), siteType: ImportedSiteType(), logoSrc: "logoSrc_example", logoSrc100px: "logoSrc100px_example", footerUnsubscribeURL: "footerUnsubscribeURL_example", disableUnsubscribeLinks: false)], email: "email_example", signUpDate: 123, packageId: "packageId_example", paymentFrequency: 123, billingInfoValid: false, billingHandledExternally: false, isSetup: false, billingInfo: BillingInfo(name: "name_example", address: "address_example", city: "city_example", state: "state_example", zip: "zip_example", country: "country_example", currency: "currency_example", email: "email_example", vatId: "vatId_example"), stripeCustomerId: "stripeCustomerId_example", stripeSubscriptionId: "stripeSubscriptionId_example", stripePlanId: "stripePlanId_example", enableProfanityFilter: false, enableSpamFilter: false, removeUnverifiedComments: false, unverifiedCommentsTTLms: 123, commentsRequireApproval: false, autoApproveCommentOnVerification: false, sendProfaneToSpam: false, deAnonIpAddr: 123, meta: "TODO") // CreateTenantBody | 
 
 DefaultAPI.createTenant(tenantId: tenantId, createTenantBody: createTenantBody) { (response, error) in
     guard error == nil else {
@@ -1301,6 +1421,57 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createWebhook**
+```swift
+    open class func createWebhook(tenantId: String, createWebhookParams: CreateWebhookParams, completion: @escaping (_ data: CreateWebhookResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Subscribes a URL to a comment event (REST hook subscribe). Subscribing the same URL to the same event and domain again returns the existing subscription. Deliveries are HMAC signed, see the webhooks guide; the legacy `token` header is never sent to API subscriptions.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let createWebhookParams = CreateWebhookParams(url: "url_example", event: WebhookEventName(), domain: "domain_example", method: WebhookHTTPMethod()) // CreateWebhookParams | 
+
+DefaultAPI.createWebhook(tenantId: tenantId, createWebhookParams: createWebhookParams) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **createWebhookParams** | [**CreateWebhookParams**](CreateWebhookParams.md) |  | 
+
+### Return type
+
+[**CreateWebhookResponse**](CreateWebhookResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1744,6 +1915,108 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**APIEmptyResponse**](APIEmptyResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deletePoll**
+```swift
+    open class func deletePoll(tenantId: String, commentId: String, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Remove a poll from its comment, along with every vote cast on it. The comment itself is left alone.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let commentId = "commentId_example" // String | 
+
+DefaultAPI.deletePoll(tenantId: tenantId, commentId: commentId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **commentId** | **String** |  | 
+
+### Return type
+
+[**APIEmptyResponse**](APIEmptyResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deletePollVote**
+```swift
+    open class func deletePollVote(tenantId: String, id: String, completion: @escaping (_ data: DeletePollVoteResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Retract a vote. The option it was cast on gives its tally back.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let id = "id_example" // String | 
+
+DefaultAPI.deletePollVote(tenantId: tenantId, id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **id** | **String** |  | 
+
+### Return type
+
+[**DeletePollVoteResponse**](DeletePollVoteResponse.md)
 
 ### Authorization
 
@@ -2211,6 +2484,57 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **deleteWebhook**
+```swift
+    open class func deleteWebhook(tenantId: String, id: String, completion: @escaping (_ data: APIEmptyResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Unsubscribes (REST hook unsubscribe). Only subscriptions created through this API can be deleted here; dashboard-managed webhooks are edited in the dashboard.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let id = "id_example" // String | 
+
+DefaultAPI.deleteWebhook(tenantId: tenantId, id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **id** | **String** |  | 
+
+### Return type
+
+[**APIEmptyResponse**](APIEmptyResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **flagComment**
 ```swift
     open class func flagComment(tenantId: String, id: String, options: FlagCommentOptions = .init(), completion: @escaping (_ data: FlagCommentResponse?, _ error: Error?) -> Void)
@@ -2276,14 +2600,83 @@ Name | Type | Description  | Notes
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import FastCommentsSwift
 
-let tenantId = "tenantId_example" // String | 
-let limit = 987 // Double |  (optional)
-let skip = 987 // Double |  (optional)
-let order = SORT_DIR() // SORTDIR |  (optional)
-let after = 987 // Double |  (optional)
-let before = 987 // Double |  (optional)
+let tenantId = "tenantId_example" // String | The tenant to read audit logs for.
+let limit = 987 // Int | How many logs to return. Max 10000, defaults to 1000. (optional)
+let skip = 987 // Int | How many logs to skip, for paging. (optional)
+let order = SORT_DIR() // SORTDIR | Sort direction on the event time. Defaults to DESC (newest first). (optional)
+let after = 987 // Int64 |  (optional)
+let before = 987 // Int64 |  (optional)
+let username = "username_example" // String | Only return events performed by this username. (optional)
+let ip = "ip_example" // String | Only return events from this IP address. (optional)
+let crudType = "crudType_example" // String | Only return events of this type: c, r, u, d, or login. (optional)
+let resourceName = "resourceName_example" // String | Only return events for this resource, e.g. User or Moderator. (optional)
+let targetId = "targetId_example" // String | Only return events whose affected object has this id. (optional)
+let target = "target_example" // String | Case-insensitive substring match on the affected object's label, e.g. a username or email. (optional)
+let includeManagedTenants = true // Bool | Also return events from tenants this tenant manages. (optional)
 
-DefaultAPI.getAuditLogs(tenantId: tenantId, options: DefaultAPI.GetAuditLogsOptions(limit: limit, skip: skip, order: order, after: after, before: before)) { (response, error) in
+DefaultAPI.getAuditLogs(tenantId: tenantId, options: DefaultAPI.GetAuditLogsOptions(limit: limit, skip: skip, order: order, after: after, before: before, username: username, ip: ip, crudType: crudType, resourceName: resourceName, targetId: targetId, target: target, includeManagedTenants: includeManagedTenants)) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** | The tenant to read audit logs for. | 
+ **limit** | **Int** | How many logs to return. Max 10000, defaults to 1000. | [optional] 
+ **skip** | **Int** | How many logs to skip, for paging. | [optional] 
+ **order** | [**SORTDIR**](.md) | Sort direction on the event time. Defaults to DESC (newest first). | [optional] 
+ **after** | **Int64** |  | [optional] 
+ **before** | **Int64** |  | [optional] 
+ **username** | **String** | Only return events performed by this username. | [optional] 
+ **ip** | **String** | Only return events from this IP address. | [optional] 
+ **crudType** | **String** | Only return events of this type: c, r, u, d, or login. | [optional] 
+ **resourceName** | **String** | Only return events for this resource, e.g. User or Moderator. | [optional] 
+ **targetId** | **String** | Only return events whose affected object has this id. | [optional] 
+ **target** | **String** | Case-insensitive substring match on the affected object&#39;s label, e.g. a username or email. | [optional] 
+ **includeManagedTenants** | **Bool** | Also return events from tenants this tenant manages. | [optional] 
+
+### Return type
+
+[**GetAuditLogsResponse**](GetAuditLogsResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getBatchJob**
+```swift
+    open class func getBatchJob(tenantId: String, id: String, completion: @escaping (_ data: GetBatchJobAPIResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Status, progress and, once done, the result of one batch job.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let id = "id_example" // String | 
+
+DefaultAPI.getBatchJob(tenantId: tenantId, id: id) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -2300,15 +2693,66 @@ DefaultAPI.getAuditLogs(tenantId: tenantId, options: DefaultAPI.GetAuditLogsOpti
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenantId** | **String** |  | 
- **limit** | **Double** |  | [optional] 
- **skip** | **Double** |  | [optional] 
- **order** | [**SORTDIR**](.md) |  | [optional] 
- **after** | **Double** |  | [optional] 
- **before** | **Double** |  | [optional] 
+ **id** | **String** |  | 
 
 ### Return type
 
-[**GetAuditLogsResponse**](GetAuditLogsResponse.md)
+[**GetBatchJobAPIResponse**](GetBatchJobAPIResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getBatchJobs**
+```swift
+    open class func getBatchJobs(tenantId: String, options: GetBatchJobsOptions = .init(), completion: @escaping (_ data: GetBatchJobsAPIResponse?, _ error: Error?) -> Void)
+```
+
+
+
+The tenant's batch jobs (imports, exports, page migrations...), newest first.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let type = "type_example" // String | Only jobs of this type, for example migrate-pages. (optional)
+let status = "status_example" // String | Only jobs in this status: requested, running, success or failed. (optional)
+let skip = 987 // Int | How many jobs to skip, for paging. (optional)
+
+DefaultAPI.getBatchJobs(tenantId: tenantId, options: DefaultAPI.GetBatchJobsOptions(type: type, status: status, skip: skip)) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **type** | **String** | Only jobs of this type, for example migrate-pages. | [optional] 
+ **status** | **String** | Only jobs in this status: requested, running, success or failed. | [optional] 
+ **skip** | **Int** | How many jobs to skip, for paging. | [optional] 
+
+### Return type
+
+[**GetBatchJobsAPIResponse**](GetBatchJobsAPIResponse.md)
 
 ### Authorization
 
@@ -2894,6 +3338,55 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getMe**
+```swift
+    open class func getMe(tenantId: String, completion: @escaping (_ data: GetMeResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Identifies the credential in use: the tenant it belongs to and, for OAuth tokens, the user who authorized it. Integrations use this to test a connection and label it.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+
+DefaultAPI.getMe(tenantId: tenantId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+
+### Return type
+
+[**GetMeResponse**](GetMeResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getModerator**
 ```swift
     open class func getModerator(tenantId: String, id: String, completion: @escaping (_ data: GetModeratorResponse?, _ error: Error?) -> Void)
@@ -3157,6 +3650,112 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getPageLikes**
+```swift
+    open class func getPageLikes(tenantId: String, urlId: String, includeUserInfo: PageReactIncludeUserInfo? = nil, completion: @escaping (_ data: GetPageLikesAPIResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Like count for a page, optionally with the users who liked it.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | 
+let includeUserInfo = PageReactIncludeUserInfo() // PageReactIncludeUserInfo | \"public\" omits users with private profiles, \"include-private\" includes them. (optional)
+
+DefaultAPI.getPageLikes(tenantId: tenantId, urlId: urlId, includeUserInfo: includeUserInfo) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **urlId** | **String** |  | 
+ **includeUserInfo** | [**PageReactIncludeUserInfo**](.md) | \&quot;public\&quot; omits users with private profiles, \&quot;include-private\&quot; includes them. | [optional] 
+
+### Return type
+
+[**GetPageLikesAPIResponse**](GetPageLikesAPIResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPageReacts**
+```swift
+    open class func getPageReacts(tenantId: String, urlId: String, includeUserInfo: PageReactIncludeUserInfo? = nil, completion: @escaping (_ data: GetPageReactsAPIResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Custom react counts for a page, optionally with the users who reacted.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let urlId = "urlId_example" // String | 
+let includeUserInfo = PageReactIncludeUserInfo() // PageReactIncludeUserInfo | \"public\" omits users with private profiles, \"include-private\" includes them. (optional)
+
+DefaultAPI.getPageReacts(tenantId: tenantId, urlId: urlId, includeUserInfo: includeUserInfo) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **urlId** | **String** |  | 
+ **includeUserInfo** | [**PageReactIncludeUserInfo**](.md) | \&quot;public\&quot; omits users with private profiles, \&quot;include-private\&quot; includes them. | [optional] 
+
+### Return type
+
+[**GetPageReactsAPIResponse**](GetPageReactsAPIResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getPages**
 ```swift
     open class func getPages(tenantId: String, completion: @escaping (_ data: GetPagesAPIResponse?, _ error: Error?) -> Void)
@@ -3312,6 +3911,161 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetPendingWebhookEventsResponse**](GetPendingWebhookEventsResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPoll**
+```swift
+    open class func getPoll(tenantId: String, commentId: String, completion: @escaping (_ data: GetPollResponse?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let commentId = "commentId_example" // String | 
+
+DefaultAPI.getPoll(tenantId: tenantId, commentId: commentId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **commentId** | **String** |  | 
+
+### Return type
+
+[**GetPollResponse**](GetPollResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPollVote**
+```swift
+    open class func getPollVote(tenantId: String, id: String, completion: @escaping (_ data: GetPollVoteResponse?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let id = "id_example" // String | 
+
+DefaultAPI.getPollVote(tenantId: tenantId, id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **id** | **String** |  | 
+
+### Return type
+
+[**GetPollVoteResponse**](GetPollVoteResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPollVotes**
+```swift
+    open class func getPollVotes(tenantId: String, commentId: String, options: GetPollVotesOptions = .init(), completion: @escaping (_ data: GetPollVotesResponse?, _ error: Error?) -> Void)
+```
+
+
+
+The individual votes behind one poll's tallies, oldest first.  A poll belongs to a comment, so votes are always read one poll at a time - commentId is required. That keeps every query on the indexes the collection already has.  Obeys the poll's privacy: an anonymous poll's votes cannot be read (poll-anonymous), here or by id.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let commentId = "commentId_example" // String | 
+let voterId = "voterId_example" // String |  (optional)
+let optionId = "optionId_example" // String |  (optional)
+let skip = 987 // Int |  (optional)
+
+DefaultAPI.getPollVotes(tenantId: tenantId, commentId: commentId, options: DefaultAPI.GetPollVotesOptions(voterId: voterId, optionId: optionId, skip: skip)) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **commentId** | **String** |  | 
+ **voterId** | **String** |  | [optional] 
+ **optionId** | **String** |  | [optional] 
+ **skip** | **Int** |  | [optional] 
+
+### Return type
+
+[**GetPollVotesResponse**](GetPollVotesResponse.md)
 
 ### Authorization
 
@@ -4593,6 +5347,167 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getWebhookSamplePayloads**
+```swift
+    open class func getWebhookSamplePayloads(tenantId: String, options: GetWebhookSamplePayloadsOptions = .init(), completion: @escaping (_ data: GetWebhookSamplePayloadsResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Recent comments in exactly the shape webhook deliveries use, for building integrations (for example Zapier sample data). Every event delivers the same comment object, so `event` only has to be valid.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let event = WebhookEventName() // WebhookEventName |  (optional)
+let limit = 987 // Double |  (optional)
+
+DefaultAPI.getWebhookSamplePayloads(tenantId: tenantId, options: DefaultAPI.GetWebhookSamplePayloadsOptions(event: event, limit: limit)) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **event** | [**WebhookEventName**](.md) |  | [optional] 
+ **limit** | **Double** |  | [optional] 
+
+### Return type
+
+[**GetWebhookSamplePayloadsResponse**](GetWebhookSamplePayloadsResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getWebhooks**
+```swift
+    open class func getWebhooks(tenantId: String, options: GetWebhooksOptions = .init(), completion: @escaping (_ data: GetWebhooksResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Lists the webhooks configured for the tenant, both dashboard-managed rows and API subscriptions.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let event = WebhookEventName() // WebhookEventName |  (optional)
+let domain = "domain_example" // String |  (optional)
+let source = WebhookSource() // WebhookSource |  (optional)
+let skip = 987 // Double |  (optional)
+
+DefaultAPI.getWebhooks(tenantId: tenantId, options: DefaultAPI.GetWebhooksOptions(event: event, domain: domain, source: source, skip: skip)) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **event** | [**WebhookEventName**](.md) |  | [optional] 
+ **domain** | **String** |  | [optional] 
+ **source** | [**WebhookSource**](.md) |  | [optional] 
+ **skip** | **Double** |  | [optional] 
+
+### Return type
+
+[**GetWebhooksResponse**](GetWebhooksResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **migratePages**
+```swift
+    open class func migratePages(tenantId: String, migrateAPIPagesData: MigrateAPIPagesData, completion: @escaping (_ data: QueuePageMigrationJobAPIResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Queues a batch job that moves comments, pages and related records from one urlId or domain to another. \"urlId\" migrations only match the exact urlId. \"domain\" migrations find/replace the value inside every urlId and url. Poll GET /api/v1/batch-jobs/{batchJobId}: once it is done it carries per-migration results and an undoId.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let migrateAPIPagesData = MigrateAPIPagesData(migrations: [PageMigration(from: "from_example", to: "to_example", type: PageMigrationType())]) // MigrateAPIPagesData | 
+
+DefaultAPI.migratePages(tenantId: tenantId, migrateAPIPagesData: migrateAPIPagesData) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **migrateAPIPagesData** | [**MigrateAPIPagesData**](MigrateAPIPagesData.md) |  | 
+
+### Return type
+
+[**QueuePageMigrationJobAPIResponse**](QueuePageMigrationJobAPIResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **patchDomainConfig**
 ```swift
     open class func patchDomainConfig(tenantId: String, domainToUpdate: String, patchDomainConfigParams: PatchDomainConfigParams, completion: @escaping (_ data: PatchDomainConfigResponse?, _ error: Error?) -> Void)
@@ -4746,6 +5661,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchPoll**
+```swift
+    open class func patchPoll(tenantId: String, commentId: String, commentPollPatch: CommentPollPatch, completion: @escaping (_ data: SavePollResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Edit a poll in place, keeping its tallies: change the question, relabel an option, close or reopen it, or change who may see the voters. Options are addressed by id - to add, remove or reorder them, PUT the full list.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let commentId = "commentId_example" // String | 
+let commentPollPatch = CommentPollPatch(question: "question_example", options: [CommentPollPatch_options_inner(label: "label_example", id: "id_example")], closesAt: "closesAt_example", privacy: 123, requireVoteToSeeResults: false) // CommentPollPatch | 
+
+DefaultAPI.patchPoll(tenantId: tenantId, commentId: commentId, commentPollPatch: commentPollPatch) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **commentId** | **String** |  | 
+ **commentPollPatch** | [**CommentPollPatch**](CommentPollPatch.md) |  | 
+
+### Return type
+
+[**SavePollResponse**](SavePollResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **patchSSOUser**
 ```swift
     open class func patchSSOUser(tenantId: String, id: String, updateAPISSOUserData: UpdateAPISSOUserData, updateComments: Bool? = nil, completion: @escaping (_ data: PatchSSOUserAPIResponse?, _ error: Error?) -> Void)
@@ -4838,6 +5806,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PutDomainConfigResponse**](PutDomainConfigResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **putPoll**
+```swift
+    open class func putPoll(tenantId: String, commentId: String, commentPollPutInput: CommentPollPutInput, replaceVotes: Bool? = nil, completion: @escaping (_ data: SavePollResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Attach a poll to a comment, or set the full state of the poll it already has.  Options are matched by id: an option sent with the id of an existing option keeps its votes (and takes the new label and position), an option sent without an id is added, and existing options left out of the list are removed along with the votes cast on them.  Keeping no existing option ids on a poll that has votes deletes all of them, so that needs replaceVotes=true.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let commentId = "commentId_example" // String | 
+let commentPollPutInput = CommentPollPutInput(question: "question_example", options: [CommentPollOptionInput(id: "id_example", label: "label_example")], closesAt: "closesAt_example", privacy: 123, requireVoteToSeeResults: false) // CommentPollPutInput | 
+let replaceVotes = true // Bool |  (optional)
+
+DefaultAPI.putPoll(tenantId: tenantId, commentId: commentId, commentPollPutInput: commentPollPutInput, replaceVotes: replaceVotes) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **commentId** | **String** |  | 
+ **commentPollPutInput** | [**CommentPollPutInput**](CommentPollPutInput.md) |  | 
+ **replaceVotes** | **Bool** |  | [optional] 
+
+### Return type
+
+[**SavePollResponse**](SavePollResponse.md)
 
 ### Authorization
 
@@ -5071,7 +6094,7 @@ Name | Type | Description  | Notes
 import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
-let createCommentParams = CreateCommentParams(date: 123, localDateString: "localDateString_example", localDateHours: 123, commenterName: "commenterName_example", commenterEmail: "commenterEmail_example", commenterLink: "commenterLink_example", comment: "comment_example", productId: 123, userId: "userId_example", avatarSrc: "avatarSrc_example", parentId: "parentId_example", mentions: [CommentUserMentionInfo(id: "id_example", tag: "tag_example", rawTag: "rawTag_example", type: "type_example", sent: false)], hashTags: [CommentUserHashTagInfo(id: "id_example", tag: "tag_example", url: "url_example", retain: false)], pageTitle: "pageTitle_example", isFromMyAccountPage: false, url: "url_example", urlId: "urlId_example", meta: 123, moderationGroupIds: ["moderationGroupIds_example"], rating: 123, fromOfflineRestore: false, autoplayDelayMS: 123, feedbackIds: ["feedbackIds_example"], questionValues: "TODO", tos: false, botId: "botId_example", approved: false, domain: "domain_example", ip: "ip_example", isPinned: false, locale: "locale_example", reviewed: false, verified: false, votes: 123, votesDown: 123, votesUp: 123) // CreateCommentParams | 
+let createCommentParams = CreateCommentParams(date: 123, localDateString: "localDateString_example", localDateHours: 123, commenterName: "commenterName_example", commenterEmail: "commenterEmail_example", commenterLink: "commenterLink_example", comment: "comment_example", productId: 123, userId: "userId_example", avatarSrc: "avatarSrc_example", parentId: "parentId_example", mentions: [CommentUserMentionInfo(id: "id_example", tag: "tag_example", rawTag: "rawTag_example", type: "type_example", sent: false)], hashTags: [CommentUserHashTagInfo(id: "id_example", tag: "tag_example", url: "url_example", retain: false)], pageTitle: "pageTitle_example", isFromMyAccountPage: false, url: "url_example", urlId: "urlId_example", meta: 123, moderationGroupIds: ["moderationGroupIds_example"], rating: 123, fromOfflineRestore: false, autoplayDelayMS: 123, feedbackIds: ["feedbackIds_example"], questionValues: "TODO", poll: CommentPollInput(question: "question_example", options: ["options_example"], closesAt: "closesAt_example", privacy: 123, requireVoteToSeeResults: false), tos: false, botId: "botId_example", approved: false, domain: "domain_example", ip: "ip_example", isPinned: false, locale: "locale_example", reviewed: false, verified: false, votes: 123, votesDown: 123, votesUp: 123) // CreateCommentParams | 
 let isLive = true // Bool |  (optional)
 let doSpamCheck = true // Bool |  (optional)
 let sendEmails = true // Bool |  (optional)
@@ -5128,7 +6151,7 @@ Name | Type | Description  | Notes
 import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
-let createCommentParams = [CreateCommentParams(date: 123, localDateString: "localDateString_example", localDateHours: 123, commenterName: "commenterName_example", commenterEmail: "commenterEmail_example", commenterLink: "commenterLink_example", comment: "comment_example", productId: 123, userId: "userId_example", avatarSrc: "avatarSrc_example", parentId: "parentId_example", mentions: [CommentUserMentionInfo(id: "id_example", tag: "tag_example", rawTag: "rawTag_example", type: "type_example", sent: false)], hashTags: [CommentUserHashTagInfo(id: "id_example", tag: "tag_example", url: "url_example", retain: false)], pageTitle: "pageTitle_example", isFromMyAccountPage: false, url: "url_example", urlId: "urlId_example", meta: 123, moderationGroupIds: ["moderationGroupIds_example"], rating: 123, fromOfflineRestore: false, autoplayDelayMS: 123, feedbackIds: ["feedbackIds_example"], questionValues: "TODO", tos: false, botId: "botId_example", approved: false, domain: "domain_example", ip: "ip_example", isPinned: false, locale: "locale_example", reviewed: false, verified: false, votes: 123, votesDown: 123, votesUp: 123)] // [CreateCommentParams] | 
+let createCommentParams = [CreateCommentParams(date: 123, localDateString: "localDateString_example", localDateHours: 123, commenterName: "commenterName_example", commenterEmail: "commenterEmail_example", commenterLink: "commenterLink_example", comment: "comment_example", productId: 123, userId: "userId_example", avatarSrc: "avatarSrc_example", parentId: "parentId_example", mentions: [CommentUserMentionInfo(id: "id_example", tag: "tag_example", rawTag: "rawTag_example", type: "type_example", sent: false)], hashTags: [CommentUserHashTagInfo(id: "id_example", tag: "tag_example", url: "url_example", retain: false)], pageTitle: "pageTitle_example", isFromMyAccountPage: false, url: "url_example", urlId: "urlId_example", meta: 123, moderationGroupIds: ["moderationGroupIds_example"], rating: 123, fromOfflineRestore: false, autoplayDelayMS: 123, feedbackIds: ["feedbackIds_example"], questionValues: "TODO", poll: CommentPollInput(question: "question_example", options: ["options_example"], closesAt: "closesAt_example", privacy: 123, requireVoteToSeeResults: false), tos: false, botId: "botId_example", approved: false, domain: "domain_example", ip: "ip_example", isPinned: false, locale: "locale_example", reviewed: false, verified: false, votes: 123, votesDown: 123, votesUp: 123)] // [CreateCommentParams] | 
 let isLive = true // Bool |  (optional)
 let doSpamCheck = true // Bool |  (optional)
 let sendEmails = true // Bool |  (optional)
@@ -5370,6 +6393,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FlagCommentResponse**](FlagCommentResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **undoPageMigrations**
+```swift
+    open class func undoPageMigrations(tenantId: String, undoId: String, completion: @escaping (_ data: QueuePageMigrationJobAPIResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Queues a batch job that reverses every migration from one migrate-pages job, newest first. Available for 90 days. Records changed since the migration are left alone, so a later edit is never overwritten. Poll GET /api/v1/batch-jobs/{batchJobId} for the restored/skipped counts.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let undoId = "undoId_example" // String | 
+
+DefaultAPI.undoPageMigrations(tenantId: tenantId, undoId: undoId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **undoId** | **String** |  | 
+
+### Return type
+
+[**QueuePageMigrationJobAPIResponse**](QueuePageMigrationJobAPIResponse.md)
 
 ### Authorization
 
@@ -5659,7 +6733,7 @@ import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
 let id = "id_example" // String | 
-let updateQuestionConfigBody = UpdateQuestionConfigBody(name: "name_example", question: "question_example", helpText: "helpText_example", type: "type_example", numStars: 123, min: 123, max: 123, defaultValue: 123, labelNegative: "labelNegative_example", labelPositive: "labelPositive_example", customOptions: [QuestionConfig_customOptions_inner(imageSrc: "imageSrc_example", name: "name_example")], subQuestionIds: ["subQuestionIds_example"], alwaysShowSubQuestions: false, reportingOrder: 123) // UpdateQuestionConfigBody | 
+let updateQuestionConfigBody = UpdateQuestionConfigBody(name: "name_example", question: "question_example", helpText: "helpText_example", type: "type_example", numStars: 123, min: 123, max: 123, defaultValue: 123, labelNegative: "labelNegative_example", labelPositive: "labelPositive_example", customOptions: [QuestionConfig_customOptions_inner(imageSrc: "imageSrc_example", name: "name_example")], subQuestionIds: ["subQuestionIds_example"], alwaysShowSubQuestions: false, subQuestionConditions: [SubQuestionCondition(_operator: QuestionConditionOperator(), value: 123, subQuestionId: "subQuestionId_example")], commentBoxCondition: QuestionCondition(_operator: nil, value: 123), commentBoxPrompt: "commentBoxPrompt_example", reportingOrder: 123) // UpdateQuestionConfigBody | 
 
 DefaultAPI.updateQuestionConfig(tenantId: tenantId, id: id, updateQuestionConfigBody: updateQuestionConfigBody) { (response, error) in
     guard error == nil else {
@@ -5710,7 +6784,7 @@ import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
 let id = "id_example" // String | 
-let updateQuestionResultBody = UpdateQuestionResultBody(urlId: "urlId_example", anonUserId: "anonUserId_example", userId: "userId_example", value: 123, commentId: "commentId_example", questionId: "questionId_example", meta: [MetaItem(name: "name_example", values: ["values_example"])]) // UpdateQuestionResultBody | 
+let updateQuestionResultBody = UpdateQuestionResultBody(urlId: "urlId_example", anonUserId: "anonUserId_example", userId: "userId_example", value: 123, values: [123], commentId: "commentId_example", questionId: "questionId_example", meta: [MetaItem(name: "name_example", values: ["values_example"])]) // UpdateQuestionResultBody | 
 
 DefaultAPI.updateQuestionResult(tenantId: tenantId, id: id, updateQuestionResultBody: updateQuestionResultBody) { (response, error) in
     guard error == nil else {
@@ -5814,7 +6888,7 @@ import FastCommentsSwift
 
 let tenantId = "tenantId_example" // String | 
 let id = "id_example" // String | 
-let updateTenantBody = UpdateTenantBody(name: "name_example", email: "email_example", signUpDate: 123, packageId: "packageId_example", paymentFrequency: 123, billingInfoValid: false, billingHandledExternally: false, createdBy: "createdBy_example", isSetup: false, domainConfiguration: [APIDomainConfiguration(id: "id_example", domain: "domain_example", emailFromName: "emailFromName_example", emailFromEmail: "emailFromEmail_example", emailHeaders: "TODO", wpSyncToken: "wpSyncToken_example", wpSynced: false, wpURL: "wpURL_example", createdAt: Date(), autoAddedDate: Date(), siteType: ImportedSiteType(), logoSrc: "logoSrc_example", logoSrc100px: "logoSrc100px_example", footerUnsubscribeURL: "footerUnsubscribeURL_example", disableUnsubscribeLinks: false)], billingInfo: BillingInfo(name: "name_example", address: "address_example", city: "city_example", state: "state_example", zip: "zip_example", country: "country_example", currency: "currency_example", email: "email_example"), stripeCustomerId: "stripeCustomerId_example", stripeSubscriptionId: "stripeSubscriptionId_example", stripePlanId: "stripePlanId_example", enableProfanityFilter: false, enableSpamFilter: false, removeUnverifiedComments: false, unverifiedCommentsTTLms: 123, commentsRequireApproval: false, autoApproveCommentOnVerification: false, sendProfaneToSpam: false, deAnonIpAddr: 123, meta: "TODO", managedByTenantId: "managedByTenantId_example") // UpdateTenantBody | 
+let updateTenantBody = UpdateTenantBody(name: "name_example", email: "email_example", signUpDate: 123, packageId: "packageId_example", paymentFrequency: 123, billingInfoValid: false, billingHandledExternally: false, isSetup: false, domainConfiguration: [APIDomainConfiguration(id: "id_example", domain: "domain_example", emailFromName: "emailFromName_example", emailFromEmail: "emailFromEmail_example", emailHeaders: "TODO", wpSyncToken: "wpSyncToken_example", wpSynced: false, wpURL: "wpURL_example", createdAt: Date(), autoAddedDate: Date(), siteType: ImportedSiteType(), logoSrc: "logoSrc_example", logoSrc100px: "logoSrc100px_example", footerUnsubscribeURL: "footerUnsubscribeURL_example", disableUnsubscribeLinks: false)], billingInfo: BillingInfo(name: "name_example", address: "address_example", city: "city_example", state: "state_example", zip: "zip_example", country: "country_example", currency: "currency_example", email: "email_example", vatId: "vatId_example"), stripeCustomerId: "stripeCustomerId_example", stripeSubscriptionId: "stripeSubscriptionId_example", stripePlanId: "stripePlanId_example", enableProfanityFilter: false, enableSpamFilter: false, removeUnverifiedComments: false, unverifiedCommentsTTLms: 123, commentsRequireApproval: false, autoApproveCommentOnVerification: false, sendProfaneToSpam: false, deAnonIpAddr: 123, meta: "TODO", managedByTenantId: "managedByTenantId_example") // UpdateTenantBody | 
 
 DefaultAPI.updateTenant(tenantId: tenantId, id: id, updateTenantBody: updateTenantBody) { (response, error) in
     guard error == nil else {

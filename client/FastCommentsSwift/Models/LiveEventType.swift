@@ -31,4 +31,5 @@ public enum LiveEventType: String, Sendable, Codable, CaseIterable {
     case deletedTicket = "deleted-ticket"
     case pageReact = "page-react"
     case questionResult = "question-result"
+    case pollUpdate = "poll-update"
 }

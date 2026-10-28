@@ -9,13 +9,16 @@ import Foundation
 
 public struct GetV1PageLikes: Sendable, Codable, Hashable {
 
+    /** Most recent first. Present when includeUserInfo is passed. Capped at 100 reacts. */
+    public var users: [PageReactUser]?
     public var urlIdWS: String
     public var didLike: Bool
     public var commentCount: Int
     public var likeCount: Int
     public var status: APIStatus
 
-    public init(urlIdWS: String, didLike: Bool, commentCount: Int, likeCount: Int, status: APIStatus) {
+    public init(users: [PageReactUser]? = nil, urlIdWS: String, didLike: Bool, commentCount: Int, likeCount: Int, status: APIStatus) {
+        self.users = users
         self.urlIdWS = urlIdWS
         self.didLike = didLike
         self.commentCount = commentCount
@@ -24,6 +27,7 @@ public struct GetV1PageLikes: Sendable, Codable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case users
         case urlIdWS
         case didLike
         case commentCount
@@ -35,6 +39,7 @@ public struct GetV1PageLikes: Sendable, Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(users, forKey: .users)
         try container.encode(urlIdWS, forKey: .urlIdWS)
         try container.encode(didLike, forKey: .didLike)
         try container.encode(commentCount, forKey: .commentCount)

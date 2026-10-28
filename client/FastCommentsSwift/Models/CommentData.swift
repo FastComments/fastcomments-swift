@@ -33,11 +33,12 @@ public struct CommentData: Sendable, Codable, Hashable {
     public var autoplayDelayMS: Int64?
     public var feedbackIds: [String]?
     /** Construct a type with a set of properties K of type T */
-    public var questionValues: [String: GifSearchResponseImagesInnerInner]?
+    public var questionValues: [String: RecordStringStringOrNumberOrNumberArrayValue]?
+    public var poll: CommentPollInput?
     public var tos: Bool?
     public var botId: String?
 
-    public init(date: Int64? = nil, localDateString: String? = nil, localDateHours: Int? = nil, commenterName: String, commenterEmail: String? = nil, commenterLink: String? = nil, comment: String, productId: Int? = nil, userId: String? = nil, avatarSrc: String? = nil, parentId: String? = nil, mentions: [CommentUserMentionInfo]? = nil, hashTags: [CommentUserHashTagInfo]? = nil, pageTitle: String? = nil, isFromMyAccountPage: Bool? = nil, url: String, urlId: String, meta: JSONValue? = nil, moderationGroupIds: [String]? = nil, rating: Double? = nil, fromOfflineRestore: Bool? = nil, autoplayDelayMS: Int64? = nil, feedbackIds: [String]? = nil, questionValues: [String: GifSearchResponseImagesInnerInner]? = nil, tos: Bool? = nil, botId: String? = nil) {
+    public init(date: Int64? = nil, localDateString: String? = nil, localDateHours: Int? = nil, commenterName: String, commenterEmail: String? = nil, commenterLink: String? = nil, comment: String, productId: Int? = nil, userId: String? = nil, avatarSrc: String? = nil, parentId: String? = nil, mentions: [CommentUserMentionInfo]? = nil, hashTags: [CommentUserHashTagInfo]? = nil, pageTitle: String? = nil, isFromMyAccountPage: Bool? = nil, url: String, urlId: String, meta: JSONValue? = nil, moderationGroupIds: [String]? = nil, rating: Double? = nil, fromOfflineRestore: Bool? = nil, autoplayDelayMS: Int64? = nil, feedbackIds: [String]? = nil, questionValues: [String: RecordStringStringOrNumberOrNumberArrayValue]? = nil, poll: CommentPollInput? = nil, tos: Bool? = nil, botId: String? = nil) {
         self.date = date
         self.localDateString = localDateString
         self.localDateHours = localDateHours
@@ -62,6 +63,7 @@ public struct CommentData: Sendable, Codable, Hashable {
         self.autoplayDelayMS = autoplayDelayMS
         self.feedbackIds = feedbackIds
         self.questionValues = questionValues
+        self.poll = poll
         self.tos = tos
         self.botId = botId
     }
@@ -91,6 +93,7 @@ public struct CommentData: Sendable, Codable, Hashable {
         case autoplayDelayMS
         case feedbackIds
         case questionValues
+        case poll
         case tos
         case botId
     }
@@ -123,6 +126,7 @@ public struct CommentData: Sendable, Codable, Hashable {
         try container.encodeIfPresent(autoplayDelayMS, forKey: .autoplayDelayMS)
         try container.encodeIfPresent(feedbackIds, forKey: .feedbackIds)
         try container.encodeIfPresent(questionValues, forKey: .questionValues)
+        try container.encodeIfPresent(poll, forKey: .poll)
         try container.encodeIfPresent(tos, forKey: .tos)
         try container.encodeIfPresent(botId, forKey: .botId)
     }

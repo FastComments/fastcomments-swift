@@ -15,14 +15,16 @@ public struct EventLogEntry: Sendable, Codable, Hashable {
     public var urlId: String
     public var broadcastId: String
     public var data: String
+    public var domain: String?
 
-    public init(id: String, createdAt: Date, tenantId: String, urlId: String, broadcastId: String, data: String) {
+    public init(id: String, createdAt: Date, tenantId: String, urlId: String, broadcastId: String, data: String, domain: String? = nil) {
         self.id = id
         self.createdAt = createdAt
         self.tenantId = tenantId
         self.urlId = urlId
         self.broadcastId = broadcastId
         self.data = data
+        self.domain = domain
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -32,6 +34,7 @@ public struct EventLogEntry: Sendable, Codable, Hashable {
         case urlId
         case broadcastId
         case data
+        case domain
     }
 
     // Encodable protocol methods
@@ -44,6 +47,7 @@ public struct EventLogEntry: Sendable, Codable, Hashable {
         try container.encode(urlId, forKey: .urlId)
         try container.encode(broadcastId, forKey: .broadcastId)
         try container.encode(data, forKey: .data)
+        try container.encodeIfPresent(domain, forKey: .domain)
     }
 }
 

@@ -19,8 +19,10 @@ public struct BillingInfo: Sendable, Codable, Hashable {
     public var currency: String?
     /** Email for invoices. */
     public var email: String?
+    /** VAT / Tax ID for invoices. Only persisted once Stripe has accepted it. */
+    public var vatId: String?
 
-    public init(name: String, address: String, city: String, state: String, zip: String, country: String, currency: String? = nil, email: String? = nil) {
+    public init(name: String, address: String, city: String, state: String, zip: String, country: String, currency: String? = nil, email: String? = nil, vatId: String? = nil) {
         self.name = name
         self.address = address
         self.city = city
@@ -29,6 +31,7 @@ public struct BillingInfo: Sendable, Codable, Hashable {
         self.country = country
         self.currency = currency
         self.email = email
+        self.vatId = vatId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -40,6 +43,7 @@ public struct BillingInfo: Sendable, Codable, Hashable {
         case country
         case currency
         case email
+        case vatId
     }
 
     // Encodable protocol methods
@@ -54,6 +58,7 @@ public struct BillingInfo: Sendable, Codable, Hashable {
         try container.encode(country, forKey: .country)
         try container.encodeIfPresent(currency, forKey: .currency)
         try container.encodeIfPresent(email, forKey: .email)
+        try container.encodeIfPresent(vatId, forKey: .vatId)
     }
 }
 

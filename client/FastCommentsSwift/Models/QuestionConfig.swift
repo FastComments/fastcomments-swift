@@ -19,6 +19,7 @@ public struct QuestionConfig: Sendable, Codable, Hashable {
     public var createdBy: String
     public var usedCount: Double
     public var lastUsed: Date
+    /** One of nps, slider, star, thumbs, choice, multi, emoji, scale. Answers: nps 0-10, slider min-max, star 1-numStars, thumbs 1 (up) or 0 (down), choice = option index, multi = option indexes (values), emoji/scale = option index + 1. */
     public var type: String
     public var numStars: Double
     public var min: Double
@@ -26,12 +27,18 @@ public struct QuestionConfig: Sendable, Codable, Hashable {
     public var defaultValue: Double
     public var labelNegative: String
     public var labelPositive: String
+    /** Option labels for choice, multi, emoji and scale questions. */
     public var customOptions: [QuestionConfigCustomOptionsInner]
     public var subQuestionIds: [String]
     public var alwaysShowSubQuestions: Bool
+    /** Sub-questions listed here only show when this question's answer matches. Others always show. */
+    public var subQuestionConditions: [SubQuestionCondition]?
+    public var commentBoxCondition: QuestionCondition?
+    /** Placeholder for the comment box when commentBoxCondition reveals it. */
+    public var commentBoxPrompt: String?
     public var reportingOrder: Double
 
-    public init(id: String, tenantId: String, name: String, question: String, summaryLabel: String? = nil, helpText: String, createdAt: Date, createdBy: String, usedCount: Double, lastUsed: Date, type: String, numStars: Double, min: Double, max: Double, defaultValue: Double, labelNegative: String, labelPositive: String, customOptions: [QuestionConfigCustomOptionsInner], subQuestionIds: [String], alwaysShowSubQuestions: Bool, reportingOrder: Double) {
+    public init(id: String, tenantId: String, name: String, question: String, summaryLabel: String? = nil, helpText: String, createdAt: Date, createdBy: String, usedCount: Double, lastUsed: Date, type: String, numStars: Double, min: Double, max: Double, defaultValue: Double, labelNegative: String, labelPositive: String, customOptions: [QuestionConfigCustomOptionsInner], subQuestionIds: [String], alwaysShowSubQuestions: Bool, subQuestionConditions: [SubQuestionCondition]? = nil, commentBoxCondition: QuestionCondition? = nil, commentBoxPrompt: String? = nil, reportingOrder: Double) {
         self.id = id
         self.tenantId = tenantId
         self.name = name
@@ -52,6 +59,9 @@ public struct QuestionConfig: Sendable, Codable, Hashable {
         self.customOptions = customOptions
         self.subQuestionIds = subQuestionIds
         self.alwaysShowSubQuestions = alwaysShowSubQuestions
+        self.subQuestionConditions = subQuestionConditions
+        self.commentBoxCondition = commentBoxCondition
+        self.commentBoxPrompt = commentBoxPrompt
         self.reportingOrder = reportingOrder
     }
 
@@ -76,6 +86,9 @@ public struct QuestionConfig: Sendable, Codable, Hashable {
         case customOptions
         case subQuestionIds
         case alwaysShowSubQuestions
+        case subQuestionConditions
+        case commentBoxCondition
+        case commentBoxPrompt
         case reportingOrder
     }
 
@@ -103,6 +116,9 @@ public struct QuestionConfig: Sendable, Codable, Hashable {
         try container.encode(customOptions, forKey: .customOptions)
         try container.encode(subQuestionIds, forKey: .subQuestionIds)
         try container.encode(alwaysShowSubQuestions, forKey: .alwaysShowSubQuestions)
+        try container.encodeIfPresent(subQuestionConditions, forKey: .subQuestionConditions)
+        try container.encodeIfPresent(commentBoxCondition, forKey: .commentBoxCondition)
+        try container.encodeIfPresent(commentBoxPrompt, forKey: .commentBoxPrompt)
         try container.encode(reportingOrder, forKey: .reportingOrder)
     }
 }

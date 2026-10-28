@@ -34,8 +34,12 @@ public struct APIAuditLog: Sendable, Codable, Hashable {
     public var serverStartDate: Date?
     /** Construct a type with a set of properties K of type T */
     public var objectDetails: [String: JSONValue]?
+    public var targetId: String?
+    public var targetLabel: String?
+    public var ua: String?
+    public var sIdHashed: String?
 
-    public init(id: String, userId: String? = nil, username: String? = nil, resourceName: String, crudType: CrudType, from: From? = nil, url: String? = nil, ip: String? = nil, when: Date? = nil, description: String? = nil, serverStartDate: Date? = nil, objectDetails: [String: JSONValue]? = nil) {
+    public init(id: String, userId: String? = nil, username: String? = nil, resourceName: String, crudType: CrudType, from: From? = nil, url: String? = nil, ip: String? = nil, when: Date? = nil, description: String? = nil, serverStartDate: Date? = nil, objectDetails: [String: JSONValue]? = nil, targetId: String? = nil, targetLabel: String? = nil, ua: String? = nil, sIdHashed: String? = nil) {
         self.id = id
         self.userId = userId
         self.username = username
@@ -48,6 +52,10 @@ public struct APIAuditLog: Sendable, Codable, Hashable {
         self.description = description
         self.serverStartDate = serverStartDate
         self.objectDetails = objectDetails
+        self.targetId = targetId
+        self.targetLabel = targetLabel
+        self.ua = ua
+        self.sIdHashed = sIdHashed
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -63,6 +71,10 @@ public struct APIAuditLog: Sendable, Codable, Hashable {
         case description
         case serverStartDate
         case objectDetails
+        case targetId
+        case targetLabel
+        case ua
+        case sIdHashed
     }
 
     // Encodable protocol methods
@@ -81,6 +93,10 @@ public struct APIAuditLog: Sendable, Codable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(serverStartDate, forKey: .serverStartDate)
         try container.encodeIfPresent(objectDetails, forKey: .objectDetails)
+        try container.encodeIfPresent(targetId, forKey: .targetId)
+        try container.encodeIfPresent(targetLabel, forKey: .targetLabel)
+        try container.encodeIfPresent(ua, forKey: .ua)
+        try container.encodeIfPresent(sIdHashed, forKey: .sIdHashed)
     }
 }
 
