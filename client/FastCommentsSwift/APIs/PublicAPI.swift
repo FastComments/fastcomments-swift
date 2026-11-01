@@ -1720,6 +1720,82 @@ open class PublicAPI {
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 
+    /** Optional parameters for getPollVoters. */
+    public struct GetPollVotersOptions: Sendable {
+        public var urlId: String?
+        public var page: Int?
+        public var search: String?
+        public var sso: String?
+
+        public init(urlId: String? = nil, page: Int? = nil, search: String? = nil, sso: String? = nil) {
+            self.urlId = urlId
+            self.page = page
+            self.search = search
+            self.sso = sso
+        }
+    }
+
+    /**
+
+     - parameter tenantId: (path)  
+     - parameter commentId: (path)  
+     - parameter urlId: (query)  (optional)
+     - parameter page: (query)  (optional)
+     - parameter search: (query)  (optional)
+     - parameter sso: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetPollVoterNamesSuccessResponse
+     */
+    open class func getPollVoters(tenantId: String, commentId: String, options: GetPollVotersOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> GetPollVoterNamesSuccessResponse {
+        return try await getPollVotersWithRequestBuilder(tenantId: tenantId, commentId: commentId, options: options, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /polls/{tenantId}/{commentId}/voters
+     - Who voted for which option. Anonymous polls never answer, admins-only polls answer only for an admin or moderator.
+     - parameter tenantId: (path)  
+     - parameter commentId: (path)  
+     - parameter urlId: (query)  (optional)
+     - parameter page: (query)  (optional)
+     - parameter search: (query)  (optional)
+     - parameter sso: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetPollVoterNamesSuccessResponse> 
+     */
+    open class func getPollVotersWithRequestBuilder(tenantId: String, commentId: String, options: GetPollVotersOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<GetPollVoterNamesSuccessResponse> {
+        let urlId = options.urlId
+        let page = options.page
+        let search = options.search
+        let sso = options.sso
+        var localVariablePath = "/polls/{tenantId}/{commentId}/voters"
+        let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
+        let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
+        let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
+        let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "urlId": (wrappedValue: urlId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "page": (wrappedValue: page?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "search": (wrappedValue: search?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetPollVoterNamesSuccessResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
     /** Optional parameters for getTranslations. */
     public struct GetTranslationsOptions: Sendable {
         public var locale: String?
@@ -3313,5 +3389,76 @@ open class PublicAPI {
         let localVariableRequestBuilder: RequestBuilder<VoteResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /** Optional parameters for votePoll. */
+    public struct VotePollOptions: Sendable {
+        public var urlId: String?
+        public var broadcastId: String?
+        public var sso: String?
+
+        public init(urlId: String? = nil, broadcastId: String? = nil, sso: String? = nil) {
+            self.urlId = urlId
+            self.broadcastId = broadcastId
+            self.sso = sso
+        }
+    }
+
+    /**
+
+     - parameter tenantId: (path)  
+     - parameter commentId: (path)  
+     - parameter votePollBody: (body)  
+     - parameter urlId: (query)  (optional)
+     - parameter broadcastId: (query)  (optional)
+     - parameter sso: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: VotePollResponse
+     */
+    open class func votePoll(tenantId: String, commentId: String, votePollBody: VotePollBody, options: VotePollOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) async throws(ErrorResponse) -> VotePollResponse {
+        return try await votePollWithRequestBuilder(tenantId: tenantId, commentId: commentId, votePollBody: votePollBody, options: options, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - PUT /polls/{tenantId}/{commentId}/vote
+     - parameter tenantId: (path)  
+     - parameter commentId: (path)  
+     - parameter votePollBody: (body)  
+     - parameter urlId: (query)  (optional)
+     - parameter broadcastId: (query)  (optional)
+     - parameter sso: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<VotePollResponse> 
+     */
+    open class func votePollWithRequestBuilder(tenantId: String, commentId: String, votePollBody: VotePollBody, options: VotePollOptions = .init(), apiConfiguration: FastCommentsSwiftAPIConfiguration = FastCommentsSwiftAPIConfiguration.shared) -> RequestBuilder<VotePollResponse> {
+        let urlId = options.urlId
+        let broadcastId = options.broadcastId
+        let sso = options.sso
+        var localVariablePath = "/polls/{tenantId}/{commentId}/vote"
+        let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
+        let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{tenantId}", with: tenantIdPostEscape, options: .literal, range: nil)
+        let commentIdPreEscape = "\(APIHelper.mapValueToPathItem(commentId))"
+        let commentIdPostEscape = commentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{commentId}", with: commentIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: votePollBody, codableHelper: apiConfiguration.codableHelper)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "urlId": (wrappedValue: urlId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "broadcastId": (wrappedValue: broadcastId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "sso": (wrappedValue: sso?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<VotePollResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
 }

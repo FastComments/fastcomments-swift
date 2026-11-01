@@ -229,6 +229,7 @@ Class | Method | HTTP request | Description
 *PublicAPI* | [**getOfflineUsers**](docs/PublicAPI.md#getofflineusers) | **GET** /pages/{tenantId}/users/offline | 
 *PublicAPI* | [**getOnlineUsers**](docs/PublicAPI.md#getonlineusers) | **GET** /pages/{tenantId}/users/online | 
 *PublicAPI* | [**getPagesPublic**](docs/PublicAPI.md#getpagespublic) | **GET** /pages/{tenantId} | 
+*PublicAPI* | [**getPollVoters**](docs/PublicAPI.md#getpollvoters) | **GET** /polls/{tenantId}/{commentId}/voters | 
 *PublicAPI* | [**getTranslations**](docs/PublicAPI.md#gettranslations) | **GET** /translations/{namespace}/{component} | 
 *PublicAPI* | [**getUserNotificationCount**](docs/PublicAPI.md#getusernotificationcount) | **GET** /user-notifications/get-count | 
 *PublicAPI* | [**getUserNotifications**](docs/PublicAPI.md#getusernotifications) | **GET** /user-notifications | 
@@ -256,6 +257,7 @@ Class | Method | HTTP request | Description
 *PublicAPI* | [**updateUserNotificationStatus**](docs/PublicAPI.md#updateusernotificationstatus) | **POST** /user-notifications/{notificationId}/mark/{newStatus} | 
 *PublicAPI* | [**uploadImage**](docs/PublicAPI.md#uploadimage) | **POST** /upload-image/{tenantId} | 
 *PublicAPI* | [**voteComment**](docs/PublicAPI.md#votecomment) | **POST** /comments/{tenantId}/{commentId}/vote | 
+*PublicAPI* | [**votePoll**](docs/PublicAPI.md#votepoll) | **PUT** /polls/{tenantId}/{commentId}/vote | 
 
 
 ## Documentation For Models
@@ -464,6 +466,7 @@ Class | Method | HTTP request | Description
  - [GetPendingWebhookEventsResponse](docs/GetPendingWebhookEventsResponse.md)
  - [GetPollResponse](docs/GetPollResponse.md)
  - [GetPollVoteResponse](docs/GetPollVoteResponse.md)
+ - [GetPollVoterNamesSuccessResponse](docs/GetPollVoterNamesSuccessResponse.md)
  - [GetPollVotesResponse](docs/GetPollVotesResponse.md)
  - [GetPublicFeedPostsResponse](docs/GetPublicFeedPostsResponse.md)
  - [GetPublicPagesResponse](docs/GetPublicPagesResponse.md)
@@ -565,6 +568,7 @@ Class | Method | HTTP request | Description
  - [PickCommentPollOptionsOrTotalVotesOrClosesAt](docs/PickCommentPollOptionsOrTotalVotesOrClosesAt.md)
  - [PollCreationMode](docs/PollCreationMode.md)
  - [PollPrivacy](docs/PollPrivacy.md)
+ - [PollVoterEntry](docs/PollVoterEntry.md)
  - [PollVotingMode](docs/PollVotingMode.md)
  - [PostRemoveCommentApiResponse](docs/PostRemoveCommentApiResponse.md)
  - [PreBanSummary](docs/PreBanSummary.md)
@@ -672,6 +676,8 @@ Class | Method | HTTP request | Description
  - [UsersListLocation](docs/UsersListLocation.md)
  - [VoteBodyParams](docs/VoteBodyParams.md)
  - [VoteDeleteResponse](docs/VoteDeleteResponse.md)
+ - [VotePollBody](docs/VotePollBody.md)
+ - [VotePollResponse](docs/VotePollResponse.md)
  - [VoteResponse](docs/VoteResponse.md)
  - [VoteResponseUser](docs/VoteResponseUser.md)
  - [VoteStyle](docs/VoteStyle.md)

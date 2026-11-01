@@ -30,6 +30,7 @@ Method | HTTP request | Description
 [**getOfflineUsers**](PublicAPI.md#getofflineusers) | **GET** /pages/{tenantId}/users/offline | 
 [**getOnlineUsers**](PublicAPI.md#getonlineusers) | **GET** /pages/{tenantId}/users/online | 
 [**getPagesPublic**](PublicAPI.md#getpagespublic) | **GET** /pages/{tenantId} | 
+[**getPollVoters**](PublicAPI.md#getpollvoters) | **GET** /polls/{tenantId}/{commentId}/voters | 
 [**getTranslations**](PublicAPI.md#gettranslations) | **GET** /translations/{namespace}/{component} | 
 [**getUserNotificationCount**](PublicAPI.md#getusernotificationcount) | **GET** /user-notifications/get-count | 
 [**getUserNotifications**](PublicAPI.md#getusernotifications) | **GET** /user-notifications | 
@@ -57,6 +58,7 @@ Method | HTTP request | Description
 [**updateUserNotificationStatus**](PublicAPI.md#updateusernotificationstatus) | **POST** /user-notifications/{notificationId}/mark/{newStatus} | 
 [**uploadImage**](PublicAPI.md#uploadimage) | **POST** /upload-image/{tenantId} | 
 [**voteComment**](PublicAPI.md#votecomment) | **POST** /comments/{tenantId}/{commentId}/vote | 
+[**votePoll**](PublicAPI.md#votepoll) | **PUT** /polls/{tenantId}/{commentId}/vote | 
 
 
 # **blockFromCommentPublic**
@@ -1531,6 +1533,65 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getPollVoters**
+```swift
+    open class func getPollVoters(tenantId: String, commentId: String, options: GetPollVotersOptions = .init(), completion: @escaping (_ data: GetPollVoterNamesSuccessResponse?, _ error: Error?) -> Void)
+```
+
+
+
+Who voted for which option. Anonymous polls never answer, admins-only polls answer only for an admin or moderator.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let commentId = "commentId_example" // String | 
+let urlId = "urlId_example" // String |  (optional)
+let page = 987 // Int |  (optional)
+let search = "search_example" // String |  (optional)
+let sso = "sso_example" // String |  (optional)
+
+PublicAPI.getPollVoters(tenantId: tenantId, commentId: commentId, options: PublicAPI.GetPollVotersOptions(urlId: urlId, page: page, search: search, sso: sso)) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **commentId** | **String** |  | 
+ **urlId** | **String** |  | [optional] 
+ **page** | **Int** |  | [optional] 
+ **search** | **String** |  | [optional] 
+ **sso** | **String** |  | [optional] 
+
+### Return type
+
+[**GetPollVoterNamesSuccessResponse**](GetPollVoterNamesSuccessResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getTranslations**
 ```swift
     open class func getTranslations(namespace: String, component: String, options: GetTranslationsOptions = .init(), completion: @escaping (_ data: GetTranslationsResponse?, _ error: Error?) -> Void)
@@ -2984,6 +3045,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**VoteResponse**](VoteResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **votePoll**
+```swift
+    open class func votePoll(tenantId: String, commentId: String, votePollBody: VotePollBody, options: VotePollOptions = .init(), completion: @escaping (_ data: VotePollResponse?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import FastCommentsSwift
+
+let tenantId = "tenantId_example" // String | 
+let commentId = "commentId_example" // String | 
+let votePollBody = VotePollBody(optionId: "optionId_example") // VotePollBody | 
+let urlId = "urlId_example" // String |  (optional)
+let broadcastId = "broadcastId_example" // String |  (optional)
+let sso = "sso_example" // String |  (optional)
+
+PublicAPI.votePoll(tenantId: tenantId, commentId: commentId, votePollBody: votePollBody, options: PublicAPI.VotePollOptions(urlId: urlId, broadcastId: broadcastId, sso: sso)) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenantId** | **String** |  | 
+ **commentId** | **String** |  | 
+ **votePollBody** | [**VotePollBody**](VotePollBody.md) |  | 
+ **urlId** | **String** |  | [optional] 
+ **broadcastId** | **String** |  | [optional] 
+ **sso** | **String** |  | [optional] 
+
+### Return type
+
+[**VotePollResponse**](VotePollResponse.md)
 
 ### Authorization
 

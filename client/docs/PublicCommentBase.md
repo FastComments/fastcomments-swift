@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **isSpam** | **Bool** |  | [optional] 
 **anonUserId** | **String** |  | [optional] 
 **feedbackIds** | **[String]** |  | [optional] 
+**poll** | [**CommentPoll**](CommentPoll.md) |  | [optional] 
 **requiresVerification** | **Bool** |  | [optional] 
 **editKey** | **String** |  | [optional] 
 **approved** | **Bool** |  | [optional] 
