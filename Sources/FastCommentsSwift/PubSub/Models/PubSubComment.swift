@@ -46,6 +46,7 @@ public struct PubSubComment: Codable, Sendable {
     public var isLive: Bool?
     public var hidden: Bool?
     public var date: String?
+    public var poll: CommentPoll?
 
     public enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -57,6 +58,6 @@ public struct PubSubComment: Codable, Sendable {
         case isDeleted, isDeletedUser, isSpam, anonUserId
         case feedbackIds, flagCount, domain, url, pageTitle
         case reviewed, hasCode, approved, locale, isBannedUser
-        case groupIds, isLive, hidden, date
+        case groupIds, isLive, hidden, date, poll
     }
 }
