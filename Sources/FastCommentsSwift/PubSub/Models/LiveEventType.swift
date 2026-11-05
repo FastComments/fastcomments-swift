@@ -19,4 +19,5 @@ public enum LiveEventType: String, Codable, CaseIterable, Sendable {
     case newFeedPost = "new-feed-post"
     case updatedFeedPost = "updated-feed-post"
     case deletedFeedPost = "deleted-feed-post"
+    case pollUpdate = "poll-update"
 }

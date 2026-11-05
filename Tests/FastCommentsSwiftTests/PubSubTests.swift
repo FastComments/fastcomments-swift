@@ -24,6 +24,7 @@ final class PubSubTests: XCTestCase {
             ("\"new-feed-post\"", .newFeedPost),
             ("\"updated-feed-post\"", .updatedFeedPost),
             ("\"deleted-feed-post\"", .deletedFeedPost),
+            ("\"poll-update\"", .pollUpdate),
         ]
 
         for (json, expected) in cases {

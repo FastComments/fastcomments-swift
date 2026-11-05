@@ -38,8 +38,9 @@ public struct WebhookComment: Sendable, Codable, Hashable {
     public var mentions: [CommentUserMentionInfo]
     public var domain: String?
     public var moderationGroupIds: [String]
+    public var badges: [CommentUserBadgeInfo]
 
-    public init(id: String, urlId: String, url: String?, userId: String?, commenterEmail: String?, commenterName: String, comment: String, commentHTML: String, externalId: String?, parentId: String?, date: String, votes: Double, votesUp: Double, votesDown: Double, verified: Bool, verifiedDate: String?, reviewed: Bool, avatarSrc: String?, isSpam: Bool, aiDeterminedSpam: Bool, hasImages: Bool, pageNumber: Double?, pageNumberOF: Double?, pageNumberNF: Double?, approved: Bool, locale: String?, mentions: [CommentUserMentionInfo], domain: String?, moderationGroupIds: [String]) {
+    public init(id: String, urlId: String, url: String?, userId: String?, commenterEmail: String?, commenterName: String, comment: String, commentHTML: String, externalId: String?, parentId: String?, date: String, votes: Double, votesUp: Double, votesDown: Double, verified: Bool, verifiedDate: String?, reviewed: Bool, avatarSrc: String?, isSpam: Bool, aiDeterminedSpam: Bool, hasImages: Bool, pageNumber: Double?, pageNumberOF: Double?, pageNumberNF: Double?, approved: Bool, locale: String?, mentions: [CommentUserMentionInfo], domain: String?, moderationGroupIds: [String], badges: [CommentUserBadgeInfo]) {
         self.id = id
         self.urlId = urlId
         self.url = url
@@ -69,6 +70,7 @@ public struct WebhookComment: Sendable, Codable, Hashable {
         self.mentions = mentions
         self.domain = domain
         self.moderationGroupIds = moderationGroupIds
+        self.badges = badges
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -101,6 +103,7 @@ public struct WebhookComment: Sendable, Codable, Hashable {
         case mentions
         case domain
         case moderationGroupIds
+        case badges
     }
 
     // Encodable protocol methods
@@ -136,6 +139,7 @@ public struct WebhookComment: Sendable, Codable, Hashable {
         try container.encode(mentions, forKey: .mentions)
         try container.encode(domain, forKey: .domain)
         try container.encode(moderationGroupIds, forKey: .moderationGroupIds)
+        try container.encode(badges, forKey: .badges)
     }
 }
 

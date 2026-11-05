@@ -172,7 +172,7 @@ public class LiveEventSubscriber: NSObject {
         guard let data = text.data(using: .utf8) else { return }
 
         do {
-            let event = try JSONDecoder().decode(LiveEvent.self, from: data)
+            let event = try LiveEvent.decode(from: data)
 
             // Only update lastEventTime from `timestamp`, NOT from `ts`.
             // `ts` is for presence updates which are not stored in the event log,
@@ -345,7 +345,7 @@ public class LiveEventSubscriber: NSObject {
                 let events = response.events.compactMap { entry -> LiveEvent? in
                     guard let jsonData = entry.data.data(using: .utf8) else { return nil }
                     // Per-entry error handling: skip unparseable entries
-                    return try? JSONDecoder().decode(LiveEvent.self, from: jsonData)
+                    return try? LiveEvent.decode(from: jsonData)
                 }
                 completion(events)
             } catch {

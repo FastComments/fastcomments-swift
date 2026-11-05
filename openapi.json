@@ -331,9 +331,17 @@
 						"type": "array",
 						"nullable": true
 					},
+					"allowSimpleSSOAdmins": {
+						"type": "boolean",
+						"description": "Simple SSO users on this page or domain can be admins and moderators: they keep those flags and pick them up from a matching email."
+					},
 					"autoGenerateUsername": {
 						"type": "boolean",
 						"description": "Serve each new visitor a unique generated username as the prefilled defaultUsername."
+					},
+					"autoVerifySimpleSSOComments": {
+						"type": "boolean",
+						"description": "Comments from Simple SSO users on this page or domain are verified right away, instead of through an emailed link."
 					},
 					"collapseReplies": {
 						"type": "boolean"
@@ -6458,6 +6466,12 @@
 							"type": "string"
 						},
 						"type": "array"
+					},
+					"badges": {
+						"items": {
+							"$ref": "#/components/schemas/CommentUserBadgeInfo"
+						},
+						"type": "array"
 					}
 				},
 				"required": [
@@ -6489,7 +6503,8 @@
 					"locale",
 					"mentions",
 					"domain",
-					"moderationGroupIds"
+					"moderationGroupIds",
+					"badges"
 				],
 				"type": "object",
 				"additionalProperties": false
